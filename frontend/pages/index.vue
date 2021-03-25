@@ -1,8 +1,8 @@
 <template>
 	<div class="container">
 		<div>
-			<h1 class="title">
-				Zenn-app
+ 			<h1 class="title">
+				Hi!
 			</h1>
 			<h2>
 				{{ subTitle }}
@@ -24,7 +24,7 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 export default {
 	data() {
 		return {
-			subTitle: 'Zenn is good service!!'
+			subTitle: 'Hello Vue!!'
 		}
 	},
 	methods: {

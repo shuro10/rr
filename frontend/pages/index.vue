@@ -1,20 +1,55 @@
 <template>
 	<div class="container">
 		<div>
- 			<h1 class="title">
+			<v-card
+				height="300"
+				flat
+			>
+			<h1 class="title">
 				Hi!
 			</h1>
 			<h2>
 				{{ subTitle }}
 			</h2>
+			<br>
 			<button @click="getSomething">
-				タスク取得
+				GetTask
 			</button>
-       <ul v-for=" task in tasks" :key="task.id">
+      <ul v-for=" task in tasks" :key="task.id">
         <li style="text-align: left;">{{ task.title }}</li>
       </ul>
-		</div>
+		<br>
+			<v-btn
+        dark
+        color="red darken-2"
+			 	@click="snackbar = true"
+      >
+        Open Snackbar
+      </v-btn>
+ 
+      <v-snackbar
+        v-model="snackbar"
+        :multi-line="multiLine"
+      >
+        {{ text }}
+  
+        <template v-slot:action="{ attrs }">
+          <v-btn
+            color="red"
+            text
+            v-bind="attrs"
+            @click="snackbar = false"
+          >
+            Close
+          </v-btn>
+        </template>
+      </v-snackbar>
+
+
+ 			</v-card>
+ 	  </div>
 	</div>
+
 </template>
 
 <script>
@@ -24,7 +59,10 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 export default {
 	data() {
 		return {
-			subTitle: 'Hello Vue!!'
+			subTitle: 'Hello Vue!! 😆',
+  	  multiLine: true,
+	    snackbar: false,
+	    text: `I'm a multi-line snackbar.`,
 		}
 	},
 	methods: {

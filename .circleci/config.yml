@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  # buildするjob
+  build:
+    machine:
+      image: circleci/classic:edge
+    steps:
+      - checkout
+      - run:
+          name: docker-compose build
+          command: docker-compose build
+

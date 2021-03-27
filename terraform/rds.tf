@@ -1,4 +1,7 @@
 /* RDS */
+variable "aws_db_user" {}
+variable "aws_db_password" {}
+
 resource "aws_db_parameter_group" "cs-db-parameter" {
   name   = "cs-db-parameter"
   family = "mysql5.7"
@@ -60,9 +63,6 @@ resource "aws_db_instance" "cs-db" {
   }
 
 }
-
-variable "aws_db_user" {}
-variable "aws_db_password" {}
 
 
 /* Subnet */

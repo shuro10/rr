@@ -13,7 +13,6 @@ jobs:
           name: Which bundler?
           command: bundle -v
           working_directory: backend
-      - run: 
       - restore_cache:
           keys:
               - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}

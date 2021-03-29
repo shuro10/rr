@@ -7,6 +7,7 @@ resource "aws_iam_role" "default" {
   assume_role_policy = data.aws_iam_policy_document.assume_role.json
 }
 
+/* IAM Role TrustPolicies --identifierに関連付け-- */
 data "aws_iam_policy_document" "assume_role" {
   statement {
     actions = ["sts:AssumeRole"]

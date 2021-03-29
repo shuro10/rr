@@ -1,0 +1,15 @@
+current directory: /private/var/www/rails/rr/backend/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.7.3/ext/bootsnap
+/Users/kent/.rbenv/versions/2.7.1/bin/ruby -I /Users/kent/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20210329-17697-amsbxh.rb extconf.rb
+creating Makefile
+
+current directory: /private/var/www/rails/rr/backend/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /private/var/www/rails/rr/backend/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /private/var/www/rails/rr/backend/vendor/bundle/ruby/2.7.0/gems/bootsnap-1.7.3/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20210329-17697-ij0gm1/bootsnap

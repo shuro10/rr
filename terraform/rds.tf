@@ -51,7 +51,7 @@ resource "aws_db_instance" "cs-db" {
   vpc_security_group_ids  = [aws_security_group.cs-rds-sg.id]
   parameter_group_name    = aws_db_parameter_group.cs-db-parameter.name
   db_subnet_group_name    = aws_db_subnet_group.cs-rds-subnet-group.name
-  enabled_cloudwatch_logs_exports = [
+	enabled_cloudwatch_logs_exports = [
     "audit",
     "error",
     "general",
@@ -59,7 +59,7 @@ resource "aws_db_instance" "cs-db" {
   ]
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
 }

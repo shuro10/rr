@@ -1,56 +1,90 @@
 <template>
-	<div class="container">
-		<div>
-			<v-card
-				height="300"
-				flat
-			>
-			<h1 class="title">
-				Hi!
-			</h1>
-			<h2>
-				{{ subTitle }}
-			</h2>
-			<br>
-			<button @click="getSomething">
-				GetTask
-			</button>
-      <ul v-for=" task in tasks" :key="task.id">
-        <li style="text-align: left;">{{ task.title }}</li>
-      </ul>
-		<br>
-			<v-btn
-        dark
-        color="red darken-2"
-			 	@click="snackbar = true"
-      >
-        Open Snackbar
-      </v-btn>
- 
-      <v-snackbar
-        v-model="snackbar"
-        :multi-line="multiLine"
-      >
-        {{ text }}
+  <v-app>
+		<v-navigation-drawer app v-model="drawer" clipped >
+		<v-container>
+			<v-list-item>
+			<v-list-item-content>
+				<v-list-item-title class="title gray--text text--darken-2">
+				Navigation lists
+				</v-list-item-title>
+			</v-list-item-content>
+			</v-list-item>
+			<v-divider></v-divider>
+						<v-list nav dense>
+						<v-list-group 
+						v-for="nav_list in nav_lists" 
+						:key="nav_list.name" 
+						:prepend-icon="nav_list.icon" 
+						no-action 
+						:append-icon="nav_list.lists ? undefined : ''"> 
+							<template v-slot:activator>
+							<v-list-item-content>
+								<v-list-item-title>{{ nav_list.name }}</v-list-item-title>
+							</v-list-item-content>
+							</template>
+							<v-list-item v-for="list in nav_list.lists" :key="list">
+							<v-list-item-content>
+								<v-list-item-title>{{ list }}</v-list-item-title>
+							</v-list-item-content>
+							</v-list-item>
+						</v-list-group>
+						</v-list>
+		</v-container>
+		</v-navigation-drawer>
+
+    <v-app-bar color="success" dark app clipped-left>
+		<v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+		<v-toolbar-title>What's up?</v-toolbar-title>
+		<v-spacer></v-spacer>
+	
+
+
+		<v-toolbar-items>
+		<v-btn text>What's up?</v-btn>
+
+		
+			<v-menu offset-y>
+				<template v-slot:activator="{on}">
+				<v-btn v-on="on" text>日記<v-icon>mdi-menu-down</v-icon></v-btn>
+				</template>
+				<v-list>
+					<v-subheader>フロント始めました！</v-subheader>
+							<v-list-item v-for="support in supports" :key="support.name">
+							<v-list-item-icon>
+							<v-icon>{{ support.icon }}</v-icon>
+							</v-list-item-icon>
+							<v-list-item-content>
+							<v-list-item-title>{{ support.name }}</v-list-item-title>
+							</v-list-item-content>
+							</v-list-item>
+				</v-list>
+			</v-menu>
+
+		</v-toolbar-items>
+
+	</v-app-bar>
+
+    <v-content>
+      <v-container>
+        <v-layout wrap>
+          <v-flex xs12 sm6 md4>Cherry Blossoms
+			  <v-img :src="require('@/assets/test.jpg')"></v-img>
+		  </v-flex>
+          <v-flex xs12 sm6 md4></v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+
+    <v-footer color="success" dark app>
+      OK
+    </v-footer>
+
+
+  </v-app>
+
   
-        <template v-slot:action="{ attrs }">
-          <v-btn
-            color="red"
-            text
-            v-bind="attrs"
-            @click="snackbar = false"
-          >
-            Close
-          </v-btn>
-        </template>
-      </v-snackbar>
-
-
- 			</v-card>
- 	  </div>
-	</div>
-
 </template>
+
 
 <script>
 import Logo from '~/components/Logo.vue'
@@ -59,10 +93,53 @@ import VuetifyLogo from '~/components/VuetifyLogo.vue'
 export default {
 	data() {
 		return {
+			drawer: null,
+			supports:[
+				{name: '今日の積み立て',icon: 'mdi-checkbox-marked-circle'},
+				{name: '明日も頑張ろう',icon: 'mdi-thumb-up'},
+				{name: 'Github',icon: 'mdi-github'},
+			],
+			nav_lists:[
+			{name: 'Getting Started',icon: 'mdi-vuetify'},
+			{name: 'Customization',icon: 'mdi-cogs'},
+			{name: 'Styles & animations',icon: 'mdi-palette'},
+			{name: 'UI Components',icon: 'mdi-view-dashboard'},
+			{name: 'Directives',icon: 'mdi-function'},
+			{name: 'Preminum themes',icon: 'mdi-vuetify'},
+			],
 			subTitle: 'Hello Vue!! 😆',
-  	  multiLine: true,
-	    snackbar: false,
-	    text: `I'm a multi-line snackbar.`,
+  	  		multiLine: true,
+	    	snackbar: false,
+			text: `I'm a multi-line snackbar.`,
+			nav_lists:[
+			{
+				name: 'Getting Started',
+				icon: 'mdi-speedometer',
+				lists:['Quick Start','Pre-made layouts']
+			},
+			{
+				name: 'Customization',
+				icon: 'mdi-cogs' 
+			},
+			{
+				name: 'Styles & animations',
+				icon: 'mdi-palette',
+				lists:['Colors','Content','Display']
+			},
+			{
+				name: 'UI Components',
+				icon: 'mdi-view-dashboard',
+				lists:['API explorer','Alerts']
+			},
+			{
+				name: 'Directives',
+				icon: 'mdi-function'
+			},
+			{
+				name: 'Preminum themes',
+				icon: 'mdi-vuetify'
+			},
+			],
 		}
 	},
 	methods: {

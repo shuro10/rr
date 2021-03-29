@@ -13,3 +13,6 @@ RUN apk update && \
     rm -rf /var/cache/apk/*
 
 ADD . /app
+
+#add after ecr.tf
+EXPOSE 3000

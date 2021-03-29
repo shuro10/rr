@@ -6,9 +6,10 @@ jobs:
 
     steps:
       - checkout
+      - run: bundle clean --force
       - restore_cache:
           keys:
-              - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "backend/Gemfile.lock" }}
+              - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
               - v1-gem-cache-{{ arch }}-{{ .Branch }}-
               - v1-gem-cache-{{ arch }}-
           

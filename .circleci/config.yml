@@ -6,7 +6,9 @@ jobs:
 
     steps:
       - checkout
-      - run: bundle clean --force
+      - run: 
+          command: bundle clean --force
+          working_directory: backend
       - restore_cache:
           keys:
               - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}

@@ -10,29 +10,27 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_cashing: true
       - run:
           command: docker-compose build
       - run: sleep 10
-#      # Tests in backend
-#      - run:
-#          name: docker-compose run backend rails db:create RAILS_ENV=test
-#          command: docker-compose run backend rails db:create RAILS_ENV=test
-#      - run:
-#          name: docker-compose run backend rails db:migrate RAILS_ENV=test
-#          command: docker-compose run backend rails db:migrate RAILS_ENV=test
-#      - run:
-#          name: docker-compose run backend bundle exec rspec spec
-#          command: docker-compose run backend bundle exec rspec spec
-#      - run:
-#          name: docker-compose run frontend yarn install
-#          command: docker-compose run frontend yarn install
-#      # Tests in Frontend
-#      - run:
-#          name: docker-compose run frontend yarn run test
-#          command: docker-compose run frontend yarn test
-#       - run:
-#          name: docker-compose down
-#          command: docker-compose down
+      # Tests in backend
+      - run:
+          name: docker-compose run backend rails db:create RAILS_ENV=test
+          command: docker-compose run backend rails db:create RAILS_ENV=test
+      - run:
+          name: docker-compose run backend rails db:migrate RAILS_ENV=test
+          command: docker-compose run backend rails db:migrate RAILS_ENV=test
+      - run:
+          name: docker-compose run backend bundle exec rspec spec
+          command: docker-compose run backend bundle exec rspec spec
+      - run:
+          name: docker-compose run frontend yarn install
+          command: docker-compose run frontend yarn install
+      # Tests in Frontend
+      - run:
+          name: docker-compose run frontend yarn run test
+          command: docker-compose run frontend yarn test
+       - run:
+          name: docker-compose down
+          command: docker-compose down
 

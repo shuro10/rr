@@ -3,7 +3,7 @@ orbs:
   aws-ecr: circleci/aws-ecr@6.2.0
   aws-ecs: circleci/aws-ecs@1.2.0
   aws-cli: circleci/aws-cli@0.1.16
-jobs
+jobs:
   test_backend:
     machine:
       - image: circleci/classic:edge

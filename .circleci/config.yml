@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-			    docker_layer_cashing: true
+          docker_layer_cashing: true
       - run:
           name: docker-compose build:
           command: docker-compose build

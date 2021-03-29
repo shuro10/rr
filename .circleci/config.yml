@@ -20,17 +20,17 @@ jobs:
           command: bundle -v
           working_directory: backend
       - restore_cache:
+      - restore_cache:
           keys:
-            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - gem-cache-{{ arch }}-{{ .Branch }}
-            - gem-cache
+            - cache-gem-{{ checksum "Gemfile.lock" }}
+            - cache-gem-
       - run:  
           name: Bundle Install  
           command:  bundle config set path 'backend/vendor/bundle' 
 #          command:  bundle install --jobs=4 --retry=3
           working_directory: backend
       - save_cache:
-          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: cache-gem-{{ checksum "Gemfile.lock" }}
           paths:
-            - ./vendor/bundle
+            - vendor/bundle
 

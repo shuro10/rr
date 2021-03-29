@@ -15,7 +15,7 @@ jobs:
           working_directory: backend
       - run:
           name: Ruby 2.7.2
-          command: echo 'chruby ruby-2.7.2' >> ~/.bash_profile
+          command: echo 'chruby ruby-2.7.2' >> ~/.zshrc
       - restore_cache:
           keys:
               - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}

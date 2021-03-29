@@ -8,10 +8,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-              - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-              - v1-gem-cache-{{ arch }}-{{ .Branch }}-
+              - v1-gem-cache-{{ arch }}-{{ .Branch/backend }}-{{ checksum "Gemfile.lock" }}
+              - v1-gem-cache-{{ arch }}-{{ .Branch/backend }}-
               - v1-gem-cache-{{ arch }}-
-
+          
       - run:
           command: |
             gem install bundler
@@ -23,32 +23,3 @@ jobs:
           key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - backend/vendor/bundle
-
-      - run:
-          command: bundle exec rails db:create
-          working_directory: backend
-
-      - run:
-          command: bundle exec rails db:migrate
-          working_directory: backend
-
-      - run:
-          name: create directory to store test results
-          command: mkdir /tmp/test-results
-
-      - run:
-          name: RSpec
-          command: |
-            bundle exec rspec $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings) \
-              || (printf "====== RETRYING...\n\n\n"; bundle exec rspec --only-failures)
-          working_directory: ~/repo/backend
-
-      - store_test_results:
-          path: /tmp/test-results
-      - store_artifacts:
-          path: /tmp/test-results
-          destination: test-results
-      - store_artifacts:
-          path: /home/circleci/repo/tmp/screenshots
-
-

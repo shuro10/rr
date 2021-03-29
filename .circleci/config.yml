@@ -3,34 +3,181 @@ orbs:
   aws-ecr: circleci/aws-ecr@6.2.0
   aws-ecs: circleci/aws-ecs@1.2.0
   aws-cli: circleci/aws-cli@0.1.16
-jobs:
-  # buildするjob
-  build:
+jobs
+  test_backend:
     machine:
-      image: circleci/classic:edge
+      - image: circleci/classic:edge
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+      - image: circleci/mysql:5.7.30
+	
+	 	working_directory: ~/repo
+
     steps:
       - checkout
-      - run:
-          command: docker-compose build
-      - run: sleep 10
-      # Tests in backend
-      - run:
-          name: docker-compose run backend rails db:create RAILS_ENV=test
-          command: docker-compose run backend rails db:create RAILS_ENV=test
-      - run:
-          name: docker-compose run backend rails db:migrate RAILS_ENV=test
-          command: docker-compose run backend rails db:migrate RAILS_ENV=test
-      - run:
-          name: docker-compose run backend bundle exec rspec spec
-          command: docker-compose run backend bundle exec rspec spec
-      - run:
-          name: docker-compose run frontend yarn install
-          command: docker-compose run frontend yarn install
-      # Tests in Frontend
-      - run:
-          name: docker-compose run frontend yarn run test
-          command: docker-compose run frontend yarn test
-      - run:
-          name: docker-compose down
-          command: docker-compose down
+	    - restore_cache:
+        keys:
+          - gem-cache-v1-{{ checksum "~/repo/backend/Gemfile.lock" }}
+          - gem-cache-v1-
+        working_directory: ~/repo/backend
 
+      - run:
+          command: |
+            gem install bundler
+            bundle config set path 'vendor/bundle'
+            bundle install --jobs=4 --retry=3
+          working_directory: ~/repo/backend
+
+      - save_cache:
+          key: gem-cache-v1-{{ checksum "~/repo/backend/Gemfile.lock" }}
+          paths:
+            - ~/repo/backend/vendor/bundle
+          working_directory: ~/repo/backend
+
+- run:
+          command: bundle exec rails db:create
+          working_directory: ~/repo/backend
+      - run:
+          command: bundle exec rails db:migrate
+          working_directory: ~/repo/backend
+
+      - run:
+          name: create directory to store test results
+          command: mkdir /tmp/test-results
+          working_directory: ~/repo/backend
+
+      - run:
+          name: RSpec
+          command: |
+            bundle exec rspec $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings) \
+              || (printf "====== RETRYING...\n\n\n"; bundle exec rspec --only-failures)
+          working_directory: ~/repo/backend
+
+      - store_test_results:
+          path: /tmp/test-results
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: test-results
+      - store_artifacts:
+          path: /home/circleci/repo/tmp/screenshots
+
+
+  test_frontend:
+    docker:
+      - image: circleci/node:14.3
+        environment:
+          NODE_ENV: test
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "~/repo/frontend/package.json" }}
+          working_directory: ~/repo/frontend
+      - run:
+          name: install-packages
+          command: yarn install
+          working_directory: ~/repo/frontend
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "~/repo/frontend/package.json" }}
+          working_directory: ~/repo/frontend
+      - run:
+          name: test
+          command: yarn run test
+          working_directory: ~/repo/frontend
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test_backend:
+          filters:
+            branches:
+              ignore: master
+      - test_frontend:
+          filters:
+            branches:
+              ignore: master
+							
+#workflows:
+#  build_and_test_and_deploy:
+#    jobs:
+#      - build
+#      - test:
+#          requires:
+#            - build
+#      - aws-ecr/build-and-push-image:
+#          name: 'build-and-push-image-backend'
+#          account-url: AWS_ACCOUNT_URL
+#          region: AWS_REGION
+#          repo: ${REPO_NAME_BACK}
+#          tag: "${CIRCLE_SHA1}"
+#          path: './backend'
+#          dockerfile: back/Dockerfile.prd
+#          requires:
+#            - test
+#          filters:
+#            branches:
+#              only:
+#                - main
+#      - aws-ecr/build-and-push-image:
+#          name: 'build-and-push-image-frontend'
+#          account-url: AWS_ACCOUNT_URL
+#          region: AWS_REGION
+#          repo: cs-frontend
+#          tag: "${CIRCLE_SHA1}"
+#          path: './frontend'
+#          dockerfile: front/Dockerfile.prd
+#          requires:
+#            - test_frontend
+#          filters:
+#            branches:
+#              only:
+#                - master
+#      - aws-ecs/update-task-definition:
+#          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
+#          container-image-name-updates: 'container=back-container,tag=${CIRCLE_SHA1}'
+#          aws-region: '${AWS_REGION}'
+#          requires:
+#            - build-and-push-back
+#          filters:
+#            branches:
+#              only: master
+#      - aws-ecs/run-task:
+#          cluster: cs-ecs-cluster
+#          task-definition: ${TASK_MIGRATE}
+#          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
+#          assign-public-ip: ENABLED
+#          security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
+#          requires:
+#            - aws-ecs/update-task-definition
+#          filters:
+#            branches:
+#              only: master
+#      - aws-ecs/deploy-service-update:
+#            family: ${FAMILY_NAME_BACK}
+#            service-name: ${SERVICE_NAME_BACK}
+3            cluster-name: ${CLUSTER_NAME}
+#            container-image-name-updates: 'container=back-container,tag=${CIRCLE_SHA1}'
+#            requires:
+#              - aws-ecs/run-task
+#            filters:
+#              branches:
+#                only:
+#                  - master
+#      - aws-ecs/deploy-service-up date:
+#            family: ${FAMILY_NAME_FRONT}
+#            service-name: ${SERVICE_NAME_FRONT}
+#            cluster-name: ${CLUSTER_NAME}
+#            container-image-name-updates: 'container=front-container,tag=${CIRCLE_SHA1}'
+#            requires:
+#              - build-and-push-front
+#            filters:
+#              branches:
+#                only:
+#                  - master

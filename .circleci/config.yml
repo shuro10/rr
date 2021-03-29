@@ -4,27 +4,31 @@ jobs:
     docker:
       - image: circleci/ruby:2.7.1-node-browsers-legacy
         environment:
-          BUNDLE_PATH: backend/vendor/bundle
           RAILS_ENV: test
           DATABASE_HOST: '127.0.0.1'
-      - image: circleci/mysql:5.7
+      - image: circleci/mysql:5.7.30
 #    image: circleci/classic:edge
 
     steps:
       - checkout
+      - run:
+          name: Install bundler
+          command: gem install bundler -v 2.2.15
+          working_directory: backend
+      - run:
+          name: Which bundler?
+          command: bundle -v
       - restore_cache:
           keys:
-              - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-              - v1-gem-cache-{{ arch }}-{{ .Branch }}-
-              - v1-gem-cache-{{ arch }}-
-          
-      - run:
-          command: |
-            gem install bundler
-            bundle install --jobs=4 --retry=3
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+      - run:  
+          name: Bundle Install  
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
           working_directory: backend
-
       - save_cache:
-          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
-            - backend/vendor/bundle
+            - ./vendor/bundle
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+

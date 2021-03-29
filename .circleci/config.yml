@@ -20,7 +20,6 @@ jobs:
           command: bundle -v
           working_directory: backend
       - restore_cache:
-      - restore_cache:
           keys:
             - cache-gem-{{ checksum "Gemfile.lock" }}
             - cache-gem-

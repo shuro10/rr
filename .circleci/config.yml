@@ -8,9 +8,15 @@ jobs:
           DATABASE_HOST: '127.0.0.1'
       - image: circleci/mysql:5.7.30
 #    image: circleci/classic:edge
+    working_directory: ~/repo
 
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ checksum "~/repo/backend/Gemfile.lock" }}
+            - gem-cache-v1-
+
       - run:
           name: Install bundler
           command: gem install bundler -v 2.2.15
@@ -19,17 +25,17 @@ jobs:
           name: Which bundler?
           command: bundle -v
           working_directory: backend
-      - restore_cache:
-          keys:
-            - cache-gem-{{ checksum "Gemfile.lock" }}
-            - cache-gem-
-      - run:  
-          name: Bundle Install  
-          command:  bundle config set path 'backend/vendor/bundle' 
-#          command:  bundle install --jobs=4 --retry=3
-          working_directory: backend
+
+      - run:
+          command: |
+            gem install bundler
+            bundle config set path 'vendor/bundle'
+            bundle install --jobs=4 --retry=3
+          working_directory: ~/repo/backend
+
       - save_cache:
-          key: cache-gem-{{ checksum "Gemfile.lock" }}
+          key: gem-cache-v1-{{ checksum "~/repo/backend/Gemfile.lock" }}
           paths:
-            - vendor/bundle
+            - ~/repo/backend/vendor/bundle
+
 

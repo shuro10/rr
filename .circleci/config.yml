@@ -12,13 +12,6 @@ jobs:
 
     steps:
       - checkout
-      - run: 
-          command: gem install bundler:2.1.4
-          working_directory: backend
-      - run:
-          name: Which bundler?
-          command: bundle -v
-          working_directory: backend
       - restore_cache:
           keys:
               - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
@@ -28,7 +21,6 @@ jobs:
       - run:
           command: |
             gem install bundler
-            bundle config set path 'vendor/bundle'
             bundle install --jobs=4 --retry=3
           working_directory: backend
 

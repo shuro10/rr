@@ -2,7 +2,15 @@ version: 2.1
 jobs:
   build:
     machine:
-      image: circleci/ruby:2.7.2-node
+      image: circleci/ruby:2.7.1-node-browsers-legacy
+        environment:
+          BUNDLE_PATH: backend/vendor/bundle
+          RAILS_ENV: test
+          DATABASE_HOST: '127.0.0.1'
+      image: circleci/mysql:5.7
+        environment:
+          MYSQL_DATABASE: app_test
+          MYSQL_USER: 'root'
 #    image: circleci/classic:edge
 
     steps:
@@ -14,9 +22,6 @@ jobs:
           name: Which bundler?
           command: bundle -v
           working_directory: backend
-      - run:
-          name: Ruby 2.7.2
-          command:  echo "ruby-2.7.2" > ~/.ruby-version
       - restore_cache:
           keys:
               - v1-gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}

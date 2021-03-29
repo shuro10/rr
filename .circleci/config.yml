@@ -35,7 +35,7 @@ jobs:
             - ~/repo/backend/vendor/bundle
           working_directory: ~/repo/backend
 
-- run:
+      - run:
           command: bundle exec rails db:create
           working_directory: ~/repo/backend
       - run:

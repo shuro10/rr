@@ -18,18 +18,19 @@ jobs:
       - run:
           name: Which bundler?
           command: bundle -v
+          working_directory: backend
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-{{ arch }}-{{ .Branch }}
+            - gem-cache
       - run:  
           name: Bundle Install  
           command:  bundle config set path 'vendor/bundle' 
 #          command:  bundle install --jobs=4 --retry=3
           working_directory: backend
       - save_cache:
+          key: gem-cache-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
 

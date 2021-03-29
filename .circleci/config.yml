@@ -10,8 +10,10 @@ jobs:
       image: circleci/classic:edge
     steps:
       - checkout
+      - setup_remote_docker:
+			    docker_layer_cashing: true
       - run:
-          name: docker-compose build
+          name: docker-compose build:
           command: docker-compose build
       - run: sleep 10
 #      # Tests in backend

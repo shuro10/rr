@@ -10,7 +10,7 @@ jobs:
         environment:
           RAILS_ENV: test
           DB_HOST: '127.0.0.1'
-      - image: circleci/mysql:5.7.30
+      - image: circleci/mysql:5.7.32
 #    image: circleci/classic:edge
     working_directory: ~/repo
 

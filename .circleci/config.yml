@@ -107,19 +107,11 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-<<<<<<< HEAD
-          account-url: AWS_ACCOUNT_URL
-          repo: "cs-backend"
-          region: AWS_REGION
-          tag: "${CIRCLE_SHA1}"
-          path: ./backend/
-=======
             account-url: AWS_ACCOUNT_URL
             repo: "cs-backend"
             region: AWS_REGION
             tag: "${CIRCLE_SHA1}"
             path: ./backend/
->>>>>>> edb6ffb3c99c3839aa3a8b140417fff35cce9975
 
 
   build_and_push_image_frontend:
@@ -128,19 +120,11 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-<<<<<<< HEAD
-          account-url: AWS_ACCOUNT_URL
-          repo: "cs-frontend"
-          region: AWS_REGION
-          tag: "${CIRCLE_SHA1}"
-          path: ./frontend/
-=======
             account-url: AWS_ACCOUNT_URL
             repo: "cs-frontend"
             region: AWS_REGION
             tag: "${CIRCLE_SHA1}"
             path: ./frontend/
->>>>>>> edb6ffb3c99c3839aa3a8b140417fff35cce9975
 
 
 workflows:

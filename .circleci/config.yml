@@ -10,7 +10,7 @@ jobs:
         environment:
           RAILS_ENV: test
           DB_HOST: '127.0.0.1'
-      - image: circleci/mysql:5.7.30
+      - image: circleci/mysql:5.7.32
 #    image: circleci/classic:edge
     working_directory: ~/repo
 
@@ -107,11 +107,11 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-          account-url: AWS_ACCOUNT_URL
-          repo: "rr-backend"
-          region: AWS_REGION
-          tag: "${CIRCLE_SHA1}"
-          path: ./backend/
+            account-url: AWS_ACCOUNT_URL
+            repo: "cs-backend"
+            region: AWS_REGION
+            tag: "${CIRCLE_SHA1}"
+            path: ./backend/
 
 
   build_and_push_image_frontend:
@@ -120,11 +120,11 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-          account-url: AWS_ACCOUNT_URL
-          repo: "rr-frontend"
-          region: AWS_REGION
-          tag: "${CIRCLE_SHA1}"
-          path: ./frontend/
+            account-url: AWS_ACCOUNT_URL
+            repo: "cs-frontend"
+            region: AWS_REGION
+            tag: "${CIRCLE_SHA1}"
+            path: ./frontend/
 
 
 workflows:

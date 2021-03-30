@@ -1,4 +1,4 @@
-/* Cluster Defenition */
+/* Defenition of Cluster */
 resource "aws_ecs_cluster" "cs-ecs-cluster" {
   name = "cs-ecs-cluster"
 }
@@ -16,7 +16,7 @@ resource "aws_ecs_task_definition" "cs-frontend-task" {
 
 
 
-/* security group for ECS */
+/* SecurityGroup for ECS */
 resource "aws_security_group" "cs-ecs-sg" {
   description = "ECS security group for cs"
   name        = "cs-ecs-sg"
@@ -24,17 +24,11 @@ resource "aws_security_group" "cs-ecs-sg" {
 }
 
 
-
-
-
-
-
 /* ファミリーを指定するだけで、そのファミリーの最新のACTIVEリビジョンを見つけることができる */
 data "aws_ecs_task_definition" "cs-frontend-task" {
   depends_on      = [aws_ecs_task_definition.cs-frontend-task]
   task_definition = aws_ecs_task_definition.cs-frontend-task.family
 }
-
 
 data "aws_iam_policy" "ecs_task_execution_role_policy" {
   arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"

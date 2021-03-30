@@ -9,7 +9,7 @@ jobs:
       - image: circleci/ruby:2.7.1-node-browsers-legacy
         environment:
           RAILS_ENV: test
-          DATABASE_HOST: '127.0.0.1'
+          DB_HOST: '127.0.0.1'
       - image: circleci/mysql:5.7.30
 #    image: circleci/classic:edge
     working_directory: ~/repo

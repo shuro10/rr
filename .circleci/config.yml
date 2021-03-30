@@ -4,7 +4,7 @@ orbs:
   aws-ecs: circleci/aws-ecs@1.2.0
   aws-cli: circleci/aws-cli@0.1.16
 jobs:
-  build:
+  test_backend:
     docker:
       - image: circleci/ruby:2.7.1-node-browsers-legacy
         environment:
@@ -101,17 +101,30 @@ jobs:
           command: yarn run test
           working_directory: ~/repo/frontend
 
-build_and_push_image_frontend:
-  machine:
-    image: ubuntu-1604:201903-01
-  steps:
-    - checkout
-    - aws-ecr/build-and-push-image:
-        account-url: AWS_ACCOUNT_URL
-        repo: "rr-frontend"
-        region: AWS_REGION
-        tag: "${CIRCLE_SHA1}"
-        path: ./frontend/
+  build_and_push_image_backend:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ACCOUNT_URL
+          repo: "rr-backend"
+          region: AWS_REGION
+          tag: "${CIRCLE_SHA1}"
+          path: ./backend/
+
+
+  build_and_push_image_frontend:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ACCOUNT_URL
+          repo: "rr-frontend"
+          region: AWS_REGION
+          tag: "${CIRCLE_SHA1}"
+          path: ./frontend/
 
 
 workflows:
@@ -130,9 +143,9 @@ workflows:
           requires:
            - test_frontend
            - test_backend
-        filters:
-          branches:
-            only: master
+          filters:
+            branches:
+              only: master
       - build_and_push_image_frontend:
           requires:
             - test_frontend

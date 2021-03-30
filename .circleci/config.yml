@@ -107,9 +107,9 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-            account-url: AWS_ACCOUNT_URL
+            account-url: RR_AWS_ACCOUNT_URL
             repo: "cs-backend"
-            region: AWS_REGION
+            region: RR_AWS_REGION
             tag: "${CIRCLE_SHA1}"
             path: ./backend/
 
@@ -120,9 +120,9 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-            account-url: AWS_ACCOUNT_URL
+            account-url: RR_AWS_ACCOUNT_URL
             repo: "cs-frontend"
-            region: AWS_REGION
+            region: RR_AWS_REGION
             tag: "${CIRCLE_SHA1}"
             path: ./frontend/
 

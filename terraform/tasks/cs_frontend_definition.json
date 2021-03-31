@@ -18,7 +18,7 @@
       }
     ],
     "command": [
-      "yarn build", "&&", "yarn start"
+      "prod"
     ],
     "environment": [
       {

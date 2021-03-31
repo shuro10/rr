@@ -55,6 +55,8 @@ resource "aws_lb_listener" "cs-backend-https-listener" {
   }
 }
 
+
+
 /* TargetGroup */
 resource "aws_lb_target_group" "cs-frontend-alb-tg" {
   name        = "cs-frontend-alb-tg"

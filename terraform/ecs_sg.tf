@@ -1,4 +1,11 @@
 /* SecurityGroup for ECS */
+resource "aws_security_group" "cs-ecs-sg" {
+  description = "ECS security group for cs"
+  name        = "cs-ecs-sg"
+  vpc_id      = aws_vpc.cs-vpc.id
+}
+
+/* SecurityGroup for ECS */
 resource "aws_security_group_rule" "cs-ecs-sg-rule1" {
   description       = "cs-ecs-sg-rule1"
   type              = "ingress"

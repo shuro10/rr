@@ -13,9 +13,8 @@
     },
     "portMappings": [
       {
-        "hostPort": 80,
         "protocol": "tcp",
-        "containerPort": 80
+        "containerPort": 3000
       }
     ],
     "command": [
@@ -23,16 +22,12 @@
     ],
     "environment": [
       {
-        "name": "NODE_ENV",
-        "value": "production"
-      },
-      {
         "name": "WORKDIR",
         "value": "app"
       },
       {
         "name": "CONTAINER_PORT",
-        "value": "80"
+        "value": "3000"
       }
     ]
   }

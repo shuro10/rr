@@ -139,13 +139,13 @@ workflows:
 #          filters:
 #            branches:
 #              only: master
-      - build_and_push_image_backend:
+#      - build_and_push_image_backend:
 #          requires:
 #           - test_frontend
 #           - test_backend
-          filters:
-            branches:
-              only: master
+#          filters:
+#            branches:
+#              only: master
       - build_and_push_image_frontend:
 #          requires:
 #            - test_frontend
@@ -153,4 +153,14 @@ workflows:
           filters:
             branches:
               only: master
-  
+#      - aws-ecs/deploy-service-update:
+#            family: ${FAMILY_NAME_FRONT}
+#           service-name: ${SERVICE_NAME_FRONT}
+#            cluster-name: ${CLUSTER_NAME}
+#            container-image-name-updates: 'container=front-container,tag=${CIRCLE_SHA1}'
+#            requires:
+#              - build-and-push-image_frontend
+#            filters:
+#              branches:
+#                only:
+#                  - master

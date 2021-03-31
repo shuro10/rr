@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build --modern=server",
-    "start": "nuxt start",
+    "start": "nuxt build && nuxt start",
     "generate": "nuxt generate",
     "test": "jest",
     "prod": "yarn build && yarn start"

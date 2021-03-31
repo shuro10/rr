@@ -17,6 +17,9 @@
         "containerPort": 80
       }
     ],
+    "command": [
+      "yarn", "build", "&&", "yarn", "start"
+    ],
     "environment": [
       {
         "name": "WORKDIR",

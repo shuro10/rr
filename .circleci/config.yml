@@ -106,6 +106,8 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
+      - setup_remote_docker: 
+          docker_layer_caching: true 
       - aws-ecr/build-and-push-image:
             account-url: AWS_ACCOUNT_URL
             repo: "cs-backend"
@@ -119,6 +121,8 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
+      - setup_remote_docker: 
+          docker_layer_caching: true 
       - aws-ecr/build-and-push-image:
             account-url: AWS_ACCOUNT_URL
             repo: "cs-frontend"

@@ -23,11 +23,14 @@ RUN apk update && \
     apk upgrade && \
     npm install -g n && \
     npm install -g create-nuxt-app && \
-    yarn install && \
-    yarn run build &&\
     rm -rf /var/cache/apk/*
+
+RUN yarn install
+
+# RUN yarn run build
 
 
 EXPOSE ${CONTAINER_PORT}
 
-CMD ["yarn", "start"]
+CMD ["yarn", "prod"]
+# CMD ["yarn", "start"]

@@ -8,10 +8,11 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "build": "nuxt build --modern=server",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "test": "jest"
+    "test": "jest",
+    "prod": "yarn build && yarn start"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",

@@ -13,6 +13,7 @@
     },
     "portMappings": [
       {
+        "hostPort": 80,
         "protocol": "tcp",
         "containerPort": 80
       }
@@ -31,10 +32,6 @@
       },
       {
         "name": "CONTAINER_PORT",
-        "value": "80"
-      },
-      {
-        "name": "PORT",
         "value": "80"
       }
     ]

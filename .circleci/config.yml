@@ -106,8 +106,6 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - setup_remote_docker: 
-          docker_layer_caching: true 
       - aws-ecr/build-and-push-image:
             account-url: AWS_ACCOUNT_URL
             repo: "cs-backend"
@@ -121,8 +119,6 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
-      - setup_remote_docker: 
-          docker_layer_caching: true 
       - aws-ecr/build-and-push-image:
             account-url: AWS_ACCOUNT_URL
             repo: "cs-frontend"
@@ -135,25 +131,25 @@ workflows:
   version: 2
   test:
     jobs:
-      - test_backend:
-          filters:
-            branches:
-              only: master
-      - test_frontend:
-          filters:
-            branches:
-              only: master
+#      - test_backend:
+#          filters:
+#            branches:
+#              only: master
+#      - test_frontend:
+#          filters:
+#            branches:
+#              only: master
       - build_and_push_image_backend:
-          requires:
-           - test_frontend
-           - test_backend
+#          requires:
+#           - test_frontend
+#           - test_backend
           filters:
             branches:
               only: master
       - build_and_push_image_frontend:
-          requires:
-            - test_frontend
-            - test_backend
+#          requires:
+#            - test_frontend
+#            - test_backend
           filters:
             branches:
               only: master

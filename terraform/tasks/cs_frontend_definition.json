@@ -14,11 +14,8 @@
     "portMappings": [
       {
         "protocol": "tcp",
-        "containerPort": 3000
+        "containerPort": 80
       }
-    ],
-    "command": [
-      "yarn", "start"
     ],
     "environment": [
       {
@@ -27,7 +24,7 @@
       },
       {
         "name": "CONTAINER_PORT",
-        "value": "3000"
+        "value": "80"
       }
     ]
   }

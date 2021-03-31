@@ -25,12 +25,6 @@ resource "aws_ecs_task_definition" "cs-backend-task" {
 }
 
 
-
-
-
-
-
-
 /* Backend: ServiceDefenition */
 resource "aws_ecs_service" "cs-backend-ecs-service" {
   name                              = "cs-backend-ecs-service"
@@ -91,11 +85,6 @@ resource "aws_ecs_service" "cs-frontend-ecs-service" {
 }
 
 
-
-
-
-
-
 /* Tasks for Migration */
 resource "aws_ecs_task_definition" "db-migrate" {
   family                   = "cs-db-migrate"
@@ -108,11 +97,12 @@ resource "aws_ecs_task_definition" "db-migrate" {
 }
 
 
-
+/* data */
 data "aws_ecs_task_definition" "cs-frontend-task" {
   depends_on      = [aws_ecs_task_definition.cs-frontend-task]
   task_definition = aws_ecs_task_definition.cs-frontend-task.family
 }
+
 data "aws_ecs_task_definition" "cs-backend-task" {
   depends_on      = [aws_ecs_task_definition.cs-backend-task]
   task_definition = aws_ecs_task_definition.cs-backend-task.family

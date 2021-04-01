@@ -7,14 +7,14 @@ resource "aws_s3_bucket" "cs-s3-bucket" {
   }
 }
 
-#resource "aws_s3_bucket" "cs-alb-log" {
-#  bucket = "artifact-terraform-for-cs"
-#
-#  lifecycle_rule {
-#    enabled = true
-#
-#    expiration {
-#      days = "180"
-#    }
-#  }
-#}
+resource "aws_s3_bucket" "cs-alb-log" {
+  bucket = "artifact-terraform-for-cs"
+
+  lifecycle_rule {
+    enabled = true
+
+    expiration {
+      days = "180"
+    }
+  }
+}

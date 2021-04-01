@@ -22,7 +22,7 @@ COPY . .
 RUN apk update && \
     apk upgrade && \
     npm install -g n && \
-    npm install -g create-nuxt-app && \
+#npm install -g create-nuxt-app && \
     rm -rf /var/cache/apk/*
 
 RUN yarn install
@@ -30,5 +30,5 @@ RUN yarn run build
 
 EXPOSE ${CONTAINER_PORT}
 
+CMD ["npm", "run", "start"]
 # CMD ["yarn", "prod"]
-CMD ["yarn", "start"]

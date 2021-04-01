@@ -8,7 +8,7 @@ services:
       TZ: Asia/Tokyo
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     volumes:
-      - mysql_data:/var/lib/mysql:cashed
+      - mysql_data:/var/lib/mysql
 #    ports:
 #      - 3307:3306
 #    networks:
@@ -52,7 +52,7 @@ services:
         WORKDIR: $WORKDIR
         CONTAINER_PORT: $CONTAINER_PORT
         API_URL: "http://localhost:$API_PORT"
-    command: yarn run dev
+    command: npm run dev
 #    container_name: frontend
 #    build: ./frontend/
 #    image: frontend

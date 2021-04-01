@@ -8,7 +8,7 @@
         {{ subTitle }}
       </h2>
       <button @click="getSomething">
-        タスク取得
+        タスク取得a
       </button>
     </div>
   </div>

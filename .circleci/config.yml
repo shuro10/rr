@@ -89,7 +89,8 @@ jobs:
 
       - run:
           name: install-packages
-          command: yarn install
+          command: npm install
+#          command: yarn install
           working_directory: ~/repo/frontend
       - save_cache:
           paths:
@@ -98,7 +99,8 @@ jobs:
 
       - run:
           name: test
-          command: yarn run test
+          command: npm run test
+#          command: yarn run test
           working_directory: ~/repo/frontend
 
   build_and_push_image_backend:
@@ -107,12 +109,26 @@ jobs:
     steps:
       - checkout
       - aws-ecr/build-and-push-image:
-            account-url: AWS_ACCOUNT_URL
-            repo: "cs-backend"
-            region: AWS_REGION
-            tag: "${CIRCLE_SHA1}"
-            path: './backend'
-            dockerfile: Dockerfile.prd
+          account-url: AWS_ACCOUNT_URL
+          repo: "cs-backend"
+          region: AWS_REGION
+          tag: "${CIRCLE_SHA1}"
+          path: './backend'
+          dockerfile: Dockerfile.prd
+
+
+#      - aws-ecs/deploy-service-update-backend:
+#            requires:
+#              - build_and_push_image_frontend
+#              - build_and_push_image_backend
+#            family: cs-backend-task
+#            service-name: cs-backend-ecs-service
+#            cluster-name: cs-ecs-cluster
+#            container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
+#            filters:
+#              branches:
+#                only: main
+#==============================================
 
   build_and_push_image_frontend:
     machine:
@@ -126,6 +142,8 @@ jobs:
             tag: "${CIRCLE_SHA1}"
             path: './frontend/'
             dockerfile: Dockerfile.prd
+
+
 
 workflows:
   version: 2
@@ -153,6 +171,33 @@ workflows:
           filters:
             branches:
               only: master
+      - aws-ecs/update-task-definition:
+          family: cs-db-migrate
+#          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
+          container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
+          aws-region: AWS_REGION
+#          aws-region: '${AWS_REGION}'
+          requires:
+            - build_and_push_image_backend
+#            - build-and-push-back
+          filters:
+            branches:
+              only: master
+      - aws-ecs/run-task:
+          cluster: cs-ecs-cluster
+#          cluster: ${CLUSTER_NAME}
+          task-definition: cs-db-migrate
+#          task-definition: ${TASK_MIGRATE}
+          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
+          assign-public-ip: ENABLED
+          security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
+          requires:
+            - aws-ecs/update-task-definition
+          filters:
+            branches:
+              only: master
+###https://circleci.com/developer/ja/orbs/orb/circleci/aws-ecs
+###=================================================
 #      - aws-ecs/deploy-service-update:
 #            family: ${FAMILY_NAME_FRONT}
 #           service-name: ${SERVICE_NAME_FRONT}
@@ -164,3 +209,25 @@ workflows:
 #              branches:
 #                only:
 #                  - master
+      - aws-ecs/deploy-service-update:
+      # Cannot find a definition for job named aws-ecs/deploy-service-update-frontend
+            family: cs-frontend-task
+            service-name: cs-frontend-ecs-service
+            cluster-name: cs-ecs-cluster
+            container-image-name-updates: 'container=frontend-container,tag=${CIRCLE_SHA1}'
+            requires:
+              - build_and_push_image_frontend
+            filters:
+              branches:
+                only: master
+      - aws-ecs/deploy-service-update:
+            requires:
+              - build_and_push_image_frontend
+              - build_and_push_image_backend
+            family: cs-backend-task
+            service-name: cs-backend-ecs-service
+            cluster-name: cs-ecs-cluster
+            container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
+            filters:
+              branches:
+                only: master

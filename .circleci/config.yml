@@ -198,17 +198,6 @@ workflows:
               only: master
 ###https://circleci.com/developer/ja/orbs/orb/circleci/aws-ecs
 ###=================================================
-#      - aws-ecs/deploy-service-update:
-#            family: ${FAMILY_NAME_FRONT}
-#           service-name: ${SERVICE_NAME_FRONT}
-#            cluster-name: ${CLUSTER_NAME}
-#            container-image-name-updates: 'container=front-container,tag=${CIRCLE_SHA1}'
-#            requires:
-#              - build-and-push-image_frontend
-#            filters:
-#              branches:
-#                only:
-#                  - master
       - aws-ecs/deploy-service-update:
       # Cannot find a definition for job named aws-ecs/deploy-service-update-frontend
             family: cs-frontend-task

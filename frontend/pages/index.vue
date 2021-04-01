@@ -2,13 +2,13 @@
   <div class="container">
     <div>
       <h1 class="title">
-        Zenn-app
+        I've achieved to deploy
       </h1>
       <h2 class="subtitle">
         {{ subTitle }}
       </h2>
       <button @click="getSomething">
-        タスク取得a
+        Alart Button
       </button>
     </div>
   </div>
@@ -18,7 +18,7 @@
 export default {
   data() {
     return {
-      subTitle: 'Zenn is good service!!'
+      subTitle: 'ECS 突破した…😢'
     }
   },
   methods: {

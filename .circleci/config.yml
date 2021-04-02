@@ -149,25 +149,25 @@ workflows:
   version: 2
   test:
     jobs:
-#      - test_backend:
-#          filters:
-#            branches:
-#              only: master
-#      - test_frontend:
-#          filters:
-#            branches:
-#              only: master
+      - test_backend:
+          filters:
+            branches:
+              only: master
+      - test_frontend:
+          filters:
+            branches:
+              only: master
       - build_and_push_image_backend:
-#          requires:
-#           - test_frontend
-#           - test_backend
+          requires:
+           - test_frontend
+           - test_backend
           filters:
             branches:
               only: master
       - build_and_push_image_frontend:
-#          requires:
-#            - test_frontend
-#            - test_backend
+          requires:
+            - test_frontend
+            - test_backend
           filters:
             branches:
               only: master

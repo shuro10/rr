@@ -1,9 +1,9 @@
 /* ===============route53================ */
 /* Frontend: DetasourceDefinition of HostZone */
 resource "aws_route53_zone" "cs-zone" {
-  name = "cs-kent.ga"
+  name = "rinrei720.com"
   tags = {
-    "cs-kent" = "cs-kent.ga" 
+    "rinrei720" = "rinrei720.com" 
   }
 }
 
@@ -23,8 +23,8 @@ resource "aws_route53_record" "cs-zone-record" {
 
 /* Backend: DetasourceDefinition of HostZone */
 resource "aws_route53_zone" "cs-host-zone" {
-  name    = "cs-kent.ga"
-  comment = "cs-kent.ga host zone"
+  name    = "rinrei720.com"
+  comment = "rinrei720.com host zone"
 }
 
 /* Backend: Definition of DNS Record of ALB */
@@ -50,13 +50,13 @@ resource "aws_route53_record" "cs-host-zone-record" {
 /* Frontend: Definition of SSL証明書 */
 resource "aws_acm_certificate" "cs-frontend-acm" {
   domain_name               = aws_route53_record.cs-zone-record.name
-  subject_alternative_names = ["*.cs-kent.ga",]
+  subject_alternative_names = ["*.rinrei720.com",]
   validation_method         = "DNS"
   lifecycle {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "Frontend: cs-kent.ga"
+    "Name" = "Frontend: rinrei720.com"
   }
 }
 
@@ -70,7 +70,7 @@ resource "aws_acm_certificate" "cs-backend-acm" {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "Backend: cs-kent.ga"
+    "Name" = "Backend: rinrei720.com"
   }
 }
 

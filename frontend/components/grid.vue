@@ -1,5 +1,7 @@
-<div id="app">
+  <template>
+  <div class="something">
   <v-app id="inspire">
+    
     <v-row>
       <v-col
         v-for="n in 9"
@@ -30,3 +32,12 @@
     </v-row>
   </v-app>
 </div>
+
+</template>
+
+<style scoped>
+  .something {
+    color: var(--v-primary-base);
+    background-color: var(--v-accent-lighten2);
+  }
+</style>

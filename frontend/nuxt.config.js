@@ -26,7 +26,9 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: [
+    
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -68,7 +70,6 @@ export default {
    */
   build: {
     /*
-     ** You can extend webpack config here
      */
     extend(config, ctx) {}
   }

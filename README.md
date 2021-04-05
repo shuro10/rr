@@ -1,4 +1,4 @@
-# 4月1日 ECS × CircleCI × Terraform 連携完了 
+# 4月日 ECS × CircleCI × Terraform 連携完了 
 <img width="937" alt="Screen Shot 2021-04-04 at 11 27 02" src="https://user-images.githubusercontent.com/46371150/113570757-f2802800-964f-11eb-8251-11651c62cd7d.png">
 
 # AWS構成図

@@ -9,7 +9,9 @@
 		<v-spacer></v-spacer>
 	
 		<v-toolbar-items>
-		<v-btn text>What's up?</v-btn>
+		<nuxt-link to="/users/edit" class="link">
+		<v-btn text>Edit</v-btn>
+		</nuxt-link>
 			<v-menu offset-y>
 				<template v-slot:activator="{on}">
 					<v-btn v-on="on" text>日記<v-icon>mdi-menu-down</v-icon></v-btn>

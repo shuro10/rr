@@ -4,7 +4,8 @@
       <v-icon> mdi-account-box </v-icon>
       <span>アイコン画像</span>
     </v-row>
-<!--     <v-row justify="center" class="pt-6">
+<!-- 
+    <v-row justify="center" class="pt-6">
       <v-avatar size="100">
         <template v-if="image.url !== null">
           <v-img v-if="input_image !== null" :src="input_image" />
@@ -14,23 +15,23 @@
           <v-img v-if="input_image" :src="input_image" />
         </template>
       </v-avatar>
-    </v-row>
+    </v-row> -->
     <v-file-input
       v-model="editImage"
       accept="image/png, image/jpeg, image/bmp"
       prepend-icon="mdi-image"
-      label="画像を選択してください"
+      label="画像を選択してください  // v-model='editImage'"
       class="pt-14"
       @change="setImage"
-    />
+    />      
     <v-btn block color="success" class="white--text" @click="changeUserAvatar">
       変更
-    </v-btn> -->
+    </v-btn>
   </v-form>
 </template>
 
 <script>
-/* export default {
+export default {
   // props: {
   //   image: {
   //     type: Object,
@@ -39,7 +40,7 @@
   // },
   data() {
     return {
-      image: this.$store.getters["auth/currentUser"].image,
+      /* image: this.$store.getters["auth/currentUser"].image, */
       editImage: "",
       input_image: null,
     }
@@ -61,6 +62,7 @@
       }
     },
     async changeUserAvatar() {
+      alert("Get things!")/*
       const formData = new FormData()
       if (this.editImage != "") {
         formData.append("image", this.editImage)
@@ -94,8 +96,8 @@
             },
             { root: true }
           )
-        })
+        })*/
     },
   },
-} */
+}
 </script>

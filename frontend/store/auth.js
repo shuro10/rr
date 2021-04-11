@@ -61,7 +61,7 @@ export const actions = {
           commit("flashMessage/setStatus", true, { root: true })
           setTimeout(() => {
             commit("flashMessage/setStatus", false, { root: true })
-          }, 1000)
+          }, 2000)
         })
     },
     async login({ commit, state }, authData) {
@@ -74,11 +74,11 @@ export const actions = {
           console.log(res.data)
           commit("setCurrentUser", res.data)
           commit("flashMessage/setMessage", "ログインしました。", { root: true })
-          commit("flashMessage/setType", "success", { root: true })
+          commit("flashMessage/setType", "secondary", { root: true })
           commit("flashMessage/setStatus", true, { root: true })
           setTimeout(() => {
             commit("flashMessage/setStatus", false, { root: true })
-          }, 1000)
+          }, 2000)
           commit("modal/clickLoginModal", false, { root: true })
           this.$router.push("/")
           this.$axios
@@ -105,7 +105,7 @@ export const actions = {
           commit("flashMessage/setStatus", true, { root: true })
           setTimeout(() => {
             commit("flashMessage/setStatus", false, { root: true })
-          }, 1000)
+          }, 2000)
           console.log(err)
           return err
         })

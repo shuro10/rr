@@ -49,18 +49,13 @@ export default {
   modules: [
     '@nuxtjs/auth',
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     "nuxt-webfontloader",
     "nuxt-i18n",
     "nuxt-client-init-module",
   ],
   axios: {
-    /* なしの場合   
-         POST http://localhost:3000/api/v1/auth/sign_in 404 (Not Found) */
-    /* baseURL: 'http:localhost:3000' の場合
-   　   POST http://localhost:3000/localhost:3000/api/v1/auth/sign_in 404 (Not Found)
-    */
-   baseURL: 'http:localhost:5000'
-    /* snackbar「ログインに失敗しました」が表示される！ */
+   baseURL: 'http://localhost:5000'
   },
   auth: {
     redirect: {
@@ -80,7 +75,14 @@ export default {
       }
     }  
   },
-
+  proxy: {
+    '/api': {
+      target: 'http://localhost:5000',
+      pathRewrite: {
+        '^/api': '/api'
+      }
+    },
+  },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -114,5 +116,4 @@ export default {
   //   router: {
   //   middleware: ['auth']
   // }
-
 }

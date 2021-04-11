@@ -9,9 +9,8 @@
 	</v-app-bar>
 </template>
 
-
-
 <script>
+
 import TheHeaderLogo from "~/components/layouts/TheHeaderLogo.vue"
 import TheHeaderTabs from "~/components/layouts/TheHeaderTabs.vue"
 import TheHeaderSearch from "~/components/layouts/TheHeaderSearch.vue"
@@ -34,8 +33,10 @@ export default {
 	},
 	data() {
 		return {
+			clipped: true,
 			drawer: null,
 		}
 	},
+
 }
 </script>

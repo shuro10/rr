@@ -32,18 +32,55 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [
+    { src: '~/plugins/axios.js', ssr: false },
+    { src: "~/plugins/localStorage.js", ssr: false },
+  ],
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/vuetify'],
+  buildModules: [
+    '@nuxtjs/vuetify',
+    '@nuxt/typescript-build', 
+  ],
   /*
    ** Nuxt.js modules
    */
   modules: [
+    '@nuxtjs/auth',
     '@nuxtjs/axios',
     "nuxt-webfontloader",
+    "nuxt-i18n",
+    "nuxt-client-init-module",
   ],
+  axios: {
+    /* なしの場合   
+         POST http://localhost:3000/api/v1/auth/sign_in 404 (Not Found) */
+    /* baseURL: 'http:localhost:3000' の場合
+   　   POST http://localhost:3000/localhost:3000/api/v1/auth/sign_in 404 (Not Found)
+    */
+   baseURL: 'http:localhost:5000'
+    /* snackbar「ログインに失敗しました」が表示される！ */
+  },
+  auth: {
+    redirect: {
+      login: '/',
+      /* login: '/users/login',  */
+      logout: '/',
+      callback: false,
+      home: '/'
+    },
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'false' },
+          logout: false,
+          user: false
+        }
+      }
+    }  
+  },
+
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
@@ -72,5 +109,10 @@ export default {
     /*
      */
     extend(config, ctx) {}
-  }
+  },
+
+  //   router: {
+  //   middleware: ['auth']
+  // }
+
 }

@@ -1,86 +1,69 @@
 <template>
-      <v-dialog
-        v-model="dialog2"
-        width="500"
+  <v-dialog
+    v-model="signUpDialog"
+    width="500"
+  >
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn
+        class="ml-4 mr-2"
+        color="red white--text font-weight-bold"
+        dark 
+        v-bind="attrs" 
+        v-on="on"
       >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            class="ml-4 mr-2"
-            color="red white--text font-weight-bold"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            SignUp MODAL
-          </v-btn>
-        </template>
-  
-        <v-card>
-          <v-card-title class="headline grey lighten-2">
-            Privacy Policy
-          </v-card-title>
-  
-      <v-card-title>
-      <span class="headline">新規登録</span>
-    </v-card-title>
+        SignUp MODAL
+      </v-btn>
+    </template>
+
+    <v-card>
+      <v-card-title class="headline red lighten-2">
+        新規登録
+      </v-card-title>
     <v-card-text>
       <v-form ref="form" v-model="isValid">
         <v-container>
           <v-text-field
             v-model="user.name"
+            :rules="nameRules"
+            :placeholder="nameForm.placeholder"
             label="ニックネーム"
             prepend-icon="mdi-lead-pencil"
-            :rules="nameRules"
           />
-          <!-- <v-text-field
-            v-model="user.name"
-            :placeholder="nameForm.placeholder"
-          /> -->
           <v-text-field
             v-model="user.email"
-            prepend-icon="mdi-email"
-            label="メールアドレス"
             :rules="emailRules"
             :placeholder="emailForm.placeholder"
+            prepend-icon="mdi-email"
+            label="メールアドレス"
           />
-          <!-- <v-text-field
-            v-model="user.email"
-          /> -->
           <v-text-field
             v-model="user.password"
-            prepend-icon="mdi-lock"
-            :append-icon="toggle.icon"
-            :type="toggle.type"
             :rules="passwordRules.rules"
             :counter="!noValidation"
             :hint="passwordRules.hint"
+            :placeholder="passwordRules.placeholder"
             :hide-details="noValidation"
+            prepend-icon="mdi-lock"
+            :append-icon="toggle.icon"
+            :type="toggle.type"
             autocomplete="on"
             label="パスワード"
             @click:append="show1 = !show1"
           />
-          <!-- <v-text-field
-            v-model="user.password"
-            :placeholder="passwordRules.placeholder"
-          /> -->
           <v-text-field
             v-model="user.password_confirmation"
-            prepend-icon="mdi-lock"
-            :append-icon="toggle.icon"
-            :type="toggle.type"
             :rules="passwordRules.rules"
             :counter="!noValidation"
             :hint="passwordRules.hint"
+            :placeholder="passwordRules.placeholder"
             :hide-details="noValidation"
+            prepend-icon="mdi-lock"
+            :append-icon="toggle.icon"
+            :type="toggle.type"
             autocomplete="on"
             label="パスワード確認"
             @click:append="show2 = !show2"
           />
-          <!-- <v-text-field
-            v-model="user.password_confirmation"
-            :placeholder="passwordRules.placeholder"
-          /> -->
-
         </v-container>
         <!-- <small class="ml-4">*必須項目</small> -->
         <v-card-actions>
@@ -106,43 +89,55 @@
       <span class="login-link" @click="loginLink"> ログイン </span>
     </v-card-text>
 
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-              color="primary"
-              text
-              @click="dialog2 = false"
-            >
-              I accept
-            </v-btn>
-          </v-card-actions>
 
-
-      </v-card>
-      </v-dialog>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn 
+          color="primary" 
+          text
+          @click="signupDialog = false"
+        >
+          Close
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script>
 import { mapActions } from "vuex"
 export default {
   data() {
+    const max = 30
     return {
-      dialog2: false,
       isValid: false,
-      show: false,
-      noValidation: true,
+      show1: false,
+      show2: false,
+      noValidation: false,
       user: {
         email: "",
         password: "",
+        password_confirmation: "",
+        name: "",
+        image: "",
       },
       guest: {
         email: "guestuser4501@gmail.com",
         password: "guestuser",
       },
+      max,
+      nameRules: [
+        (v) => !!v || "",
+        (v) => (!!v && max >= v.length) || `${max}文字以内で入力してください`,
+      ],
       emailRules: [(v) => !!v || "", (v) => /.+@.+\..+/.test(v) || ""],
     }
   },
   computed: {
+    nameForm() {
+      const placeholder = this.noValidation ? undefined : "username"
+      return { placeholder }
+    },
     emailForm() {
       const placeholder = this.noValidation ? undefined : "your@email.com"
       return { placeholder }
@@ -166,22 +161,37 @@ export default {
   },
   methods: {
     ...mapActions({
+      signUp: "auth/signUp",
       login: "auth/login",
       loginDialog: "modal/loginUser",
       signUpDialog: "modal/signUpUser",
     }),
-    loginUser() {
-      this.login(this.user)
-      this.loginDialog(false)
+    setImage(e) {
+      this.user.image = e
+    },
+    registerUser() {
+      this.signUp(this.user)
+      this.signUpDialog(false)
     },
     guestLogin() {
       this.login(this.guest)
-      this.loginDialog(false)
+      this.signUpDialog(false)
     },
-    signUpLink() {
-      this.loginDialog(false)
-      this.signUpDialog(true)
+    loginLink() {
+      this.signUpDialog(false)
+      this.loginDialog(true)
     },
   },
 }
 </script>
+
+<style scoped>
+.login-link {
+  color: #2196f3;
+  cursor: pointer;
+}
+.login-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+</style>

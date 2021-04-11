@@ -3,6 +3,7 @@
       <v-row
         justify="center"
       >
+    
         <TheHeaderLoginModal3 />
         <TheHeaderLoginModal4 />
 
@@ -12,6 +13,7 @@
   
 
 <script>
+import { mapGetters, mapActions } from "vuex"
 import TheHeaderLoginModal3 from "~/components/layouts/TheHeaderLoginModal3.vue"
 import TheHeaderLoginModal4 from "~/components/layouts/TheHeaderLoginModal4.vue"
 
@@ -22,8 +24,6 @@ export default {
   },
   data() {
     return {
-      loginModal: false,
-
     }
   },
 }

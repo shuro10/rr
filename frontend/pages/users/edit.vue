@@ -25,14 +25,14 @@
               <v-tab-item class="px-2">
                 <edit-avatar />
                 <v-divider />
-<!--                 <edit-profile /> -->
+                <edit-profile />
               </v-tab-item>
               <v-tab-item class="px-2">
-<!--                 <edit-email /> -->
+                <edit-email />
                 <v-divider />
-<!--                 <edit-password /> -->
+                <edit-password />
                 <v-divider />
-<!--                 <delete-user /> -->
+                <delete-user />
               </v-tab-item>
             </v-container>
           </v-tabs-items>
@@ -44,19 +44,19 @@
 
 <script>
 import editAvatar from '~/components/editUser/EditAvatar.vue'
-/* import editEmail from "~/components/editUser/EditEmail"
-import editPassword from "~/components/editUser/EditPassword"
+import editEmail from "~/components/editUser/EditEmail"
+import editPassword from "~/components/editUser/EditPassword.vue"
 import editProfile from "~/components/editUser/EditProfile"
 import deleteUser from "~/components/editUser/DeleteUser"
- */
+
 
 export default {
   components: {
-     editAvatar,
-/*     editEmail,
+    editAvatar,
+    editEmail,
     editPassword,
     editProfile,
-    deleteUser, */
+    deleteUser,
   },
   data() {
     return {

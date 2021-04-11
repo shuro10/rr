@@ -1,17 +1,3 @@
-export const state = () => ({
-  user: {},
-})
-
-export const getters = {
-  user: (state) => state.user,
-}
-
-export const mutations = {
-  setUser(state, user) {
-    state.user = user
-  },
-}
-
 export const actions = {
   async getUser({ commit }, paramsId) {
     await this.$axios
@@ -26,3 +12,16 @@ export const actions = {
       })
   },
 }
+export const mutations = {
+  setUser(state, user) {
+    state.user = user
+  },
+}
+export const state = () => ({
+  user: {},
+})
+export const getters = {
+  user: (state) => state.user,
+}
+
+

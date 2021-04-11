@@ -1,18 +1,17 @@
 <template>
-      <v-dialog
-        v-model="dialog"
-        width="500"
+  <v-dialog
+    v-model="loginDialog"
+    width="500"
+  >
+    <template v-slot:activator="{ on, attrs }">
+      <v-btn color="red lighten-2" 
+        dark 
+        v-bind="attrs" 
+        v-on="on"
       >
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn
-            color="red lighten-2"
-            dark
-            v-bind="attrs"
-            v-on="on"
-          >
-            Login Modal
-          </v-btn>
-        </template>
+        Login Modal
+      </v-btn>
+    </template>
   
         <v-card>
           <v-card-title class="headline blue lighten-2">
@@ -20,38 +19,32 @@
           </v-card-title>
   
       <v-card-text>
-      <v-form ref="form" v-model="isValid">
-        <v-container>
-          <v-text-field
-            v-model="user.email"
-            prepend-icon="mdi-email"
-            label="メールアドレス"
-            :rules="emailRules"
-          />
-            <!-- 
-            v-model="user.email"            
-            :placeholder="emailForm.placeholder"
-            -->
+        <v-form ref="form" v-model="isValid">
+          <v-container>
+            <v-text-field
+              v-model="user.email"
+              prepend-icon="mdi-email"
+              label="メールアドレス"
+              :rules="emailRules"
+              :placeholder="emailForm.placeholder"
+            />
 
-          <v-text-field
-            v-model="user.password"
-            prepend-icon="mdi-lock"
-            :append-icon="toggle.icon"
-            :type="toggle.type"
-            :hide-details="noValidation"
-            :rules="passwordRules.rules"
-            :counter="!noValidation"
-            label="パスワード"
-            @click:append="show = !show"
-            autocomplete="on"
-            :hint="passwordRules.hint"
-          />
-            <!-- 
-            v-model="user.password"
-            :placeholder="passwordRules.placeholder"
-             -->
+            <v-text-field
+              v-model="user.password"
+              prepend-icon="mdi-lock"
+              :append-icon="toggle.icon"
+              :type="toggle.type"
+              :hide-details="noValidation"
+              :rules="passwordRules.rules"
+              :counter="!noValidation"
+              label="パスワード"
+              @click:append="show = !show"
+              autocomplete="on"
+              :hint="passwordRules.hint"
+              :placeholder="passwordRules.placeholder"
+            />
 
-        </v-container>
+          </v-container>
         <v-card-actions>
           <v-btn
             :disabled="!isValid"
@@ -60,6 +53,7 @@
             block
             @click="loginUser"
           >
+          <!-- @click="loginWithAuthModule" -->
             ログイン
           </v-btn>
         </v-card-actions>
@@ -75,26 +69,15 @@
       <span class="signup-link" @click="signUpLink"> 新規登録 </span>
     </v-card-text>
 
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn
-              color="primary"
-              text
-              @click="dialog = false"
-            >
-              I accept
-            </v-btn>
-          </v-card-actions>
         </v-card>
       </v-dialog>
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapGetters, mapActions } from "vuex"
 export default {
   data() {
     return {
-      dialog: false,
       isValid: false,
       show: false,
       noValidation: true,
@@ -103,13 +86,19 @@ export default {
         password: "",
       },
       guest: {
-        email: "guestuser4501@gmail.com",
+        email: "kent.ki720@gmail.com",
         password: "guestuser",
       },
       emailRules: [(v) => !!v || "", (v) => /.+@.+\..+/.test(v) || ""],
     }
   },
+
   computed: {
+      ...mapGetters({
+      loggedIn: "auth/isLoggedIn",
+      loginModal: "modal/loginModal",
+      signUpModal: "modal/signUpModal",
+      }),
     emailForm() {
       const placeholder = this.noValidation ? undefined : "your@email.com"
       return { placeholder }
@@ -149,6 +138,31 @@ export default {
       this.loginDialog(false)
       this.signUpDialog(true)
     },
+    async loginWithAuthModule () {
+      await this.$auth.loginWith('local', {
+        data: {
+          email: this.email,
+          password: this.password
+        }
+      })
+        .then((response) => {
+          return response
+        },
+        (error) => {
+          return error
+        })
+    }
   },
 }
 </script>
+
+<style scoped>
+.signup-link {
+  color: #2196f3;
+  cursor: pointer;
+}
+.signup-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+</style>

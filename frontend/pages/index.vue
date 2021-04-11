@@ -1,71 +1,87 @@
-<template>
 
+<template>
 <div>
-  <p>test</p>
+    <p>index</p>
+    <p>{{ Getters }}</p>
+    <button @click="count(15)">{{ counter }}</button>
+    <button @click="testflash">testflash</button>
+    <button @click='flashMessage({
+      message: "aaa",
+      type: success,
+      status: true,
+    }), { root: true } '>flash</button>
+      <button @click="getSomething">タスク取得</button>
+
+  <v-snackbar
+    v-model="status"
+    transition="slide-x-reverse-transition"
+    right
+    top
+    :color="type"
+  >
+    <div class="ml-5 font-weight-bold white--text">
+      {{ message }}
+    </div>
+  </v-snackbar>
+
+  <section class="container">
+    isCalled: {{isCalled}}
+  </section>
+
+    <rinrei></rinrei>
 </div>
 </template>
 
 
 <script>
-import grid from '~/components/grid.vue'
-import parallax from '~/components/parallax.vue'
-import parallax2 from '~/components/parallax2.vue'
-import textfield from '~/components/textfield.vue'
-import calendar from '~/components/calendar.vue'
-import weather from '~/components/weather.vue'
-import carousel from '~/components/carousel.vue'
-import rating from '~/components/rating.vue'
+import rinrei from '~/components/rinrei.vue'
+import { mapGetters, mapActions } from "vuex"
 
 export default {
-  el: '#app',
   components: {
-    grid,
-    parallax,
-    parallax2,
-    textfield,
-    calendar,
-    weather, 
-    carousel, 
-    rating,
+    rinrei,
   },
-	methods: {
-    async getSomething() {
-      const response = await this.$axios.$get('http://localhost:5000/api/v1/tasks')
-      this.tasks = JSON.parse(response.tasks)
-    }
-	},
+  computed: { 
+      ...mapGetters({
+      message: "flashMessage/message",
+      type: "flashMessage/type",
+      status: "flashMessage/status",
+    }),
+      ...mapGetters(['isCalled']),
+      Getters() {
+          return this.$store.getters;
+      },
+      ...mapGetters({ counter: "rinrei/counter" }),
+      /* ...mapGetters("rinrei", ["counter"]), */
+  },
+  methods: {
+      async getSomething() {
+      await $axios.$get('/api/v1/users')
+      /* const response = await this.$axios.$get("/api/v1/users") */
+      },
+      testflash() {
+        return this.$store.dispatch(
+            "flashMessage/showMessage", { 
+              message: "Hello!",
+              type: "sucess",
+              status: true,
+          }, { root: true } 
+        )
+      },
+      ...mapActions({ flashMessage: "flashMessage/showMessage" }),
+      ...mapActions({ count: "rinrei/countAction" }),
+    //   count () {
+    //     return this.$store.dispatch('rinrei/countAction', 3)
+    // },
+  } 
 }
 </script>
 
 
+
+
 <style scoped>
-/*
-*{
-margin: 0;
+div {
+    border: 5px solid yellow;
 }
-*/
-
-.fadeIn {
-animation-name: fadeInAnime;/*1で解説*/
-animation-fill-mode:backwards;/*2で解説*/
-animation-duration:3s;/*3で解説*/
-animation-iteration-count:1;/*4で解説*/
-animation-timing-function:ease;/*5で解説*/
-animation-delay: 0.5s;/*6で解説*/
-animation-direction:normal;/*7で解説*/
-}
-
-/*1で解説*/
-@keyframes fadeInAnime{
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-/* https://coco-factory.jp/ugokuweb/css02/ */
-
-
 </style>

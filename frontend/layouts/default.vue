@@ -1,11 +1,11 @@
 <template>
   <v-app>
-    <the-header />
-    <v-main style="background-color: #fbfbfb">
-        <nuxt />
-    <div style="background-color: black" class="pb-15" />
-    <the-footer />
-    </v-main>
+    <theHeader />
+        <v-main><!--v-main style="background-color: #fbfbfb" -->
+            <nuxt />
+            <!-- <div style="background-color: blue" class="pb-15" /> -->
+        </v-main>
+    <theFooter />
   </v-app>
 </template>
 

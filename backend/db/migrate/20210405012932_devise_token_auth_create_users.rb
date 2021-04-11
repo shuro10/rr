@@ -1,3 +1,4 @@
+# User info, OK?
 class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
     def change
   
@@ -40,10 +41,11 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
         t.string :nickname
         t.string :image
         t.string :email
-  
+        t.boolean :admin,       default: false
+
         ## Tokens
         t.text :tokens
-  
+
         t.timestamps
       end
   

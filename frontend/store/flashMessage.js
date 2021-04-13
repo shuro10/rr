@@ -3,11 +3,13 @@ export const state = () => ({
   type: "",
   status: false,
 })
+
 export const getters = {
   message: (state) => state.message,
   type: (state) => state.type,
   status: (state) => state.status,
 }
+
 export const mutations = {
   setMessage(state, message) {
     state.message = message
@@ -19,14 +21,14 @@ export const mutations = {
     state.status = bool
   },
 }
+
 export const actions = {
   showMessage({ commit }, { message, type, status }) {
-      commit("setMessage", message)
-      commit("setType", type)
-      commit("setStatus", status)
-      setTimeout(() => {
-        commit("setStatus", !status)
-    }, 1200)
+    commit("setMessage", message)
+    commit("setType", type)
+    commit("setStatus", status)
+    setTimeout(() => {
+      commit("setStatus", !status)
+    }, 700)
   },
 }
-

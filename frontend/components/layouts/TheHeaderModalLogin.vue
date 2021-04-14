@@ -1,50 +1,39 @@
 <template>
-  <v-dialog
-    v-model="loginDialog"
-    width="500"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn color="red lighten-2" 
-        dark 
-        v-bind="attrs" 
-        v-on="on"
-      >
-        Login Modal
+  <v-card>
+    <v-system-bar lights-out>
+      <v-spacer></v-spacer>
+      <v-btn icon class="mt-6" large @click="loginDialog(false)">
+        <v-icon>mdi-close</v-icon>
       </v-btn>
-    </template>
-  
-        <v-card>
-          <v-card-title class="headline blue lighten-2">
-            入力項目
-          </v-card-title>
-  
-      <v-card-text>
-        <v-form ref="form" v-model="isValid">
-          <v-container>
-            <v-text-field
-              v-model="user.email"
-              prepend-icon="mdi-email"
-              label="メールアドレス"
-              :rules="emailRules"
-              :placeholder="emailForm.placeholder"
-            />
-
-            <v-text-field
-              v-model="user.password"
-              prepend-icon="mdi-lock"
-              :append-icon="toggle.icon"
-              :type="toggle.type"
-              :hide-details="noValidation"
-              :rules="passwordRules.rules"
-              :counter="!noValidation"
-              label="パスワード"
-              @click:append="show = !show"
-              autocomplete="on"
-              :hint="passwordRules.hint"
-              :placeholder="passwordRules.placeholder"
-            />
-
-          </v-container>
+    </v-system-bar>
+    <v-card-title>
+      <span class="headline">Login</span>
+    </v-card-title>
+    <v-card-text>
+      <v-form ref="form" v-model="isValid">
+        <v-container>
+          <v-text-field
+            v-model="user.email"
+            :rules="emailRules"
+            :placeholder="emailForm.placeholder"
+            prepend-icon="mdi-email"
+            label="メールアドレス"
+          />
+          <v-text-field
+            v-model="user.password"
+            :rules="passwordRules.rules"
+            :counter="!noValidation"
+            :hint="passwordRules.hint"
+            :placeholder="passwordRules.placeholder"
+            :hide-details="noValidation"
+            prepend-icon="mdi-lock"
+            :append-icon="toggle.icon"
+            :type="toggle.type"
+            autocomplete="on"
+            label="パスワード"
+            @click:append="show = !show"
+          />
+        </v-container>
         <v-card-actions>
           <v-btn
             :disabled="!isValid"
@@ -53,7 +42,6 @@
             block
             @click="loginUser"
           >
-          <!-- @click="loginWithAuthModule" -->
             ログイン
           </v-btn>
         </v-card-actions>
@@ -68,13 +56,11 @@
       アカウントをお持ちでないですか？
       <span class="signup-link" @click="signUpLink"> 新規登録 </span>
     </v-card-text>
-
-        </v-card>
-      </v-dialog>
+  </v-card>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex"
+import { mapActions } from "vuex"
 export default {
   data() {
     return {
@@ -86,19 +72,13 @@ export default {
         password: "",
       },
       guest: {
-        email: "kent.ki720@gmail.com",
+        email: "guestuser4501@gmail.com",
         password: "guestuser",
       },
       emailRules: [(v) => !!v || "", (v) => /.+@.+\..+/.test(v) || ""],
     }
   },
-
   computed: {
-      ...mapGetters({
-      loggedIn: "auth/isLoggedIn",
-      loginModal: "modal/loginModal",
-      signUpModal: "modal/signUpModal",
-      }),
     emailForm() {
       const placeholder = this.noValidation ? undefined : "your@email.com"
       return { placeholder }
@@ -138,20 +118,6 @@ export default {
       this.loginDialog(false)
       this.signUpDialog(true)
     },
-    async loginWithAuthModule () {
-      await this.$auth.loginWith('local', {
-        data: {
-          email: this.email,
-          password: this.password
-        }
-      })
-        .then((response) => {
-          return response
-        },
-        (error) => {
-          return error
-        })
-    }
   },
 }
 </script>

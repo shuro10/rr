@@ -4,7 +4,7 @@
       <v-icon> mdi-account-remove </v-icon>
       <span>アカウント削除</span>
     </v-row>
-<!--     <v-row justify="center" class="mb-2">
+    <v-row justify="center" class="mb-2">
       <v-btn
         v-if="email != guest"
         color="error white--text"
@@ -16,7 +16,7 @@
       <v-btn v-else color="grey" class="white--text px-10 mt-8">
         ゲストユーザーの為削除できません
       </v-btn>
-    </v-row> -->
+    </v-row>
   </v-form>
 </template>
 
@@ -24,14 +24,13 @@
 export default {
    data() {
     return {
-      /* email: this.$store.getters["auth/currentUser"].uid, */
-      guest: "guestuser4501@gmail.com",
+      email: this.$store.getters["auth/currentUser"].uid,
+      guest: "guestuser3001@gmail.com",
     }
   },
   methods: {
     deleteUser() {
-        alert("Get Something!!")
-/*      this.$axios
+     this.$axios
         .delete("api/v1/auth", {
           headers: {
             "access-token": localStorage.getItem("access-token"),
@@ -67,7 +66,7 @@ export default {
             },
             { root: true }
           )
-        })*/
+        })
     },
   },
 }

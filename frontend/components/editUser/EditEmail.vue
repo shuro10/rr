@@ -26,16 +26,15 @@
 export default {
   data() {
     return {
-        /* 
       email: this.$store.getters["auth/currentUser"].email,
-      originEmail: this.$store.getters["auth/currentUser"].uid,*/
-      guest: "guestuser4501@gmail.com",
+      originEmail: this.$store.getters["auth/currentUser"].uid,
+      guest: "guestuser3001@gmail.com",
     }
   },
   methods: {
     async changeUserEmail() {
         alert("Get things!!")
-/*      const formData = new FormData()
+     const formData = new FormData()
       formData.append("email", this.email)
       await this.$axios
         .put("api/v1/auth", formData, {
@@ -66,7 +65,7 @@ export default {
             },
             { root: true }
           )
-        })*/
+        })
     },
   },
 }

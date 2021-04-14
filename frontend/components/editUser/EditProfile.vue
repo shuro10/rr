@@ -22,16 +22,14 @@
 
 <script>
 export default {
-/*   data() {
+  data() {
     return {
       name: this.$store.getters["auth/currentUser"].name,
       profile: this.$store.getters["auth/currentUser"].profile,
     }
-  },*/
+  },
   methods: {
     async changeUserProfile() {
-        alert("Get Something!!")
-  /*      
       const formData = new FormData()
       formData.append("name", this.name)
       formData.append("profile", this.profile)
@@ -64,7 +62,7 @@ export default {
             },
             { root: true }
           )
-        })*/
+        })
     }
   }, 
 }

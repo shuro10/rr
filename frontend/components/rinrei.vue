@@ -3,7 +3,7 @@
 <div>
     <p>index</p>
     <button @click="count(7)">{{ counter }}</button>
-
+    <p>いいね ({{ rinrin / 2 }})</p>
 </div>
 </template>
 
@@ -13,6 +13,7 @@
 import { mapGetters, mapActions } from "vuex" 
 
 export default {
+  props: ['rinrin'],
   components: {
   },
   computed: { 

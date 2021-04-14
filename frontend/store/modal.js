@@ -26,7 +26,7 @@ export const actions = {
   },
 }
 
-
+// ========== To reset "loginModal" =========
 // const initialState = {
 //   // 通常stateに記載する値を記載
 //   loginModal: false,
@@ -49,3 +49,4 @@ export const actions = {
 //     commit('INIT_DATA')
 //   }
 // }
+// ========== end of To reset "loginModal" ==========

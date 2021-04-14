@@ -4,7 +4,6 @@
       <v-icon> mdi-account-box </v-icon>
       <span>アイコン画像</span>
     </v-row>
-<!-- 
     <v-row justify="center" class="pt-6">
       <v-avatar size="100">
         <template v-if="image.url !== null">
@@ -15,7 +14,7 @@
           <v-img v-if="input_image" :src="input_image" />
         </template>
       </v-avatar>
-    </v-row> -->
+    </v-row>
     <v-file-input
       v-model="editImage"
       accept="image/png, image/jpeg, image/bmp"
@@ -40,7 +39,7 @@ export default {
   // },
   data() {
     return {
-      /* image: this.$store.getters["auth/currentUser"].image, */
+      image: this.$store.getters["auth/currentUser"].image,
       editImage: "",
       input_image: null,
     }
@@ -62,7 +61,7 @@ export default {
       }
     },
     async changeUserAvatar() {
-      alert("Get things!")/*
+      alert("Get things!")
       const formData = new FormData()
       if (this.editImage != "") {
         formData.append("image", this.editImage)
@@ -96,7 +95,7 @@ export default {
             },
             { root: true }
           )
-        })*/
+        })
     },
   },
 }

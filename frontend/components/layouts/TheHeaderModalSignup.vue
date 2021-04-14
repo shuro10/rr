@@ -1,24 +1,14 @@
 <template>
-  <v-dialog
-    v-model="signUpDialog"
-    width="500"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn
-        class="ml-4 mr-2"
-        color="red white--text font-weight-bold"
-        dark 
-        v-bind="attrs" 
-        v-on="on"
-      >
-        SignUp MODAL
+  <v-card>
+    <v-system-bar lights-out>
+      <v-spacer></v-spacer>
+      <v-btn icon class="mt-6" large @click="signUpDialog(false)">
+        <v-icon>mdi-close</v-icon>
       </v-btn>
-    </template>
-
-    <v-card>
-      <v-card-title class="headline red lighten-2">
-        新規登録
-      </v-card-title>
+    </v-system-bar>
+    <v-card-title>
+      <span class="headline">新規登録</span>
+    </v-card-title>
     <v-card-text>
       <v-form ref="form" v-model="isValid">
         <v-container>
@@ -88,20 +78,7 @@
       アカウントをお持ちですか？
       <span class="login-link" @click="loginLink"> ログイン </span>
     </v-card-text>
-
-
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn 
-          color="primary" 
-          text
-          @click="signupDialog = false"
-        >
-          Close
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+  </v-card>
 </template>
 
 <script>

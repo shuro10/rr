@@ -30,11 +30,11 @@
 
 <script>
 import { mapGetters } from "vuex"
-// import userAvatar from "~/components/UserAvatar.vue"
+import UserAvatar from "~/components/infoUser/UserAvatar.vue"
 
 export default {
   components: {
-    // userAvatar,
+    UserAvatar,
   },
   props: {
     user: {

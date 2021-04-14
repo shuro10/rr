@@ -26,6 +26,7 @@
     "nuxt-i18n": "^6.24.0",
     "nuxt-webfontloader": "^1.1.0",
     "vuex": "^3.6.2",
+    "vuex-extensions": "^1.1.5",
     "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {

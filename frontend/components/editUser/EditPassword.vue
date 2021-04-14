@@ -52,14 +52,13 @@ export default {
         password: "",
         password_confirmation: "",
       },
-/*      email: this.$store.getters["auth/currentUser"].uid, */
-      guest: "guestuser4501@gmail.com",
+      email: this.$store.getters["auth/currentUser"].uid,
+      guest: "guestuser3001@gmail.com",
     }
   },
    methods: {
     changeUserPassword() {
-        alert("Get Something!!")
-/*      this.$axios
+     this.$axios
         .put("api/v1/auth/password", this.pas, {
           headers: {
             "access-token": localStorage.getItem("access-token"),
@@ -90,7 +89,7 @@ export default {
             },
             { root: true }
           )
-        })*/
+        })
     },
   },
 } 

@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
-  mode: 'universal',
+  mode: 'spa',
   /*
    ** Headers of the page
    */
@@ -47,7 +47,6 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/auth',
     '@nuxtjs/axios',
     '@nuxtjs/proxy',
     "nuxt-webfontloader",
@@ -57,24 +56,23 @@ export default {
   axios: {
    baseURL: 'http://localhost:5000'
   },
-  auth: {
-    redirect: {
-      login: '/',
-      /* login: '/users/login',  */
-      logout: '/',
-      callback: false,
-      home: '/'
-    },
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'false' },
-          logout: false,
-          user: false
-        }
-      }
-    }  
-  },
+  // auth: {
+  //   redirect: {
+  //     login: '/users/login', 
+  //     logout: '/',
+  //     callback: false,
+  //     home: '/'
+  //   },
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
+  //         logout: false,
+  //         user: false
+  //       }
+  //     }
+  //   }  
+  // },
   proxy: {
     '/api': {
       target: 'http://localhost:5000',

@@ -27,6 +27,7 @@ export const actions = {
   },
 }
 
+/* ============== user {} リセット ==============  */
 // const initialState = {
 //   // 通常stateに記載する値を記載
 //   user: {},
@@ -49,3 +50,4 @@ export const actions = {
 //     commit('INIT_DATA')
 //   }
 // }
+/* ============== end: user {} リセット ==============  */

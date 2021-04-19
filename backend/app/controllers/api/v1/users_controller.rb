@@ -11,7 +11,7 @@ module Api
                                       { reviews: [:post, :user, { review_likes: :user },] },
                                       { like_reviews: [:post, :user, { review_likes: :user },] },
                                       :followings, :followers)
-                            .find(params[:id])
+                                    .find(params[:id])
                 render json: @user.as_json(include: [{ postlike: { include: { like_users: { only: [:id] } } } },
                                                      { reviews: { include: [{ review_likes: { include: [{ user: { only: %w[id image name] }},] } }, { post: { only: %i[id name image] } },
                                                                             { user: { only: %i[id name image] } }] } },

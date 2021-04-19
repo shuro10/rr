@@ -1,22 +1,20 @@
 <template>
-  <v-form ref="form" lazy-validation class="pt-4 pb-2">
-    <v-row class="pt-4 pl-3">
+  <v-form ref="form" lazy-validation class="ma-16">
       <v-icon> mdi-account-edit </v-icon>
-      <span>ユーザー名 (span)</span>
-    </v-row>
-    <v-row justify="center" class="pt-6">
-      <v-text-field v-model="name" label="新しいニックネーム (label) // v-model='name'" class="px-3" />
-    </v-row>
-    <v-row class="pt-7 pl-3">
+      <span>ユーザー名</span>
+      <v-text-field v-model="name" label="新しいニックネーム" class="px-3" />
       <v-icon> mdi-account-details </v-icon>
-      <span>プロフィール (span)</span>
-    </v-row>
-    <v-row justify="center" class="pt-6 pb-3">
-      <v-textarea v-model="profile" label="プロフィール (label) // v-model='profile'" class="px-3" />
-    </v-row>
-    <v-btn block color="success" class="white--text" @click="changeUserProfile">
-      変更
-    </v-btn>
+      <span>プロフィール</span>
+      <v-textarea v-model="profile" label="プロフィール" class="px-3" />
+      <v-btn 
+        rounded 
+        color="#48A1EB" 
+        class="font-weight-bold"
+        min-width="125px"
+        @click="changeUserProfile"
+      >
+        変更
+      </v-btn>
   </v-form>
 </template>
 
@@ -63,7 +61,7 @@ export default {
             { root: true }
           )
         })
-    }
-  }, 
+    },
+  },
 }
 </script>

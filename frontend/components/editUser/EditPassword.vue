@@ -1,10 +1,7 @@
 <template>
-  <v-form ref="form" lazy-validation class="mt-4 mb-2">
-    <v-row class="pt-4 pl-3">
-      <v-icon> mdi-email-edit </v-icon>
-      <span>パスワード変更</span>
-    </v-row>
-    <v-row justify="center" class="pt-6">
+  <v-form ref="form" lazy-validation class="ma-16">
+    <v-icon> mdi-email-edit </v-icon>
+    <span>パスワード変更</span>    
       <v-text-field
         v-model="pas.password"
         label="変更後パスワード"
@@ -13,24 +10,20 @@
         :type="show1 ? 'text' : 'password'"
         @click:append="show1 = !show1"
       />
-    </v-row>
-
-    <v-row justify="center" class="pt-6">
       <v-text-field
         v-model="pas.password_confirmation"
-        label="変更後パスワード (再入力)"
+        label="変更後パスワード(再入力)"
         class="px-3"
         :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
         :type="show2 ? 'text' : 'password'"
         @click:append="show2 = !show2"
       />
-    </v-row>
-
     <v-btn
       v-if="email != guest"
-      block
-      color="success"
-      class="white--text"
+      rounded
+      color="#48A1EB"
+      min-width="125px"
+      class="font-weight-bold"
       @click="changeUserPassword"
     >
       変更
@@ -38,8 +31,7 @@
     <v-btn v-else block color="grey" class="white--text">
       ゲストユーザーの為変更できません
     </v-btn>
-
-    </v-form>
+  </v-form>
 </template>
 
 <script>
@@ -48,17 +40,17 @@ export default {
     return {
       show1: false,
       show2: false,
-       pas: {
+      pas: {
         password: "",
         password_confirmation: "",
       },
       email: this.$store.getters["auth/currentUser"].uid,
-      guest: "guestuser3001@gmail.com",
+      guest: "guestuser4501@gmail.com",
     }
   },
-   methods: {
+  methods: {
     changeUserPassword() {
-     this.$axios
+      this.$axios
         .put("api/v1/auth/password", this.pas, {
           headers: {
             "access-token": localStorage.getItem("access-token"),
@@ -92,5 +84,5 @@ export default {
         })
     },
   },
-} 
+}
 </script>

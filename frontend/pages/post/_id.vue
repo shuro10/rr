@@ -1,29 +1,56 @@
 <template>
   <div style="background-color: green">
-    <p>test</p>
-    <v-container class="pt-7 px-10">
-      <template v-if="loading">
-        <v-card flat style="background-color: blue">
-          <v-row class="mx-1" no-gutters>
+    <v-parallax
+      height="500"
+      src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg"
+    >
+          <div>
             <v-chip
-              class="mb-1 font-weight-bold"
+              class="ma-5 font-weight-bold"
               color="blue-grey darken-2"
               label
               text-color="white"
             >
               {{ post.category }}
             </v-chip>
+          </div>
+          <div class="display-1 ma-16 font-weight-bold">
+            {{ post.name }}
+          </div>
+    </v-parallax>
 
-            <v-spacer />
-            <p class="caption">更新日時 : {{ createDate }}</p>
-          </v-row>
+
+
+    <v-container class="pt-7 px-10">
+      <template v-if="loading">
+        <v-card flat style="background-color: blue">
+          <p>作成日 : {{ createDate }}</p>
+          
+        
+      <!-- ====気になるボタン==== -->               
+        <v-btn
+          v-if="like"
+          class="mx-5"
+          color="red white--text font-weight-bold"
+          @click="nice"
+        >
+          気になるを外す
+        </v-btn>
+        <v-btn
+          v-else
+          class="mx-5"
+          color="green white--text font-weight-bold"
+          @click="nice"
+        >
+          気になる！
+        </v-btn>
+      <!-- ====気になるボタン==== -->               
+
 
           <div class="subtitle-1 mt-2 text-decoration-underline">
             {{ post.maker }}
           </div>
-          <div class="display-1 mt-2 mb-4 font-weight-bold">
-            {{ post.name }}
-          </div>
+
           <v-divider />
           <v-sheet style="background-color: pink">
 
@@ -31,9 +58,6 @@
               <v-col cols="12" sm="4">
                 <v-img v-if="post.image.url" :src="post.image.url" contain />
                 <v-img v-else :src="defaultImage" contain />
-                <div class="text-center font-weight-bold mb-3 mt-1">
-                  {{ post.name }}
-                </div>
                 <v-divider />
 
                 <v-avatar size="50" class="mr-3 my-4 small-image">
@@ -44,41 +68,47 @@
                   />
                   <v-img v-else :src="defaultImage" contain />
                 </v-avatar>
+
                 <v-divider />
               </v-col>
-              <v-col cols="12" sm="8">
-                <v-sheet class="ml-8" style="background-color: red">
-                  <div class="my-5 show-rate">
-                    <span class="font-weight-bold"> 総合評価 </span>
+              <v-col>
 
+                  <!-- ======== ハートレビュー ========= -->
+                  <div class="my-5 show-rate">
+                    <span class="font-weight-bold"> また参加したい </span>
                     <v-rating
                       v-model="post.avg_rate"
+                      empty-icon="mdi-heart-outline"
+                      full-icon="mdi-heart"
                       background-color="orange lighten-1"
                       color="orange darken-2"
                       readonly
-                      half-increments
                       class="ml-5"
                       dense
                       large
                     />
-                    <span class="ml-5 font-weight-bold">
+                    <span class="ma-1 font-weight-bold">
                       {{ post.avg_rate }}
                     </span>
-                    <small class="ml-10">
-                      口コミ数 :
+                  </div>
+                  <!-- ======== ハートレビュー ========= -->
+
+                  <!-- ======== メッセージ＆気になる ========= -->
+                  <div>
+                      メッセージ :
                       <user-dialog-review
                         :users="post.reviews"
-                        :title="'口コミユーザー'"
+                        :title="'メッセージしたユーザー'"
                       />
                       <br />
-
-                      食べたい :
+                      気になる　 :
                       <user-dialog
                         :users="post.like_users"
-                        :title="'食べたいユーザー'"
+                        :title="'気になるユーザー'"
                       />
-                    </small>
                   </div>
+                  <!-- ======== メッセージ＆気になる ========= -->
+
                   <v-divider />
                   <div v-if="login" class="font-weight-bold my-5">
 <!--                     
@@ -96,109 +126,57 @@
                     >
                       献立に追加
                     </v-btn> -->
-                    <v-btn
-                      v-if="like"
-                      class="mx-5"
-                      color="red white--text font-weight-bold"
-                      @click="nice"
-                    >
-                      食べたい解除
-                    </v-btn>
-                    <v-btn
-                      v-else
-                      class="mx-5"
-                      color="green white--text font-weight-bold"
-                      @click="nice"
-                    >
-                      食べたい!
-                    </v-btn>
                     <post-review-modal v-if="review" :post="post" />
-                  </div>
-                  <v-divider />
-                  <div class="my-4">
-                    <h2 class="show-info pl-3">商品詳細情報</h2>
-                    <div class="mt-5">
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">販売価格</dt>
-                        <dd class="product-spec-description">
-                          <span>{{ post.price }}円（税込）</span>
-                        </dd>
-                      </dl>
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">カテゴリ</dt>
-                        <dd class="product-spec-description">
-                          <a class="product-spec-link">{{ post.category }}</a>
-                        </dd>
-                      </dl>
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">メーカー名</dt>
-                        <dd class="product-spec-description">
-                          <a class="product-spec-link">{{ post.maker }}</a>
-                        </dd>
-                      </dl>
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">カロリー</dt>
-                        <dd class="product-spec-description">
-                          <span>{{ post.calorie }}kcal</span>
-                        </dd>
-                      </dl>
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">タンパク質</dt>
-                        <dd class="product-spec-description">
-                          <span>{{ post.protein }}g</span>
-                        </dd>
-                        <dt class="product-spec-term ml-16">炭水化物</dt>
-                        <dd class="product-spec-description">
-                          <span>{{ post.carbonhydrate }}g</span>
-                        </dd>
-                        <dt class="product-spec-term ml-16">脂質</dt>
-                        <dd class="product-spec-description">
-                          <span>{{ post.lipid }}g</span>
-                        </dd>
-                      </dl>
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">商品説明</dt>
-                        <dd class="product-spec-description">
-                          <span>{{ post.details }}</span>
-                        </dd>
-                      </dl>
-                      <dl class="product-spec-list">
-                        <dt class="product-spec-term">発売日</dt>
-                        <dd class="product-spec-description">
-                          <span v-if="post.release">{{ releaseDate }}</span>
-                          <span v-else>不明</span>
-                        </dd>
-                      </dl>
+
+                    <span>details: {{ post.details }}</span>
+                    <hr>
+                      <span>protein: {{ post.protein }}g</span>
+                      <span>価格: {{ post.price }}円</span>
+                      <span>カテゴリ: {{ post.category }}</span>
+                      <a class="product-spec-link">maker: {{ post.maker }}</a>
+                      <span>calorie: {{ post.calorie }}kcal</span>
+                      <span>carbonhydrate: {{ post.carbonhydrate }}g</span>
+                      <span>lipid: {{ post.lipid }}g</span>
+                      <span v-if="post.release">releaseDate: {{ releaseDate }}</span>
+                      <span v-else>不明</span>
+
                     </div>
-                  </div>
-                </v-sheet>
+
               </v-col>
             </v-row>
           </v-sheet>
-
-
         </v-card>
-        <v-divider class="my-5" />
+
+
+      <!-- ======Post Message Container====== -->
+        <v-divider class="mt-8" />
         <v-card flat style="background-color: orange">
-          <v-row no-getters>
-            <v-col cols="12" md="8">
+          <v-row>
+            <v-col>
               <v-card flat tile style="background-color: orange">
                 <h3 class="show-info pl-2 mb-2">
-                  口コミ<span>（{{ post.reviews.length }}）</span>
+                  メッセージ<span>（{{ post.reviews.length }}）</span>
                 </h3>
+              <!-- ======Post Messages====== -->
                 <template v-if="post.reviews.length === 0">
-                  <h4 class="my-5 text-decoration-underline">口コミ募集中！</h4>
+                  <h4 class="ma-3 text-decoration-underline">メッセージがありません。</h4>
                   <post-review-modal v-if="login" :post="post" />
                 </template>
                 <template v-else>
                   <post-review-list :reviews="post.reviews" />
                 </template>
+              <!-- ======Post Messages====== -->
               </v-card>
             </v-col>
           </v-row>
         </v-card>
+        <!-- ======Post Message Container====== -->
+
       </template>
     </v-container>
+    <v-divider class=mb-8 />
+
+    <postAlbum />
   </div>
 </template>
 
@@ -208,6 +186,7 @@ import postReviewModal from "~/components/infoPost/PostReviewModal.vue"
 import postReviewList from "~/components/infoPost/PostReviewList.vue"
 import userDialog from "~/components/infoUser/UserDialog.vue"
 import userDialogReview from "~/components/infoUser/UserDialogReview.vue"
+import postAlbum from "~/components/infoPost/PostAlbum.vue"
 
 export default {
   name: "RR",
@@ -216,10 +195,10 @@ export default {
     postReviewList,
     userDialogReview,
     userDialog,
+    postAlbum,
   },
   data() {
     return {
- 
       loading: false,
       like: false,
       review: true,
@@ -229,8 +208,6 @@ export default {
       defaultImage: require("@/assets/images/default-user.png"),
     }
   },
-
-
   computed: {
     ...mapGetters({
       post: "post/post",
@@ -339,7 +316,7 @@ export default {
   border-color: #bdbdbd;
 }
 .show-rate {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 200;
   display: flex;
   align-items: center;

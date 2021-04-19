@@ -1,32 +1,16 @@
-
 <template>
-<div>
-      
-      <!-- https://api.openweathermap.org/data/2.5/onecall?lat=35.681236&lon=139.767125&units=metric&lang=ja&appid=442bcabd8060597b1152eeff08fd57d7 -->
-        <p>今日の天気は{{ weather }}で、気温は{{ temp }}度です。</p>
-        <button v-on:click="getData()">今日の東京の天気をAPIで取得！</button>
-
-        <p>
-            <a href="https://openweathermap.org/api">openweathermapから取得しています。</a>
-        </p>
-        <hr>
-                  
-                    <div v-if="login">
-                      <user-id-setting />
-                    </div>
-                  
-        <hr>
+<div>      
+        <!--    <button v-on:click="showMessage">ボタン</button> -->
 
         <!-- おそらくECSフェーズでAPI key登録が必要になる --> 
         <!-- https://qiita.com/ririson_jp/items/2fa5b60adc8e5f3edbbd#%E3%83%AA%E3%83%B3%E3%82%AF%E5%85%88%E9%83%BD%E9%81%93%E5%BA%9C%E7%9C%8C%E3%81%AE%E8%A9%B3%E7%B4%B0%E3%83%9A%E3%83%BC%E3%82%B8%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8B -->
-        <h1>日本全国の天気</h1>
-        <ul>
-          <li><nuxt-link :to="`city/tokyo`">東京</nuxt-link></li>
-          <li><nuxt-link :to="`city/osaka`">大阪</nuxt-link></li>
-          <li><nuxt-link :to="`city/fukuoka`">福岡</nuxt-link></li>
-        </ul>
+        <!-- <p>今日の天気は{{ weatherData }}です。</p> -->
+        <v-btn @click="asyncData">今日の東京の天気をAPIで取得！</v-btn>
+        <p><a href="https://openweathermap.org/api">openweathermapから取得しています。</a></p>
+                  
+        <hr>
 
-  <v-btn depressed rounded text @click="logout"> ログアウト </v-btn>
+  <!-- <v-btn depressed rounded text @click="logout"> ログアウト </v-btn> -->
   <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
   <!-- <userMenuList /> -->
   <hr>
@@ -38,10 +22,7 @@
     <p>index</p>
 
 </div>
-
-
 </template>
-
 
 <script>
 import { mapGetters, mapActions } from "vuex"
@@ -53,11 +34,22 @@ import PostCreate from "~/components/admin/PostCreate.vue"
 import userIdSetting from "~/components/editUser/UserIdSetting.vue"
 
 
-
 export default {
+/*     async asyncData({ $axios }) {
+    const weatherData = await $axios.$get(
+      'https://api.openweathermap.org/data/2.5/weather?q=saitama,jp&APPID=' +
+        process.env.WEATHER_API_KEY
+    )
+    return {
+      weather: weatherData.weather[0].main
+    }
+  },*/
+
+
+
+    
   data() {
     return {
-      weather: 'xxxx',
       temp: 'yyyy',
       number: 18
     }
@@ -79,21 +71,35 @@ export default {
 /*     userMenu, */
   },
   methods: {
-      getData: async function(){
-      const URL = `https://api.openweathermap.org/data/2.5/weather?id=1850147&units=metric&appid=${process.env.WEATHER_API_KEY}`;
-      
-      const response = await axios.get(URL);
-      this.weather = response.data.weather[0].main;
-      this.temp = response.data.main.temp;
-      // console.log(response.data);
+    showMessage() {
+      const response = this.$axios.$get("/api")
+        .then(response => {
+          console.log(response);
+        })
+        .catch(error => {
+          console.log(error);
+        })
+    },
+    async asyncData() {
+    const weatherData = await this.$axios.$get(
+      'https://api.openweathermap.org/data/2.5/weather?q=saitama,jp&APPID=' +
+        process.env.WEATHER_API_KEY
+    ).then(weatherData => {
+      console.log(weatherData);
+    })
+    .catch(error => {
+      console.log(error);
+    })
   },
-    ...mapActions({
-      logout: "auth/logout",
-      initData: "user/initData",
-    }),
-  },
-  computed: { 
-      },
+/* async getData() {
+          const URL = `https://api.openweathermap.org/data/2.5/weather?q=tokyo&APPID=${process.env.WEATHER_API_KEY}`
+          const response = await this.$axios.get(URL);
+          const data =await response.json();
+          console.log(data); */
+/* return {
+        response
+      } */
+    },
 }
 </script>
 

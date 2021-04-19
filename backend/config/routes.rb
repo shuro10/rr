@@ -24,7 +24,6 @@ Rails.application.routes.draw do
       resource :relationships, only: %i[create destroy]
       resource :post_likes, only: %i[create destroy]
       resource :review_likes, only: %i[create destroy]
-      # resources :tasks, only: %i[index]
     end
   end
 end

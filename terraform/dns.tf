@@ -1,9 +1,9 @@
 /* ===============route53================ */
 /* Frontend: DetasourceDefinition of HostZone */
 resource "aws_route53_zone" "cs-zone" {
-  name = "rinrei720.com"
+  name = "meetwithkids.org"
   tags = {
-    "rinrei720" = "rinrei720.com" 
+    "meetwithkids" = "meetwithkids.org" 
   }
 }
 
@@ -23,8 +23,8 @@ resource "aws_route53_record" "cs-zone-record" {
 
 /* Backend: DetasourceDefinition of HostZone */
 resource "aws_route53_zone" "cs-host-zone" {
-  name    = "rinrei720.com"
-  comment = "rinrei720.com host zone"
+  name    = "meetwithkids.org"
+  comment = "meetwithkids.org host zone"
 }
 
 /* Backend: Definition of DNS Record of ALB */
@@ -50,13 +50,13 @@ resource "aws_route53_record" "cs-host-zone-record" {
 /* Frontend: Definition of SSL証明書 */
 resource "aws_acm_certificate" "cs-frontend-acm" {
   domain_name               = aws_route53_record.cs-zone-record.name
-  subject_alternative_names = ["*.rinrei720.com",]
+  subject_alternative_names = ["*.meetwithkids.org",]
   validation_method         = "DNS"
   lifecycle {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "Frontend: rinrei720.com"
+    "Name" = "Frontend: meetwithkids.org"
   }
 }
 
@@ -70,7 +70,7 @@ resource "aws_acm_certificate" "cs-backend-acm" {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "Backend: rinrei720.com"
+    "Name" = "Backend: meetwithkids.org"
   }
 }
 

@@ -22,3 +22,4 @@ production:
   database: production
   # database: app_production
   url: <%= ENV['RR_DATABASE_URL'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>

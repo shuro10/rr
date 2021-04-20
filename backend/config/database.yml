@@ -20,4 +20,3 @@ production:
   <<: *default
   database: app_production
   url: <%= ENV['RR_DATABASE_URL'] %>
- #  username: app

@@ -15,7 +15,7 @@
       {
         "protocol": "tcp",
         "containerPort": 3000,
-        "hostPort": 5000
+        "hostPort": 3000
       }
     ],
     "environment": [

@@ -3,7 +3,7 @@ version: "3"
 services:
   db:
     # container_name: db
-    image: mysql:5.7.30
+    image: mysql:5.7
     environment:
       TZ: Asia/Tokyo
       MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD

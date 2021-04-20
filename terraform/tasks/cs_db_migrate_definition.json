@@ -14,15 +14,15 @@
       "portMappings": [
         {
           "protocol": "tcp",
-          "containerPort": 3000,
-          "hostPort": 3000
+          "containerPort": 5000,
+          "hostPort": 5000
         }
       ],
       "command": ["bundle", "exec", "rails", "db:migrate"],
       "environment": [
         {
           "name": "API_DOMAIN",
-          "value": "https://cs-kent.ga"
+          "value": "https://meetwithkids.org"
         },
         {
           "name": "WORKDIR",
@@ -30,7 +30,7 @@
         },
         {
           "name": "CONTAINER_PORT",
-          "value": "3000"
+          "value": "5000"
         },
         {
           "name": "RAILS_ENV",

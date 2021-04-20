@@ -188,9 +188,9 @@ workflows:
 #          cluster: ${CLUSTER_NAME}
           task-definition: cs-db-migrate
 #          task-definition: ${TASK_MIGRATE}
-          subnet-ids: subnet-0ede0988253f44394, subnet-0dde9bcf9ec98092c
+#          subnet-ids: subnet-0ede0988253f44394, subnet-0dde9bcf9ec98092c
 #          subnet-ids: '$SUBNET_ONE, $SUBNET_TWO'
-#          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
+          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
 #          https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1#subnets:
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'

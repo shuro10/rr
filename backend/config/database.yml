@@ -18,6 +18,5 @@ test:
 
 production:
   <<: *default
-  host: <%= ENV['RR_HOST'] %>
   database: app_production
   url: <%= ENV['RR_DATABASE_URL'] %>

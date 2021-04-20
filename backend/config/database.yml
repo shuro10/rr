@@ -9,13 +9,12 @@ default: &default
 
 development:
   <<: *default
-  host: <%= 'db' %>
   database: app_development
 
 test:
   <<: *default
-  host: <%= ENV['DB_HOST'] || 'db' %>
   database: app_test
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
 production:
   <<: *default

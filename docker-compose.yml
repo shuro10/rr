@@ -10,7 +10,7 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: $MYSQL_ALLOW_EMPTY_PASSWORD
     restart: always
     volumes:
-      - mysql_data:/var/lib/mysql:cached
+      - db-data:/var/lib/mysql:cached
 #    ports:
 #      - 3307:3306
 #    networks:
@@ -84,6 +84,6 @@ services:
 #        - subnet: 172.21.0.0/24
 
 volumes:
-  mysql_data:
+  db-data:
   bundle_data:
   node_modules_volume:

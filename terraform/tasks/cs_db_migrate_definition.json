@@ -14,7 +14,7 @@
       "portMappings": [
         {
           "protocol": "tcp",
-          "containerPort": 5000,
+          "containerPort": 3000,
           "hostPort": 5000
         }
       ],
@@ -30,7 +30,7 @@
         },
         {
           "name": "CONTAINER_PORT",
-          "value": "5000"
+          "value": "3000"
         },
         {
           "name": "RAILS_ENV",

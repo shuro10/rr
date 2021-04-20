@@ -35,12 +35,12 @@ resource "aws_db_parameter_group" "cs-db-parameter" {
 /* Database Instance */
 resource "aws_db_instance" "cs-db" {
 # identifier              = Endpoint of Database"
-  name = "production"  
-  engine                  = "MySQL"
-  engine_version          = "5.7.30"
-  instance_class          = "db.t2.micro"
   allocated_storage       = 20
+  instance_class          = "db.t2.micro"
+  engine                      = "MySQL"
+  engine_version          = "5.7.30"
   storage_type            = "gp2"
+  name = "production"
   username                = var.aws_db_user
   password                = var.aws_db_password
   backup_retention_period = 7

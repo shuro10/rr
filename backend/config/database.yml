@@ -20,5 +20,5 @@ production:
   database: app_production
   username: <%= ENV['DATABASE_USER'] %>
   url: <%= ENV['RR_DATABASE_URL'] %>
- # password: <%= ENV['RR_DATABASE_PASSWORD'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
  #  username: app

@@ -18,7 +18,7 @@
           "hostPort": 3000
         }
       ],
-      "command": ["bundle", "exec", "rails", "db:migrate"],
+      "command": ["bundle", "exec", "rails", "db:migrate:reset"],
       "environment": [
         {
           "name": "API_DOMAIN",

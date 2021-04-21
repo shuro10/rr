@@ -1,6 +1,6 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://meetwithkids.org' || 'http://localhost:3000'
+    origins 'http://meetwithkids.org' || ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
     # origins ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
     
     resource '*',

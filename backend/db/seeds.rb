@@ -13,3 +13,10 @@ User.create!(name:  name,
       password:              password,
       password_confirmation: password)
 end
+
+# User.all.each do |user|
+#     user.posts.create!(
+#       name: 'nameテスト',
+#       content: 'contentテキストテキストテキストテキスト'
+#     )
+#   end

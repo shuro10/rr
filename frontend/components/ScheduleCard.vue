@@ -1,8 +1,12 @@
 <template>
+<div>
+
+<!-- <user-post-list :posts="posts" /> -->
+
 <v-row>
   <v-col
-    v-for="n in 9"
-    :key="n"
+    v-for="post in posts"
+    :key="post.id"
     class="d-flex child-flex"
     cols="4"
   >
@@ -10,6 +14,7 @@
 
     <v-hover>
       <template v-slot:default="{ hover }">
+
           <v-card
             dark
             flat
@@ -23,18 +28,19 @@
             >
               <v-icon>mdi-heart</v-icon>
             </v-btn>
-          
-            <v-img
-              height="500px"
-              :src="require(`@/assets/images/hina.jpg`)"
-              gradient="to top, rgba(0,0,0,.10), rgba(0,0,0,.10)"
-            >
+
+                    <v-img 
+                      height="500px"
+                      gradient="to top, rgba(0,0,0,.10), rgba(0,0,0,.10)"
+                      v-if="post.image.url" contain :src="post.image.url" />
+                    <v-img v-else contain :src="defaultImage" />
+
               <v-app-bar
                 flat
                 color="rgba(0, 0, 0, 0)"
               >
               <v-toolbar-title class="title white--text pl-0">
-                雛祭り
+                {{ post.name }}
               </v-toolbar-title>
   
               <v-spacer></v-spacer>
@@ -47,6 +53,7 @@
               </v-avatar>
 
             </v-app-bar>
+
   
       <!-- gradient="to top, rgba(0,0,0,.44), rgba(0,0,0,.44)" -->
 
@@ -63,20 +70,18 @@
           <v-container class="fill-height">
             <v-row align="center">
 
-              <strong class="display-4 font-weight-regular mr-6">8</strong>
+              <strong class="display-4 font-weight-regular mr-6">{{ post.id }}</strong>
               <v-row justify="end">
                 <div class="headline font-weight-light">
                   Monday
                 </div>
-                <div class="text-uppercase font-weight-light">
-                  February 2015
+                <div>
+                  {{ post.release }}
                 </div>
               </v-row>
             </v-row>
           </v-container>
 
-          </v-img>
-  
             <v-fade-transition>
             <v-overlay
               v-if="hover"
@@ -84,8 +89,10 @@
               color="#036358"
             >
               <v-btn
-              to="/page" nuxt
+              :to="{ path: `/post/${post.id}` }"
+              @click="pagelink(post.id)"
               >See more info</v-btn>
+
             </v-overlay>
           </v-fade-transition>
 
@@ -98,7 +105,7 @@
             <div class="font-weight-bold ml-8 mb-2">
               Today
             </div>
-  
+<!--   
             <v-timeline
               align-top
               dense
@@ -116,28 +123,42 @@
                   <div>{{ message.message }}</div>
                 </div>
               </v-timeline-item>
-            </v-timeline>
+            </v-timeline> -->
           </v-card-text>
 
-          <!-- =====test============== -->
-               <v-avatar size="56" class="mt-1">
-                <img
-                  alt="user"
-                  :src="require(`@/assets/images/default-user.png`)"
-                >
-              </v-avatar>
-          <!-- =====test============== -->
         </v-card>
   </v-col>
 </v-row>
 
+</div>
 </template>
 
 <script>
+import userPostList from "~/components/infoUser/UserPostList.vue"
+import { mapGetters, mapActions } from "vuex"
+
 export default {
+  computed: {
+    ...mapGetters({
+      user: "user/user",
+      loginUser: "auth/loginUser",
+    }),
+    postUpdate() {
+      return this.$store.state.post.post
+    },
+    // userUpdate() {
+    //   return this.$store.state.auth.loginUser
+    // },
+  },
+  components: {
+    userPostList,
+  },
+  computed: {
+  },
   data() {
     return {
-        messages: [
+        defaultImage: require(`@/assets/images/default.png`),
+        messages1: [
         {
             from: '代々木公園',
             message: `ピクニック`,
@@ -157,7 +178,26 @@ export default {
             color: 'deep-purple lighten-1',
         },
       ],
+      posts: [],
     }
   },
+  created() {
+    this.getPosts().then(() => {
+      this.loading = true
+    })
+    this.$axios.get("api/v1/posts").then((res) => {
+      this.posts = res.data
+    })
+  },
+  methods: {
+    ...mapActions({ getPosts: "post/getPosts" }),
+  },
+
+
+  method: {
+        pagelink(link) {
+      this.$router.push({ path: `/post/${link}` })
+    },
+  }
 }
 </script>

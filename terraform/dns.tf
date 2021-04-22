@@ -6,6 +6,12 @@ resource "aws_route53_zone" "cs-zone" {
     "meetwithkids" = "meetwithkids.org" 
   }
 }
+/* Backend: DetasourceDefinition of HostZone */
+resource "aws_route53_zone" "cs-host-zone" {
+  name    = "meetwithkids.org"
+  comment = "meetwithkids.org host zone"
+}
+
 
 /* Frontend: Definition of DNS Record of ALB */
 resource "aws_route53_record" "cs-zone-record" {
@@ -20,13 +26,6 @@ resource "aws_route53_record" "cs-zone-record" {
   }
 }
 
-
-/* Backend: DetasourceDefinition of HostZone */
-resource "aws_route53_zone" "cs-host-zone" {
-  name    = "meetwithkids.org"
-  comment = "meetwithkids.org host zone"
-}
-
 /* Backend: Definition of DNS Record of ALB */
 resource "aws_route53_record" "cs-host-zone-record" {
   zone_id = aws_route53_zone.cs-host-zone.zone_id
@@ -39,7 +38,6 @@ resource "aws_route53_record" "cs-host-zone-record" {
     evaluate_target_health = true
   }
 }
-
 /* ===============route53================ */
 
 

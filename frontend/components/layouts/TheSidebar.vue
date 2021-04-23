@@ -55,11 +55,11 @@
               </v-btn>
             </div>
             <v-expansion-panel-content class="mt-2">
-              <p>カロリー：{{ post.calorie }}kcal</p>
-              <p>炭水化物：{{ post.carbonhydrate }}g</p>
-              <p>タンパク質：{{ post.protein }}g</p>
-              <p>脂質：{{ post.lipid }}g</p>
-              <p>価格：{{ post.price }}円</p>
+              <p>開始時間：{{ post.start_time }}</p>
+              <p>終了時間：{{ post.finish_time }}</p>
+              <p>メンバー：{{ post.member }}人</p>
+              <p>場所：{{ post.place }}</p>
+              <p>予算：{{ post.price }}円</p>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-fade-transition>
@@ -74,35 +74,35 @@
           <v-divider />
           <v-card-text class="total-text">
             <dl class="product-spec-list">
-              <dt class="product-spec-term font-weight-bold">カロリー</dt>
+              <dt class="product-spec-term font-weight-bold">開始時刻</dt>
               <dd class="product-spec-description">
-                <span class="font-weight-black">{{ calorie }}</span>
+                <span class="font-weight-black">{{ start_time }}</span>
                 <span>kacl</span>
               </dd>
             </dl>
             <dl class="product-spec-list">
-              <dt class="product-spec-term font-weight-bold">炭水化物</dt>
+              <dt class="product-spec-term font-weight-bold">終了時刻</dt>
               <dd class="product-spec-description">
-                <span class="font-weight-black">{{ carbo }}</span>
+                <span class="font-weight-black">{{ finish_time }}</span>
                 <span>g</span>
               </dd>
             </dl>
             <dl class="product-spec-list">
-              <dt class="product-spec-term font-weight-bold">タンパク質</dt>
+              <dt class="product-spec-term font-weight-bold">メンバー</dt>
               <dd class="product-spec-description">
-                <span class="font-weight-black">{{ protein }}</span>
+                <span class="font-weight-black">{{ member }}</span>
                 <span>g</span>
               </dd>
             </dl>
             <dl class="product-spec-list">
-              <dt class="product-spec-term font-weight-bold">脂質</dt>
+              <dt class="product-spec-term font-weight-bold">場所</dt>
               <dd class="product-spec-description">
-                <span class="font-weight-black">{{ lipid }}</span>
+                <span class="font-weight-black">{{ place }}</span>
                 <span>g</span>
               </dd>
             </dl>
             <dl class="product-spec-list">
-              <dt class="product-spec-term font-weight-bold">価格</dt>
+              <dt class="product-spec-term font-weight-bold">予算</dt>
               <dd class="product-spec-description">
                 <span class="font-weight-black">{{ price }}</span>
                 <span>円</span>
@@ -189,8 +189,8 @@ export default {
       posts: "choise/posts",
       calorie: "choise/calorie",
       carbo: "choise/carbo",
-      protein: "choise/protein",
-      lipid: "choise/lipid",
+      member: "choise/member",
+      place: "choise/place",
       price: "choise/price",
     }),
   },

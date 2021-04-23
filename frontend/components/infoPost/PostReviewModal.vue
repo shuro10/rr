@@ -6,7 +6,7 @@
         v-bind="attrs"
         v-on="on"
       >
-        評価・口コミをする
+        メッセージする
       </v-btn>
     </template>
 

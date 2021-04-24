@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :post_likes, dependent: :destroy
   has_many :postlike, through: :post_likes, source: :post
 
+  has_many :post_joins, dependent: :destroy
+  has_many :postjoin, through: :post_joins, source: :post
+
   has_many :reviews, dependent: :destroy
 
   has_many :review_likes, dependent: :destroy
@@ -23,6 +26,11 @@ class User < ApplicationRecord
   has_many :menus, dependent: :destroy
           
 
+  def unjoin(other_post)
+    join = self.post_joins.find_by(post_id: other_post.id)
+    join&.destroy if join
+  end
+  
   def unlike(other_post)
     like = self.post_likes.find_by(post_id: other_post.id)
     like&.destroy if like

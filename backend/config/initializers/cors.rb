@@ -1,10 +1,10 @@
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # production 環境でテスト中
-    origins 'http://meetwithkids.org' || ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
+    # production 環境で通らず
+    # origins 'http://meetwithkids.org' || ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
 
     # development 環境で通る
-    # origins ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
+    origins ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
     
     resource '*',
             headers: :any,

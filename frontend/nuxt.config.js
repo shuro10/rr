@@ -14,8 +14,8 @@ export default {
     WEATHER_API_KEY
   },
   head: {
-    titleTemplate: '%s - ' + process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    // titleTemplate: '%s - ' + process.env.npm_package_name,
+    // title: process.env.npm_package_name || '',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -56,46 +56,45 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/proxy',
+    // '@nuxtjs/proxy',
     '@nuxtjs/axios',
     "nuxt-webfontloader",
     "nuxt-i18n",
     "nuxt-client-init-module",
   ],
-  proxy: {
-    '/api': { 
-      target: 'https://openweathermap.org',
-      pathRewrite: {
-        '^/api': '/api'
-      }
-    },
-    '/api': { 
-      target: 'http://localhost:5000',
-      pathRewrite: {
-        '^/api': '/api'
-      }
-    },
-  },
+  // proxy: {
+  //   '/api': { 
+  //     target: 'https://openweathermap.org',
+  //     pathRewrite: {
+  //       '^/api': '/api'
+  //     }
+  //   },
+  // '/api': { 
+  //   target: 'http://localhost:5000',
+  //   // pathRewrite: {
+  //   //   '^/api': '/api'
+  //   // }
+  // },
   axios: {
     baseURL: 'http://localhost:5000',
    },
-   // auth: {
-   //   redirect: {
-   //     login: '/users/login', 
-   //     logout: '/',
-   //     callback: false,
-   //     home: '/'
-   //   },
-   //   strategies: {
-   //     local: {
-   //       endpoints: {
-   //         login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
-   //         logout: false,
-   //         user: false
-   //       }
-   //     }
-   //   }  
-   // },
+   auth: {
+     redirect: {
+       login: '/users/login', 
+       logout: '/',
+       callback: false,
+       home: '/'
+     },
+     strategies: {
+       local: {
+         endpoints: {
+           login: { url: '/api/v1/auth/sign_in', method: 'post', propertyName: 'token' },
+           logout: false,
+           user: false
+         }
+       }
+     }  
+   },
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module

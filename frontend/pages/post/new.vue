@@ -10,7 +10,6 @@
             </v-tab>
           </v-tabs>
         </v-card>
-        <checkbox @category="catchCategory" @maker="catchMaker" />
       </v-col>
       <v-col sm="9" cols="12">
         <v-tabs-items v-model="tab">
@@ -20,7 +19,6 @@
                 v-if="loading"
                 :posts="newPosts"
                 :cate="category"
-                :make="maker"
               />
             </v-card>
           </v-tab-item>
@@ -29,7 +27,6 @@
               <new-post-list
                 :posts="newPlanPosts"
                 :cate="category"
-                :make="maker"
               />
             </v-card>
           </v-tab-item>
@@ -55,7 +52,6 @@ export default {
       loading: false,
       items: [{ title: "発売中" }, { title: "発売予定" }],
       category: [],
-      maker: [],
     }
   },
   computed: {
@@ -82,9 +78,6 @@ export default {
   methods: {
     catchCategory(category) {
       this.category = category
-    },
-    catchMaker(maker) {
-      this.maker = maker
     },
   },
 }

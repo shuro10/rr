@@ -96,7 +96,7 @@ resource "aws_lb_listener" "cs-backend-https-listener" {
   certificate_arn   = aws_acm_certificate.cs-backend-acm.arn
 
   default_action {
-    target_group_arn = aws_lb_target_group.cs-alb-backend-tg.arn
+    target_group_arn = aws_lb_target_group.cs-backend-alb-tg.arn
     type             = "forward"
   }
 }
@@ -123,8 +123,8 @@ resource "aws_lb_target_group" "cs-frontend-alb-tg" {
   }
 }
 
-resource "aws_lb_target_group" "cs-alb-backend-tg" {
-  name        = "cs-alb-backend-tg"
+resource "aws_lb_target_group" "cs-backend-alb-tg" {
+  name        = "cs-backend-alb-tg"
   target_type = "ip"
   vpc_id      = aws_vpc.cs-vpc.id
   port        = 80

@@ -8,10 +8,9 @@ resource "aws_route53_zone" "cs-zone" {
 }
 /* Backend: DetasourceDefinition of HostZone */
 resource "aws_route53_zone" "cs-host-zone" {
-  name    = "meetwithkids.org"
-  comment = "meetwithkids.org host zone"
+  name    = "rinrei720.com"
+  comment = "rinrei720.com host zone"
 }
-
 
 /* Frontend: Definition of DNS Record of ALB */
 resource "aws_route53_record" "cs-zone-record" {
@@ -68,7 +67,7 @@ resource "aws_acm_certificate" "cs-backend-acm" {
     create_before_destroy = true
   }
   tags = {
-    "Name" = "Backend: meetwithkids.org"
+    "Name" = "Backend: rinrei720.com"
   }
 }
 

@@ -51,7 +51,7 @@ resource "aws_ecs_service" "cs-backend-ecs-service" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.cs-alb-backend-tg.arn
+    target_group_arn = aws_lb_target_group.cs-backend-alb-tg.arn
     container_name   = "backend-container"
     container_port   = "3000"
   }

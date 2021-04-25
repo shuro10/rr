@@ -56,14 +56,6 @@
                 </v-flex>
               </v-date-picker>
             </v-menu>
-
-<!-- 
-            <v-text-field
-              v-model.number="start_time"
-              placeholder=""
-              label="開始時間"
-            />-->
-
             <v-menu
               ref="starttimepicker"
               v-model="starttimepicker"
@@ -98,7 +90,6 @@
                 </v-flex>
               </v-time-picker>
             </v-menu>
-
             <v-menu
               ref="finishtimepicker"
               v-model="finishtimepicker"
@@ -133,7 +124,6 @@
                 </v-flex>
               </v-time-picker>
             </v-menu>
-
 
             <v-text-field
               v-model.number="member"

@@ -1,39 +1,39 @@
 /* ===============route53================ */
 /* Frontend: DetasourceDefinition of HostZone */
-resource "aws_route53_zone" "cs-zone" {
+resource "aws_route53_zone" "meetwithkids-zone" {
   name = "meetwithkids.org"
   tags = {
     "meetwithkids" = "meetwithkids.org" 
   }
 }
 /* Backend: DetasourceDefinition of HostZone */
-resource "aws_route53_zone" "cs-host-zone" {
+resource "aws_route53_zone" "meetwithkids-host-zone" {
   name    = "rinrei720.com"
   comment = "rinrei720.com host zone"
 }
 
 /* Frontend: Definition of DNS Record of ALB */
-resource "aws_route53_record" "cs-zone-record" {
-  zone_id = aws_route53_zone.cs-zone.id
-  name = aws_route53_zone.cs-zone.name
+resource "aws_route53_record" "meetwithkids-zone-record" {
+  zone_id = aws_route53_zone.meetwithkids-zone.id
+  name = aws_route53_zone.meetwithkids-zone.name
   type = "A"
 
   alias {
-    name = aws_lb.cs-frontend-alb.dns_name
-    zone_id = aws_lb.cs-frontend-alb.zone_id
+    name = aws_lb.meetwithkids-frontend-alb.dns_name
+    zone_id = aws_lb.meetwithkids-frontend-alb.zone_id
     evaluate_target_health = true
   }
 }
 
 /* Backend: Definition of DNS Record of ALB */
-resource "aws_route53_record" "cs-host-zone-record" {
-  zone_id = aws_route53_zone.cs-host-zone.zone_id
-  name    = aws_route53_zone.cs-host-zone.name
+resource "aws_route53_record" "meetwithkids-host-zone-record" {
+  zone_id = aws_route53_zone.meetwithkids-host-zone.zone_id
+  name    = aws_route53_zone.meetwithkids-host-zone.name
   type    = "A"
 
   alias {
-    name                   = aws_lb.cs-backend-alb.dns_name
-    zone_id                = aws_lb.cs-backend-alb.zone_id
+    name                   = aws_lb.meetwithkids-backend-alb.dns_name
+    zone_id                = aws_lb.meetwithkids-backend-alb.zone_id
     evaluate_target_health = true
   }
 }
@@ -45,8 +45,8 @@ resource "aws_route53_record" "cs-host-zone-record" {
 /* Definition of SSL証明書 */
 
 /* Frontend: Definition of SSL証明書 */
-resource "aws_acm_certificate" "cs-frontend-acm" {
-  domain_name               = aws_route53_record.cs-zone-record.name
+resource "aws_acm_certificate" "meetwithkids-frontend-acm" {
+  domain_name               = aws_route53_record.meetwithkids-zone-record.name
   subject_alternative_names = ["*.meetwithkids.org",]
   validation_method         = "DNS"
   lifecycle {
@@ -58,8 +58,8 @@ resource "aws_acm_certificate" "cs-frontend-acm" {
 }
 
 /* Backend: Definition of SSL証明書 */
-resource "aws_acm_certificate" "cs-backend-acm" {
-  domain_name               = aws_route53_record.cs-host-zone-record.name
+resource "aws_acm_certificate" "meetwithkids-backend-acm" {
+  domain_name               = aws_route53_record.meetwithkids-host-zone-record.name
   subject_alternative_names = []
   validation_method         = "DNS"
 
@@ -72,18 +72,18 @@ resource "aws_acm_certificate" "cs-backend-acm" {
 }
 
 /* Definition of Record for ValidationOfSSL証明書 */
-resource "aws_route53_record" "cs-certificate" {
-  name    = tolist(aws_acm_certificate.cs-backend-acm.domain_validation_options)[0].resource_record_name
-  type    = tolist(aws_acm_certificate.cs-backend-acm.domain_validation_options)[0].resource_record_type
-  records = [tolist(aws_acm_certificate.cs-backend-acm.domain_validation_options)[0].resource_record_value]
-  zone_id = aws_route53_zone.cs-host-zone.id
+resource "aws_route53_record" "meetwithkids-certificate" {
+  name    = tolist(aws_acm_certificate.meetwithkids-backend-acm.domain_validation_options)[0].resource_record_name
+  type    = tolist(aws_acm_certificate.meetwithkids-backend-acm.domain_validation_options)[0].resource_record_type
+  records = [tolist(aws_acm_certificate.meetwithkids-backend-acm.domain_validation_options)[0].resource_record_value]
+  zone_id = aws_route53_zone.meetwithkids-host-zone.id
   ttl     = 60
 }
 
 /* Waiting for FinishOfValidation */
-resource "aws_acm_certificate_validation" "cs-backend-acm" {
-  certificate_arn         = aws_acm_certificate.cs-backend-acm.arn
-  validation_record_fqdns = [aws_route53_record.cs-certificate.fqdn]
+resource "aws_acm_certificate_validation" "meetwithkids-backend-acm" {
+  certificate_arn         = aws_acm_certificate.meetwithkids-backend-acm.arn
+  validation_record_fqdns = [aws_route53_record.meetwithkids-certificate.fqdn]
 }
 
 /* ========================================== */

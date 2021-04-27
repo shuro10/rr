@@ -1,52 +1,52 @@
 /* ===============ALB================ */
 /* Frontend: ALB */
-resource "aws_lb" "cs-frontend-alb" {
-  name                       = "cs-frontend-alb"
+resource "aws_lb" "meetwithkids-frontend-alb" {
+  name                       = "meetwithkids-frontend-alb"
   load_balancer_type         = "application"
   internal                   = false
   idle_timeout               = 60
   enable_deletion_protection = false
 
   subnets = [
-    aws_subnet.cs-front-1a.id,
-    aws_subnet.cs-front-1c.id
+    aws_subnet.meetwithkids-front-1a.id,
+    aws_subnet.meetwithkids-front-1c.id
   ]
 
   security_groups = [
-    aws_security_group.cs-alb-sg.id
+    aws_security_group.meetwithkids-alb-sg.id
   ]
 
   tags = {
-    Name = "cs-frontend-alb"
+    Name = "meetwithkids-frontend-alb"
   }
 }
 
 /* Backend: ALB */
-resource "aws_lb" "cs-backend-alb" {
-  name                          = "cs-backend-alb"
+resource "aws_lb" "meetwithkids-backend-alb" {
+  name                          = "meetwithkids-backend-alb"
   load_balancer_type    = "application"
   internal                      = false
   idle_timeout               = 60
   enable_deletion_protection = false
 
   subnets = [
-    aws_subnet.cs-back-1a.id,
-    aws_subnet.cs-back-1c.id
+    aws_subnet.meetwithkids-back-1a.id,
+    aws_subnet.meetwithkids-back-1c.id
   ]
 
   security_groups = [
-    aws_security_group.cs-alb-sg.id
+    aws_security_group.meetwithkids-alb-sg.id
   ]
 
   tags = {
-    Name = "cs-backend-alb"
+    Name = "meetwithkids-backend-alb"
   }
 }
 
 
 /* Frontend: Listener */
-resource "aws_lb_listener" "cs-http-listener" {
-  load_balancer_arn = aws_lb.cs-frontend-alb.arn
+resource "aws_lb_listener" "meetwithkids-http-listener" {
+  load_balancer_arn = aws_lb.meetwithkids-frontend-alb.arn
   port                    = "80"
   protocol              = "HTTP"
 
@@ -60,21 +60,21 @@ resource "aws_lb_listener" "cs-http-listener" {
     }
   }
 }
-resource "aws_lb_listener" "cs-https-listener" {
-  load_balancer_arn = aws_lb.cs-frontend-alb.arn
+resource "aws_lb_listener" "meetwithkids-https-listener" {
+  load_balancer_arn = aws_lb.meetwithkids-frontend-alb.arn
   port                  = "443"
   protocol            = "HTTPS"
-  certificate_arn   = aws_acm_certificate.cs-frontend-acm.arn
+  certificate_arn   = aws_acm_certificate.meetwithkids-frontend-acm.arn
 
   default_action {
-    target_group_arn = aws_lb_target_group.cs-frontend-alb-tg.arn
+    target_group_arn = aws_lb_target_group.meetwithkids-frontend-alb-tg.arn
     type             = "forward"
   }
 }
 
 /* Backend: Listener */
-resource "aws_lb_listener" "cs-backend-http-listener" {
-  load_balancer_arn = aws_lb.cs-backend-alb.arn
+resource "aws_lb_listener" "meetwithkids-backend-http-listener" {
+  load_balancer_arn = aws_lb.meetwithkids-backend-alb.arn
   port              = "80"
   protocol          = "HTTP"
 
@@ -89,24 +89,24 @@ resource "aws_lb_listener" "cs-backend-http-listener" {
   }
 }
 
-resource "aws_lb_listener" "cs-backend-https-listener" {
-  load_balancer_arn = aws_lb.cs-backend-alb.arn
+resource "aws_lb_listener" "meetwithkids-backend-https-listener" {
+  load_balancer_arn = aws_lb.meetwithkids-backend-alb.arn
   port              = "443"
   protocol          = "HTTPS"
-  certificate_arn   = aws_acm_certificate.cs-backend-acm.arn
+  certificate_arn   = aws_acm_certificate.meetwithkids-backend-acm.arn
 
   default_action {
-    target_group_arn = aws_lb_target_group.cs-backend-alb-tg.arn
+    target_group_arn = aws_lb_target_group.meetwithkids-backend-alb-tg.arn
     type             = "forward"
   }
 }
 
 
 /* TargetGroup */
-resource "aws_lb_target_group" "cs-frontend-alb-tg" {
-  name        = "cs-frontend-alb-tg"
+resource "aws_lb_target_group" "meetwithkids-frontend-alb-tg" {
+  name        = "meetwithkids-frontend-alb-tg"
   target_type = "ip"
-  vpc_id      = aws_vpc.cs-vpc.id
+  vpc_id      = aws_vpc.meetwithkids-vpc.id
   port        = 80
   protocol    = "HTTP"
 
@@ -123,10 +123,10 @@ resource "aws_lb_target_group" "cs-frontend-alb-tg" {
   }
 }
 
-resource "aws_lb_target_group" "cs-backend-alb-tg" {
-  name        = "cs-backend-alb-tg"
+resource "aws_lb_target_group" "meetwithkids-backend-alb-tg" {
+  name        = "meetwithkids-backend-alb-tg"
   target_type = "ip"
-  vpc_id      = aws_vpc.cs-vpc.id
+  vpc_id      = aws_vpc.meetwithkids-vpc.id
   port        = 80
   protocol    = "HTTP"
 

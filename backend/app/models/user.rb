@@ -1,12 +1,12 @@
 class User < ApplicationRecord
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable
-              # :confirmable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable
+  # :confirmable, :omniauthable
   include DeviseTokenAuth::Concerns::User
 
   mount_uploader :image, ImageUploader
-  
+
   has_many :post_likes, dependent: :destroy
   has_many :postlike, through: :post_likes, source: :post
 
@@ -23,14 +23,11 @@ class User < ApplicationRecord
   has_many :reverses_of_relationship, class_name: 'Relationship', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverses_of_relationship, source: :user
 
-  has_many :menus, dependent: :destroy
-          
-
   def unjoin(other_post)
     join = self.post_joins.find_by(post_id: other_post.id)
     join&.destroy if join
   end
-  
+
   def unlike(other_post)
     like = self.post_likes.find_by(post_id: other_post.id)
     like&.destroy if like
@@ -57,5 +54,4 @@ class User < ApplicationRecord
   def self.search(user_name)
     User.where(['name LIKE ?', "%#{user_name}%"])
   end
-
 end

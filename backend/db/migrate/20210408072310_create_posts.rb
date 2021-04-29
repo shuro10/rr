@@ -12,7 +12,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :image
       t.date :release
       t.integer :price
-  
+
       t.timestamps
     end
   end

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :api do
-    namespace :v1, format: 'json' do    
+    namespace :v1, format: 'json' do
       mount_devise_token_auth_for 'User', at: 'auth', controllers: {
         registrations: 'api/v1/auth/registrations'
       }
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
       resource :post_likes, only: %i[create destroy]
       resource :post_joins, only: %i[create destroy]
       resource :review_likes, only: %i[create destroy]
-      
 
       get 'health_check', to: 'health_check#index'
     end

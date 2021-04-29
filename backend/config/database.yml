@@ -19,7 +19,7 @@ test:
 production:
   <<: *default
   database: production
-  host: terraform-20210421034757350200000001.cbch251i7aoz.ap-northeast-1.rds.amazonaws.com
+  host: terraform-20210427110221563100000006.cbch251i7aoz.ap-northeast-1.rds.amazonaws.com
   # database: app_production
   # url: <%= ENV['RR_DATABASE_URL'] %>
   # password: <%= ENV['DATABASE_PASSWORD'] %>

@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex"
+import { mapActions, mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -44,12 +44,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-      currentUser: "auth/currentUser",
+      currentUser: 'auth/currentUser',
     }),
   },
   methods: {
     ...mapActions({
-      logout: "auth/logout",
+      logout: 'auth/logout',
     }),
     pagelink(link) {
       this.$router.push({ path: link })

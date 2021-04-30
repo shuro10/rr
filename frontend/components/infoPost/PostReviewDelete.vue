@@ -60,20 +60,20 @@ export default {
         .delete(`api/v1/reviews/${this.review.id}`)
         .then(() => {
           this.$store.commit(
-            "flashMessage/setMessage",
-            "口コミを削除しました。",
+            'snackbarMessage/setMessage',
+            '口コミを削除しました。',
             { root: true }
           )
-          this.$store.commit("flashMessage/setType", "info", { root: true })
-          this.$store.commit("flashMessage/setStatus", true, { root: true })
+          this.$store.commit('snackbarMessage/setType', 'info', { root: true })
+          this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit("flashMessage/setStatus", false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
           }, 1000)
           this.$axios
             .get(`api/v1/posts/${this.$store.state.post.post.id}`)
             .then((res) => {
               console.log(res.data)
-              this.$store.commit("post/setPost", res.data, { root: true })
+              this.$store.commit('post/setPost', res.data, { root: true })
               this.dialog = false
             })
         })

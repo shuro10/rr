@@ -2,39 +2,39 @@
   <div style="background-color: green">
     <!-- ========== Profile ========== -->
     <template v-if="loading">
-     <v-parallax
-      height="300"
-      :src="require(`@/assets/images/aomori.jpg`)"
-    ></v-parallax>
+      <v-parallax
+        height="300"
+        :src="require(`@/assets/images/aomori.jpg`)"
+      ></v-parallax>
       <v-card>
-          <v-row class="mx-1 pb-10" no-gutters>    
-            <v-col cols="2" class="text-center">
-              <user-avatar :size="150" :user="user" class="ma-n16" />
-            </v-col>
-            <v-col cols="10">
-              <v-sheet>
-                <div class="user-name mt-3">
-                  <h2 class="display-1">
-                    {{ user.name }}
-                  </h2>
-                  <template v-if="loginUser && loginUser.id == user.id">
-                    <div class="pr-10">
-                      <user-id-setting />
-                    </div>
-                  </template>
+        <v-row class="mx-1 pb-10" no-gutters>
+          <v-col cols="2" class="text-center">
+            <user-avatar :size="150" :user="user" class="ma-n16" />
+          </v-col>
+          <v-col cols="10">
+            <v-sheet>
+              <div class="user-name mt-3">
+                <h2 class="display-1">
+                  {{ user.name }}
+                </h2>
+                <template v-if="loginUser && loginUser.id == user.id">
+                  <div class="pr-10">
+                    <user-id-setting />
+                  </div>
+                </template>
 
-                  <template v-if="loginUser && loginUser.id !== user.id">
-                    <div class="pr-10">
+                <template v-if="loginUser && loginUser.id !== user.id">
+                  <div class="pr-10">
                     <v-btn
                       v-if="follow"
                       rounded
                       min-width="125px"
                       :color="color"
                       class="font-weight-bold"
+                      style="text-transform: none"
                       @click="unfollowUser"
                       @mouseover="mouseover"
                       @mouseleave="mouseleave"
-                      style="text-transform: none"
                     >
                       {{ message }}
                     </v-btn>
@@ -43,49 +43,44 @@
                       rounded
                       min-width="125px"
                       color="blue"
-                      @click="followUser"
                       style="text-transform: none"
                       class="font-weight-bold"
+                      @click="followUser"
                     >
                       <v-icon class="mr-2"> mdi-account-plus </v-icon>
                       Follow
                     </v-btn>
-                    </div>
-                  </template>
-                </div>
-                <p class="subtitle-1 my-3">{{ user.profile }}</p>
-                <div class="following pt-2">
-                  <p>
-                    <span class="font-weight-bold">
-                      {{ user.followings.length }}
-                    </span>
-                    Following
-                  </p>
-                  <p class="ml-3">
-                    <span class="font-weight-bold">
-                      {{ user.followers.length }}
-                    </span>
-                    Followers
-                  </p>
-                </div>
-              </v-sheet>
-            </v-col>
-          </v-row>
-          <v-divider />
+                  </div>
+                </template>
+              </div>
+              <p class="subtitle-1 my-3">{{ user.profile }}</p>
+              <div class="following pt-2">
+                <p>
+                  <span class="font-weight-bold">
+                    {{ user.followings.length }}
+                  </span>
+                  Following
+                </p>
+                <p class="ml-3">
+                  <span class="font-weight-bold">
+                    {{ user.followers.length }}
+                  </span>
+                  Followers
+                </p>
+              </div>
+            </v-sheet>
+          </v-col>
+        </v-row>
+        <v-divider />
 
-          <v-tabs
-          v-model="tab"
-          background-color="transparent"
-          color="basil"
-          grow
-        >
-              <v-tab v-for="item in items" :key="item.title">
-                {{ item.title }}
-              </v-tab>
-          </v-tabs>
+        <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+          <v-tab v-for="item in items" :key="item.title">
+            {{ item.title }}
+          </v-tab>
+        </v-tabs>
       </v-card>
     </template>
-    <!-- ========== Profile ========== -->     
+    <!-- ========== Profile ========== -->
 
     <!-- ========== Tabs ========== -->
     <v-container class="px-13">
@@ -96,7 +91,7 @@
               <user-post-list :posts="user.postjoin" />
             </v-tab-item>
             <v-tab-item>
-              <user-post-list :posts="user.postlike" />                        
+              <user-post-list :posts="user.postlike" />
             </v-tab-item>
             <v-tab-item>
               <user-review-list :reviews="user.reviews" />
@@ -119,25 +114,21 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import userAvatar from "~/components/infoUser/UserAvatar.vue"
-import userPostList from "~/components/infoUser/UserPostList.vue"
-import userList from "~/components/infoUser/UserList.vue"
-import userReviewList from "~/components/infoUser/UserReviewList.vue"
-import userLikeReviewList from "~/components/infoUser/UserLikeReviewList.vue"
-import userIdSetting from "~/components/editUser/UserIdSetting.vue"
-/* import userMenuList from "~/components/UserMenuList.vue" */
+import { mapGetters } from 'vuex'
+import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import userPostList from '~/components/infoUser/UserPostList.vue'
+import userList from '~/components/infoUser/UserList.vue'
+import userReviewList from '~/components/infoUser/UserReviewList.vue'
+import userLikeReviewList from '~/components/infoUser/UserLikeReviewList.vue'
 
 export default {
-  name: "RR",
+  name: 'RR',
   components: {
     userAvatar,
     userPostList,
     userList,
     userReviewList,
     userLikeReviewList,
-    userIdSetting,
-/*     userMenuList, */
   },
   data() {
     return {
@@ -145,22 +136,22 @@ export default {
       loading: false,
       tab: null,
       follow: false,
-      message: "フォロー中",
-      color: "blue white--text",
+      message: 'フォロー中',
+      color: 'blue white--text',
       items: [
-        { title: "参加する", },
-        { title: "気になる", },
-        { title: "Review", },
-        { title: "Fav to Review", },
-        { title: "Follow", },
-        { title: "Follower", },
+        { title: '参加する' },
+        { title: '気になる' },
+        { title: 'Review' },
+        { title: 'Fav to Review' },
+        { title: 'Follow' },
+        { title: 'Follower' },
       ],
     }
   },
   computed: {
     ...mapGetters({
-      user: "user/user",
-      loginUser: "auth/loginUser",
+      user: 'user/user',
+      loginUser: 'auth/loginUser',
     }),
     postUpdate() {
       return this.$store.state.post.post
@@ -173,7 +164,7 @@ export default {
     postUpdate() {
       // POST再取得時にユーザーを更新
       this.$axios.get(`api/v1/users/${this.$route.params.id}`).then((res) => {
-        this.$store.commit("user/setUser", res.data, { root: true })
+        this.$store.commit('user/setUser', res.data, { root: true })
         console.log(res.data)
       })
     },
@@ -187,7 +178,7 @@ export default {
   },
   created() {
     this.$axios.get(`api/v1/users/${this.$route.params.id}`).then((res) => {
-      this.$store.commit("user/setUser", res.data, { root: true })
+      this.$store.commit('user/setUser', res.data, { root: true })
       console.log(res.data)
       this.loading = true
       if (this.loginUser) {
@@ -202,35 +193,35 @@ export default {
   },
   methods: {
     mouseover() {
-      this.color = "red white--text"
-      this.message = "Unfollow"
+      this.color = 'red white--text'
+      this.message = 'Unfollow'
     },
     mouseleave() {
-      this.color = "blue white--text"
-      this.message = "Following"
+      this.color = 'blue white--text'
+      this.message = 'Following'
     },
     followUser() {
       this.$axios
-        .post("/api/v1/relationships", {
+        .post('/api/v1/relationships', {
           user_id: this.loginUser.id,
           follow_id: this.user.id,
         })
         .then(() => {
-          this.$store.commit("flashMessage/setMessage", " フォローしました。", {
+          this.$store.commit('snackbarMessage/setMessage', ' フォローしました。', {
             root: true,
           })
-          this.$store.commit("flashMessage/setType", "#48A1EB", { root: true })
-          this.$store.commit("flashMessage/setStatus", true, { root: true })
+          this.$store.commit('snackbarMessage/setType', '#48A1EB', { root: true })
+          this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit("flashMessage/setStatus", false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
           }, 1000)
           this.$axios.get(`api/v1/users/${this.user.id}`).then((res) => {
             console.log(res.data)
-            this.$store.commit("user/setUser", res.data, { root: true })
+            this.$store.commit('user/setUser', res.data, { root: true })
             this.follow = true
             this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
               console.log(res.data)
-              this.$store.commit("auth/setLoginUser", res.data, { root: true })
+              this.$store.commit('auth/setLoginUser', res.data, { root: true })
             })
           })
         })
@@ -240,7 +231,7 @@ export default {
     },
     unfollowUser() {
       this.$axios
-        .delete("/api/v1/relationships", {
+        .delete('/api/v1/relationships', {
           params: {
             user_id: this.loginUser.id,
             follow_id: this.user.id,
@@ -248,22 +239,22 @@ export default {
         })
         .then(() => {
           this.$store.commit(
-            "flashMessage/setMessage",
-            " フォロー解除しました。",
+            'snackbarMessage/setMessage',
+            ' フォロー解除しました。',
             { root: true }
           )
-          this.$store.commit("flashMessage/setType", "#E35B4B", { root: true })
-          this.$store.commit("flashMessage/setStatus", true, { root: true })
+          this.$store.commit('snackbarMessage/setType', '#E35B4B', { root: true })
+          this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit("flashMessage/setStatus", false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
           }, 1000)
           this.$axios.get(`api/v1/users/${this.user.id}`).then((res) => {
             console.log(res.data)
-            this.$store.commit("user/setUser", res.data, { root: true })
+            this.$store.commit('user/setUser', res.data, { root: true })
             this.follow = false
             this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
               console.log(res.data)
-              this.$store.commit("auth/setLoginUser", res.data, { root: true })
+              this.$store.commit('auth/setLoginUser', res.data, { root: true })
             })
           })
         })

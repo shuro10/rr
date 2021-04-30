@@ -15,7 +15,7 @@
         ログイン
       </v-btn>
       <v-dialog v-model="loginModal" max-width="600px" persistent>
-        <login-modal />
+        <the-modal-login />
       </v-dialog>
       <v-btn
         class="ml-4 mr-2"
@@ -25,52 +25,52 @@
         新規登録
       </v-btn>
       <v-dialog v-model="signUpModal" max-width="600px" persistent>
-        <sign-up-modal />
+        <the-modal-sign-up />
       </v-dialog>
     </template>
     <template v-else>
-      <header-avatar />
+      <the-header-account-setting />
     </template>
   </v-app-bar>
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex"
-import headerAvatar from "~/components/HeaderAvatar.vue"
-import signUpModal from "~/components/layouts/SignUpModal.vue"
-import loginModal from "~/components/layouts/LoginModal.vue"
+import { mapGetters, mapActions } from 'vuex'
+import theHeaderAccountSetting from '~/components/layouts/TheHeaderAccountSetting.vue'
+import theModalSignUp from '~/components/layouts/TheModalSignUp.vue'
+import theModalLogin from '~/components/layouts/TheModalLogin.vue'
 
 export default {
   components: {
-    headerAvatar,
-    signUpModal,
-    loginModal,
+    theHeaderAccountSetting,
+    theModalSignUp,
+    theModalLogin,
   },
   data() {
     return {
       clipped: true,
       drawer: null,
       fixed: true,
-      links: [{ to: "/users/signup" }, { to: "/users/login" }],
+      links: [{ to: '/users/signup' }, { to: '/users/login' }],
     }
   },
   computed: {
     ...mapGetters({
-      loggedIn: "auth/isLoggedIn",
-      loginModal: "modal/loginModal",
-      signUpModal: "modal/signUpModal",
+      loggedIn: 'auth/isLoggedIn',
+      loginModal: 'modal/loginModal',
+      signUpModal: 'modal/signUpModal',
     }),
   },
   methods: {
     ...mapActions({
-      loginDialog: "modal/loginUser",
-      signUpDialog: "modal/signUpUser",
+      loginDialog: 'modal/loginUser',
+      signUpDialog: 'modal/signUpUser',
     }),
     pagelink(link) {
-      if (link == "/ranking") {
-        this.$store.dispatch("tab/getRankingTab", 0)
-      } else if (link == "/food/new") {
-        this.$store.dispatch("tab/getNewTab", 0)
+      if (link == '/ranking') {
+        this.$store.dispatch('tab/getRankingTab', 0)
+      } else if (link == '/food/new') {
+        this.$store.dispatch('tab/getNewTab', 0)
       }
     },
     link(link) {
@@ -84,7 +84,7 @@ export default {
 .header-title {
   color: white;
   font-size: 40px;
-  font-family: "Gill Sans", sans-serif;
+  font-family: 'Gill Sans', sans-serif;
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-family */
 }
 .link {

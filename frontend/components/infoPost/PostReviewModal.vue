@@ -24,7 +24,6 @@
         <v-form ref="form">
           <v-container>
             <div class="d-flex align-center my-2">
-              <span class="font-weight-bold"> 総合評価 </span>
               <v-rating
                 v-model="review.rate"
                 background-color="orange lighten-1"
@@ -45,7 +44,7 @@
             />
             <v-textarea
               v-model="review.content"
-              label="口コミ本文をいれてください"
+              label="メッセージ本文をいれてください"
             />
             <v-file-input
               accept="image/png, image/jpeg, image/bmp"
@@ -78,7 +77,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -91,19 +90,19 @@ export default {
     return {
       dialog: false,
       review: {
-        title: "",
-        content: "",
+        title: '',
+        content: '',
         rate: 0,
-        image: "",
+        image: '',
         user_id: this.$store.state.auth.loginUser.id,
         post_id: this.post.id,
       },
-      input_image: "",
+      input_image: '',
     }
   },
   computed: {},
   methods: {
-    ...mapActions({ reviewPost: "post/review" }),
+    ...mapActions({ reviewPost: 'post/review' }),
     postReview() {
       this.reviewPost(this.review)
       this.dialog = false
@@ -112,16 +111,16 @@ export default {
       this.review.image = file
       console.log(this.review.image)
       if (file !== undefined && file !== null) {
-        if (file.name.lastIndexOf(".") <= 0) {
+        if (file.name.lastIndexOf('.') <= 0) {
           return
         }
         const fr = new FileReader()
         fr.readAsDataURL(file)
-        fr.addEventListener("load", () => {
+        fr.addEventListener('load', () => {
           this.input_image = fr.result
         })
       } else {
-        this.input_image = ""
+        this.input_image = ''
       }
     },
   },

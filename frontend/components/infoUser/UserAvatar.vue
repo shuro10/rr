@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
+import { mapGetters } from 'vuex'
 
 export default {
   props: {
@@ -29,12 +29,12 @@ export default {
   },
   data() {
     return {
-      icon: require("@/assets/images/default-user.png"),
+      icon: require('@/assets/images/default-user.png'),
     }
   },
   computed: {
     ...mapGetters({
-      currentUser: "auth/currentUser",
+      currentUser: 'auth/currentUser',
     }),
   },
 }

@@ -6,7 +6,7 @@
         <v-icon>mdi-close</v-icon>
       </v-btn>
     </v-system-bar>
-    <v-card-title>
+    <v-card-title class="justify-center">
       <span class="headline">新規登録</span>
     </v-card-title>
     <v-card-text>
@@ -55,7 +55,6 @@
             @click:append="show2 = !show2"
           />
         </v-container>
-        <!-- <small class="ml-4">*必須項目</small> -->
         <v-card-actions>
           <v-btn
             :disabled="!isValid"
@@ -82,7 +81,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapActions } from 'vuex'
 export default {
   data() {
     const max = 30
@@ -92,37 +91,37 @@ export default {
       show2: false,
       noValidation: false,
       user: {
-        email: "",
-        password: "",
-        password_confirmation: "",
-        name: "",
-        image: "",
+        email: '',
+        password: '',
+        password_confirmation: '',
+        name: '',
+        image: '',
       },
       guest: {
-        email: "guestuser4501@gmail.com",
-        password: "guestuser",
+        email: process.env.RAILS_GUEST_ADDRESS,
+        password: process.env.RAILS_GUEST_KEY,
       },
       max,
       nameRules: [
-        (v) => !!v || "",
+        (v) => !!v || '',
         (v) => (!!v && max >= v.length) || `${max}文字以内で入力してください`,
       ],
-      emailRules: [(v) => !!v || "", (v) => /.+@.+\..+/.test(v) || ""],
+      emailRules: [(v) => !!v || '', (v) => /.+@.+\..+/.test(v) || ''],
     }
   },
   computed: {
     nameForm() {
-      const placeholder = this.noValidation ? undefined : "username"
+      const placeholder = this.noValidation ? undefined : 'username'
       return { placeholder }
     },
     emailForm() {
-      const placeholder = this.noValidation ? undefined : "your@email.com"
+      const placeholder = this.noValidation ? undefined : 'your@email.com'
       return { placeholder }
     },
     passwordRules() {
-      const min = "6文字以上"
+      const min = '6文字以上'
       const msg = `${min}。半角英数字•ﾊｲﾌﾝ•ｱﾝﾀﾞｰﾊﾞｰが使えます`
-      const required = (v) => !!v || ""
+      const required = (v) => !!v || ''
       const format = (v) => /^[\w-]{6,72}$/.test(v) || msg
 
       const rules = this.noValidation ? [required] : [format]
@@ -131,17 +130,17 @@ export default {
       return { rules, hint, placeholder }
     },
     toggle() {
-      const icon = this.show ? "mdi-eye" : "mdi-eye-off"
-      const type = this.show ? "text" : "password"
+      const icon = this.show ? 'mdi-eye' : 'mdi-eye-off'
+      const type = this.show ? 'text' : 'password'
       return { icon, type }
     },
   },
   methods: {
     ...mapActions({
-      signUp: "auth/signUp",
-      login: "auth/login",
-      loginDialog: "modal/loginUser",
-      signUpDialog: "modal/signUpUser",
+      signUp: 'auth/signUp',
+      login: 'auth/login',
+      loginDialog: 'modal/loginUser',
+      signUpDialog: 'modal/signUpUser',
     }),
     setImage(e) {
       this.user.image = e

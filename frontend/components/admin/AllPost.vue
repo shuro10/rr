@@ -16,19 +16,19 @@
               Pickup
             </v-btn>
           </template>
-                <v-list dense>
-                  <v-list-item link>
-                    <v-list-item-title
-                      v-if="post.pickups[0]"
-                      @click="unpickup(post.pickups[0].id)"
-                    >
-                      Pickup
-                    </v-list-item-title>
-                    <v-list-item-title v-else @click="pickup(post.id)">
-                      Unpickup
-                    </v-list-item-title>
-                  </v-list-item>
-                </v-list>
+          <v-list dense>
+            <v-list-item link>
+              <v-list-item-title
+                v-if="post.pickups[0]"
+                @click="unpickup(post.pickups[0].id)"
+              >
+                Pickup
+              </v-list-item-title>
+              <v-list-item-title v-else @click="pickup(post.id)">
+                Unpickup
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
         </v-menu>
 
         <post-edit :post="post" />
@@ -51,14 +51,14 @@
         <span>カテゴリ:{{ post.category }}</span>
       </div>
       <!-- <div class="caption">
-        <span v-if="post.pickups[0]">ピックアップ</span>
+        <span v-if="post.pickups[0]">Pickups</span>
       </div> -->
     </v-card>
   </div>
 </template>
 
 <script>
-import postEdit from "~/components/admin/PostEdit.vue"
+import postEdit from '~/components/admin/PostEdit.vue'
 
 export default {
   components: {
@@ -79,7 +79,7 @@ export default {
         .delete(`api/v1/posts/${id}`)
         .then((res) => {
           console.log(res.data)
-          console.log("カード削除")
+          console.log('Success')
         })
         .catch((err) => {
           console.log(err)
@@ -87,12 +87,12 @@ export default {
     },
     pickup(id) {
       this.$axios
-        .post("api/v1/pickups", {
+        .post('api/v1/pickups', {
           post_id: id,
         })
         .then((res) => {
           console.log(res.data)
-          console.log("ピックアップに追加")
+          console.log('added in pickups')
         })
         .catch((err) => {
           console.log(err)
@@ -103,7 +103,7 @@ export default {
         .delete(`api/v1/pickups/${id}`)
         .then((res) => {
           console.log(res.data)
-          console.log("ピックアップから削除")
+          console.log('Success')
         })
         .catch((err) => {
           console.log(err)

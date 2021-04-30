@@ -19,10 +19,10 @@ export const mutations = {
 
 export const actions = {
   async loginUser({ commit }, bool) {
-    commit("clickLoginModal", bool)
+    commit('clickLoginModal', bool)
   },
   async signUpUser({ commit }, bool) {
-    commit("clickSignUpModal", bool)
+    commit('clickSignUpModal', bool)
   },
 }
 

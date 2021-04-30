@@ -3,14 +3,14 @@ export const mutations = {
     const result = []
     if (sort.outdoor) {
       posts.filter((value) => {
-        if (value.category.indexOf("アウトドア") !== -1) {
+        if (value.category.includes('アウトドア')) {
           result.push(value)
         }
       })
     }
     if (sort.indoor) {
       posts.filter((value) => {
-        if (value.category.indexOf("インドア") !== -1) {
+        if (value.category.includes('インドア')) {
           result.push(value)
         }
       })

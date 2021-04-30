@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import userAvatar from "~/components/infoUser/UserAvatar.vue"
-import userFollow from "~/components/infoUser/UserFollow.vue"
+import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import userFollow from '~/components/infoUser/UserFollow.vue'
 // import { mapActions } from "vuex"
 
 export default {
@@ -104,7 +104,7 @@ export default {
   right: 100%;
   top: 50%;
   border: solid transparent;
-  content: "";
+  content: '';
   height: 0;
   width: 0;
   position: absolute;

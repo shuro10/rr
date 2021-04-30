@@ -1,10 +1,10 @@
 /* No Edit. It's OK */
-import createPersistedState from "vuex-persistedstate"
+import createPersistedState from 'vuex-persistedstate'
 
 export default ({ store }) => {
   window.onNuxtReady(() => {
     createPersistedState({
-      path: ["auth"],
+      path: ['auth'],
     })(store)
   })
 }

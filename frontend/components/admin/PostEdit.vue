@@ -62,76 +62,76 @@
             placeholder="例: 3000"
             label="価格"
           />
-          
-            <v-menu
-              ref="starttimepicker"
-              v-model="starttimepicker"
-              :close-on-content-click="false"
-              :return-value.sync="start_time"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
-              <template #activator="{ on, attrs }">
-                <v-text-field
-                  v-model="start_time"
-                  label="開始時刻"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                />
-              </template>
-            
-              <v-time-picker
-                v-model="start_time" 
-                elevation="15"
-                format="24hr"
-              >
-                <v-spacer></v-spacer>
-                <v-flex justify-center>
-                  <v-btn text color="primary" @click="starttimepicker = false">
-                    Cancel
-                  </v-btn>
-                  <v-btn text color="primary" @click="$refs.starttimepicker.save(start_time)">
-                    OK
-                  </v-btn>
-                </v-flex>
-              </v-time-picker>
-            </v-menu>
-            <v-menu
-              ref="finishtimepicker"
-              v-model="finishtimepicker"
-              :close-on-content-click="false"
-              :return-value.sync="finish_time"
-              transition="scale-transition"
-              offset-y
-              min-width="auto"
-            >
-              <template #activator="{ on, attrs }">
-                <v-text-field
-                  v-model="finish_time"
-                  label="終了時刻"
-                  readonly
-                  v-bind="attrs"
-                  v-on="on"
-                />
-              </template>   
-              <v-time-picker
-                v-model="finish_time" 
-                elevation="15"
-                format="24hr"
-              >
-                <v-spacer></v-spacer>
-                <v-flex justify-center>
-                  <v-btn text color="primary" @click="finishtimepicker = false">
-                    Cancel
-                  </v-btn>
-                  <v-btn text color="primary" @click="$refs.finishtimepicker.save(finish_time)">
-                    OK
-                  </v-btn>
-                </v-flex>
-              </v-time-picker>
-            </v-menu>
+
+          <v-menu
+            ref="starttimepicker"
+            v-model="starttimepicker"
+            :close-on-content-click="false"
+            :return-value.sync="start_time"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template #activator="{ on, attrs }">
+              <v-text-field
+                v-model="start_time"
+                label="開始時刻"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+              />
+            </template>
+
+            <v-time-picker v-model="start_time" elevation="15" format="24hr">
+              <v-spacer></v-spacer>
+              <v-flex justify-center>
+                <v-btn text color="primary" @click="starttimepicker = false">
+                  Cancel
+                </v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.starttimepicker.save(start_time)"
+                >
+                  OK
+                </v-btn>
+              </v-flex>
+            </v-time-picker>
+          </v-menu>
+          <v-menu
+            ref="finishtimepicker"
+            v-model="finishtimepicker"
+            :close-on-content-click="false"
+            :return-value.sync="finish_time"
+            transition="scale-transition"
+            offset-y
+            min-width="auto"
+          >
+            <template #activator="{ on, attrs }">
+              <v-text-field
+                v-model="finish_time"
+                label="終了時刻"
+                readonly
+                v-bind="attrs"
+                v-on="on"
+              />
+            </template>
+            <v-time-picker v-model="finish_time" elevation="15" format="24hr">
+              <v-spacer></v-spacer>
+              <v-flex justify-center>
+                <v-btn text color="primary" @click="finishtimepicker = false">
+                  Cancel
+                </v-btn>
+                <v-btn
+                  text
+                  color="primary"
+                  @click="$refs.finishtimepicker.save(finish_time)"
+                >
+                  OK
+                </v-btn>
+              </v-flex>
+            </v-time-picker>
+          </v-menu>
 
           <v-text-field
             v-model.number="member"
@@ -166,11 +166,7 @@
                 v-on="on"
               />
             </template>
-            <v-date-picker 
-              v-model="release" 
-              scrollable
-              elevation="15"
-            >
+            <v-date-picker v-model="release" scrollable elevation="15">
               <v-spacer></v-spacer>
               <v-btn text color="primary" @click="menu = false"> Cancel </v-btn>
               <v-btn text color="primary" @click="$refs.menu.save(release)">
@@ -182,12 +178,12 @@
             <v-btn
               color="light-green darken-1"
               class="white--text"
-              @click="postEdit"
               block
               x-large
               icon
+              @click="postEdit"
             >
-            <v-icon>mdi-cube-send</v-icon>
+              <v-icon>mdi-cube-send</v-icon>
               保存する
             </v-btn>
           </v-card-actions>
@@ -213,63 +209,60 @@ export default {
       name: this.post.name,
       image: this.post.image,
       details: this.post.details,
-      start_time: this.$dayjs(this.post.start_time).format("hh:mm"),
-      finish_time: this.$dayjs(this.post.finish_time).format("hh:mm"),
+      start_time: this.$dayjs(this.post.start_time).format('hh:mm'),
+      finish_time: this.$dayjs(this.post.finish_time).format('hh:mm'),
       member: this.post.member,
       place: this.post.place,
       category: this.post.category,
       price: this.post.price,
       release: this.post.release,
-      categoryList: [
-        "インドア",
-        "アウトドア",
-      ],
+      categoryList: ['インドア', 'アウトドア'],
       menu: false,
       starttimepicker: false,
       finishtimepicker: false,
-      today: "",
+      today: '',
     }
   },
   computed: {},
   methods: {
     postEdit() {
       const formData = new FormData()
-      formData.append("name", this.name)
-      formData.append("image", this.image)
-      formData.append("details", this.details)
-      formData.append("start_time", this.start_time)
-      formData.append("finish_time", this.finish_time)
-      formData.append("member", this.member)
-      formData.append("place", this.place)
-      formData.append("category", this.category)
-      formData.append("release", this.release)
-      formData.append("price", this.price)
+      formData.append('name', this.name)
+      formData.append('image', this.image)
+      formData.append('details', this.details)
+      formData.append('start_time', this.start_time)
+      formData.append('finish_time', this.finish_time)
+      formData.append('member', this.member)
+      formData.append('place', this.place)
+      formData.append('category', this.category)
+      formData.append('release', this.release)
+      formData.append('price', this.price)
       const config = {
         headers: {
-          "content-type": "multipart/form-data",
+          'content-type': 'multipart/form-data',
         },
       }
       this.$axios
         .patch(`api/v1/posts/${this.id}`, formData, config)
         .then((res) => {
           console.log(res)
-          console.log("投稿を更新しました")
+          console.log('投稿を更新しました')
           this.editDialog = false
         })
         .catch((err) => {
           console.log(err)
-          console.log("投稿失敗")
+          console.log('投稿失敗')
         })
     },
     setImage(file) {
       this.image = file
       if (file !== undefined && file !== null) {
-        if (file.name.lastIndexOf(".") <= 0) {
+        if (file.name.lastIndexOf('.') <= 0) {
           return
         }
         const fr = new FileReader()
         fr.readAsDataURL(file)
-        fr.addEventListener("load", () => {
+        fr.addEventListener('load', () => {
           this.input_image = fr.result
         })
       } else {

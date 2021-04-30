@@ -24,10 +24,8 @@
 </template>
 
 <script>
-
 export default {
-  components: {
-  },
+  components: {},
   props: {
     posts: {
       type: Array,
@@ -36,7 +34,7 @@ export default {
   },
   data() {
     return {
-      defaultImage: require("@/assets/images/default.png"),
+      defaultImage: require('@/assets/images/default.png'),
     }
   },
   methods: {

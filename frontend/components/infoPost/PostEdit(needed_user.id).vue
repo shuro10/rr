@@ -15,7 +15,7 @@
             <v-icon> mdi-comment-edit </v-icon>
           </v-btn>
         </template>
-        <span>口コミ編集</span>
+        <span>メッセージ編集</span>
       </v-tooltip>
     </template>
 
@@ -106,7 +106,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -132,7 +132,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions({ editReview: "post/editReview" }),
+    ...mapActions({ editReview: 'post/editReview' }),
     postPostEdit() {
       this.editReview(this.reviewEdit)
       this.editDialog = false
@@ -140,12 +140,12 @@ export default {
     setImage(file) {
       this.reviewEdit.image = file
       if (file !== undefined && file !== null) {
-        if (file.name.lastIndexOf(".") <= 0) {
+        if (file.name.lastIndexOf('.') <= 0) {
           return
         }
         const fr = new FileReader()
         fr.readAsDataURL(file)
-        fr.addEventListener("load", () => {
+        fr.addEventListener('load', () => {
           this.input_image = fr.result
         })
       } else {

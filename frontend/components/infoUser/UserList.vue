@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import userAvatar from "~/components/infoUser/UserAvatar.vue"
-import userFollow from "~/components/infoUser/UserFollow.vue"
+import { mapGetters } from 'vuex'
+import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import userFollow from '~/components/infoUser/UserFollow.vue'
 
 export default {
   components: {
@@ -41,15 +41,15 @@ export default {
   },
   data() {
     return {
-      icon: require("@/assets/images/default-user.png"),
+      icon: require('@/assets/images/default-user.png'),
       follow: false,
     }
   },
   computed: {
     ...mapGetters({
-      loginUser: "auth/loginUser",
-      user: "user/user",
-      login: "auth/isLoggedIn",
+      loginUser: 'auth/loginUser',
+      user: 'user/user',
+      login: 'auth/isLoggedIn',
     }),
   },
   methods: {

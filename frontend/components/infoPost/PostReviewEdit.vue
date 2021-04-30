@@ -15,7 +15,7 @@
             <v-icon> mdi-comment-edit </v-icon>
           </v-btn>
         </template>
-        <span>口コミ編集</span>
+        <span>メッセージ編集</span>
       </v-tooltip>
     </template>
 
@@ -33,7 +33,6 @@
         <v-form ref="form">
           <v-container>
             <div class="d-flex align-center my-2">
-              <span class="font-weight-bold"> 評価 </span>
               <v-rating
                 v-model="reviewEdit.rate"
                 background-color="orange lighten-1"
@@ -50,11 +49,11 @@
             </div>
             <v-text-field
               v-model="reviewEdit.title"
-              label="タイトルを入れてください"
+              label="タイトル記入"
             />
             <v-textarea
               v-model="reviewEdit.content"
-              label="口コミ本文をいれてください"
+              label="メッセージ記入"
             />
             <v-file-input
               v-model="reviewEdit.image"
@@ -106,7 +105,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex"
+import { mapActions } from 'vuex'
 
 export default {
   props: {
@@ -132,7 +131,7 @@ export default {
   },
   computed: {},
   methods: {
-    ...mapActions({ editReview: "post/editReview" }),
+    ...mapActions({ editReview: 'post/editReview' }),
     postReviewEdit() {
       this.editReview(this.reviewEdit)
       this.editDialog = false
@@ -140,12 +139,12 @@ export default {
     setImage(file) {
       this.reviewEdit.image = file
       if (file !== undefined && file !== null) {
-        if (file.name.lastIndexOf(".") <= 0) {
+        if (file.name.lastIndexOf('.') <= 0) {
           return
         }
         const fr = new FileReader()
         fr.readAsDataURL(file)
-        fr.addEventListener("load", () => {
+        fr.addEventListener('load', () => {
           this.input_image = fr.result
         })
       } else {

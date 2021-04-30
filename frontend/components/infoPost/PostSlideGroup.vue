@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import postCardMenu from "~/components/infoPost/PostCardMenu.vue"
+import postCardMenu from '~/components/infoPost/PostCardMenu.vue'
 
 export default {
   components: {
@@ -45,7 +45,7 @@ export default {
   },
   data() {
     return {
-      defaultImage: require("@/assets/images/default.png"),
+      defaultImage: require('@/assets/images/default.png'),
     }
   },
   methods: {

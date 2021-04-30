@@ -11,9 +11,6 @@
         <v-col cols="12">
           <v-tabs-items v-model="tab">
             <v-tab-item>
-              <post-create />
-            </v-tab-item>
-            <v-tab-item>
               <all-post :posts="posts" />
             </v-tab-item>
             <v-tab-item>
@@ -37,16 +34,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import postCreate from "~/components/admin/PostCreate.vue"
-import allPost from "~/components/admin/AllPost.vue"
-import allUser from "~/components/admin/AllUser.vue"
-import allReview from "~/components/admin/AllReview.vue"
-import StoreStateCheck from "~/components/admin/StoreStateCheck.vue"
+import { mapGetters } from 'vuex'
+import allPost from '~/components/admin/AllPost.vue'
+import allUser from '~/components/admin/AllUser.vue'
+import allReview from '~/components/admin/AllReview.vue'
+import StoreStateCheck from '~/components/admin/StoreStateCheck.vue'
 
 export default {
   components: {
-    postCreate,
     allPost,
     allUser,
     allReview,
@@ -56,11 +51,10 @@ export default {
     return {
       tab: null,
       items: [
-        { title: "Create Post" },
-        { title: "Post" },
-        { title: "Review" },
-        { title: "User" },
-        { title: "Store" },
+        { title: 'Post' },
+        { title: 'Review' },
+        { title: 'User' },
+        { title: 'Store' },
       ],
       users: [],
       posts: [],
@@ -69,20 +63,20 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isAdmin: "auth/isAdmin",
-      isLoggedIn: "auth/isLoggedIn",
+      isAdmin: 'auth/isAdmin',
+      isLoggedIn: 'auth/isLoggedIn',
     }),
   },
   created() {
-    this.$axios.get("api/v1/users").then((res) => {
+    this.$axios.get('api/v1/users').then((res) => {
       console.log(res.data)
       this.users = res.data
     })
-    this.$axios.get("api/v1/allpost").then((res) => {
+    this.$axios.get('api/v1/allpost').then((res) => {
       console.log(res.data)
       this.posts = res.data
     })
-    this.$axios.get("api/v1/reviews").then((res) => {
+    this.$axios.get('api/v1/reviews').then((res) => {
       console.log(res.data)
       this.reviews = res.data
     })

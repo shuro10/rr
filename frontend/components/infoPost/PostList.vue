@@ -16,7 +16,7 @@
           <v-list-item-title class="list-item" @click="pagelink(post.id)">
             {{ post.name }}
           </v-list-item-title>
-          <post-card-menu :post="post" />
+          <!-- <post-card-menu :post="post" /> -->
         </v-list-item>
       </v-row>
       <!-- </v-list-item-group> -->
@@ -25,11 +25,11 @@
 </template>
 
 <script>
-import postCardMenu from "~/components/infoPost/PostCardMenu.vue"
+/* import postCardMenu from '~/components/infoPost/PostCardMenu.vue' */
 
 export default {
   components: {
-    postCardMenu,
+    /* postCardMenu, */
   },
   props: {
     posts: {
@@ -39,7 +39,7 @@ export default {
   },
   data() {
     return {
-      defaultImage: require("@/assets/images/default.png"),
+      defaultImage: require('@/assets/images/default.png'),
     }
   },
   methods: {

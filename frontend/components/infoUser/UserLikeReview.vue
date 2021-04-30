@@ -112,11 +112,11 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex"
-import postReviewEdit from "~/components/infoPost/PostReviewEdit.vue"
-import postReviewDelete from "~/components/infoPost/PostReviewDelete.vue"
-import userAvatar from "~/components/infoUser/UserAvatar.vue"
-import userDialogLike from "~/components/infoUser/UserDialogLike.vue"
+import { mapGetters, mapActions } from 'vuex'
+import postReviewEdit from '~/components/infoPost/PostReviewEdit.vue'
+import postReviewDelete from '~/components/infoPost/PostReviewDelete.vue'
+import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import userDialogLike from '~/components/infoUser/UserDialogLike.vue'
 
 export default {
   components: {
@@ -133,17 +133,17 @@ export default {
   },
   data() {
     return {
-      createDate: "",
+      createDate: '',
       rating: this.review.rate,
       expand: false,
-      defaultImage: require("@/assets/images/default.png"),
+      defaultImage: require('@/assets/images/default.png'),
       like: false,
     }
   },
   computed: {
     ...mapGetters({
-      loginUser: "auth/loginUser",
-      login: "auth/isLoggedIn",
+      loginUser: 'auth/loginUser',
+      login: 'auth/isLoggedIn',
     }),
     loginUserReview() {
       return this.$store.state.user.user
@@ -163,7 +163,7 @@ export default {
     },
   },
   mounted() {
-    this.createDate = this.$dayjs(this.review.created_at).format("YYYY/MM/DD")
+    this.createDate = this.$dayjs(this.review.created_at).format('YYYY/MM/DD')
     if (this.login) {
       this.like = false
       this.review.review_likes.forEach((f) => {
@@ -175,8 +175,8 @@ export default {
   },
   methods: {
     ...mapActions({
-      likeReview: "review/likeReview",
-      unLikeReview: "review/unLikeReview",
+      likeReview: 'review/likeReview',
+      unLikeReview: 'review/unLikeReview',
     }),
     nice() {
       const postData = {
@@ -188,7 +188,7 @@ export default {
           this.$axios
             .$get(`/api/v1/users/${this.$route.params.id}`)
             .then((res) => {
-              this.$store.commit("user/setUser", res, { root: true })
+              this.$store.commit('user/setUser', res, { root: true })
               this.like = false
             })
         })
@@ -197,7 +197,7 @@ export default {
           this.$axios
             .$get(`/api/v1/users/${this.$route.params.id}`)
             .then((res) => {
-              this.$store.commit("user/setUser", res, { root: true })
+              this.$store.commit('user/setUser', res, { root: true })
               this.like = true
             })
         })
@@ -232,7 +232,7 @@ export default {
   right: 100%;
   top: 50%;
   border: solid transparent;
-  content: "";
+  content: '';
   height: 0;
   width: 0;
   position: absolute;

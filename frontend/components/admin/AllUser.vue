@@ -38,7 +38,7 @@ export default {
         .delete(`api/v1/users/${id}`)
         .then((res) => {
           console.log(res.data)
-          console.log("ユーザー削除")
+          console.log('ユーザー削除')
         })
         .catch((err) => {
           console.log(err)

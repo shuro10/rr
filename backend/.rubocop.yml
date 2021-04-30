@@ -53,7 +53,9 @@ Style/GuardClause:
 
 Rails/BulkChangeTable:
   Database: mysql
-  
+  Exclude:
+  - 'db/migrate/20210405012932_devise_token_auth_create_users.rb'
+
 ##################### Lint ##################################
 
 ##################### Metrics ##################################
@@ -77,10 +79,12 @@ Metrics/MethodLength:
   Max: 20
   Exclude:
     - "db/migrate/*.rb"
+    - 'app/controllers/api/v1/posts_controller.rb'
+    - 'app/controllers/api/v1/users_controller.rb'
 
 # ブロックの行数
 Metrics/BlockLength:
   Max: 25
   Exclude:
     - "config/routes.rb"
-
+    - 'spec/**/*'

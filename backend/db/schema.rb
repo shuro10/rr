@@ -108,8 +108,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
     t.string "name"
     t.string "image"
     t.string "email"
-    t.string "profile"
-    t.string "text"
+    t.text "profile"
     t.boolean "admin", default: false
     t.text "tokens"
     t.datetime "created_at", precision: 6, null: false

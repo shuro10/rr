@@ -23,6 +23,7 @@
     "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/proxy": "^2.1.0",
     "dayjs": "^1.10.4",
+    "lodash": "^4.17.21",
     "nuxt": "^2.0.0",
     "nuxt-client-init-module": "^0.3.0",
     "nuxt-i18n": "^6.25.0",

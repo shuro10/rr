@@ -4,9 +4,9 @@ module.exports = {
       '@babel/preset-env',
       {
         modules: false,
-        useBuiltIns: 'usage'
-      }
-    ]
+        useBuiltIns: 'usage',
+      },
+    ],
   ],
   env: {
     test: {
@@ -15,11 +15,11 @@ module.exports = {
           '@babel/preset-env',
           {
             targets: {
-              node: 'current'
-            }
-          }
-        ]
-      ]
-    }
-  }
+              node: 'current',
+            },
+          },
+        ],
+      ],
+    },
+  },
 }

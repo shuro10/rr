@@ -6,6 +6,7 @@ module.exports = {
   },
   extends: [
     '@nuxtjs/eslint-config-typescript',
+    'eslint:recommended',
     'prettier',
     'prettier/vue',
     'plugin:prettier/recommended',
@@ -16,5 +17,14 @@ module.exports = {
   ],
   // add your custom rules here
   rules: {
+    "no-console": "off",
+    "no-unused-vars": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }
+    ]
   }
 }

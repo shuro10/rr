@@ -15,7 +15,8 @@ test:
   <<: *default
   database: app_test
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-
+  host: terraform-20210427110221563100000006.cbch251i7aoz.ap-northeast-1.rds.amazonaws.com
+  
 production:
   <<: *default
   database: production

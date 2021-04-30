@@ -53,8 +53,8 @@ Style/GuardClause:
 
 Rails/BulkChangeTable:
   Database: mysql
-  Exclude:
-  - 'db/migrate/20210405012932_devise_token_auth_create_users.rb'
+  # Exclude:
+  # - 'db/migrate/20210405012932_devise_token_auth_create_users.rb'
 
 ##################### Lint ##################################
 

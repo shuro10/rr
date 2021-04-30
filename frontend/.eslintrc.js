@@ -26,5 +26,11 @@ module.exports = {
         "trailingComma": "es5"
       }
     ]
-  }
+  },
+  overrides: [
+    {
+      files: ["*.vue"],
+      processor: "vue/.vue"
+    }
+  ]
 }

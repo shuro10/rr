@@ -98,13 +98,21 @@ export default {
           follow_id: this.user.id,
         })
         .then(() => {
-          this.$store.commit('snackbarMessage/setMessage', ' フォローしました。', {
+          this.$store.commit(
+            'snackbarMessage/setMessage',
+            ' フォローしました。',
+            {
+              root: true,
+            }
+          )
+          this.$store.commit('snackbarMessage/setType', 'success', {
             root: true,
           })
-          this.$store.commit('snackbarMessage/setType', 'success', { root: true })
           this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, {
+              root: true,
+            })
           }, 1000)
           this.$axios.get(`api/v1/users/${this.watchUser.id}`).then((res) => {
             console.log(res.data)
@@ -137,7 +145,9 @@ export default {
           this.$store.commit('snackbarMessage/setType', 'info', { root: true })
           this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, {
+              root: true,
+            })
           }, 1000)
           this.$axios.get(`api/v1/users/${this.watchUser.id}`).then((res) => {
             console.log(res.data)

@@ -90,10 +90,10 @@
                 <v-card>
                   <v-card-text>
                     <div class="font-weight-bold ml-8 mb-2">
-                      メッセージ :
+                      メッセージ:
                       <!-- <user-dialog-review :users="post.reviews" :title="'メッセージしたユーザー'" /> -->
                       <br />
-                      気になる　 :
+                      気になる:
                       <!-- <user-dialog :users="post.like_users" :title="'気になるユーザー'" /> -->
                     </div>
                   </v-card-text>

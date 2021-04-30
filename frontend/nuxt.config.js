@@ -78,7 +78,7 @@ export default {
   //   // }
   // },
   axios: {
-    baseURL: process.env.BASE_URL
+    baseURL: process.env.BASE_URL,
   },
   auth: {
     redirect: {

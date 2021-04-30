@@ -24,25 +24,24 @@
 
 <script>
 export default {
-  components: {
-  },
+  components: {},
   props: {
     posts: {
       type: Array,
-      required: true
+      required: true,
     },
     cate: {
       type: Array,
-      required: true
+      required: true,
     },
     make: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
-      defaultImage: require('@/assets/images/default.png')
+      defaultImage: require('@/assets/images/default.png'),
     }
   },
   computed: {
@@ -62,10 +61,7 @@ export default {
           }
         })
       }
-      if (
-        !this.cate.indoor &&
-        !this.cate.outdoor
-      ) {
+      if (!this.cate.indoor && !this.cate.outdoor) {
         this.posts.filter((value) => {
           result.push(value)
         })
@@ -78,13 +74,13 @@ export default {
           return 0
         })
         .slice(0, 10)
-    }
+    },
   },
   methods: {
     pagelink(link) {
       this.$router.push({ path: `/post/${link}` })
-    }
-  }
+    },
+  },
 }
 </script>
 

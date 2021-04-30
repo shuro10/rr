@@ -207,13 +207,21 @@ export default {
           follow_id: this.user.id,
         })
         .then(() => {
-          this.$store.commit('snackbarMessage/setMessage', ' フォローしました。', {
+          this.$store.commit(
+            'snackbarMessage/setMessage',
+            ' フォローしました。',
+            {
+              root: true,
+            }
+          )
+          this.$store.commit('snackbarMessage/setType', '#48A1EB', {
             root: true,
           })
-          this.$store.commit('snackbarMessage/setType', '#48A1EB', { root: true })
           this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, {
+              root: true,
+            })
           }, 1000)
           this.$axios.get(`api/v1/users/${this.user.id}`).then((res) => {
             console.log(res.data)
@@ -243,10 +251,14 @@ export default {
             ' フォロー解除しました。',
             { root: true }
           )
-          this.$store.commit('snackbarMessage/setType', '#E35B4B', { root: true })
+          this.$store.commit('snackbarMessage/setType', '#E35B4B', {
+            root: true,
+          })
           this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, {
+              root: true,
+            })
           }, 1000)
           this.$axios.get(`api/v1/users/${this.user.id}`).then((res) => {
             console.log(res.data)

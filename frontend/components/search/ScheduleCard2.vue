@@ -91,7 +91,7 @@
       メッセージ :
       <user-dialog-review :users="post.reviews" :title="'メッセージしたユーザー'" />
       <br />
-      気になる　 :
+      気になる :
       <user-dialog :users="post.like_users" :title="'気になるユーザー'" />
     </div>
  -->
@@ -147,7 +147,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+// import { mapGetters, mapActions } from 'vuex'
 
 export default {
   props: {

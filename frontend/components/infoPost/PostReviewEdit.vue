@@ -47,14 +47,8 @@
                 {{ reviewEdit.rate }}
               </span>
             </div>
-            <v-text-field
-              v-model="reviewEdit.title"
-              label="タイトル記入"
-            />
-            <v-textarea
-              v-model="reviewEdit.content"
-              label="メッセージ記入"
-            />
+            <v-text-field v-model="reviewEdit.title" label="タイトル記入" />
+            <v-textarea v-model="reviewEdit.content" label="メッセージ記入" />
             <v-file-input
               v-model="reviewEdit.image"
               accept="image/png, image/jpeg, image/bmp"

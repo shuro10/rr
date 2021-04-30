@@ -87,7 +87,9 @@ export const actions = {
       .then((res) => {
         console.log(res.data)
         commit('setCurrentUser', res.data)
-        commit('snackbarMessage/setMessage', 'ログインしました。', { root: true })
+        commit('snackbarMessage/setMessage', 'ログインしました。', {
+          root: true,
+        })
         commit('snackbarMessage/setType', 'success', { root: true })
         commit('snackbarMessage/setStatus', true, { root: true })
         setTimeout(() => {

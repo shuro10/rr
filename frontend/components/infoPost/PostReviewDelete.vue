@@ -67,7 +67,9 @@ export default {
           this.$store.commit('snackbarMessage/setType', 'info', { root: true })
           this.$store.commit('snackbarMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, { root: true })
+            this.$store.commit('snackbarMessage/setStatus', false, {
+              root: true,
+            })
           }, 1000)
           this.$axios
             .get(`api/v1/posts/${this.$store.state.post.post.id}`)

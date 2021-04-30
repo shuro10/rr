@@ -220,9 +220,13 @@ export const actions = {
         })
       })
       .catch((err) => {
-        commit('snackbarMessage/setMessage', 'メッセージの投稿に失敗しました。', {
-          root: true,
-        })
+        commit(
+          'snackbarMessage/setMessage',
+          'メッセージの投稿に失敗しました。',
+          {
+            root: true,
+          }
+        )
         commit('snackbarMessage/setType', 'error', { root: true })
         commit('snackbarMessage/setStatus', true, { root: true })
         setTimeout(() => {
@@ -265,9 +269,13 @@ export const actions = {
         })
       })
       .catch((err) => {
-        commit('snackbarMessage/setMessage', 'メッセージの更新に失敗しました。', {
-          root: true,
-        })
+        commit(
+          'snackbarMessage/setMessage',
+          'メッセージの更新に失敗しました。',
+          {
+            root: true,
+          }
+        )
         commit('snackbarMessage/setType', 'error', { root: true })
         commit('snackbarMessage/setStatus', true, { root: true })
         setTimeout(() => {

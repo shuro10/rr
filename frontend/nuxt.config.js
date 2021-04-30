@@ -125,11 +125,7 @@ export default {
   /*
    ** Build configuration
    */
-  build: {
-    /*
-     */
-    extend(config, ctx) {},
-  },
+  build: {},
 
   /* ================ */
 

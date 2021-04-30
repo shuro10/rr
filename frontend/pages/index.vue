@@ -20,6 +20,10 @@ import ScheduleCard from '~/components/ScheduleCard.vue'
 import Search from '~/components/search/Search.vue'
 
 export default {
+  components: {
+    ScheduleCard,
+    Search,
+  },
   /* 
     async asyncData({ $axios }) {
     const weatherData = await $axios.$get(
@@ -50,10 +54,6 @@ export default {
     postUpdate() {
       return this.$store.state.post.post
     },
-  },
-  components: {
-    ScheduleCard,
-    Search,
   },
   methods: {},
 }

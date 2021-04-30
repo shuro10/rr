@@ -14,12 +14,12 @@ development:
 test:
   <<: *default
   database: app_test
-  password: ENV['MYSQL_ROOT_PASSWORD']
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
 production:
   <<: *default
   database: production
-  host: ENV['RR_HOST']
+  host: <%= ENV['RR_HOST'] %>
   # database: app_production
   # url: <%= ENV['RR_DATABASE_URL'] %>
   # password: <%= ENV['DATABASE_PASSWORD'] %>

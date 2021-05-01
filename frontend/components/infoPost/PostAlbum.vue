@@ -1,5 +1,6 @@
 <template>
   <div style="background-color: white">
+    
     <v-carousel hide-delimiters height="auto">
       <v-carousel-item>
         <v-row no-gutters>
@@ -115,7 +116,12 @@
 </template>
 
 <script>
+
+
 export default {
+  components:{
+
+  },
   methods: {
     next() {
       alert('You clicked next!')

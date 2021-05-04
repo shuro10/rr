@@ -1,20 +1,20 @@
 <template>
   <v-dialog v-model="dialog" max-width="600">
     <template #activator="{ on, attrs }">
-    <div align="center" justify="center" class="mb5">
-      <v-btn
-        color="green lighten-1 white--text font-weight-bold"
-        v-bind="attrs"
-        v-on="on"
-      >
-        画像アップロード
-      </v-btn>
-    </div>
+      <div align="center" justify="center" class="mb5">
+        <v-btn
+          color="green lighten-1 white--text font-weight-bold"
+          v-bind="attrs"
+          v-on="on"
+        >
+          画像アップロード
+        </v-btn>
+      </div>
     </template>
 
     <v-card>
       <v-system-bar lights-out>
-         <v-spacer></v-spacer>
+        <v-spacer></v-spacer>
         <v-btn icon class="mt-5" @click="dialog = false">
           <v-icon>mdi-close</v-icon>
         </v-btn>
@@ -32,7 +32,7 @@
               @change="setImage"
             />
             <v-img
-              v-if="postphoto.image"
+              v-if="post.photoshot.url"
               :src="input_image"
               contain
               max-width="600"
@@ -44,7 +44,7 @@
               color="light-green darken-1"
               class="white--text font-weight-bold pa-5 mt-3"
               block
-              @click="photoPost"
+              @click="postPhotoshot"
             >
               画像投稿
             </v-btn>
@@ -72,7 +72,7 @@ export default {
         title: '',
         content: '',
         rate: 0,
-        image: '',
+        photoshot: '',
         user_id: this.$store.state.auth.loginUser.id,
         post_id: this.post.id,
       },
@@ -81,59 +81,33 @@ export default {
   },
   computed: {},
   methods: {
-  //   ...mapActions({ postphotoPost: 'post/postphoto' }),
-  async photoPost() {
-    const formData = new FormData()
-    if (this.image !== '') {
-      formData.append('image', this.image)
-    }
-    await this.$axios
-      .post('api/v1/post_photos', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      .then((res) => {
-        console.log(res)
-        this.dialog = false
-        /* this.$store.commit('auth/setCurrentUser', res.data.data) */
-        this.$store.dispatch(
-          'snackbarMessage/showMessage',
-          {
-            message: '画像をアップしました',
-            type: 'success',
-            status: true,
-          },
-          { root: true }
-        )
-      })
-      .catch(() => {
-        this.$store.dispatch(
-          'snackbarMessage/showMessage',
-          {
-            message: '時間を置いてもう一度試してください',
-            type: 'error',
-            status: true,
-          },
-          { root: true }
-        )
-      })
+    setImage(e) {
+      this.photoshot = e
     },
-    setImage(file) {
-      this.postphoto.image = file
-      console.log(this.postphoto.image)
-      if (file !== undefined && file !== null) {
-        if (file.name.lastIndexOf('.') <= 0) {
-          return
-        }
-        const fr = new FileReader()
-        fr.readAsDataURL(file)
-        fr.addEventListener('load', () => {
-          this.input_image = fr.result
-        })
-      } else {
-        this.input_image = ''
+    postPhotoshot() {
+      const formData = new FormData()
+      formData.append('photoshot', this.photoshot)
+      const config = {
+        headers: {
+          'content-type': 'multipart/form-data',
+        },
       }
+      this.$axios
+        .post('api/v1/posts', formData, config)
+        .then((res) => {
+          console.log(res)
+          console.log('Success')
+          this.dialog = false
+          setTimeout(() => {
+            this.$store.commit('snackbarMessage/setStatus', false, {
+              root: true,
+            })
+          }, 1000)
+        })
+        .catch((err) => {
+          console.log(err)
+          console.log('Failure')
+        })
     },
   },
 }

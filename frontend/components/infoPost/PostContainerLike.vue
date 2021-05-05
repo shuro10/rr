@@ -1,6 +1,6 @@
 <template>
     <v-container>
-      <button-like :user="user" :post="post" :fronttitle="frontTitle" :backtitle="backTitle" :status1="status1" :status2="status2" />
+      <button-like :user="user" :post="post" :fronttitle="frontTitle" :backtitle="backTitle" />
       <v-row>
         <v-col cols="12">
           <v-sheet elevation="10" rounded="xl" class="green lighten-2">

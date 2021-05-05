@@ -1,63 +1,37 @@
 <template>
-                          <v-menu transition="slide-y-reverse-transition">
+  
+                      <v-menu transition="slide-y-reverse-transition"
+                      >
                         <template v-slot:activator="{ on, attrs }">
+                          
                           <v-btn
-                            color="secondary"
+                            color="white"
                             class="ma-2"
                             v-bind="attrs"
-                            outlined
+                            plain
+                            x-large
                             v-on="on"
                           >
-                            <v-icon>{{ 'mdi-information-outline' }}</v-icon>
+
+                            <v-icon x-large>{{ 'mdi-information-outline' }}</v-icon>
                           </v-btn>
                         </template>
 
-                        <v-card color="white" max-width="600" min-width="200">
+                        <v-card color="white" max-width="600" min-width="200"
+                         style="max-height: 600px"
+                         class="overflow-y-auto"
+                        >
                           <v-card
                             :elevation="15"
                             dark
                             class="green secondary ma-3 rounded-card"
                           >
                             <v-responsive :aspect-ratio="9 / 16">
-                              <v-hover>
-                                <template v-slot:default="{ hover }">
+                          
+<post-container-like class="g-8"/>
+<post-container-message class="mb-8" />
+
                                   <v-sheet dark flat color="white">
-                                    <v-img
-                                      v-if="post.image.url"
-                                      contain
-                                      :src="post.image.url"
-                                      :aspect-ratio="1 / 1"
-                                      class="white--text align-end"
-                                    >
-                                      <!--!!!!!!!!!!!! :aspect-ratio="16/9" !!!!!!!!!!!!-->
-                                      <!-- <v-img v-else contain :src="defaultImage"> -->
-
-                                      <v-card-title>
-                                        <strong
-                                          class="display-2 font-weight-regular"
-                                          gradient="to top, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-                                        >
-                                          <!-- gradient="to top, rgba(0,0,0,.1), rgba(0,0,0,.5)" -->
-                                          {{ post.name }}</strong
-                                        >
-                                      </v-card-title>
-
-                                      <v-fade-transition>
-                                        <v-overlay
-                                          v-if="hover"
-                                          absolute
-                                          color="#036358"
-                                        >
-                                          <v-btn
-                                            large
-                                            :to="{ path: `/post/${post.id}` }"
-                                            @click="pagelink(post.id)"
-                                            >参加ページ</v-btn
-                                          >
-                                        </v-overlay>
-                                      </v-fade-transition>
-                                    </v-img>
-
                                     <v-card-text
                                       class="pt-6"
                                       style="position: relative;"
@@ -95,8 +69,8 @@
                                     <div align="right">
                                     </div>
                                   </v-sheet>
-                                </template>
-                              </v-hover>
+                              
+                              
 
                               <v-card-text>
                                 <div class="font-weight-bold">
@@ -208,6 +182,9 @@ import userDialogReview from '~/components/infoUser/UserDialogReview.vue'
 import buttonLike from '~/components/infoPost/ButtonLike.vue'
 import scheduleCardContents from '~/components/ScheduleCardContents.vue'
 import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
+import postParallax from '~/components/infoPost/PostParallax.vue'
+import postContainerLike from '~/components/infoPost/PostContainerLike.vue'
+import postContainerMessage from '~/components/infoPost/PostContainerMessage.vue'
 
 export default {
   // props: {
@@ -223,6 +200,9 @@ export default {
     buttonLike,
     scheduleCardContents,
     scheduleCardInfo,
+    postParallax,
+    postContainerLike,
+    postContainerMessage,
   },
   data() {
     return {

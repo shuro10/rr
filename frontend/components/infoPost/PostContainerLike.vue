@@ -124,7 +124,7 @@ export default {
   computed: {
     ...mapGetters({
       post: 'post/post',
-      user: 'auth/loginUser',
+      loginUser: 'auth/loginUser',
       login: 'auth/isLoggedIn',
       currentPosts: 'favOrNotCheck/posts',
     }),
@@ -132,6 +132,7 @@ export default {
       return this.$store.state.post.post
     },
   },
+
 
   created() {
     this.$axios

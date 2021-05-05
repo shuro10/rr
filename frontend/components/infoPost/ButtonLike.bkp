@@ -97,28 +97,7 @@ export default {
       return this.$store.state.auth.loginUser
     },
   },
-  watch: {
-    loginUserLike() {
-      if (this.login) {
-        this.like = false
-        this.loginUser.postlike.forEach((f) => {
-          if (this.post.id === f.id) {
-            this.like = true
-          }
-        })
-      }
-    },
-  },
-  mounted() {
-    if (this.login) {
-      this.like = false
-      this.loginUser.postlike.forEach((f) => {
-        if (this.post.id === f.id) {
-          this.like = true
-        }
-      })
-    }
-  },
+
   // computed: {
   //   ...mapGetters({
   //     post: 'post/post',
@@ -140,7 +119,7 @@ export default {
     }),
     nice() {
       const postData = {
-        user: this.loginUser.id,
+        user: this.user.id,
         post: this.post.id,
       }
       if (this.like) {
@@ -165,7 +144,7 @@ export default {
     },
     joining() {
       const postData = {
-        user: this.loginUser.id,
+        user: this.user.id,
         post: this.post.id,
       }
       if (this.join) {
@@ -189,7 +168,28 @@ export default {
       }
     },
 
-
+  watch: {
+    loginUserLike() {
+      if (this.login) {
+        this.like = false
+        this.loginUser.like_user.forEach((f) => {
+          if (this.loginUser.id === f.id) {
+            this.like = true
+          }
+        })
+      }
+    },
+  },
+  mounted() {
+    if (this.login) {
+      this.like = false
+      this.loginUser.like_user.forEach((f) => {
+        if (this.loginUser.id === f.id) {
+          this.like = true
+        }
+      })
+    }
+  },
   },
 }
 </script>

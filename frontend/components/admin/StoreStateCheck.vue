@@ -1,5 +1,6 @@
 <template>
   <div>
+    <p>tab/search: {{ Getters14 }}</p>
     <p>auth/currentUser: {{ Getters1 }}</p>
     <p>auth/loginUser: {{ Getters2 }}</p>
     <p>auth/isLoggedIn: {{ Getters3 }}, auth/isAdmin: {{ Getters4 }}</p>
@@ -10,7 +11,7 @@
     <p>post/posts: {{ Getters9 }}</p>
     <p>post/getPosts: {{ Getters12 }}</p>
     <p>post/likePost: {{ Getters13 }}</p>
-
+    
     <p>user/user: {{ Getters7 }}</p>
   </div>
 </template>
@@ -51,6 +52,10 @@ export default {
     Getters13() {
       return this.$store.getters['post/likePost']
     },
+    Getters14() {
+      return this.$store.getters['tab/search']
+    },
+    
     GettersAll() {
       return this.$store.getters
     },

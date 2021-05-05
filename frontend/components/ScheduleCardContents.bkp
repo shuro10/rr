@@ -41,7 +41,7 @@
 
                       <v-card-text class="pt-6" style="position: relative;">
 
-                      <button-like :user="useruser" :post="postpost" :fronttitle="frontTitle" :backtitle="backTitle"/>
+                      <!-- <button-like :user="useruser" :post="postpost" :fronttitle="frontTitle" :backtitle="backTitle"/> -->
 
                         <div>
                           <span class="font-weight-light grey--text title mb-2">
@@ -89,7 +89,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import buttonLike from '~/components/infoPost/Buttonlike.vue'
+// import buttonLike from '~/components/infoPost/Buttonlike.vue'
 import userDialog from '~/components/infoUser/UserDialog.vue'
 import userDialogReview from '~/components/infoUser/UserDialogReview.vue'
 import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
@@ -108,7 +108,7 @@ export default {
     },
   },
   components: {
-    buttonLike,
+    // buttonLike,
     userDialog,
     userDialogReview,
     scheduleCardContents,

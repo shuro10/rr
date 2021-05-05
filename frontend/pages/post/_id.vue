@@ -1,8 +1,8 @@
 <template>
   <div style="background-color: white">
-      <postParallax :post="post" class="mt-8" />
+      <!-- <postParallax :post="post" class="mt-8" /> -->
       <post-container-like class="g-8"/>
-      <post-container-message class="mb-8" />
+      <!-- <post-container-message class="mb-8" /> -->
   </div>
 </template>
 

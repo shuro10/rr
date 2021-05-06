@@ -45,9 +45,10 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
     t.time "start_time"
     t.time "finish_time"
     t.integer "member"
-    t.float "place"
+    t.string "place"
     t.string "category"
     t.string "image"
+    t.string "photoshot"
     t.date "release"
     t.integer "price"
     t.datetime "created_at", precision: 6, null: false

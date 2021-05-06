@@ -11,7 +11,7 @@
     <p>post/posts: {{ Getters9 }}</p>
     <p>post/getPosts: {{ Getters12 }}</p>
     <p>post/likePost: {{ Getters13 }}</p>
-    
+
     <p>user/user: {{ Getters7 }}</p>
   </div>
 </template>
@@ -55,7 +55,7 @@ export default {
     Getters14() {
       return this.$store.getters['tab/search']
     },
-    
+
     GettersAll() {
       return this.$store.getters
     },

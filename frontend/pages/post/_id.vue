@@ -1,8 +1,8 @@
 <template>
   <div style="background-color: white">
-      <!-- <postParallax :post="post" class="mt-8" /> -->
-      <post-container-like class="g-8"/>
-      <!-- <post-container-message class="mb-8" /> -->
+    <!-- <postParallax :post="post" class="mt-8" /> -->
+    <post-container-like class="g-8" />
+    <!-- <post-container-message class="mb-8" /> -->
   </div>
 </template>
 
@@ -11,7 +11,6 @@ import { mapGetters, mapActions } from 'vuex'
 import postParallax from '~/components/infoPost/PostParallax.vue'
 import postContainerMessage from '~/components/infoPost/PostContainerMessage.vue'
 import postContainerLike from '~/components/infoPost/PostContainerLike.vue'
-
 
 export default {
   name: 'MeetWithKids',
@@ -23,7 +22,7 @@ export default {
   data() {
     return {
       loading: false,
-      
+
       defaultImage: require('@/assets/images/default-user.png'),
     }
   },
@@ -40,15 +39,12 @@ export default {
   },
 
   created() {
-    this.$axios
-      .get(`api/v1/posts/${this.$route.params.id}`)
-      .then((res) => {
-        this.$store.commit('post/setPost', res.data, { root: true })
-      })
-        this.loading = true
+    this.$axios.get(`api/v1/posts/${this.$route.params.id}`).then((res) => {
+      this.$store.commit('post/setPost', res.data, { root: true })
+    })
+    this.loading = true
   },
-  methods: {
-  },
+  methods: {},
 }
 </script>
 

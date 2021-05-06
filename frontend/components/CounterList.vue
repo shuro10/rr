@@ -1,47 +1,46 @@
 <template>
   <v-dialog v-model="dialog" max-width="600">
     <template #activator="{ on, attrs }">
-      <span v-bind="attrs" class="arrow_box" v-on="on">
-        {{ users.length }}
+      <span v-bind="attrs" v-on="on">
+        <p class="blue--text">{{ users.length }}</p>
       </span>
     </template>
 
-
-    <v-card class="ma-0">
-      <v-card-title style="background-color: #fbfbfb">
-        {{ title }}
-        <span > （{{ users.length }}） </span>
-      </v-card-title>
-
-      <v-list two-line style="background-color: #fbfbfb">
-        <v-row>
+    <v-card class="mx-auto" max-width="500" tile>
+      <v-list rounded color="white">
+        <v-subheader class="black--text"
+          >{{ title }} （{{ users.length }}）</v-subheader
+        >
+        <v-list-item-group>
           <v-list-item
             v-for="user in users"
             :key="user.id"
             :ripple="false"
             class="list"
           >
-        <nuxt-link :to="{ path: `/users/${user.id}` }">
-          <user-avatar :size="45" :user="user" class="list-avatar mx-3" />
-        </nuxt-link>
+            <nuxt-link :to="{ path: `/users/${user.id}` }">
+              <user-avatar :size="45" :user="user" class="list-avatar mx-3" />
+            </nuxt-link>
             <v-list-item-content>
-              <v-list-item-title class="list-item" @click="pagelink(user.id)">
+              <v-list-item-title
+                class="black--text list-item"
+                @click="pagelink(user.id)"
+              >
                 {{ user.name }}
               </v-list-item-title>
             </v-list-item-content>
             <user-follow :user="user" />
           </v-list-item>
-          <v-divider />
-        </v-row>
+        </v-list-item-group>
       </v-list>
     </v-card>
   </v-dialog>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 import userFollow from '~/components/infoUser/UserFollow.vue'
-import { mapGetters } from "vuex"
 
 export default {
   components: {
@@ -64,11 +63,11 @@ export default {
   },
   computed: {
     ...mapGetters({
-/*       user: 'user/user',
+      /*       user: 'user/user',
       post: 'post/post',
       loginUser: 'auth/loginUser', */
     }),
-/*     postUpdate() {
+    /*     postUpdate() {
       return this.$store.state.post.post
     },
     // userUpdate() {
@@ -98,7 +97,7 @@ export default {
     }
   },
   methods: {
-/*     pagelink(link) {
+    /*     pagelink(link) {
       this.$router.push({ path: `/users/${link}` })
     }, */
   },
@@ -116,7 +115,7 @@ export default {
 }
 .list-item {
   cursor: pointer;
-  color: 
+  color: ;
 }
 .list-avatar {
   cursor: pointer;
@@ -127,13 +126,6 @@ export default {
 }
 .list {
   cursor: default;
-}
-.arrow_box {
-  position: relative;
-  border: 1px solid black;
-  padding: 5px 7px;
-  color: #2196f3 !important;
-  border-radius: 3px;
 }
 .arrow_box:after,
 .arrow_box:before {

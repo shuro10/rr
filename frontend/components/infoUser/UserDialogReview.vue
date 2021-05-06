@@ -7,7 +7,7 @@
     </template>
 
     <v-card class="ma-0">
-      <v-card-title style="background-color: #fbfbfb" >
+      <v-card-title style="background-color: #fbfbfb">
         {{ title }}
         <span> （{{ users.length }}） </span>
       </v-card-title>
@@ -38,9 +38,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 import userFollow from '~/components/infoUser/UserFollow.vue'
-import { mapGetters } from "vuex"
 
 export default {
   components: {

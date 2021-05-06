@@ -49,8 +49,12 @@
                       </v-img>
 
                       <v-card-text class="pt-6" style="position: relative;">
-
-                      <button-like :user="user" :post="post" :fronttitle="frontTitle" :backtitle="backTitle"/>
+                        <button-like
+                          :user="user"
+                          :post="post"
+                          :fronttitle="frontTitle"
+                          :backtitle="backTitle"
+                        />
 
                         <div>
                           <span class="font-weight-light grey--text title mb-2">
@@ -132,7 +136,6 @@
                                       class="pt-6"
                                       style="position: relative;"
                                     >
-
                                       <div>
                                         <span
                                           class="font-weight-light grey--text title mb-2"

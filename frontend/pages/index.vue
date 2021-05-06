@@ -9,7 +9,6 @@
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
     <search />
-    
   </div>
 </template>
 
@@ -25,10 +24,10 @@ export default {
       /* user: 'user/user', */
       user: 'auth/loginUser',
     }),
-/*     postUpdate() {
+    /*     postUpdate() {
       return this.$store.state.post.post
     }, */
-   /* ========== ScheduleCard =========== */
+    /* ========== ScheduleCard =========== */
   },
   components: {
     Search,
@@ -56,14 +55,14 @@ export default {
   data() {
     return {}
   },
-  computed: {
-  },
+  computed: {},
   methods: {},
 }
 </script>
 
 <style scoped>
-div {
+/* To check where parts are arranged */
+/* div {
   border: 5px solid yellow;
-}
+} */
 </style>

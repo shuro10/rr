@@ -1,26 +1,30 @@
 <template>
   <div style="background-color: white">
-<!--     <v-carousel hide-delimiters height="auto">
+    <!--     <v-carousel hide-delimiters height="auto">
       <v-carousel-item>
       </v-carousel-item>
     </v-carousel> -->
-        <v-row>
-          <v-col
-            v-for="(post, i) in reversePosts"
-            :key="post.id"
-            class="d-flex child-flex flex-wrap"
-            cols="4"
-          >
-            <p class="black--text"> index:{{ i + 1 }} </p>
-            <p class="black--text"> like:{{ post.like_users.length }} </p>
-            <p class="black--text"> id:{{ post.id }} </p>
-            <button-like :user="user" :post="post" :fronttitle="frontTitle" :backtitle="backTitle"/>
-            <scheduleCardContents :user="user" :post="post" />
-            <!-- <user-dialog-like :users="post.like_users" /> -->
-            <user-dialog-shown :users="post.like_users" :title="title"/>
-          </v-col>
-        </v-row>
-
+    <v-row>
+      <v-col
+        v-for="(post, i) in reversePosts"
+        :key="post.id"
+        class="d-flex child-flex flex-wrap"
+        cols="4"
+      >
+        <p class="black--text">index:{{ i + 1 }}</p>
+        <p class="black--text">like:{{ post.like_users.length }}</p>
+        <p class="black--text">id:{{ post.id }}</p>
+        <button-like
+          :user="user"
+          :post="post"
+          :fronttitle="frontTitle"
+          :backtitle="backTitle"
+        />
+        <scheduleCardContents :user="user" :post="post" />
+        <!-- <user-dialog-like :users="post.like_users" /> -->
+        <user-dialog-shown :users="post.like_users" :title="title" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -47,7 +51,7 @@ export default {
   },
   data() {
     return {
-      title: "title",
+      title: 'title',
       frontTitle: 'Hi',
       backTitle: 'Ho',
       loading: false,
@@ -62,7 +66,7 @@ export default {
   },
   computed: {
     reversePosts() {
-      return this.posts.slice().reverse();
+      return this.posts.slice().reverse()
     },
     ...mapGetters({
       post: 'post/post',
@@ -144,5 +148,4 @@ export default {
 .rounded-card {
   border-radius: 20px;
 }
-
 </style>

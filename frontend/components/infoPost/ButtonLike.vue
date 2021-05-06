@@ -1,8 +1,6 @@
-
 <template>
   <div>
-
-<!--                             <v-btn
+    <!--                             <v-btn
                           v-if="like"
                           absolute
                           color="pink lighten-1"
@@ -26,25 +24,30 @@
                         </v-btn>
 
                          -->
-                  <v-btn
-                    v-if="like"
-                    class="mx-5"
-                    color="red white--text font-weight-bold"
-                    outlined
-                    @click="nice"
-                  >
-                    <v-icon>mdi-heart-off</v-icon>
-                    {{ fronttitle }}
-                  </v-btn>
-                  <v-btn
-                    v-else
-                    class="mx-5"
-                    color="green white--text font-weight-bold"
-                    @click="nice"
-                  >
-                    <v-icon class="mr-1">mdi-heart</v-icon>
-                    {{ backtitle }}
-                  </v-btn>    
+    <v-btn
+      v-if="like"
+      color="red white--text font-weight-bold"
+      absolute
+      fab
+      right
+      top
+      @click="nice"
+    >
+      <v-icon>mdi-heart-off</v-icon>
+      {{ fronttitle }}
+    </v-btn>
+    <v-btn
+      v-else
+      color="pink lighten-3 white--text font-weight-bold"
+      absolute
+      fab
+      right
+      top
+      @click="nice"
+    >
+      <v-icon>mdi-heart</v-icon>
+      {{ backtitle }}
+    </v-btn>
   </div>
 </template>
 
@@ -69,7 +72,7 @@ export default {
       type: String,
       required: false,
     },
-/*     status1: {
+    /*     status1: {
       type: String,
       required: false,
     },
@@ -77,7 +80,7 @@ export default {
       type: String,
       required: false,
     } */
-  }, 
+  },
   data() {
     return {
       loading: false,
@@ -145,21 +148,17 @@ export default {
       }
       if (this.like) {
         this.unLikePost(postData).then(() => {
-          this.$axios
-            .$get(`/api/v1/posts/${this.post.id}`)
-            .then((res) => {
-              this.$store.commit('post/setPost', res, { root: true })
-              this.like = false
-            })
+          this.$axios.$get(`/api/v1/posts/${this.post.id}`).then((res) => {
+            this.$store.commit('post/setPost', res, { root: true })
+            this.like = false
+          })
         })
       } else {
         this.likePost(postData).then(() => {
-          this.$axios
-            .$get(`/api/v1/posts/${this.post.id}`)
-            .then((res) => {
-              this.$store.commit('post/setPost', res, { root: true })
-              this.like = true
-            })
+          this.$axios.$get(`/api/v1/posts/${this.post.id}`).then((res) => {
+            this.$store.commit('post/setPost', res, { root: true })
+            this.like = true
+          })
         })
       }
     },
@@ -188,11 +187,8 @@ export default {
         })
       }
     },
-
-
   },
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

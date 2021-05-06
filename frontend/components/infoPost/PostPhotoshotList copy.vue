@@ -1,6 +1,5 @@
 <template>
   <div style="background-color: white">
-
     <!--     <div align="center" justify="end" class="mt-4">
       <v-btn
         large
@@ -13,9 +12,6 @@
       </v-btn>
     </div>
  -->
-
-
-
 
     <v-card flat style="background-color: white">
       <v-list style="background-color: white">

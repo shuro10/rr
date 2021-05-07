@@ -25,25 +25,25 @@
 
                          -->
     <v-btn
-      v-if="like"
+      v-if="join"
       color="red white--text font-weight-bold"
       absolute
       fab
       right
       top
-      @click="nice"
+      @click="joining"
     >
       <v-icon>mdi-heart-off</v-icon>
       {{ fronttitle }}
     </v-btn>
     <v-btn
       v-else
-      color="pink lighten-3 white--text font-weight-bold"
+      color="pink white--text font-weight-bold"
       absolute
       fab
       right
       top
-      @click="nice"
+      @click="joining"
     >
       <v-icon>mdi-heart</v-icon>
       {{ backtitle }}
@@ -72,17 +72,18 @@ export default {
       type: String,
       required: false,
     },
-    /*     status1: {
-      type: String,
+    status1: {
+      type: Boolean,
       required: false,
     },
     status2: {
       type: String,
       required: false,
-    } */
+    }
   },
   data() {
     return {
+      
       loading: false,
       like: false,
       join: false,
@@ -111,6 +112,16 @@ export default {
         })
       }
     },
+    loginUserJoin() {
+      if (this.login) {
+        this.join = false
+        this.loginUser.postjoin.forEach((f) => {
+          if (this.post.id === f.id) {
+            this.join = true
+          }
+        })
+      }
+    },
   },
   mounted() {
     if (this.login) {
@@ -118,6 +129,14 @@ export default {
       this.loginUser.postlike.forEach((f) => {
         if (this.post.id === f.id) {
           this.like = true
+        }
+      })
+    }
+    if (this.login) {
+      this.join = false
+      this.loginUser.postjoin.forEach((f) => {
+        if (this.post.id === f.id) {
+          this.join = true
         }
       })
     }
@@ -170,7 +189,7 @@ export default {
       if (this.join) {
         this.unJoinPost(postData).then(() => {
           this.$axios
-            .$get(`/api/v1/posts/${this.$route.params.id}`)
+            .$get(`/api/v1/posts/${this.post.id}`)
             .then((res) => {
               this.$store.commit('post/setPost', res, { root: true })
               this.join = false
@@ -179,7 +198,7 @@ export default {
       } else {
         this.joinPost(postData).then(() => {
           this.$axios
-            .$get(`/api/v1/posts/${this.$route.params.id}`)
+            .$get(`/api/v1/posts/${this.post.id}`)
             .then((res) => {
               this.$store.commit('post/setPost', res, { root: true })
               this.join = true

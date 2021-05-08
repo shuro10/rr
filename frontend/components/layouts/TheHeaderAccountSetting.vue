@@ -1,13 +1,15 @@
 <template>
-  <div>
-    <v-dialog transition="dialog-bottom-transition" max-width="600">
+    <v-dialog 
+    v-model="dialog"
+    ransition="dialog-bottom-transition" max-width="600">
       <template v-slot:activator="{ on, attrs }">
         <v-btn transparent v-bind="attrs" v-on="on"
           ><v-icon>mdi-dots-vertical</v-icon>
         </v-btn>
       </template>
-      <template v-slot:default="dialog">
+      <button-close @close-dialog="closeDialog" />
         <v-card>
+
           <v-toolbar color="white black--text" dark extended prominent>
             <v-toolbar-title class="d-flex"></v-toolbar-title>
             <v-spacer></v-spacer>
@@ -31,7 +33,7 @@
             <v-spacer></v-spacer>
 
             
-<button-close @close-dialog="closeDialog" />
+
 
           </v-toolbar>
 
@@ -161,9 +163,8 @@
         <v-card>
           <v-spacer></v-spacer>
         </v-card>
-      </template>
+      
     </v-dialog>
-  </div>
 </template>
 
 <script>

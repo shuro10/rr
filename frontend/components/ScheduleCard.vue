@@ -6,7 +6,7 @@
     </v-carousel> -->
     <v-row>
       <v-col
-        v-for="p in posts"
+        v-for="p in reversePosts"
         :key="p.id"
         class="d-flex child-flex flex-wrap"
       >
@@ -201,9 +201,9 @@ export default {
     }
   },
   computed: {
-    /*     reversePosts() {
+        reversePosts() {
       return this.posts.slice().reverse();
-    }, */
+    },
     ...mapGetters({
       post: 'post/post',
       user: 'auth/loginUser',

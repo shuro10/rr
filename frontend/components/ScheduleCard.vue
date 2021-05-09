@@ -1,5 +1,5 @@
 <template>
-  <div style="background-color: white">
+  <div style="background-color: white" class="mb-14">
     <!--     <v-carousel hide-delimiters height="auto">
       <v-carousel-item>
       </v-carousel-item>
@@ -9,14 +9,13 @@
         v-for="p in posts"
         :key="p.id"
         class="d-flex child-flex flex-wrap"
-        cols="3"
       >
         <v-card
           :elevation="15"
           dark
           class="mx-auto green secondary ma-3 rounded-card"
         >
-          <v-responsive :aspect-ratio="9 / 16">
+          <v-responsive :aspect-ratio="10 / 16">
             <v-hover>
               <template v-slot:default="{ hover }">
                 <v-sheet dark flat color="white">
@@ -36,23 +35,103 @@
                         @{{ p.place }}                        
                       </v-chip>
                     </span>
-                    <!--                       </v-img>
-                      <v-img v-else contain :src="defaultImage"> -->
+               
                   </v-img>
-
+<div style="position: relative;">
                   <v-card-text style="position: relative;">
                     <schedule-card-info :post="p" />
                     <button-like :user="user" :post="p" :isRoundedLike="true" />
                     <div class="grey--text title">
-                      <!--                                       <p class="black--text"> index:{{ i + 1 }} </p>
-            <p class="black--text"> like:{{ p.like_users.length }} </p>   
-            <p class="black--text"> id:{{ p.id }} </p>
-             -->
-
                       <div
                         class="font-weight-regular text-decoration-underlinemt-n3"
                       >
+                        {{ p.name }}
+                      </div>
+                      <div class="caption text-center mt-4 shadow-text">
+                        キャッチコピー
+                      </div>
 
+                      <p
+                        class="font-weight-thin overline no-wrap-text mt-4 mb-n1"
+                        align="center"
+                        justify="center"
+                      >
+                        {{ $dayjs(p.release).format('MM/DD') }}&nbsp;&nbsp;{{
+                          $dayjs(p.start_time).format('hh:mm')
+                        }}~{{ $dayjs(p.finish_time).format('hh:mm') }}
+                      </p>
+                    </div>
+
+
+
+                  </v-card-text>
+                                      <v-expand-transition>
+                      <div
+                        v-if="hover"
+                        class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
+                        style="height: 100%;"
+                      >
+                        <v-avatar>
+                          <img
+                            alt="user"
+                            :src="require(`@/assets/images/default-user.png`)"
+                          />
+                        </v-avatar>
+                        <div class="caption text-center ">
+                          {{ p.quickword }}
+                        </div>
+                      </div>
+                    </v-expand-transition>
+</div>
+
+                </v-sheet>
+              </template>
+            </v-hover>
+
+            <v-card-text class="orange">
+              <div class="d-flex font-weight-thin subtitle-1 justify-center ">
+                <span>
+                  <counter-list :users="p.like_users" :post="p" :icon="true" :title="title1" />
+                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                <span>
+                  <counter-list :users="p.join_users" :post="p" :icon="false" :title="title2" />
+                </span>
+              
+              </div>
+            </v-card-text>
+          </v-responsive>
+        </v-card>
+      </v-col>
+    </v-row>
+  </div>
+
+                      <!--        
+                        
+                        {{ $dayjs(p.finish_time).format('hh:mm') }}
+                      </p>
+                    </div>
+                    の直下
+                                         <v-fade-transition>
+                          <v-overlay v-if="hover" absolute color="#036358">
+                            <v-btn
+                              large
+                              :to="{ path: `/post/${post.id}` }"
+                              @click="pagelink(post.id)"
+                              >参加ページ</v-btn
+                            >
+                          </v-overlay>
+                        </v-fade-transition> 
+                        
+                        
+                        
+                        ＝＝＝＝＝＝＝＝＝＝＝＝
+                                               </v-img>
+                      <v-img v-else contain :src="defaultImage">
+                        
+                        
+                        -->
+
+                        <!-- 
     <v-list style="background-color: white">
       <v-card
         v-for="review in p.reviews"
@@ -63,82 +142,18 @@
       >
       <post-review2 :review="review" />
       </v-card>
-    </v-list>
+    </v-list> -->
+                      <!--                                       <p class="black--text"> index:{{ i + 1 }} </p>
+            <p class="black--text"> like:{{ p.like_users.length }} </p>   
+            <p class="black--text"> id:{{ p.id }} </p>
+             -->
 
-                        {{ p.name }}
-                      </div>
-                      <div class="caption text-center mt-4 shadow-text">
-                        キャッチコピー
-                      </div>
 
-                      <p
-                        class="font-weight-thin overline mt-4 mb-n1"
-                        align="center"
-                        justify="center"
-                      >
-                        {{ $dayjs(p.release).format('MM/DD') }}&nbsp;&nbsp;{{
-                          $dayjs(p.start_time).format('hh:mm')
-                        }}~{{ $dayjs(p.finish_time).format('hh:mm') }}
-                      </p>
-                    </div>
-
-                    <!--                         <v-fade-transition>
-                          <v-overlay v-if="hover" absolute color="#036358">
-                            <v-btn
-                              large
-                              :to="{ path: `/post/${post.id}` }"
-                              @click="pagelink(post.id)"
-                              >参加ページ</v-btn
-                            >
-                          </v-overlay>
-                        </v-fade-transition> -->
-                    <v-expand-transition>
-                      <div
-                        v-if="hover"
-                        class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
-                        style="height: 105%;"
-                      >
-                        <v-avatar>
-                          <img
-                            alt="user"
-                            :src="require(`@/assets/images/default-user.png`)"
-                          />
-                        </v-avatar>
-                        <div class="caption text-center mt-4 shadow-text">
-                          みんなに一言
-                        </div>
-                      </div>
-                    </v-expand-transition>
-                  </v-card-text>
-                </v-sheet>
-              </template>
-            </v-hover>
-
-            <v-card-text class="orange font-weight-bold">
-              <div class="show-rate">
-                <span> <v-icon>mdi-heart</v-icon>&nbsp; </span>
-                &nbsp;
-                <span>
-                  <counter-list :users="p.like_users" :post="p" :title="title1" />
-                </span>
-                &nbsp;&nbsp;&nbsp;&nbsp; <v-icon>mdi-run</v-icon>&nbsp;
-                <span>
-                  <counter-list :users="p.join_users" :post="p" :title="title2" />
-                  &nbsp;
-                </span>
-                <span> /&nbsp;{{ p.member }}</span>
-              </div>
-            </v-card-text>
-          </v-responsive>
-        </v-card>
-      </v-col>
-    </v-row>
-  </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import buttonLike from '~/components/infoPost/ButtonLike.vue'
+import buttonLike from '~/components/layouts/ButtonLike.vue'
 import userDialogShown from '~/components/infoUser/UserDialogShown.vue'
 import userDialogLike from '~/components/infoUser/UserDialogLike.vue'
 import counterList from '~/components/CounterList.vue'
@@ -146,6 +161,7 @@ import userDialog from '~/components/infoUser/UserDialog.vue'
 import userDialogReview from '~/components/infoUser/UserDialogReview.vue'
 import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
 import postReview2 from '~/components/infoPost/PostReview2.vue'
+
 
 
 export default {
@@ -266,13 +282,6 @@ export default {
 <style scoped>
 .rounded-card {
   border-radius: 20px;
-}
-
-.show-rate {
-  font-size: 18px;
-  font-weight: 200;
-  display: flex;
-  align-items: center;
 }
 .v-card--reveal {
   align-items: center;

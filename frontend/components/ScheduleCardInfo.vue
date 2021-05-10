@@ -22,31 +22,21 @@
 
       <v-card color="transparent" class="rounded-card">
         <v-img :src="post.image.url"
-                  >
-       <v-card-text>
-          <div class="grey--text">
-            <div
-              class="display-1 shadow-text3 font-weight-regular text-decoration-underlinemt-n3"
-            >
-              {{ post.name }}<br />
-            </div>
-
-            <div
-              class="subtitle-2 shadow-text1 font-weight-regular text-decoration-underlinemt-n3"
-            >
-              {{ post.catchcopy }}
-            </div>
-            <v-row>
-              <v-col>
-            <div class="subtitle-1 mt-4 shadow-text2">
-              {{ post.release }}
-            </div>
-              </v-col>
-              <v-col>
-              </v-col>
-            </v-row>
-          </div>
-
+                  class="rounded-card">
+       <v-card-text class="align-bottom">
+    <v-row>
+      <v-col>
+        
+                      <h1>{{ post.name }}</h1>
+        
+                      <div>
+                      <h3 class="ml-2">{{ post.catchcopy }}</h3>
+                      </div>
+                      
+      </v-col>
+      <v-col>
+      </v-col>
+        </v-row>
           
         </v-card-text>
  
@@ -63,7 +53,17 @@
                     </v-sheet>
                     
       </v-card>
-      
+                  <v-row class="ml-3 mt-n16">
+              <v-col>
+            <div class="ml-5  subtitle-1 mt-4 ">
+              <strong>
+              {{ post.release }}&nbsp;</strong>
+            </div>
+              </v-col>
+              <v-col>
+              </v-col>
+            </v-row>
+
     <v-sheet color="transparent" class="mt-5"></v-sheet>
         <v-timeline dense class="ml-14">
           <v-timeline-item v-for="n in 1" :key="n">
@@ -72,7 +72,7 @@
             </template>
 
             <template v-slot:icon>
-              <v-avatar>
+              <v-avatar >
                 <img src="https://i.pravatar.cc/64" />
               </v-avatar>
             </template>
@@ -86,16 +86,13 @@
               </v-card-text>
             </v-card>
           </v-timeline-item>
-        </v-timeline>
-      
 
-      <v-timeline class="mr-16">
         <v-timeline-item small>
-          <template v-slot:opposite>
+          <!-- <template v-slot:opposite> -->
             <div class="headline pink--text font-weight-bold no-wrap-text">
               開始 {{ $dayjs(post.start_time).format('hh:mm') }}
             </div>
-          </template>
+          <!-- </template> -->
           <div class="py-4">
             <h2 :class="`headline font-weight-light mb-4 pink--text`">
               <button-like
@@ -112,14 +109,14 @@
             </div>
           </div>
         </v-timeline-item>
-      </v-timeline>
-      <v-timeline class="mr-16">
+      
+      
         <v-timeline-item small>
-          <template v-slot:opposite>
+          <!-- <template v-slot:opposite> -->
             <span :class="`headline font-weight-bold cyan--text`"
               >終了 {{ $dayjs(post.finish_time).format('hh:mm') }}</span
             >
-          </template>
+          <!-- </template> -->
           <div class="py-4">
             <h2 :class="`headline font-weight-light mb-4 cyan--text`">
               Tomatoma ipsum
@@ -129,7 +126,10 @@
             </div>
           </div>
         </v-timeline-item>
-      </v-timeline>
+
+        </v-timeline>
+      
+
     
 
     <div>
@@ -186,12 +186,63 @@ export default {
   border-radius: 20px;
 }
 .shadow-text1 {
-  text-shadow: 2px 5px 30px;
+  text-shadow:2px 2px 3px #f51818;
 }
 .shadow-text2 {
+  text-shadow:2px 2px 3px #f51818;
   border-bottom: double;
 }
 .shadow-text3 {
   text-shadow: 2px 5px 50px;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+text {
+  fill: #333;
+  stroke: #FFF;
+  stroke-width: 0.3;
+  stroke-linejoin: round;
+}
+strong {
+  position: relative;
+  background: #eff4ff;
+  padding: 2px 5px 2px 20px;
+  font-size: 20px;
+  color: #0f0f0f;
+  border-radius: 0 10px 10px 0;
+}
+
+strong:before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f041";
+  display: inline-block;
+  line-height: 40px;
+  position: absolute;
+  padding: 0em;
+  color: white;
+  background: #81a1e4;
+  font-weight: 900;
+  width: 40px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  left: -1.35em;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border-radius: 50%;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.29);
+  border-bottom: solid 2px #4967b4;
+}
+
+h1 {
+  background: #b0dcfa; /*背景色*/
+  padding: 0.5em;/*文字周りの余白*/
+  color: white;/*文字を白に*/
+  border-radius: 0.5em;/*角の丸み*/
 }
 </style>

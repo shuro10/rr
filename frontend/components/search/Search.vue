@@ -63,8 +63,6 @@
       <schedule-card2 :posts="resPosts" />
     </template>
     <template v-else>
-      <schedule-card2 :posts="resPosts" />
-      <post-list :posts="resPosts" />
       <Schedule-card class="mr-4 ml-4" />
     </template>
   </div>
@@ -74,7 +72,7 @@
 import { mapGetters, mapActions } from 'vuex'
 /* TheHeader */
 import _debounce from 'lodash.debounce'
-import theHeaderAccountSetting from '~/components/layouts/TheHeaderAccountSetting.vue'
+import theAccount from '~/components/layouts/theAccount.vue'
 import theModalSignUp from '~/components/layouts/TheModalSignUp.vue'
 import theModalLogin from '~/components/layouts/TheModalLogin.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
@@ -87,12 +85,10 @@ import ScheduleCard2 from '~/components/search/ScheduleCard2.vue'
 import PostList from '~/components/infoPost/PostList.vue'
 import ScheduleCard from '~/components/ScheduleCard.vue'
 
-
-
 export default {
   components: {
     /* TheHeader */
-    theHeaderAccountSetting,
+    theAccount,
     theModalSignUp,
     theModalLogin,
     dialogComponent,

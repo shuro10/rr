@@ -1,186 +1,172 @@
 <template>
   <!-- <template v-if="loginUser && loginUser.id == user.id"> -->
-    <v-card width="400px" class="mx-auto pb-3 mb-10">
-      <v-card-text>
-        <v-form ref="form" lazy-validation class="pt-10">
-          <v-file-input
-            accept="image/png, image/jpeg, image/bmp"
-            outlined
-            label="トップ画像"
-            @change="setImage"
-          />
-          <v-text-field
-            v-model="name"
-            placeholder="例: みんな集まれ憩いの川"
-            label="タイトル"
-          />
-          <v-textarea
-            v-model="details"
-            placeholder="例: これから川遊びにいきましょう。"
-            label="詳細"
-          />
+  <v-card width="400px" class="mx-auto pb-3 mb-10">
+    <v-card-text>
+      <v-form ref="form" lazy-validation class="pt-10">
+        <v-file-input
+          accept="image/png, image/jpeg, image/bmp"
+          outlined
+          label="トップ画像"
+          @change="setImage"
+        />
+        <v-text-field
+          v-model="name"
+          placeholder="例: みんな集まれ憩いの川"
+          label="タイトル"
+        />
+        <v-textarea
+          v-model="details"
+          placeholder="例: これから川遊びにいきましょう。"
+          label="詳細"
+        />
 
-          <v-menu
-            ref="menu"
-            v-model="menu"
-            :close-on-content-click="false"
-            :return-value.sync="release"
-            transition="scale-transition"
-            offset-y
-            min-width="auto"
+        <v-menu
+          ref="menu"
+          v-model="menu"
+          :close-on-content-click="false"
+          :return-value.sync="release"
+          transition="scale-transition"
+          offset-y
+          min-width="auto"
+        >
+          <v-text-field v-model="release" label="開催日" readonly />
+
+          <v-date-picker v-model="release" scrollable elevation="15">
+            <v-spacer></v-spacer>
+            <v-flex justify-center>
+              <v-btn text color="primary" @click="menu = false">
+                Cancel
+              </v-btn>
+              <v-btn text color="primary" @click="$refs.menu.save(release)">
+                OK
+              </v-btn>
+            </v-flex>
+          </v-date-picker>
+        </v-menu>
+        <v-menu
+          ref="starttimepicker"
+          v-model="starttimepicker"
+          :close-on-content-click="false"
+          :return-value.sync="start_time"
+          transition="scale-transition"
+          offset-y
+          min-width="auto"
+        >
+          <v-text-field v-model="start_time" label="開始時刻" readonly />
+
+          <v-time-picker
+            v-model="start_time"
+            elevation="15"
+            color="green lighten-1"
+            format="24hr"
           >
-              <v-text-field
-                v-model="release"
-                label="開催日"
-                readonly
-              />
+            <v-spacer></v-spacer>
+            <v-flex justify-center>
+              <v-btn text color="primary" @click="starttimepicker = false">
+                Cancel
+              </v-btn>
+              <v-btn
+                text
+                color="primary"
+                @click="$refs.starttimepicker.save(start_time)"
+              >
+                OK
+              </v-btn>
+            </v-flex>
+          </v-time-picker>
+        </v-menu>
+        <v-menu
+          ref="finishtimepicker"
+          v-model="finishtimepicker"
+          :close-on-content-click="false"
+          :return-value.sync="finish_time"
+          transition="scale-transition"
+          offset-y
+          min-width="auto"
+        >
+          <v-text-field v-model="finish_time" label="終了時刻" readonly />
 
-            <v-date-picker v-model="release" scrollable elevation="15">
-              <v-spacer></v-spacer>
-              <v-flex justify-center>
-                <v-btn text color="primary" @click="menu = false">
-                  Cancel
-                </v-btn>
-                <v-btn text color="primary" @click="$refs.menu.save(release)">
-                  OK
-                </v-btn>
-              </v-flex>
-            </v-date-picker>
-          </v-menu>
-          <v-menu
-            ref="starttimepicker"
-            v-model="starttimepicker"
-            :close-on-content-click="false"
-            :return-value.sync="start_time"
-            transition="scale-transition"
-            offset-y
-            min-width="auto"
+          <v-time-picker
+            v-model="finish_time"
+            elevation="15"
+            color="green lighten-1"
+            format="24hr"
           >
+            <v-spacer></v-spacer>
+            <v-flex justify-center>
+              <v-btn text color="primary" @click="finishtimepicker = false">
+                Cancel
+              </v-btn>
+              <v-btn
+                text
+                color="primary"
+                @click="$refs.finishtimepicker.save(finish_time)"
+              >
+                OK
+              </v-btn>
+            </v-flex>
+          </v-time-picker>
+        </v-menu>
 
-              <v-text-field
-                v-model="start_time"
-                label="開始時刻"
-                readonly
-              />
+        <v-text-field
+          v-model.number="member"
+          placeholder="例: 5"
+          label="人数 ( 人 )"
+        />
 
+        <v-text-field
+          v-model.number="price"
+          placeholder="例: 2000"
+          label="予算 ( 円 / 一人当たり )"
+        />
+        <v-text-field
+          v-model.number="place"
+          placeholder="例: 代々木公園"
+          label="場所"
+        />
 
-            <v-time-picker
-              v-model="start_time"
-              elevation="15"
-              color="green lighten-1"
-              format="24hr"
-            >
-              <v-spacer></v-spacer>
-              <v-flex justify-center>
-                <v-btn text color="primary" @click="starttimepicker = false">
-                  Cancel
-                </v-btn>
-                <v-btn
-                  text
-                  color="primary"
-                  @click="$refs.starttimepicker.save(start_time)"
-                >
-                  OK
-                </v-btn>
-              </v-flex>
-            </v-time-picker>
-          </v-menu>
-          <v-menu
-            ref="finishtimepicker"
-            v-model="finishtimepicker"
-            :close-on-content-click="false"
-            :return-value.sync="finish_time"
-            transition="scale-transition"
-            offset-y
-            min-width="auto"
+        <v-text-field
+          v-model="quickword"
+          placeholder="例: 楽しみましょう！"
+          label="声かけメッセージ"
+        />
+        <v-text-field
+          v-model="catchcopy"
+          placeholder="例: 春が始まりましたね"
+          label="キャッチコピー"
+        />
+
+        <v-select
+          v-model="category"
+          :items="categoryList"
+          label="カテゴリー"
+          item-text="category"
+        />
+        <v-divider class="ma-2" />
+        <v-row
+          class="green lighten-4"
+          style="height: 50px;"
+          justify="center"
+          align-content="center"
+        >
+          <v-btn
+            x-large
+            block
+            color="#48A1EB"
+            class="font-weight-bold align-center"
+            min-width="125px"
+            icon
+            dark
+            @click="postCreate"
           >
-              <v-text-field
-                v-model="finish_time"
-                label="終了時刻"
-                readonly
-              />
+            <v-icon>mdi-cube-send</v-icon>
+            投稿する
+          </v-btn>
+        </v-row>
+      </v-form>
+    </v-card-text>
+  </v-card>
 
-            <v-time-picker
-              v-model="finish_time"
-              elevation="15"
-              color="green lighten-1"
-              format="24hr"
-            >
-              <v-spacer></v-spacer>
-              <v-flex justify-center>
-                <v-btn text color="primary" @click="finishtimepicker = false">
-                  Cancel
-                </v-btn>
-                <v-btn
-                  text
-                  color="primary"
-                  @click="$refs.finishtimepicker.save(finish_time)"
-                >
-                  OK
-                </v-btn>
-              </v-flex>
-            </v-time-picker>
-          </v-menu>
-
-          <v-text-field
-            v-model.number="member"
-            placeholder="例: 5"
-            label="人数 ( 人 )"
-          />
-
-          <v-text-field
-            v-model.number="price"
-            placeholder="例: 2000"
-            label="予算 ( 円 / 一人当たり )"
-          />
-          <v-text-field
-            v-model.number="place"
-            placeholder="例: 代々木公園"
-            label="場所"
-          />
-
-          <v-text-field
-            v-model="quickword"
-            placeholder="例: 楽しみましょう！"
-            label="声かけメッセージ"
-          />
-          <v-text-field
-            v-model="catchcopy"
-            placeholder="例: 春が始まりましたね"
-            label="キャッチコピー"
-          />
-
-          <v-select
-            v-model="category"
-            :items="categoryList"
-            label="カテゴリー"
-            item-text="category"
-          />
-          <v-divider class="ma-2" />
-          <v-row
-            class="green lighten-4"
-            style="height: 50px;"
-            justify="center"
-            align-content="center"
-          >
-            <v-btn
-              x-large
-              block
-              color="#48A1EB"
-              class="font-weight-bold align-center"
-              min-width="125px"
-              icon
-              dark
-              @click="postCreate"
-            >
-              <v-icon>mdi-cube-send</v-icon>
-              投稿する
-            </v-btn>
-          </v-row>
-        </v-form>
-      </v-card-text>
-    </v-card>
-  
   <!-- </template> -->
 </template>
 

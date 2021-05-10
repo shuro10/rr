@@ -9,7 +9,6 @@
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
     <search />
-    
   </div>
 </template>
 

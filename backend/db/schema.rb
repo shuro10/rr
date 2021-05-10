@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "details"
+    t.text "quickword"
+    t.text "catchcopy"
     t.time "start_time"
     t.time "finish_time"
     t.integer "member"

@@ -1,6 +1,5 @@
 <template>
   <v-sheet class="green lighten-2 mb-4">
-
     <v-timeline align-top dense>
       <v-timeline-item color="white lighten-3" fill-dot small>
         <v-row class="pt-1">

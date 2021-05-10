@@ -1,55 +1,53 @@
 <template>
   <div>
-
-<template v-if="isRoundedLike">
-    <v-btn
-      v-if="isLike"
-      color="red white--text font-weight-bold"
-      absolute
-      fab
-      right
-      top
-      @click="nice"
-    >
-      <v-icon>mdi-heart-off</v-icon>
-    </v-btn>
-    <v-btn
-      v-else
-      color="pink white--text font-weight-bold"
-      absolute
-      fab
-      right
-      top
-      @click="nice"
-    >
-      <v-icon>mdi-heart</v-icon>
-    </v-btn>
-  </template>
-<template v-if="isRoundedJoin">
-    <v-btn
-      v-if="isJoin"
-      color="red white--text font-weight-bold"
-      absolute
-      fab
-      right
-      top
-      @click="joining"
-    >
-      <v-icon large>mdi-run</v-icon>
-    </v-btn>
-    <v-btn
-      v-else
-      color="pink white--text font-weight-bold"
-      absolute
-      fab
-      right
-      top
-      @click="joining"
-    >
-      <v-icon large>mdi-close-box</v-icon>
-    </v-btn>
-  </template>
-
+    <template v-if="isRoundedLike">
+      <v-btn
+        v-if="isLike"
+        color="red white--text font-weight-bold"
+        absolute
+        fab
+        right
+        top
+        @click="nice"
+      >
+        <v-icon>mdi-heart-off</v-icon>
+      </v-btn>
+      <v-btn
+        v-else
+        color="pink white--text font-weight-bold"
+        absolute
+        fab
+        right
+        top
+        @click="nice"
+      >
+        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+    </template>
+    <template v-if="isRoundedJoin">
+      <v-btn
+        v-if="isJoin"
+        color="red white--text font-weight-bold"
+        absolute
+        fab
+        right
+        top
+        @click="joining"
+      >
+        <v-icon large>mdi-run</v-icon>
+      </v-btn>
+      <v-btn
+        v-else
+        color="pink white--text font-weight-bold"
+        absolute
+        fab
+        right
+        top
+        @click="joining"
+      >
+        <v-icon large>mdi-close-box</v-icon>
+      </v-btn>
+    </template>
   </div>
 </template>
 
@@ -76,20 +74,20 @@ export default {
     },
     isRoundedLike: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isRectangleLike: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isRoundedJoin: {
       type: Boolean,
-      default: false
+      default: false,
     },
     isRectangleJoin: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
@@ -197,21 +195,17 @@ export default {
       }
       if (this.isJoin) {
         this.unJoinPost(postData).then(() => {
-          this.$axios
-            .$get(`/api/v1/posts/${this.post.id}`)
-            .then((res) => {
-              this.$store.commit('post/setPost', res, { root: true })
-              this.isJoin = false
-            })
+          this.$axios.$get(`/api/v1/posts/${this.post.id}`).then((res) => {
+            this.$store.commit('post/setPost', res, { root: true })
+            this.isJoin = false
+          })
         })
       } else {
         this.joinPost(postData).then(() => {
-          this.$axios
-            .$get(`/api/v1/posts/${this.post.id}`)
-            .then((res) => {
-              this.$store.commit('post/setPost', res, { root: true })
-              this.isJoin = true
-            })
+          this.$axios.$get(`/api/v1/posts/${this.post.id}`).then((res) => {
+            this.$store.commit('post/setPost', res, { root: true })
+            this.isJoin = true
+          })
         })
       }
     },

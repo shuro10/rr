@@ -1,6 +1,7 @@
 <template>
   <div>
     <p>tab/search: {{ Getters14 }}</p>
+
     <p>auth/currentUser: {{ Getters1 }}</p>
     <p>auth/loginUser: {{ Getters2 }}</p>
     <p>auth/isLoggedIn: {{ Getters3 }}, auth/isAdmin: {{ Getters4 }}</p>

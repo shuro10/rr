@@ -21,7 +21,6 @@
                 <v-sheet dark flat color="white">
                   <v-img
                     v-if="p.image.url"
-                    contain
                     :src="p.image.url"
                     :aspect-ratio="1 / 1"
                     class="white--text align-top"
@@ -32,40 +31,44 @@
                         color="indigo"
                         text-color="white"
                       >
-                        @{{ p.place }}                        
+                        @{{ p.place }}
                       </v-chip>
                     </span>
-               
                   </v-img>
-<div style="position: relative;">
-                  <v-card-text style="position: relative;">
-                    <schedule-card-info :post="p" />
-                    <button-like :user="user" :post="p" :isRoundedLike="true" />
-                    <div class="grey--text title">
-                      <div
-                        class="font-weight-regular text-decoration-underlinemt-n3"
-                      >
-                        {{ p.name }}
+                  <div style="position: relative;">
+                    <v-card-text style="position: relative;">
+                      <dialog-component 
+                      :isScheduleCardInfo="true" 
+                      :post="p" 
+                      />
+                      <!-- <schedule-card-info :post="p" /> -->
+                      <button-like
+                        :user="user"
+                        :post="p"
+                        :is-rounded-like="true"
+                      />
+                      <div class="grey--text title">
+                        <div
+                          class="font-weight-regular text-decoration-underlinemt-n3"
+                        >
+                          {{ p.name }}
+                        </div>
+                        <div class="caption text-center mt-4 shadow-text">
+                          キャッチコピー
+                        </div>
+
+                        <p
+                          class="font-weight-thin overline no-wrap-text mt-4 mb-n1"
+                          align="center"
+                          justify="center"
+                        >
+                          {{ $dayjs(p.release).format('MM/DD') }}&nbsp;&nbsp;{{
+                            $dayjs(p.start_time).format('hh:mm')
+                          }}~{{ $dayjs(p.finish_time).format('hh:mm') }}
+                        </p>
                       </div>
-                      <div class="caption text-center mt-4 shadow-text">
-                        キャッチコピー
-                      </div>
-
-                      <p
-                        class="font-weight-thin overline no-wrap-text mt-4 mb-n1"
-                        align="center"
-                        justify="center"
-                      >
-                        {{ $dayjs(p.release).format('MM/DD') }}&nbsp;&nbsp;{{
-                          $dayjs(p.start_time).format('hh:mm')
-                        }}~{{ $dayjs(p.finish_time).format('hh:mm') }}
-                      </p>
-                    </div>
-
-
-
-                  </v-card-text>
-                                      <v-expand-transition>
+                    </v-card-text>
+                    <v-expand-transition>
                       <div
                         v-if="hover"
                         class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
@@ -82,8 +85,7 @@
                         </div>
                       </div>
                     </v-expand-transition>
-</div>
-
+                  </div>
                 </v-sheet>
               </template>
             </v-hover>
@@ -91,12 +93,21 @@
             <v-card-text class="orange">
               <div class="d-flex font-weight-thin subtitle-1 justify-center ">
                 <span>
-                  <counter-list :users="p.like_users" :post="p" :icon="true" :title="title1" />
-                </span>&nbsp;&nbsp;&nbsp;&nbsp;
+                  <counter-list
+                    :users="p.like_users"
+                    :post="p"
+                    :icon="true"
+                    :title="title1"
+                  /> </span
+                >&nbsp;&nbsp;&nbsp;&nbsp;
                 <span>
-                  <counter-list :users="p.join_users" :post="p" :icon="false" :title="title2" />
+                  <counter-list
+                    :users="p.join_users"
+                    :post="p"
+                    :icon="false"
+                    :title="title2"
+                  />
                 </span>
-              
               </div>
             </v-card-text>
           </v-responsive>
@@ -105,7 +116,7 @@
     </v-row>
   </div>
 
-                      <!--        
+  <!--        
                         
                         {{ $dayjs(p.finish_time).format('hh:mm') }}
                       </p>
@@ -131,7 +142,7 @@
                         
                         -->
 
-                        <!-- 
+  <!-- 
     <v-list style="background-color: white">
       <v-card
         v-for="review in p.reviews"
@@ -143,12 +154,10 @@
       <post-review2 :review="review" />
       </v-card>
     </v-list> -->
-                      <!--                                       <p class="black--text"> index:{{ i + 1 }} </p>
+  <!--                                       <p class="black--text"> index:{{ i + 1 }} </p>
             <p class="black--text"> like:{{ p.like_users.length }} </p>   
             <p class="black--text"> id:{{ p.id }} </p>
              -->
-
-
 </template>
 
 <script>
@@ -161,8 +170,7 @@ import userDialog from '~/components/infoUser/UserDialog.vue'
 import userDialogReview from '~/components/infoUser/UserDialogReview.vue'
 import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
 import postReview2 from '~/components/infoPost/PostReview2.vue'
-
-
+import dialogComponent from '~/components/layouts/DialogComponent.vue'
 
 export default {
   // props: {
@@ -181,7 +189,7 @@ export default {
     userDialogReview,
     scheduleCardInfo,
     postReview2,
-
+    dialogComponent,
   },
   data() {
     return {
@@ -201,8 +209,8 @@ export default {
     }
   },
   computed: {
-        reversePosts() {
-      return this.posts.slice().reverse();
+    reversePosts() {
+      return this.posts.slice().reverse()
     },
     ...mapGetters({
       post: 'post/post',

@@ -6,12 +6,12 @@
     <v-spacer></v-spacer>
     <v-card-actions class="justify-center">
       <template v-if="originEmail != guest">
-      <button-change @button-action="changeUserEmail" />
-      </template>      
+        <button-change @button-action="changeUserEmail" />
+      </template>
       <template v-else>
-      <v-btn block color="grey" class="white--text">
-        ゲストユーザーの為変更できません
-      </v-btn>
+        <v-btn block color="grey" class="white--text">
+          ゲストユーザーの為変更できません
+        </v-btn>
       </template>
     </v-card-actions>
   </v-form>
@@ -21,15 +21,15 @@
 import buttonChange from '~/components/layouts/ButtonChange.vue'
 
 export default {
+  components: {
+    buttonChange,
+  },
   data() {
     return {
       email: this.$store.getters['auth/currentUser'].email,
       originEmail: this.$store.getters['auth/currentUser'].uid,
       guest: 'guestuser4501@gmail.com',
     }
-  },
-  components: {
-    buttonChange,
   },
   methods: {
     async changeUserEmail() {

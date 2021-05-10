@@ -9,15 +9,22 @@
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
     <search />
+    
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import Search from '~/components/search/Search.vue'
+import dialogComponent from '~/components/layouts/DialogComponent.vue'
 // import searchForm from '~/components/search/SearchForm.vue'
 
 export default {
+  components: {
+    Search,
+    dialogComponent,
+    // searchForm,
+  },
   computed: {
     /* ========== ScheduleCard =========== */
     ...mapGetters({
@@ -29,9 +36,12 @@ export default {
     }, */
     /* ========== ScheduleCard =========== */
   },
-  components: {
-    Search,
-    // searchForm,
+
+  methods: {
+    ...mapActions({
+      /* user: 'user/user', */
+      /* initData: 'tab/initData', */
+    }),
   },
   /* 
     async asyncData({ $axios }) {
@@ -51,12 +61,6 @@ export default {
   //   console.log('It\'s the test!')
   //   console.log(process.env.RAILS_GUEST_ADDRESS)
   // },
-
-  data() {
-    return {}
-  },
-  computed: {},
-  methods: {},
 }
 </script>
 

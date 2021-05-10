@@ -2,7 +2,17 @@
   <v-dialog v-model="dialog" max-width="600">
     <template #activator="{ on, attrs }">
       <span v-bind="attrs" v-on="on">
-        <p class="blue--text">{{ users.length }}</p>
+        <p class="blue--text d-flex">
+          <template v-if="icon">
+            <v-icon>mdi-heart</v-icon>&nbsp;{{ post.like_users.length }}
+            <!-- <v-icon>mdi-heart</v-icon>&nbsp;{{ post.like_users.name }} -->
+          </template>
+          <template v-else>
+            <v-icon>mdi-run</v-icon>&nbsp;{{
+              post.join_users.length
+            }}&nbsp;<span class="white--text">/&nbsp;{{ post.member }}</span>
+          </template>
+        </p>
       </span>
     </template>
 
@@ -60,6 +70,10 @@ export default {
       type: String,
       required: true,
     },
+    icon: {
+      type: Boolean,
+      required: false,
+    },
   },
   computed: {
     ...mapGetters({
@@ -90,21 +104,23 @@ export default {
     //   })
     // }, */
   },
-computed: {
+  data() {
+    return {
+      dialog: false,
+    }
+  },
+  computed: {
     // いいね数を返す
     count() {
       return this.likeList.length
     },
     // ログインユーザが既にいいねしているかを判定する
     isLiked() {
-      if (this.likeList.length === 0) { return false }
+      if (this.likeList.length === 0) {
+        return false
+      }
       return Boolean(this.findLikeId())
-    }
-  },
-  data() {
-    return {
-      dialog: false,
-    }
+    },
   },
   methods: {
     /*     pagelink(link) {

@@ -6,22 +6,16 @@
           <v-row>
             <v-col>
               <v-sheet class="green lighten-3 d-flex align-center ">
-<!--                 <nuxt-link :to="{ path: `/users/${review.user_id}` }">
+                <!--                 <nuxt-link :to="{ path: `/users/${review.user_id}` }">
                   <user-avatar :size="50" :user="review.user" />
                 </nuxt-link> -->
 
-               {{ review.member }} が {{ createDate }} に投稿
-
-
-
-
-                
+                {{ review.member }} が {{ createDate }} に投稿
               </v-sheet>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
-
     </v-card>
 
     <!-- ======== Rating & Title ========= -->

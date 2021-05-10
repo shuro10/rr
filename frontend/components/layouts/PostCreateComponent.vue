@@ -1,29 +1,5 @@
 <template>
   <!-- <template v-if="loginUser && loginUser.id == user.id"> -->
-  <v-dialog
-    v-model="dialog"
-    hide-overlay
-    transition="dialog-bottom-transition"
-    max-width="600"
-  >
-    <template v-slot:activator="{ on, attrs }">
-      <v-btn
-        color="#BDBDBD"
-        dark
-        x-large
-        fixed
-        fab
-        bottom
-        right
-        v-bind="attrs"
-        class="ma-10"
-        v-on="on"
-      >
-        <v-icon color="white">mdi-pencil</v-icon>
-      </v-btn>
-    </template>
-<button-close @close-dialog="closeDialog" />
-
     <v-card width="400px" class="mx-auto pb-3 mb-10">
       <v-card-text>
         <v-form ref="form" lazy-validation class="pt-10">
@@ -53,15 +29,11 @@
             offset-y
             min-width="auto"
           >
-            <template #activator="{ on, attrs }">
               <v-text-field
                 v-model="release"
                 label="開催日"
                 readonly
-                v-bind="attrs"
-                v-on="on"
               />
-            </template>
 
             <v-date-picker v-model="release" scrollable elevation="15">
               <v-spacer></v-spacer>
@@ -84,22 +56,20 @@
             offset-y
             min-width="auto"
           >
-            <template #activator="{ on, attrs }">
+
               <v-text-field
                 v-model="start_time"
                 label="開始時刻"
                 readonly
-                v-bind="attrs"
-                v-on="on"
               />
-            </template>
 
-            <v-time-picker 
-            v-model="start_time" 
-            elevation="15"
-                    color="green lighten-1"
-                    format="24hr"
-                    >
+
+            <v-time-picker
+              v-model="start_time"
+              elevation="15"
+              color="green lighten-1"
+              format="24hr"
+            >
               <v-spacer></v-spacer>
               <v-flex justify-center>
                 <v-btn text color="primary" @click="starttimepicker = false">
@@ -123,24 +93,19 @@
             transition="scale-transition"
             offset-y
             min-width="auto"
-            
           >
-            <template #activator="{ on, attrs }">
               <v-text-field
                 v-model="finish_time"
                 label="終了時刻"
                 readonly
-                v-bind="attrs"
-                v-on="on"
               />
-            </template>
 
-            <v-time-picker 
-            v-model="finish_time" 
-            elevation="15"
-                    color="green lighten-1"
-                    format="24hr"
-                    >
+            <v-time-picker
+              v-model="finish_time"
+              elevation="15"
+              color="green lighten-1"
+              format="24hr"
+            >
               <v-spacer></v-spacer>
               <v-flex justify-center>
                 <v-btn text color="primary" @click="finishtimepicker = false">
@@ -215,12 +180,12 @@
         </v-form>
       </v-card-text>
     </v-card>
-  </v-dialog>
+  
   <!-- </template> -->
 </template>
 
 <script>
-  import buttonClose from '~/components/layouts/ButtonClose.vue'
+import buttonClose from '~/components/layouts/ButtonClose.vue'
 
 export default {
   components: {
@@ -236,7 +201,6 @@ export default {
       finish_time: '18:00',
       member: '5',
       place: '',
-      category: '',
       price: '1000',
       release: '',
       quickword: '初めまして。よろしくお願いします！',
@@ -259,9 +223,9 @@ export default {
       this.today.getDate()
   },
   methods: {
-  closeDialog() {
-    this.dialog = false
-  },
+    closeDialog() {
+      this.dialog = false
+    },
 
     setImage(e) {
       this.image = e

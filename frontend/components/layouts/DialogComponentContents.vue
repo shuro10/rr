@@ -17,7 +17,7 @@
     <post-create-component />
   </template>
   <template v-else-if="isAccountSetting">
-    <the-header-account-setting />
+    <the-account />
   </template>
   <template v-else-if="isScheduleCardInfo">
     <schedule-card-info :post="posting" />
@@ -33,15 +33,13 @@
   >
         
             <v-btn
-              x-large
               transparent
-              outlined
-              color="#48A1EB"
-              class="font-weight-bold"
+              color="white"
+              class="pink--text font-weight-bold"
               min-width="125px"
               @click="closeDialog"
             >
-              <v-icon>mdi-cube-send</v-icon>
+              <v-icon>mdi-window-close</v-icon>
               閉じる
             </v-btn>
   </v-sheet>
@@ -53,7 +51,7 @@
 import buttonClose from '~/components/layouts/ButtonClose.vue'
 import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
 import postCreateComponent from './PostCreateComponent.vue'
-import theHeaderAccountSetting from '~/components/layouts/TheHeaderAccountSetting.vue'
+import theAccount from '~/components/layouts/TheAccount.vue'
 
 
   export default {
@@ -88,7 +86,7 @@ import theHeaderAccountSetting from '~/components/layouts/TheHeaderAccountSettin
       buttonClose,
       scheduleCardInfo,
       postCreateComponent,
-      theHeaderAccountSetting
+      theAccount,
     },
   }
 </script>

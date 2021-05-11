@@ -1,89 +1,41 @@
 <template>
-  
-    <div>
-      <!--                 <template v-slot:opposite>
-                  <div class="grey--text">
-                    <div
-                      class="display-1 shadow-text3 font-weight-regular text-decoration-underlinemt-n3"
-                    >
-                      {{ post.name }}<br />
-                    </div>
+  <div>
+    <v-sheet class="rounded-card" elevation="5">
+      <v-card color="transparent" class="rounded-card " elevation="5">
+        <v-img :src="post.image.url" class="rounded-card">
+          <v-card-text class="align-bottom">
+            <v-row>
+              <v-col>
+                <h1>{{ post.name }}</h1>
 
-                    <div
-                      class="subtitle-2 shadow-text1 font-weight-regular text-decoration-underlinemt-n3"
-                    >
-                      {{ post.catchcopy }}
-                    </div>
-                    <div class="subtitle-1 mt-4 shadow-text2">
-                      {{ post.release }}
-                    </div>
-                  </div>
-                </template> -->
-
-      <v-card color="transparent" class="rounded-card "
-      elevation="5"
-      >
-        <v-img :src="post.image.url"
-                  class="rounded-card"
-                  
-                  >
-       <v-card-text class="align-bottom">
-    <v-row>
-      <v-col>
-        
-                      <h1>{{ post.name }}</h1>
-        
-                      <div>
-                      <h3 class="ml-2">{{ post.catchcopy }}</h3>
-                      </div>
-                      
-      </v-col>
-      <v-col>
-      </v-col>
-        </v-row>
-          
-        </v-card-text>
- 
-
+                <div>
+                  <h3 class="ml-2">{{ post.catchcopy }}</h3>
+                </div>
+              </v-col>
+              <v-col> </v-col>
+            </v-row>
+          </v-card-text>
         </v-img>
-
-                        
-<!--                     <v-sheet style="position: relative;">
+        <!--                     <v-sheet style="position: relative;">
                       <button-like
                         :user="loginUser"
                         :post="post"
                         :is-rounded-like="true"
                       />
                     </v-sheet> -->
-                    
       </v-card>
-                  <v-row class="ml-3 mt-n16">
-              <v-col>
-            <div class="ml-5  subtitle-1 mt-4 ">
-              <strong>
-              {{ post.release }}&nbsp;</strong>
-            </div>
-              </v-col>
-              <v-col>
-              </v-col>
-            </v-row>
+      <v-row class="ml-3 mt-n16">
+        <v-col>
+          <div class="ml-5  subtitle-1 mt-4 ">
+            <strong> {{ post.release }}&nbsp;</strong>
+          </div>
+        </v-col>
+        <v-col> </v-col>
+      </v-row>
 
-    <v-sheet color="transparent" class="mt-5"></v-sheet>
-<v-sheet class="rounded-card">
+      <v-sheet color="transparent" class="mt-5"></v-sheet>
 
-</v-sheet>
-    <v-sheet color="transparent"></v-sheet>
-<v-sheet class="rounded-card"
-elevation="5"
->
-
-
-
-              <v-timeline
-        dense
-        clipped
-      >
-  
+      <v-timeline dense clipped>
         <v-timeline-item
           class="mb-4"
           color="grey"
@@ -91,110 +43,77 @@ elevation="5"
           small
         >
           <v-row justify="space-between">
-            <v-col
-              class="text-left"
-              cols="5"
-            >
-                    <div class="headline
-                    mr-8 pink--text font-weight-bold no-wrap-text">
-              開始 {{ $dayjs(post.start_time).format('hh:mm') }}
-            </div>
+            <v-col class="text-left" cols="5">
+              <div
+                class="headline
+                    mr-8 pink--text font-weight-bold no-wrap-text"
+              >
+                開始 {{ $dayjs(post.start_time).format('hh:mm') }}
+              </div>
             </v-col>
 
             <v-col cols="7">
-              This order was archived.
+              <v-chip class="white--text ml-0" color="purple" label small>
+                <div class="caption mx-auto text-right">
+                  場所: {{ post.place }}
+                </div>
+              </v-chip>
             </v-col>
           </v-row>
         </v-timeline-item>
-  
-        <v-timeline-item
-          class="mb-4"
-          small
-        >
 
+        <v-timeline-item class="mb-4" small>
           <v-row justify="space-between">
-            <v-col
-              class="text-left"
-              cols="5"
-            >
-                          <span class="headline 
+            <v-col class="text-left" cols="5">
+              <span
+                class="headline 
                           mr-8 
                           font-weight-bold cyan--text"
-              >終了 {{ $dayjs(post.finish_time).format('hh:mm') }}</span
-            >
+                >終了 {{ $dayjs(post.finish_time).format('hh:mm') }}</span
+              >
             </v-col>
             <v-col cols="7">
-              <v-chip
-                class="white--text ml-0"
-                color="purple"
-                label
-                small
-              >
-              <div class="caption mx-auto text-right">予算: {{ post.price }}円/人</div>
+              <v-chip class="white--text ml-0" color="purple" label small>
+                <div class="caption mx-auto text-right">
+                  予算: {{ post.price }}円/人
+                </div>
               </v-chip>
-
             </v-col>
-
           </v-row>
         </v-timeline-item>
-         
-          <v-timeline-item
-                    fill-dot
-                              class="white--text mb-9"
-          color="orange"
-          large
-          >
-            <template v-slot:icon>
-              <v-avatar >
-                <img src="https://i.pravatar.cc/64" />
-              </v-avatar>
-            </template>
 
-            <v-card class="elevation-2 mr-8" rounded-card
-            
-            >
-              <v-card-title class="body-1">
-                Hi! {{ post.quickword }}
-              </v-card-title>
-              <v-card-text>
-                {{ post.details }}
-              </v-card-text>
-            </v-card>
-          </v-timeline-item>
+        <v-timeline-item fill-dot class="white--text mb-9" color="orange" large>
+          <template v-slot:icon>
+            <v-avatar>
+              <img src="https://i.pravatar.cc/64" />
+            </v-avatar>
+          </template>
 
-
+          <v-card class="elevation-2 mr-8" rounded-card>
+            <v-card-title class="body-1">
+              Hi! {{ post.quickword }}
+            </v-card-title>
+            <v-card-text>
+              {{ post.details }}
+            </v-card-text>
+          </v-card>
+        </v-timeline-item>
       </v-timeline>
-  
-    <v-sheet class="rounded-card" color="transparent" 
->
-                        <v-row justify="space-between">
-            <v-col cols="2">
-                
-              </v-col>
-            <v-col cols="9"
-            
-            >
-              <user-dialog-shown :users="post.join_users" :title="'参加者'" />
-                      <button-like
-                        :user="loginUser"
-                        :post="post"
-                        :is-rounded-like="true"
-                      />
+      <v-sheet class="d-flex justify-center transparent">
+        <dialog-component
+          :is-message-list="true"
+          :post="post"
+          class="mt-5 mb-5"
+        /><br />
 
-              </v-col>
-            <v-col cols="1">
-                
-              </v-col>
-              
-          </v-row>
-
-
-
-
-</v-sheet>
-
+        <button-like
+          :user="loginUser"
+          :post="post"
+          :is-rounded-join="true"
+          class="mb-10"
+        />
       </v-sheet>
-
+    </v-sheet>
   </div>
 </template>
 
@@ -202,11 +121,15 @@ elevation="5"
 import { mapGetters } from 'vuex'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
 import userDialogShown from '~/components/infoUser/UserDialogShown.vue'
+import postContainerMessage from '~/components/infoPost/PostContainerMessage.vue'
+import dialogComponent from '~/components/layouts/dialogComponent.vue'
 
 export default {
   components: {
     buttonLike,
     userDialogShown,
+    postContainerMessage,
+    dialogComponent,
   },
   props: {
     post: {
@@ -246,10 +169,10 @@ export default {
   border-radius: 20px;
 }
 .shadow-text1 {
-  text-shadow:2px 2px 3px #f51818;
+  text-shadow: 2px 2px 3px #f51818;
 }
 .shadow-text2 {
-  text-shadow:2px 2px 3px #f51818;
+  text-shadow: 2px 2px 3px #f51818;
   border-bottom: double;
 }
 .shadow-text3 {
@@ -263,7 +186,7 @@ svg {
 }
 text {
   fill: #333;
-  stroke: #FFF;
+  stroke: #fff;
   stroke-width: 0.3;
   stroke-linejoin: round;
 }
@@ -277,8 +200,8 @@ strong {
 }
 
 strong:before {
-  font-family: "Font Awesome 5 Free";
-  content: "\f041";
+  font-family: 'Font Awesome 5 Free';
+  content: '\f041';
   display: inline-block;
   line-height: 40px;
   position: absolute;
@@ -301,8 +224,8 @@ strong:before {
 
 h1 {
   background: #b0dcfa; /*背景色*/
-  padding: 0.5em;/*文字周りの余白*/
-  color: white;/*文字を白に*/
-  border-radius: 0.5em;/*角の丸み*/
+  padding: 0.5em; /*文字周りの余白*/
+  color: white; /*文字を白に*/
+  border-radius: 0.5em; /*角の丸み*/
 }
 </style>

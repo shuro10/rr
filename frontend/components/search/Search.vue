@@ -44,7 +44,7 @@
         </v-dialog>
       </template>
       <template v-else>
-        <dialog-component :is-account-setting="true" />
+        <dialog-component :is-account-page="true" class="mt-5" />
       </template>
     </v-app-bar>
 
@@ -72,7 +72,7 @@
 import { mapGetters, mapActions } from 'vuex'
 /* TheHeader */
 import _debounce from 'lodash.debounce'
-import theAccount from '~/components/layouts/theAccount.vue'
+import theAccount from '~/components/layouts/TheAccount.vue'
 import theModalSignUp from '~/components/layouts/TheModalSignUp.vue'
 import theModalLogin from '~/components/layouts/TheModalLogin.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'

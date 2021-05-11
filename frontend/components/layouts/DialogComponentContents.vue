@@ -47,71 +47,45 @@
         </v-col>
       </v-row>
 
-
-      <v-sheet width="500px" color="transparent" class=" mx-auto pb-3 mb-10 rounded-card">
+      <v-sheet
+        width="500px"
+        color="transparent"
+        class=" mx-auto pb-3 mb-10 rounded-card"
+      >
         <template v-if="isPostCreate">
           <post-create-component />
         </template>
-        <template v-else-if="isAccountSetting">
+        <template v-else-if="isAccountPage">
           <the-account />
         </template>
         <template v-else-if="isScheduleCardInfo">
           <schedule-card-info :post="posting" />
         </template>
+        <template v-else-if="isMessageList">
+          <list-component :is-message-list="true" :post="posting" />
+        </template>
+        <!-- 
+        <template v-else-if="isScheduleCardInfoInList">
+          <schedule-card-info :post="posting" />
+        </template>
+ -->
         <template v-else>
           elseelseelse
         </template>
-
       </v-sheet>
-
-      <v-spacer class="mx-auto" />
-
-      <v-sheet class="d-flex justify-center transparent mb-10 ">
-       
-       <v-row>
-         <v-col cols=4>
-           </v-col>
-           <v-col>
+      <v-sheet class="d-flex justify-center transparent">
         <v-btn
           transparent
           color="white"
-          class="pink--text font-weight-bold"
+          class="pink--text font-weight-bold mt-n10 mb-2"
           min-width="125px"
           @click="closeDialog"
         >
           <v-icon>mdi-window-close</v-icon>
           閉じる
         </v-btn>
-        </v-col>
-        <v-col cols=2>
-              <v-sheet style="position: relative;">
-                      <button-like
-                        :user="loginUser"
-                        :post="post"
-                        :is-rounded-like="true"
-                      />
-                      </v-sheet>
-          </v-col>
-                  <v-col cols=2>
-                    <v-sheet style="position: relative;">
-                                                <button-like
-                :user="loginUser"
-                :post="post"
-                :is-rounded-join="true"
-              
-              />
-</v-sheet>
-          </v-col>
-
-        </v-row>
-
       </v-sheet>
-
-
-
     </v-dialog>
-
-
   </v-row>
 </template>
 
@@ -120,6 +94,8 @@ import postCreateComponent from './PostCreateComponent.vue'
 import buttonClose from '~/components/layouts/ButtonClose.vue'
 import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
 import theAccount from '~/components/layouts/TheAccount.vue'
+import postContainerMessage from '~/components/infoPost/PostContainerMessage.vue'
+import listComponent from '~/components/layouts/ListComponent.vue'
 
 export default {
   components: {
@@ -127,17 +103,23 @@ export default {
     scheduleCardInfo,
     postCreateComponent,
     theAccount,
+    postContainerMessage,
+    listComponent,
   },
   props: {
     dialogComponent: false,
 
     posting: {
       type: Object,
-      default: () => {},
+      default: () => ({}),
       required: false,
     },
 
     isPostCreate: {
+      type: Boolean,
+      default: false,
+    },
+    isAccountPage: {
       type: Boolean,
       default: false,
     },
@@ -146,6 +128,14 @@ export default {
       default: false,
     },
     isScheduleCardInfo: {
+      type: Boolean,
+      default: false,
+    },
+    isScheduleCardInfoInList: {
+      type: Boolean,
+      default: false,
+    },
+    isMessageList: {
       type: Boolean,
       default: false,
     },
@@ -160,6 +150,6 @@ export default {
 
 <style scoped>
 .rounded-card {
-  border-radius: 100px;
+  border-radius: 20px;
 }
 </style>

@@ -6,7 +6,7 @@
         <v-col class="text-center" cols="12">
           <div align="right">
             <v-chip
-              class="ma-5 font-weight-bold"
+              class="ma-5 font-weight-bold" 
               color="blue-grey darken-2"
               label
               text-color="white"

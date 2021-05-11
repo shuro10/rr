@@ -67,6 +67,11 @@
       <v-spacer class="mx-auto" />
 
       <v-sheet class="d-flex justify-center transparent mb-10 ">
+       
+       <v-row>
+         <v-col cols=4>
+           </v-col>
+           <v-col>
         <v-btn
           transparent
           color="white"
@@ -77,8 +82,36 @@
           <v-icon>mdi-window-close</v-icon>
           閉じる
         </v-btn>
+        </v-col>
+        <v-col cols=2>
+              <v-sheet style="position: relative;">
+                      <button-like
+                        :user="loginUser"
+                        :post="post"
+                        :is-rounded-like="true"
+                      />
+                      </v-sheet>
+          </v-col>
+                  <v-col cols=2>
+                    <v-sheet style="position: relative;">
+                                                <button-like
+                :user="loginUser"
+                :post="post"
+                :is-rounded-join="true"
+              
+              />
+</v-sheet>
+          </v-col>
+
+        </v-row>
+
       </v-sheet>
+
+
+
     </v-dialog>
+
+
   </v-row>
 </template>
 

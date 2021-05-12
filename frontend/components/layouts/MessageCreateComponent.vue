@@ -1,15 +1,4 @@
 <template>
-  <v-dialog v-model="dialog" max-width="600">
-    <template #activator="{ on, attrs }">
-      <v-btn
-        color="orange white--text font-weight-bold"
-        v-bind="attrs"
-        v-on="on"
-      >
-        メッセージする
-      </v-btn>
-    </template>
-
     <v-card>
       <v-system-bar lights-out>
         <v-spacer></v-spacer>
@@ -73,7 +62,6 @@
         </v-form>
       </v-card-text>
     </v-card>
-  </v-dialog>
 </template>
 
 <script>
@@ -83,6 +71,7 @@ export default {
   props: {
     post: {
       type: Object,
+      default: () => ({}),
       required: true,
     },
   },

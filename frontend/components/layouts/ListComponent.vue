@@ -2,18 +2,15 @@
   <div>
     <template v-if="isMessageList">
       <v-card class="rounded-card">
-        <v-timeline dense clipped>
+        
           <template v-if="post.reviews.length === 0">
             <h4 class="ma-3 text-decoration-underline">
               メッセージがありません。
             </h4>
-            <post-review-modal v-if="login" :post="post" />
+            <the-modal-message-create v-if="login" :post="post" />
           </template>
-          <template v-else>
-            <v-timeline-item class="mb-6" hide-dot>
-              <span>TODAY</span>
-            </v-timeline-item>
-
+          <template >
+            <v-timeline dense clipped>        
             <v-timeline-item
               v-for="review in post.reviews"
               :key="review.id"
@@ -23,39 +20,25 @@
               small
             >
               <post-review :review="review" />
-
-              <!--           <v-row justify="space-between">
-            <v-col cols="7">
-              This order was archived.
-            </v-col>
-            <v-col
-              class="text-right"
-              cols="5"
-            >
-              15:26 EDT
-            </v-col>
-          </v-row> -->
             </v-timeline-item>
-          </template>
-
-          <!--         <v-timeline-item
-          class="mb-4"
-          small
-        >
-          <v-row justify="space-between">
-            <v-col cols="7">
-              Digital Downloads fulfilled 1 item.
-            </v-col>
-            <v-col
-              class="text-right"
-              cols="5"
-            >
-              15:25 EDT
-            </v-col>
-          </v-row>
-        </v-timeline-item> -->
         </v-timeline>
+        </template>
       </v-card>
+    </template>
+    <template v-if="isMessageListInId">
+        <v-card flat style="background-color: white">
+          <v-list style="background-color: white">
+            <v-card
+              v-for="list in lists"
+              :key="list.id"
+              flat
+              class="mb-2"
+              style="background-color: white"
+            >
+              <post-review2 :review="list" />
+            </v-card>
+          </v-list>
+        </v-card>
     </template>
     <template v-else>
       <v-list two-line>
@@ -91,29 +74,36 @@
 import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 import userFollow from '~/components/infoUser/UserFollow.vue'
-import postReviewModal from '~/components/infoPost/PostReviewModal.vue'
+import theModalMessageCreate from '~/components/layouts/TheModalMessageCreate.vue'
 import postReviewList from '~/components/infoPost/PostReviewList.vue'
 import postReview from '~/components/infoPost/PostReview.vue'
+import postReview2 from '~/components/infoPost/PostReview2.vue'
 
 export default {
   components: {
     userAvatar,
     userFollow,
-    postReviewModal,
+    theModalMessageCreate,
     postReviewList,
     postReview,
+    postReview2
   },
   props: {
     lists: {
       type: Array,
       default: () => ({}),
-      required: true,
+      required: false,
     },
     post: {
       type: Object,
-      required: true,
+      default: () => ({}),
+      required: false,
     },
     isMessageList: {
+      type: Boolean,
+      default: false,
+    },
+    isMessageListInId: {
       type: Boolean,
       default: false,
     },

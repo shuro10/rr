@@ -1,6 +1,13 @@
 <template>
   <div>
     <v-sheet class="rounded-card" elevation="5">
+              <div>
+            <nuxt-link :to="{ path: `/post/${post.id}` }">
+              <v-btn>
+                参加ページへ
+              </v-btn>
+            </nuxt-link>
+        </div>
       <v-card color="transparent" class="rounded-card " elevation="5">
         <v-img
           :src="post.image.url"
@@ -116,6 +123,7 @@
         </v-timeline-item>
       </v-timeline>
       <v-sheet class="d-flex transparent align-center flex-column">
+
         <div>
         <dialog-component3
           :is-message-list="true"

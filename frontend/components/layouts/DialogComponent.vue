@@ -3,7 +3,7 @@
     <template v-if="isPostCreate">
       <dialogComponentContents
         :dialog-component="dialogComponent"
-        :is-post-create="isPostCreate"
+        :is-post-create="true"
         @result="response"
       />
       <v-btn
@@ -23,7 +23,7 @@
     <template v-else-if="isAccountPage">
       <dialogComponentContents
         :dialog-component="dialogComponent"
-        :is-account-page="isAccountPage"
+        :is-account-page="true"
         @result="response"
       />
       <v-btn color="white" plain @click.stop="dialogComponent = true"
@@ -88,7 +88,7 @@
         @result="response"
       />
       <v-btn color="purple white--text" @click.stop="dialogComponent = true">
-        設定へ
+        メッセージ
         <v-icon dark>
           mdi-walk
         </v-icon>
@@ -99,7 +99,7 @@
       <dialogComponentContents
         :dialog-component="dialogComponent"
         :dialog-items="dialogItems"
-        :is-post-create="isPostCreate"
+        :is-post-create="true"
         @result="response"
       />
       <v-btn color="primary" dark @click.stop="dialogComponent = true">

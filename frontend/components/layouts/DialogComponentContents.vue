@@ -62,7 +62,8 @@
           <schedule-card-info :post="posting" />
         </template>
         <template v-else-if="isMessageList">
-          <list-component :is-message-list="true" :post="posting" />
+          sss
+          <!-- <list-component :is-message-list="true" :post="posting" /> -->
         </template>
         <!-- 
         <template v-else-if="isScheduleCardInfoInList">

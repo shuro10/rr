@@ -1,29 +1,27 @@
 <template>
   <v-card class="ml-8 mr-8 mt-4 green lighten-3 rounded">
     <v-card flat class="green lighten-3">
-     
-                <nuxt-link :to="{ path: `/users/${review.user_id}` }"> 
-                  <user-avatar :size="50" :user="review.user" />
-               </nuxt-link>
-                
-                <v-btn
-                  class="ma-1"
-                  plain
-                  style="text-transform: none"
-                  nuxt
-                  :to="`/users/${review.user_id}`"
-                >
-                  {{ review.user.name }}
-                </v-btn>
-                          {{ $dayjs(review.created_at).format('MM/DD') }}&nbsp;{{
-                            $dayjs(review.created_at).format('hh:mm') }}
+      <nuxt-link :to="{ path: `/users/${review.user_id}` }">
+        <user-avatar :size="50" :user="review.user" />
+      </nuxt-link>
 
-                      <template
-                  v-if="review.user_id === $store.state.auth.loginUser.id"
-                >
-                  <post-review-edit :review="review" />
-                  <post-review-delete :review="review" />
-                </template>
+      <v-btn
+        class="ma-1"
+        plain
+        style="text-transform: none"
+        nuxt
+        :to="`/users/${review.user_id}`"
+      >
+        {{ review.user.name }}
+      </v-btn>
+      {{ $dayjs(review.created_at).format('MM/DD') }}&nbsp;{{
+        $dayjs(review.created_at).format('hh:mm')
+      }}
+
+      <template v-if="review.user_id === $store.state.auth.loginUser.id">
+        <post-review-edit :review="review" />
+        <post-review-delete :review="review" />
+      </template>
 
       <v-spacer />
       <div class="d-flex align-center" color="white">
@@ -80,18 +78,16 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 import postReviewEdit from '~/components/infoPost/PostReviewEdit.vue'
 import postReviewDelete from '~/components/infoPost/PostReviewDelete.vue'
-import userDialogLike from '~/components/infoUser/UserDialogLike.vue'
 
 export default {
   components: {
     userAvatar,
     postReviewEdit,
     postReviewDelete,
-    userDialogLike,
   },
   props: {
     review: {

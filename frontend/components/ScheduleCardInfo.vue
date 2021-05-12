@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-sheet class="rounded-card" elevation="5">
-              <div>
-            <nuxt-link :to="{ path: `/post/${post.id}` }">
-              <v-btn>
-                参加ページへ
-              </v-btn>
-            </nuxt-link>
-        </div>
+      <div>
+        <nuxt-link :to="{ path: `/post/${post.id}` }">
+          <v-btn>
+            参加ページへ
+          </v-btn>
+        </nuxt-link>
+      </div>
       <v-card color="transparent" class="rounded-card " elevation="5">
         <v-img
           :src="post.image.url"
@@ -123,40 +123,34 @@
         </v-timeline-item>
       </v-timeline>
       <v-sheet class="d-flex transparent align-center flex-column">
-
         <div>
-        <dialog-component3
-          :is-message-list="true"
-          :post="post"
-          class="mt-5 mb-5 "
-        
-        />
+          <dialog-component3
+            :is-message-list="true"
+            :post="post"
+            class="mt-5 mb-5 "
+          />
         </div>
         <div>
-        <button-like
-          :user="loginUser"
-          :post="post"
-          :is-rounded-join="true"
-          class="mb-10"
-        />
+          <button-like
+            :user="loginUser"
+            :post="post"
+            :is-rounded-join="true"
+            class="mb-10"
+          />
         </div>
-
       </v-sheet>
     </v-sheet>
-    
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
-import userDialogShown from '~/components/infoUser/UserDialogShown.vue'
-import dialogComponent3 from '~/components/layouts/dialogComponent3.vue'
+import dialogComponent3 from '~/components/layouts/DialogComponent3.vue'
 
 export default {
   components: {
     buttonLike,
-    userDialogShown,
     dialogComponent3,
   },
   props: {

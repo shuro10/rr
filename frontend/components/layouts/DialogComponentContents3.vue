@@ -13,7 +13,7 @@
           <v-sheet elevation="4" class="rounded-pill">
             <template v-if="isMessageList">
               <v-chip label color="white" large outlined text-color="purple">
-                <v-icon>mdi-email-variant</v-icon> 
+                <v-icon>mdi-email-variant</v-icon>
               </v-chip>
             </template>
 
@@ -34,18 +34,20 @@
         color="transparent"
         class=" mx-auto pb-3 mb-10 rounded-card"
       >
-
         <template v-if="isMessageList">
           <list-component :is-message-list="true" :post="posting" />
-        <!-- 
+          <!-- 
         <template v-else-if="isScheduleCardInfoInList">
           <schedule-card-info :post="posting" />
         </template>-->
         </template>
 
-      <template v-else>
-        <the-account-setting />
-      </template>
+        <template v-if="isAccountSetting">
+          <the-account-setting />
+        </template>
+        <template v-else>
+          else
+        </template>
       </v-sheet>
 
       <v-sheet class="d-flex justify-center transparent">
@@ -76,17 +78,25 @@ export default {
     listComponent,
   },
   props: {
-    dialogComponent: false,
+    dialogComponent: {
+      type: Boolean,
+      default: false,
+    },
     posting: {
       type: Object,
       default: () => ({}),
       required: false,
     },
-    isMessageList: {
+
+    isAccountSetting: {
       type: Boolean,
       default: false,
     },
 
+    isMessageList: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     closeDialog() {
@@ -94,8 +104,6 @@ export default {
     },
   },
 }
-
-
 </script>
 
 <style scoped>

@@ -1,19 +1,21 @@
 <template>
   <div style="background-color: white">
-                    <v-row>
-                      <v-col>
-                        <template v-if="post.reviews.length === 0">
-                          <h4 class="ma-3 text-decoration-underline">
-                            メッセージがありません。
-                          </h4>
-                          <dialog-component-about-message :post="post" is-message-create="true" />
-                          <the-modal-message-create v-if="login" :post="post" />
-                        </template>
-                        <template v-else>
-                          <list-component :isMessageListInId="true" :lists="post.reviews" />
-                        </template>
-                      </v-col>
-                    </v-row>
+    <v-row>
+      <v-col>
+        <template v-if="post.reviews.length === 0">
+          <h4 class="ma-3 text-decoration-underline">
+            メッセージがありません。
+          </h4>
+          <dialog-component-about-message
+            :post="post"
+            :is-message-create="true"
+          />
+        </template>
+        <template v-else>
+          <list-component :is-message-list-in-id="true" :lists="post.reviews" />
+        </template>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -21,17 +23,15 @@
 import { mapGetters, mapActions } from 'vuex'
 // import postParallax from '~/components/infoPost/postParallax.vue'
 import listComponent from '~/components/layouts/ListComponent.vue'
-import dialogComponentAboutMessage from '~/components/layouts/dialogComponentAboutMessage.vue'
-import theModalMessageEdit from '~/components/layouts/TheModalMessageEdit.vue'
-import theModalMessageCreate from '~/components/layouts/TheModalMessageCreate.vue'
+import dialogComponentAboutMessage from '~/components/layouts/DialogComponentAboutMessage.vue'
+/* import theModalMessageEdit from '~/components/layouts/TheModalMessageEdit.vue' */
 /* import postAlbum from '~/components/infoPost/postAlbum.vue' */
 
 export default {
   name: 'MeetWithKids',
   components: {
     dialogComponentAboutMessage,
-    theModalMessageEdit,
-    theModalMessageCreate,
+    /* theModalMessageEdit, */
     listComponent,
     /* postAlbum, */
   },
@@ -64,7 +64,7 @@ export default {
         console.log(res.data)
       })
     },
-/*     
+    /*     
     loginUserReview() {
       // ユーザーがすでにレビューを投稿してたら非表示にする
       if (this.login) {

@@ -38,13 +38,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import userAvatar from '~/components/infoUser/UserAvatar.vue'
-import userFollow from '~/components/infoUser/UserFollow.vue'
+/* import userAvatar from '~/components/infoUser/UserAvatar.vue' */
+/* import userFollow from '~/components/infoUser/UserFollow.vue' */
 
 export default {
   components: {
-    userAvatar,
-    userFollow,
+    /* userAvatar, */
+    /* userFollow, */
   },
   props: {
     users: {
@@ -55,6 +55,11 @@ export default {
       type: String,
       required: true,
     },
+  },
+  data() {
+    return {
+      dialog: false,
+    }
   },
 
   computed: {
@@ -87,11 +92,6 @@ export default {
     // },
   },
 
-  data() {
-    return {
-      dialog: false,
-    }
-  },
   methods: {
     pagelink(link) {
       this.$router.push({ path: `/users/${link}` })

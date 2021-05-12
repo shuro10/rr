@@ -35,12 +35,10 @@
 </template>
 
 <script>
-import scheduleCardInfo from '~/components/ScheduleCardInfo.vue'
 import dialogComponent2 from '~/components/layouts/DialogComponent2.vue'
 
 export default {
   components: {
-    scheduleCardInfo,
     dialogComponent2,
   },
   props: {

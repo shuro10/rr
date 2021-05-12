@@ -59,6 +59,7 @@ export default {
       type: Object,
       required: true,
     },
+    /* 
     fronttitle: {
       type: String,
       default: '',
@@ -67,8 +68,8 @@ export default {
     backtitle: {
       type: String,
       default: '',
-      required: true,
-    },
+      required: true, 
+    }, */
     isRoundedLike: {
       type: Boolean,
       default: false,

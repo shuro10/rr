@@ -1,47 +1,7 @@
 <template>
   <div>
-    <template v-if="isMessageList">
-      <v-card class="rounded-card">
-        
-          <template v-if="post.reviews.length === 0">
-            <h4 class="ma-3 text-decoration-underline">
-              メッセージがありません。
-            </h4>
-            <the-modal-message-create v-if="login" :post="post" />
-          </template>
-          <template >
-            <v-timeline dense clipped>        
-            <v-timeline-item
-              v-for="review in post.reviews"
-              :key="review.id"
-              class="mb-4"
-              color="grey"
-              icon-color="grey lighten-2"
-              small
-            >
-              <post-review :review="review" />
-            </v-timeline-item>
-        </v-timeline>
-        </template>
-      </v-card>
-    </template>
-    <template v-if="isMessageListInId">
-        <v-card flat style="background-color: white">
-          <v-list style="background-color: white">
-            <v-card
-              v-for="list in lists"
-              :key="list.id"
-              flat
-              class="mb-2"
-              style="background-color: white"
-            >
-              <post-review2 :review="list" />
-            </v-card>
-          </v-list>
-        </v-card>
-    </template>
-    <template v-else>
-      <v-list two-line>
+    <template v-if="isFollow">
+      <v-list>
         <v-row>
           <v-list-item
             v-for="list in lists"
@@ -49,11 +9,8 @@
             :ripple="false"
             class="list"
           >
-            <!-- <nuxt-link :to="{ path: `/users/${user.id}` }"> -->
-            <user-avatar :size="45" :user="list" class="list-avatar mx-3" />
-            <!-- </nuxt-link> -->
+              <user-avatar :size="45" :user="list" class="list-avatar mx-3" />
             <v-list-item-content>
-              {{ list.name }}
               <v-list-item-title
                 class="list-item title"
                 @click="pagelink(user.id)"
@@ -67,6 +24,48 @@
         </v-row>
       </v-list>
     </template>
+    <template v-if="isMessageList">
+      <v-card class="rounded-card">
+        <template v-if="post.reviews.length === 0">
+          <h4 class="ma-3 text-decoration-underline">
+            メッセージがありません。
+          </h4>
+          <the-modal-message-create v-if="login" :post="post" />
+        </template>
+        <template>
+          <v-timeline dense clipped>
+            <v-timeline-item
+              v-for="review in post.reviews"
+              :key="review.id"
+              class="mb-4"
+              color="grey"
+              icon-color="grey lighten-2"
+              small
+            >
+              <post-review :review="review" />
+            </v-timeline-item>
+          </v-timeline>
+        </template>
+      </v-card>
+    </template>
+    <template v-if="isMessageListInId">
+      <v-card flat style="background-color: white">
+        <v-list style="background-color: white">
+          <v-card
+            v-for="list in lists"
+            :key="list.id"
+            flat
+            class="mb-2"
+            style="background-color: white"
+          >
+            <post-message :message="list" />
+          </v-card>
+        </v-list>
+      </v-card>
+    </template>
+    <template v-else>
+      elseelse
+    </template>
   </div>
 </template>
 
@@ -74,19 +73,19 @@
 import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 import userFollow from '~/components/infoUser/UserFollow.vue'
-import theModalMessageCreate from '~/components/layouts/TheModalMessageCreate.vue'
-import postReviewList from '~/components/infoPost/PostReviewList.vue'
+import postMessage from '~/components/infoPost/PostMessage.vue'
+/* import postReviewList from '~/components/infoPost/PostReviewList.vue' */
 import postReview from '~/components/infoPost/PostReview.vue'
-import postReview2 from '~/components/infoPost/PostReview2.vue'
+import theModalMessageCreate from '~/components/layouts/TheModalMessageCreate.vue'
 
 export default {
   components: {
     userAvatar,
     userFollow,
-    theModalMessageCreate,
-    postReviewList,
+    postMessage,
+    /* postReviewList, */
     postReview,
-    postReview2
+    theModalMessageCreate,
   },
   props: {
     lists: {
@@ -98,6 +97,10 @@ export default {
       type: Object,
       default: () => ({}),
       required: false,
+    },
+    isFollow: {
+      type: Boolean,
+      default: false,
     },
     isMessageList: {
       type: Boolean,

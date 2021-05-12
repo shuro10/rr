@@ -32,7 +32,7 @@
       <v-card-text>
         <v-form ref="form">
           <v-container>
-<!--             <div class="d-flex align-center my-2">
+            <!--             <div class="d-flex align-center my-2">
               <v-rating
                 v-model="reviewEdit.rate"
                 background-color="orange lighten-1"
@@ -83,8 +83,6 @@
             </template>
           </v-container>
           <v-card-actions>
-
-
             <v-btn
               color="light-green darken-1"
               class="white--text font-weight-bold pa-5 mt-3"

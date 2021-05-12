@@ -1,10 +1,10 @@
 <template>
   <v-card class="ml-8 mr-8 mt-4 green lighten-3 rounded">
     <v-card flat class="green lighten-3">
-     <!--                <v-sheet class="green lighten-3 d-flex align-center ">
+      <!--                <v-sheet class="green lighten-3 d-flex align-center ">
                 <nuxt-link :to="{ path: `/users/${review.user_id}` }"> 
                   <user-avatar :size="50" :user="review.user" />-->
-               <!--  </nuxt-link>
+      <!--  </nuxt-link>
                 <v-btn
                   class="ma-1"
                   plain
@@ -14,16 +14,17 @@
                 >
                   {{ review.user.name }}
                 </v-btn> -->
-                          {{ $dayjs(review.created_at).format('MM/DD') }}&nbsp;{{
-                            $dayjs(review.created_at).format('hh:mm') }}
+      {{ $dayjs(review.created_at).format('MM/DD') }}&nbsp;{{
+        $dayjs(review.created_at).format('hh:mm')
+      }}
 
-              <!--         <template
+      <!--         <template
                   v-if="review.user_id === $store.state.auth.loginUser.id"
                 > -->
 
-        <!-- <the-modal-message-edit :review="review" /> -->
-                  <!-- <post-review-delete :review="review" /> -->
-                <!-- </template> -->
+      <!-- <the-modal-message-edit :review="review" /> -->
+      <!-- <post-review-delete :review="review" /> -->
+      <!-- </template> -->
 
       <v-spacer />
       <div class="d-flex align-center" color="white">
@@ -84,18 +85,12 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-import userAvatar from '~/components/infoUser/UserAvatar.vue'
-import theModalMessageEdit from '~/components/layouts/TheModalMessageEdit.vue'
-import postReviewDelete from '~/components/infoPost/PostReviewDelete.vue'
-import userDialogLike from '~/components/infoUser/UserDialogLike.vue'
+import { mapGetters } from 'vuex'
+/* import userAvatar from '~/components/infoUser/UserAvatar.vue' */
 
 export default {
   components: {
-    userAvatar,
-    theModalMessageEdit,
-    postReviewDelete,
-    userDialogLike,
+    /* userAvatar, */
   },
   props: {
     review: {

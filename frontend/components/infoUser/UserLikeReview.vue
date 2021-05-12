@@ -102,7 +102,7 @@
           コメント
           <span class="ml-1">(5)</span>
         </v-btn> -->
- 
+
         <the-modal-message-edit :review="review" />
         <post-review-delete :review="review" />
       </template>

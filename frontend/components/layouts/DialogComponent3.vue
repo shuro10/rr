@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="isMessageList">
-      <dialogComponentContents3
+      <dialog-component-contents-3
         :dialog-component="dialogComponent"
         :is-message-list="true"
         :posting="post"

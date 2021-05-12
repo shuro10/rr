@@ -2,17 +2,18 @@
   <div>
     <v-sheet class="rounded-card" elevation="5">
       <v-card color="transparent" class="rounded-card " elevation="5">
-        <v-img :src="post.image.url" class="rounded-card align-center text-center">
+        <v-img
+          :src="post.image.url"
+          class="rounded-card align-center text-center"
+        >
           <v-card-text>
             <v-row class="ml-4">
-                <div class="orangecolor">
+              <div class="orangecolor">
                 <div class="display-1 shadow-text1">{{ post.name }}</div>
                 <div class="shadow-text2">{{ post.catchcopy }}</div>
-                </div>
-              <v-col cols=2>
-                </v-col>
-
-              </v-row>
+              </div>
+              <v-col cols="2"> </v-col>
+            </v-row>
           </v-card-text>
         </v-img>
         <!--                     <v-sheet style="position: relative;">
@@ -25,25 +26,19 @@
       </v-card>
       <v-row class="mt-6">
         <v-col>
-
-<div class="">
-
-              <div
-                class="headline
+          <div class="">
+            <div
+              class="headline
                     ml-8 pink--text font-weight-bold no-wrap-text"
-              >
-                 <v-icon  large left>
-            mdi-alarm-check
-          </v-icon>
-                {{ post.release }}
-              </div>
-
-              
-       
+            >
+              <v-icon large left>
+                mdi-alarm-check
+              </v-icon>
+              {{ post.release }}
+            </div>
           </div>
 
-
-<!--           <div class="ml-5  subtitle-1 mt-4 ">
+          <!--           <div class="ml-5  subtitle-1 mt-4 ">
             <strong> {{ post.release }}&nbsp;</strong>
           </div> -->
         </v-col>
@@ -69,21 +64,14 @@
               </div>
             </v-col>
 
-
             <v-col cols="7">
+              <v-chip color="orange" text-color="white">
+                <v-icon left>
+                  mdi-star
+                </v-icon>
 
-      <v-chip
-        
-        color="orange"
-        text-color="white"
-      >
-        <v-icon left>
-          mdi-star
-        </v-icon>
-
-        場所: {{ post.place }}
-      </v-chip>
- 
+                場所: {{ post.place }}
+              </v-chip>
             </v-col>
           </v-row>
         </v-timeline-item>
@@ -99,17 +87,13 @@
               >
             </v-col>
             <v-col cols="7">
-     <v-chip
-       
-        color="primary"
-        text-color="white"
-      >
-        <v-icon left>
-          mdi-cake-variant
-        </v-icon>
+              <v-chip color="primary" text-color="white">
+                <v-icon left>
+                  mdi-cake-variant
+                </v-icon>
 
-        予算: {{ post.price }}円/人
-      </v-chip>
+                予算: {{ post.price }}円/人
+              </v-chip>
             </v-col>
           </v-row>
         </v-timeline-item>
@@ -131,21 +115,27 @@
           </v-card>
         </v-timeline-item>
       </v-timeline>
-      <v-sheet class="d-flex justify-center transparent">
-        <dialog-component
+      <v-sheet class="d-flex transparent align-center flex-column">
+        <div>
+        <dialog-component3
           :is-message-list="true"
           :post="post"
-          class="mt-5 mb-5"
-        /><br />
-
+          class="mt-5 mb-5 "
+        
+        />
+        </div>
+        <div>
         <button-like
           :user="loginUser"
           :post="post"
           :is-rounded-join="true"
           class="mb-10"
         />
+        </div>
+
       </v-sheet>
     </v-sheet>
+    
   </div>
 </template>
 
@@ -153,15 +143,13 @@
 import { mapGetters } from 'vuex'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
 import userDialogShown from '~/components/infoUser/UserDialogShown.vue'
-import postContainerMessage from '~/components/infoPost/PostContainerMessage.vue'
-import dialogComponent from '~/components/layouts/dialogComponent.vue'
+import dialogComponent3 from '~/components/layouts/dialogComponent3.vue'
 
 export default {
   components: {
     buttonLike,
     userDialogShown,
-    postContainerMessage,
-    dialogComponent,
+    dialogComponent3,
   },
   props: {
     post: {
@@ -255,10 +243,10 @@ strong:before {
 }
 
 .orangecolor {
-  background: #F09B38; /*背景色*/
+  background: #f09b38; /*背景色*/
   padding: 0.5em; /*文字周りの余白*/
   color: white; /*文字を白に*/
-  background-color:rgba(155,255,255,0.8);
+  background-color: rgba(155, 255, 255, 0.8);
   border-radius: 0.5em; /*角の丸み*/
 }
 </style>

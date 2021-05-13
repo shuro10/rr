@@ -40,10 +40,10 @@ jobs:
 
       # Database setup
       - run:
-          command: bundle exec rails db:create
+          command: bundle exec rails db:create RAILS_ENV=production
           working_directory: ~/repo/backend
       - run:
-          command: bundle exec rails db:migrate
+          command: bundle exec rails db:migrate RAILS_ENV=production
           working_directory: ~/repo/backend
 
       - run:

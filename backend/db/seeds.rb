@@ -18,10 +18,12 @@ User.create!(
   name  = Faker::Name.name
   email = "example-#{n + 1}@tester.org"
   password = 'password'
-  User.create!(name: name,
-               email: email,
-               password: password,
-               password_confirmation: password)
+  User.create!(
+    name: name,
+    email: email,
+    password: password,
+    password_confirmation: password
+  )
 end
 
 # User.all.each do |user|

@@ -59,10 +59,10 @@ jobs:
               || (printf "====== RETRYING...\n\n\n"; bundle exec rspec --only-failures)
           working_directory: ~/repo/backend
       # ========== add ========== #
-      - run:
-          name: Rubocop
-          command: bundle exec rubocop
-          working_directory: backend
+      # - run:
+      #     name: Rubocop
+      #     command: bundle exec rubocop
+      #     working_directory: backend
       # ========== add ========== #
 
       # collect reports
@@ -97,10 +97,10 @@ jobs:
           key: v1-dependencies-{{ checksum "~/repo/frontend/package.json" }}
 
       # ========== add ========== #
-      - run:
-          name: Run ESLint
-          command: npm run lint
-          working_directory: ~/repo/frontend
+      # - run:
+      #     name: Run ESLint
+      #     command: npm run lint
+      #     working_directory: ~/repo/frontend
       # ========== add ========== #
 
       - run:

@@ -59,10 +59,10 @@ jobs:
               || (printf "====== RETRYING...\n\n\n"; bundle exec rspec --only-failures)
           working_directory: ~/repo/backend
       # ========== add ========== #
-      # - run:
-      #     name: Rubocop
-      #     command: bundle exec rubocop
-      #     working_directory: backend
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+          working_directory: backend
       # ========== add ========== #
 
       # collect reports

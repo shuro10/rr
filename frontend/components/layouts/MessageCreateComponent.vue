@@ -3,14 +3,8 @@
     <v-card-text>
       <v-form ref="form">
         <v-container>
-          <v-text-field
-            v-model="review.title"
-            label="タイトル"
-          />
-          <v-textarea
-            v-model="review.content"
-            label="メッセージ"
-          />
+          <v-text-field v-model="review.title" label="タイトル" />
+          <v-textarea v-model="review.content" label="メッセージ" />
           <v-file-input
             accept="image/png, image/jpeg, image/bmp"
             label="画像"

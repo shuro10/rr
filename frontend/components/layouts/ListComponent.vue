@@ -13,7 +13,7 @@
             <v-list-item-content>
               <v-list-item-title
                 class="list-item title"
-                @click="pagelink(user.id)"
+                @click="pagelink(list.user.id)"
               >
                 {{ list.name }}
               </v-list-item-title>
@@ -58,8 +58,7 @@
         </v-list>
       </v-card>
     </template>
-    <template v-else>
-    </template>
+    <template v-else> </template>
   </div>
 </template>
 

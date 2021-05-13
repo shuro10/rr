@@ -1,7 +1,5 @@
 <template>
   <v-card class="ml-8 mr-8 mt-4 rounded">
- 
-
     <v-card class="mx-auto green lighten-3" dark max-width="400">
       <v-card-title>
         <v-menu transition="scroll-x-transition">
@@ -26,10 +24,10 @@
             <v-img v-else :src="defaultImage" contain />
           </v-avatar>
         </v-menu>
-        <span class="title font-weight-light">{{ message.title }}</span>
+        <span class="headline font-weight-bold">{{ message.title }}</span>
       </v-card-title>
 
-      <v-card-text class="headline font-weight-bold">
+      <v-card-text class="title font-weight-light">
         <v-row>
           <v-col cols="9">
             {{ message.content }}
@@ -52,17 +50,20 @@
       <v-card-actions>
         <v-list-item class="grow">
           <v-list-item-avatar color="grey darken-3">
-                              <nuxt-link :to="{ path: `/users/${message.user_id}` }">
-        <user-avatar :size="50" :user="message.user" class="elevation-6" />        
-      </nuxt-link>
-
+            <nuxt-link :to="{ path: `/users/${message.user_id}` }">
+              <user-avatar
+                :size="50"
+                :user="message.user"
+                class="elevation-6"
+              />
+            </nuxt-link>
           </v-list-item-avatar>
 
           <v-list-item-content>
-{{ message.user.name }}
+            {{ message.user.name }}
           </v-list-item-content>
-<the-modal-message-edit :review="message" />
-<the-modal-message-delete :review="message" />
+          <the-modal-message-edit :review="message" />
+          <the-modal-message-delete :review="message" />
 
           <v-row align="center" justify="end">
             <v-icon class="mr-1">
@@ -76,8 +77,7 @@
           </v-row>
         </v-list-item>
       </v-card-actions>
-            <template v-if="message.user_id === $store.state.auth.loginUser.id">
-
+      <template v-if="message.user_id === $store.state.auth.loginUser.id">
       </template>
     </v-card>
   </v-card>
@@ -86,15 +86,12 @@
 <script>
 import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
-import dialogComponentAboutMessage from '~/components/layouts/DialogComponentAboutMessage.vue'
 import theModalMessageEdit from '~/components/layouts/TheModalMessageEdit.vue'
 import theModalMessageDelete from '~/components/layouts/TheModalMessageDelete.vue'
-
 
 export default {
   components: {
     userAvatar,
-    dialogComponentAboutMessage,
     theModalMessageEdit,
     theModalMessageDelete,
   },
@@ -114,7 +111,6 @@ export default {
   },
   computed: {
     ...mapGetters({
-
       loginUser: 'auth/loginUser',
       login: 'auth/isLoggedIn',
     }),

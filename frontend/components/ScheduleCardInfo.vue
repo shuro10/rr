@@ -9,9 +9,16 @@
           <v-card-text>
             <v-row class="ml-4">
               <div class="orangecolor">
-                <div class="headline shadow-text1 pink--text font-weight-bold no-wrap-text"
->{{ post.name }}</div>
-                <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">{{ post.catchcopy }}</div>
+                <div
+                  class="headline shadow-text1 pink--text font-weight-bold no-wrap-text"
+                >
+                  {{ post.name }}
+                </div>
+                <div
+                  class="shadow-text2 pink--text font-weight-bold no-wrap-text"
+                >
+                  {{ post.catchcopy }}
+                </div>
               </div>
               <v-col cols="2"> </v-col>
             </v-row>
@@ -117,13 +124,16 @@
         </v-timeline-item>
       </v-timeline>
       <v-sheet class="d-flex transparent align-center flex-column">
-      <div>
-        <nuxt-link :to="{ path: `/post/${post.id}` }">
-          <v-btn>
-            参加ページへ
+        <div>
+          <v-btn
+            color="purple white--text"
+            outlined
+            nuxt
+            :to="{ path: `/post/${post.id}` }"
+          >
+            <v-icon dark>mdi-email-variant </v-icon>メッセージボックス
           </v-btn>
-        </nuxt-link>
-      </div>
+        </div>
 
         <div>
           <dialog-component-3
@@ -132,6 +142,7 @@
             class="mt-5 mb-5 "
           />
         </div>
+
         <div>
           <button-like
             :user="loginUser"
@@ -193,10 +204,10 @@ export default {
   border-radius: 20px;
 }
 .shadow-text1 {
-  text-shadow: 1px 1px 2px #FFFFFF;
+  text-shadow: 1px 1px 2px #ffffff;
 }
 .shadow-text2 {
-  text-shadow: 2px 2px 3px #FFFFFF;
+  text-shadow: 2px 2px 3px #ffffff;
   border-bottom: double;
 }
 .shadow-text3 {
@@ -216,7 +227,7 @@ text {
 }
 
 .orangecolor {
-  background: #FFFFFF; /*背景色*/
+  background: #ffffff; /*背景色*/
   padding: 0.5em; /*文字周りの余白*/
   color: white; /*文字を白に*/
   background-color: rgba(255, 255, 255, 0.9);

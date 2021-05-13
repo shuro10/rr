@@ -11,7 +11,7 @@
     </v-card-title>
     <v-card-text>
       <v-form ref="form">
-<!--         <v-container>
+        <!--         <v-container>
           <v-text-field v-model="reviewEdit.title" label="タイトル記入" />
           <v-textarea v-model="reviewEdit.content" label="メッセージ記入" />
           <v-file-input
@@ -47,7 +47,7 @@
             />
           </template>
         </v-container> -->
-       <!--  <v-card-actions>
+        <!--  <v-card-actions>
           <v-btn
             color="light-green darken-1"
             class="white--text font-weight-bold pa-5 mt-3"

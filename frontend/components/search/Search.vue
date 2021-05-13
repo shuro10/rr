@@ -2,7 +2,7 @@
   <div>
     <v-app-bar :clipped-left="clipped" app color="#B0DFC1">
       <nuxt-link to="/" class="link">
-        <v-toolbar-title class="header-title">Hello</v-toolbar-title>
+        <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
       </nuxt-link>
 
       <v-spacer />
@@ -193,8 +193,7 @@ export default {
 </script>
 
 <style scoped>
-/* TheHeader */
-.header-title {
+.headertitle {
   color: white;
   font-size: 40px;
   font-family: 'Gill Sans', sans-serif;
@@ -203,5 +202,4 @@ export default {
 .link {
   text-decoration: none;
 }
-/* TheHeader */
 </style>

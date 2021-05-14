@@ -19,7 +19,7 @@
           </v-sheet>
         </v-col>
         <v-col>
-          <button-close @close-dialog="closeDialog" />
+          
         </v-col>
       </v-row>
 

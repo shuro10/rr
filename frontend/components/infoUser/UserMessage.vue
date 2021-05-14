@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-card class="mx-auto green lighten-3 mb-8" dark max-width="400">
     <v-row>
       <v-col cols="9">
@@ -25,9 +26,9 @@
             <v-img v-else :src="defaultImage" contain />
           </v-avatar>
         </v-menu> -->
-          <span class="title font-weight-light">{{ message.title }}</span>
+          <span class="headline font-weight-bold">{{ message.title }}</span>
         </v-card-title>
-        <v-card-text class="headline font-weight-bold">
+        <v-card-text class="title font-weight-light">
           {{ message.content }}
         </v-card-text>
       </v-col>
@@ -48,24 +49,6 @@
       <v-col cols="12">
         <v-card-actions>
           <v-list-item class="grow">
-            <div class="d-flex align-center">
-              <nuxt-link :to="{ path: `/post/${message.post.id}` }">
-                <v-avatar size="50" class="mr-3 my-4 small-image">
-                  <v-img
-                    v-if="message.post.image.url"
-                    :src="message.post.image.url"
-                    alt="avatar"
-                    contain
-                  />
-                  <v-img v-else :src="defaultImage" contain />
-                </v-avatar>
-              </nuxt-link>
-              <nuxt-link :to="{ path: `/post/${message.post.id}` }">
-                <span class="ml-2 body-2 black--text">
-                  {{ message.post.name }} メッセージページへ
-                </span>
-              </nuxt-link>
-            </div>
             <v-row align="center" justify="end">
               <v-icon class="mr-1">
                 mdi-timelapse
@@ -81,6 +64,28 @@
       </v-col>
     </v-row>
   </v-card>
+  <div class="text-center align-self-center">
+            <v-chip
+              pill
+              nuxt :to="`/post/${message.post.id}`"
+              color="orange"
+              class="white--text font-weight-bold"
+              v-on="on"
+            >
+              <v-avatar  left>
+                  <v-img
+                    v-if="message.post.image.url"
+                    :src="message.post.image.url"
+                    alt="avatar"
+
+                  />
+                  <v-img v-else :src="defaultImage" />
+              </v-avatar>
+              {{ message.post.name }}&nbsp;メンバーズページへ
+            </v-chip>
+  </div>
+
+</div>
 </template>
 
 <script>

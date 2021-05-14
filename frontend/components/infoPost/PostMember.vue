@@ -1,24 +1,34 @@
 <template>
-  <v-card class="ma-0">
-    <v-row>
-      {{ title }}
-      <span> （{{ users.length }}） </span>
+  <v-card>
+    
+        <v-sheet class="d-flex transparent align-center flex-column">
+                      <div
+                class="headline
+                    mr-8 pink--text font-weight-bold no-wrap-text"
+              >
 
-      <v-col
-        v-for="user in users"
+    {{ title }} [ {{ users.length }} / {{ post.member }} ] 人
+    
+        </div>
+
+
+
+
+      </v-sheet>
+      
+<div v-for="user in users"
         :key="user.id"
-        class="d-flex child-flex"
-        cols="4"
+        class="d-flex flex-wrap align-content-start"
       >
         <nuxt-link :to="{ path: `/users/${user.id}` }">
-          <user-avatar :size="45" :user="user" class="list-avatar mx-3" />
+          <user-avatar :size="100" :user="user" class="list-avatar mx-3" />
         </nuxt-link>
-      </v-col>
-    </v-row>
+</div>
   </v-card>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 /* import userFollow from '~/components/infoUser/UserFollow.vue' */
 
@@ -28,6 +38,11 @@ export default {
     /* userFollow, */
   },
   props: {
+    post: {
+      type: Object,
+      default: () => {},
+      required: true,
+    },
     users: {
       type: Array,
       required: true,
@@ -41,6 +56,12 @@ export default {
     return {
       dialog: false,
     }
+  },
+  computed: {
+    ...mapGetters({
+      loginuser: 'auth/loginUser',
+      login: 'auth/isLoggedIn',
+    }),
   },
   methods: {
     pagelink(link) {

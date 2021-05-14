@@ -16,7 +16,14 @@
       </span>
     </template>
 
-    <v-card class="mx-auto" max-width="500" tile>
+    <v-card width="400px" class="mx-auto rounded-card">
+      <v-system-bar lights-out>
+        <v-spacer></v-spacer>
+        <v-btn icon class="mt-5" @click="dialog = false">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-system-bar>
+
       <v-list rounded color="white">
         <v-subheader class="black--text"
           >{{ title }}（{{ users.length }}）</v-subheader
@@ -154,4 +161,8 @@ methods: {
 </script>
 
 <style scoped>
+.rounded-card {
+  border-radius: 20px;
+}
+
 </style>

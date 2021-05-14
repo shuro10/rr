@@ -7,6 +7,7 @@
       <v-spacer />
     </v-app-bar>
 
+
     <v-row no-gutters class="mt-10 mb-10">
       <v-col> </v-col>
       <v-col cols="sm" class="text-center align-self-center">
@@ -15,20 +16,20 @@
             <v-chip label color="white" large outlined text-color="red">
               <v-icon>mdi-run</v-icon> {{ post.name }}
             </v-chip>
+            
           </template>
+          
         </v-sheet>
+            <div>
+    <button-like :is-rounded-join="true" :post="post" :user="user" class="mt-5" />
+    </div>
+
       </v-col>
       <v-col> </v-col>
     </v-row>
-    <div>
-    <button-like :is-rounded-join="true" :post="post" :user="user" />
-    </div>
 
     <div>
-    <post-member :users="post.join_users" :title="title" />
-    </div>
-    <div>
-    <button-like :is-rounded-like="true" :post="post" :user="user" />
+    <post-member :users="post.join_users" :title="title" :post="post" />
     </div>
     <v-row>
       <v-col>
@@ -70,7 +71,7 @@ export default {
   },
   data() {
     return {
-      title: "参加者",
+      title: "メンバー",
       loading: false,
       review: true,
       createDate: '',
@@ -98,7 +99,7 @@ export default {
         console.log(res.data)
       })
     },
-    /*     
+        
     loginUserReview() {
       // ユーザーがすでにレビューを投稿してたら非表示にする
       if (this.login) {
@@ -109,7 +110,7 @@ export default {
           }
         })
       }
-    }, */
+    },
   },
   created() {
     this.$axios

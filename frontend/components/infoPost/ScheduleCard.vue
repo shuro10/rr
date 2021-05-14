@@ -18,7 +18,7 @@
           dark
           class="mx-auto green secondary ma-3 rounded-card"
         >
-          <v-responsive :aspect-ratio="10 / 16">
+          <v-responsive :aspect-ratio="12 / 16">
             <v-hover>
               <template v-slot:default="{ hover }">
                 <v-sheet dark flat color="white">
@@ -94,7 +94,13 @@
             <v-card-text class="orange">
               <div class="d-flex font-weight-thin subtitle-1 justify-center ">
                 <span>
-                  <counter-list
+                  <like-counter
+                    :users="p.join_users"
+                    :post="p"
+                    :icon="false"
+                    :title="title2"
+                  />
+<!--                   <counter-list
                     :users="p.like_users"
                     :post="p"
                     :ppp="p.like_users"
@@ -108,7 +114,7 @@
                     :post="p"
                     :icon="false"
                     :title="title2"
-                  />
+                  /> -->
                 </span>
               </div>
             </v-card-text>
@@ -143,14 +149,14 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
-import counterList from '~/components/CounterList.vue'
+import likeCounter from '~/components/infoPost/LikeCounter.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
 
 export default {
   components: {
     // userPostList,
     buttonLike,
-    counterList,
+    likeCounter,
     dialogComponent,
   },
   // props: {

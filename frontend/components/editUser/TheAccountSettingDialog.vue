@@ -1,22 +1,17 @@
 <template>
-<div>
+  <div>
     <template>
       <the-account-setting-dialog-component
         :dialog-component="dialogComponent"
         @result="response"
       />
       <!-- :is-the-account-setting="true" -->
-      <v-btn
-        color="purple"
-        outlined
-        @click.stop="dialogComponent = true"
-      >
+      <v-btn color="purple" outlined @click.stop="dialogComponent = true">
         <v-icon color="purple">mdi-wrench</v-icon>
         設定
       </v-btn>
     </template>
-
-</div>
+  </div>
 </template>
 
 <script>
@@ -28,7 +23,6 @@ import editPassword from '~/components/editUser/EditPassword.vue'
 import editProfile from '~/components/editUser/EditProfile.vue'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
 import theAccountSettingDialogComponent from '~/components/editUser/TheAccountSettingDialogComponent.vue'
-
 
 export default {
   components: {
@@ -68,7 +62,7 @@ export default {
     // },
   },
 
-/*   watch: {
+  /*   watch: {
     postUpdate() {
       // Post再取得時にユーザーを更新
       this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
@@ -84,7 +78,7 @@ export default {
     //   })
     // },
   }, */
-/*   created() {
+  /*   created() {
     this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
       this.$store.commit('user/setUser', res.data, { root: true })
       console.log(res.data)

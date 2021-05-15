@@ -18,8 +18,8 @@
                 {{ currentUser.profile }}
               </p>
             </div>
-          
-            <the-account-setting-dialog />
+
+            <the-account-setting-dialog class="mt-6" />
           </template>
         </h1>
       </v-card-title>

@@ -20,12 +20,12 @@
               {{ post.name }}
             </v-col>
             <v-col align-self="end">
-                        <button-like
-            :user="loginUser"
-            :post="post"
-            :is-rounded-join="true"
-            class="mb-10"
-          />
+              <button-like
+                :user="loginUser"
+                :post="post"
+                :is-rounded-join="true"
+                class="mb-10"
+              />
             </v-col>
           </v-row>
 
@@ -40,8 +40,8 @@
 </template>
 
 <script>
-import buttonLike from '~/components/layouts/ButtonLike.vue'
 import { mapGetters } from 'vuex'
+import buttonLike from '~/components/layouts/ButtonLike.vue'
 
 export default {
   components: {

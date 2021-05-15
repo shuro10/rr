@@ -10,6 +10,8 @@
       </template>
     </v-app-bar>
 
+    <button-like :user="loginUser" :post="post" :is-rounded-like="true" />
+
     <v-row no-gutters class="mt-10 mb-10">
       <v-col> </v-col>
       <v-col cols="sm" class="text-center align-self-center">
@@ -18,20 +20,22 @@
             <v-chip label color="white" large outlined text-color="red">
               <v-icon>mdi-run</v-icon> {{ post.name }}
             </v-chip>
-            
           </template>
-          
         </v-sheet>
-            <div>
-    <button-like :is-rounded-join="true" :post="post" :user="user" class="mt-5" />
-    </div>
-
+        <div>
+          <button-like
+            :is-rounded-join="true"
+            :post="post"
+            :user="user"
+            class="mt-5"
+          />
+        </div>
       </v-col>
       <v-col> </v-col>
     </v-row>
 
     <div>
-    <post-member :users="post.join_users" :title="title" :post="post" />
+      <post-member :users="post.join_users" :title="title" :post="post" />
     </div>
     <v-row>
       <v-col>
@@ -39,6 +43,8 @@
           <h4 class="ma-3 text-decoration-underline">
             メッセージがありません。
           </h4>
+              <the-modal-message-create :post="post" />
+
         </template>
         <template v-else>
           <post-review-list :reviews="post.reviews" />
@@ -46,7 +52,6 @@
         </template>
       </v-col>
     </v-row>
-    <the-modal-message-create :post="post" />
     <nuxt-link to="/" class="link">
       <v-toolbar-title class="header-title">TOPに戻る</v-toolbar-title>
     </nuxt-link>
@@ -75,7 +80,7 @@ export default {
   },
   data() {
     return {
-      title: "メンバー",
+      title: 'メンバー',
       loading: false,
       like: false,
       join: false,
@@ -105,7 +110,7 @@ export default {
         console.log(res.data)
       })
     },
-        
+
     loginUserReview() {
       // ユーザーがすでにレビューを投稿してたら非表示にする
       if (this.login) {
@@ -132,6 +137,11 @@ export default {
             }
           })
         }
+      })
+    this.$axios
+      .get(`api/v1/posts/${this.$route.params.id}`)
+      .then((res) => {
+        this.$store.commit('post/setPost', res.data, { root: true })
       })
       .then(() => {
         if (this.login) {

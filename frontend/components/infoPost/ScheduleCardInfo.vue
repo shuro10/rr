@@ -6,7 +6,7 @@
           :src="post.image.url"
           class="rounded-card align-center text-center"
         >
-<!--           <v-card-text>
+          <!--           <v-card-text>
             <v-row class="ml-4">
               <div class="orangecolor">
                 <div
@@ -32,21 +32,18 @@
                       />
                     </v-sheet> -->
       </v-card>
-       <v-card-text class="text-center align-self-center">
-            
-              <div class="orangecolor">
-                <div
-                  class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text"
-                >
-                  {{ post.name }}
-                </div>
-                <div
-                  class="shadow-text2 pink--text font-weight-bold no-wrap-text"
-                >
-                  {{ post.catchcopy }}
-                </div>
-              </div>            
-          </v-card-text> 
+      <v-card-text class="text-center align-self-center">
+        <div class="orangecolor">
+          <div
+            class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text"
+          >
+            {{ post.name }}
+          </div>
+          <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
+            {{ post.catchcopy }}
+          </div>
+        </div>
+      </v-card-text>
       <v-row class="mt-2">
         <v-col>
           <div class="">
@@ -151,12 +148,12 @@
         </div>
 
         <div>
-          <button-like
+          <!--           <button-like
             :user="loginUser"
             :post="post"
             :is-rounded-join="true"
             class="mb-10"
-          />
+          /> -->
         </div>
       </v-sheet>
     </v-sheet>
@@ -189,6 +186,22 @@ export default {
       ],
       dialog: false,
     }
+  },
+  created() {
+    this.$axios
+      .get(`api/v1/posts/${this.$route.params.id}`)
+      .then((res) => {
+        this.$store.commit('post/setPost', res.data, { root: true })
+      })
+      .then(() => {
+        if (this.login) {
+          this.post.join_users.forEach((f) => {
+            if (f.id === this.user.id) {
+              this.join = true
+            }
+          })
+        }
+      })
   },
   computed: {
     ...mapGetters({

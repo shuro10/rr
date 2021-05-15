@@ -3,7 +3,7 @@
     <template #activator="{ on, attrs }">
       <span v-bind="attrs" v-on="on">
         <p class="blue--text d-flex">
-         <!-- 
+          <!-- 
           <template v-if="icon">
             <v-icon>mdi-heart</v-icon>&nbsp;{{ post.like_users.name }}
           </template> -->
@@ -164,5 +164,4 @@ methods: {
 .rounded-card {
   border-radius: 20px;
 }
-
 </style>

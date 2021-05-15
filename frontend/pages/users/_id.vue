@@ -12,11 +12,10 @@
 
     <!-- ========== Profile ========== -->
     <template v-if="loading">
-<!--       <v-parallax
+      <!--       <v-parallax
         :src="require(`@/assets/images/aomori.jpg`)"
       ></v-parallax> -->
-      <v-card>
-      </v-card>
+      <v-card> </v-card>
       <v-card>
         <v-row class="mx-1 pb-10" no-gutters>
           <v-col cols="2" class="text-center">
@@ -30,17 +29,16 @@
                 </h2>
                 <template v-if="loginUser && loginUser.id == user.id">
                   <div class="pr-10">
-                      <v-dialog v-model="dialog" max-width="600">
-
-    <v-card width="400px" class="mx-auto rounded-card">
-      <v-system-bar lights-out>
-        <v-spacer></v-spacer>
-        <v-btn icon class="mt-5" @click="dialog = false">
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
-      </v-system-bar>
-    </v-card>
-  </v-dialog>
+                    <v-dialog v-model="dialog" max-width="600">
+                      <v-card width="400px" class="mx-auto rounded-card">
+                        <v-system-bar lights-out>
+                          <v-spacer></v-spacer>
+                          <v-btn icon class="mt-5" @click="dialog = false">
+                            <v-icon>mdi-close</v-icon>
+                          </v-btn>
+                        </v-system-bar>
+                      </v-card>
+                    </v-dialog>
                   </div>
                 </template>
 

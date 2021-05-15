@@ -1,6 +1,67 @@
 <template>
-  <v-card>
-    <v-card>
+  <v-row justify="center">
+    <v-dialog
+      v-model="dialogComponent"
+      hide-overlay
+      transition="dialog-bottom-transition"
+      max-width="600"
+      persistent
+    >
+      <v-row no-gutters>
+        <v-col> </v-col>
+        <v-col cols="sm" class="text-center align-self-center">
+          <v-sheet elevation="4" class="rounded-pill">
+            <template>
+              <v-chip
+                label
+                color="transparent"
+                x-large
+                outlined
+                text-color="red"
+              >
+                <v-icon class="ml-2 mr-2">mdi-account-circle</v-icon>
+                アカウント
+              </v-chip>
+            </template>
+          </v-sheet>
+        </v-col>
+        <v-col>
+          <button-close @close-dialog="closeDialog" />
+        </v-col>
+      </v-row>
+
+
+    
+      
+          <v-card color="basil"
+                  width="500px"
+        
+        class=" mx-auto pb-3 mb-13 rounded-card"
+
+>
+      <v-card-title class="text-center justify-center py-6">
+        <h1 class="font-weight-bold display-3 basil--text">
+          <template>
+            <div>
+              <user-avatar :size="140" :user="currentUser" />
+            </div>
+            <div class="mx-auto text-center">
+              <h3>{{ currentUser.name }}</h3>
+              <p class="caption mt-1">
+                <!--  {{ currentUser.email }} -->
+              </p>
+            </div>
+            <div>
+              <p class="caption">
+                {{ currentUser.profile }}
+              </p>
+            </div>
+          
+            
+          </template>
+        </h1>
+      </v-card-title>
+
       <div>
         <v-expansion-panels color="black">
           <v-expansion-panel>
@@ -65,9 +126,24 @@
           </div>
         </v-list-item-content>
       </v-list>
-    </v-card>
-    <v-sheet class="mb-1"></v-sheet>
+
   </v-card>
+    
+    
+      <v-sheet class="d-flex justify-center transparent">
+        <v-btn
+          transparent
+          color="white"
+          class="pink--text font-weight-bold mt-n10 mb-2"
+          min-width="125px"
+          @click="closeDialog"
+        >
+          <v-icon>mdi-window-close</v-icon>
+          閉じる
+        </v-btn>
+      </v-sheet>
+    </v-dialog>
+  </v-row>
 </template>
 
 <script>
@@ -78,16 +154,23 @@ import editEmail from '~/components/editUser/EditEmail.vue'
 import editPassword from '~/components/editUser/EditPassword.vue'
 import editProfile from '~/components/editUser/EditProfile.vue'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
-
+import buttonClose from '~/components/layouts/ButtonClose.vue'
 
 export default {
   components: {
+    buttonClose,
     deleteUser,
     editAvatar,
     editEmail,
     editPassword,
     editProfile,
     userAvatar,
+  },
+  props: {
+    dialogComponent: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -133,7 +216,7 @@ export default {
     //   })
     // },
   },
-  created() {
+/*   created() {
     this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
       this.$store.commit('user/setUser', res.data, { root: true })
       console.log(res.data)
@@ -147,7 +230,7 @@ export default {
         })
       }
     })
-  },
+  }, */
   methods: {
     ...mapActions({
       logout: 'auth/logout',
@@ -156,7 +239,7 @@ export default {
       this.$router.push({ path: link })
     },
     closeDialog() {
-      this.dialog = false
+      this.$emit('result', { res: true, message: '' })
     },
 
     mouseover() {
@@ -166,80 +249,6 @@ export default {
     mouseleave() {
       this.color = 'blue white--text'
       this.message = 'Following'
-    },
-    followUser() {
-      this.$axios
-        .post('/api/v1/relationships', {
-          user_id: this.loginUser.id,
-          follow_id: this.user.id,
-        })
-        .then(() => {
-          this.$store.commit(
-            'snackbarMessage/setMessage',
-            ' フォローしました。',
-            {
-              root: true,
-            }
-          )
-          this.$store.commit('snackbarMessage/setType', '#48A1EB', {
-            root: true,
-          })
-          this.$store.commit('snackbarMessage/setStatus', true, { root: true })
-          setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, {
-              root: true,
-            })
-          }, 1000)
-          this.$axios.get(`api/v1/users/${this.user.id}`).then((res) => {
-            console.log(res.data)
-            this.$store.commit('user/setUser', res.data, { root: true })
-            this.follow = true
-            this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
-              console.log(res.data)
-              this.$store.commit('auth/setLoginUser', res.data, { root: true })
-            })
-          })
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    },
-    unfollowUser() {
-      this.$axios
-        .delete('/api/v1/relationships', {
-          params: {
-            user_id: this.loginUser.id,
-            follow_id: this.user.id,
-          },
-        })
-        .then(() => {
-          this.$store.commit(
-            'snackbarMessage/setMessage',
-            ' フォロー解除しました。',
-            { root: true }
-          )
-          this.$store.commit('snackbarMessage/setType', '#E35B4B', {
-            root: true,
-          })
-          this.$store.commit('snackbarMessage/setStatus', true, { root: true })
-          setTimeout(() => {
-            this.$store.commit('snackbarMessage/setStatus', false, {
-              root: true,
-            })
-          }, 1000)
-          this.$axios.get(`api/v1/users/${this.user.id}`).then((res) => {
-            console.log(res.data)
-            this.$store.commit('user/setUser', res.data, { root: true })
-            this.follow = false
-            this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
-              console.log(res.data)
-              this.$store.commit('auth/setLoginUser', res.data, { root: true })
-            })
-          })
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     },
   },
 }

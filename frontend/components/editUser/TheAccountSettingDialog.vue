@@ -1,115 +1,55 @@
 <template>
-  <v-card class="rounded-card">
-    <v-card color="basil">
-      <v-card-title class="text-center justify-center py-6">
-        <h1 class="font-weight-bold display-3 basil--text">
-          <template>
-            <div>
-              <user-avatar :size="140" :user="currentUser" />
-            </div>
-            <div class="mx-auto text-center">
-              <h3>{{ currentUser.name }}</h3>
-              <p class="caption mt-1">
-                <!--  {{ currentUser.email }} -->
-              </p>
-            </div>
-            <div>
-              <p class="caption">
-                {{ currentUser.profile }}
-              </p>
-            </div>
-          
-            <the-account-setting-dialog />
-          </template>
-        </h1>
-      </v-card-title>
-      <!-- 
-      <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
-        <v-tab v-for="(item, index) in items" :key="`first-${index}`">
-          {{ item.title }}
-        </v-tab>
-      </v-tabs>
- -->
-      <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
-        <v-tab>
-          likes
-        </v-tab>
-        <v-tab>
-          follow
-        </v-tab>
-        <v-tab>
-          follower
-        </v-tab>
-        <v-tab>
-          Message
-        </v-tab>
-      </v-tabs>
+<div>
+    <template>
+      <the-account-setting-dialog-component
+        :dialog-component="dialogComponent"
+        @result="response"
+      />
+      <!-- :is-the-account-setting="true" -->
+      <v-btn
+        color="purple"
+        outlined
+        @click.stop="dialogComponent = true"
+      >
+        <v-icon color="purple">mdi-wrench</v-icon>
+        設定
+      </v-btn>
+    </template>
 
-      <v-tabs-items v-model="tab">
-        <v-tab-item>
-          <!-- <v-tab-item v-for="(item, index) in items" :key="`second-${index}`"> -->
-          <v-card>
-            <v-card-text>
-              <user-post-list :posts="loginUser.postlike" />
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card>
-            <v-card-text>
-              <list-component :is-follow="true" :lists="loginUser.followings" />
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card>
-            <v-card-text>
-              <!-- <list-component :lists="`loginUser.${listitem}`" /> -->
-              <list-component :is-follow="true" :lists="loginUser.followers" />
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-        <v-tab-item>
-          <v-card>
-            <v-card-text>
-              <!-- <list-component :lists="`loginUser.${listitem}`" /> -->
-              <user-message-list :messages="loginUser.reviews" />
-            </v-card-text>
-          </v-card>
-        </v-tab-item>
-      </v-tabs-items>
-    </v-card>
-
-    <!--                   
-                  <user-list :users="loginUser.followings" />
-                  <user-list :users="user.followers" />
-                  <user-post-list :posts="user.postjoin" />
-                  <user-post-list :posts="user.postlike" />
-                  <user-review-list :reviews="user.reviews" />
-                  <user-like-review-list :reviews="user.like_reviews" /> -->
-  </v-card>
+</div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
-import theAccountSettingDialog from '~/components/editUser/TheAccountSettingDialog.vue'
-import listComponent from '~/components/layouts/ListComponent.vue'
-import userMessageList from '~/components/infoUser/UserMessageList.vue'
-import userPostList from '~/components/infoUser/UserPostList.vue'
+import deleteUser from '~/components/editUser/DeleteUser.vue'
+import editAvatar from '~/components/editUser/EditAvatar.vue'
+import editEmail from '~/components/editUser/EditEmail.vue'
+import editPassword from '~/components/editUser/EditPassword.vue'
+import editProfile from '~/components/editUser/EditProfile.vue'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import theAccountSettingDialogComponent from '~/components/editUser/TheAccountSettingDialogComponent.vue'
+
 
 export default {
-  name: 'ListComponent',
   components: {
-    theAccountSettingDialog,
-    listComponent,
-    userMessageList,
-    userPostList,
+    theAccountSettingDialogComponent,
+    deleteUser,
+    editAvatar,
+    editEmail,
+    editPassword,
+    editProfile,
     userAvatar,
+  },
+  props: {
+    isTheAccountSetting: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
       dialog: false,
+      dialogComponent: false,
       defaultImage: 'http://localhost:5000/fallback/default.png',
       tab: null,
     }
@@ -128,7 +68,7 @@ export default {
     // },
   },
 
-  watch: {
+/*   watch: {
     postUpdate() {
       // Post再取得時にユーザーを更新
       this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
@@ -143,8 +83,8 @@ export default {
     //     console.log(res.data)
     //   })
     // },
-  },
-  created() {
+  }, */
+/*   created() {
     this.$axios.get(`api/v1/users/${this.loginUser.id}`).then((res) => {
       this.$store.commit('user/setUser', res.data, { root: true })
       console.log(res.data)
@@ -158,12 +98,15 @@ export default {
         })
       }
     })
-  },
+  }, */
   methods: {
     ...mapActions({
       logout: 'auth/logout',
     }),
-
+    response() {
+      /* this.message = obj.message */
+      this.dialogComponent = false
+    },
     pagelink(link) {
       this.$router.push({ path: link })
     },

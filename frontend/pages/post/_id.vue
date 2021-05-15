@@ -5,8 +5,10 @@
         <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
       </nuxt-link>
       <v-spacer />
+      <template v-if="loggedIn">
+        <dialog-component :is-account-page="true" class="mt-5" />
+      </template>
     </v-app-bar>
-
 
     <v-row no-gutters class="mt-10 mb-10">
       <v-col> </v-col>
@@ -59,6 +61,7 @@ import postMember from '~/components/infoPost/PostMember.vue'
 /* import listComponent from '~/components/layouts/ListComponent.vue' */
 /* import postAlbum from '~/components/infoPost/postAlbum.vue' */
 import theModalMessageCreate from '~/components/layouts/TheModalMessageCreate.vue'
+import dialogComponent from '~/components/layouts/DialogComponent.vue'
 
 export default {
   components: {
@@ -68,11 +71,14 @@ export default {
     theModalMessageCreate,
     /* listComponent, */
     /* postAlbum, */
+    dialogComponent,
   },
   data() {
     return {
       title: "メンバー",
       loading: false,
+      like: false,
+      join: false,
       review: true,
       createDate: '',
       releaseDate: '',
@@ -85,7 +91,7 @@ export default {
     ...mapGetters({
       post: 'post/post',
       user: 'auth/loginUser',
-      login: 'auth/isLoggedIn',
+      loggedIn: 'auth/isLoggedIn',
       currentPosts: 'favOrNotCheck/posts',
     }),
     loginUserReview() {

@@ -5,8 +5,9 @@ module Api
       # https://qiita.com/dl10yr/items/533cecd1d6f9abcfd13c
 
       def index
-        @post = Post.all.includes(:like_users, :join_users, :reviews)
-        render json: @post.as_json(include: %i[like_users join_users reviews], methods: :avg_rate)
+        @post = Post.all.includes(:user, :like_users, :join_users, :reviews)
+        render json: @post.as_json(include: [{ user: { only: %w[id image name] } }, %i[like_users join_users reviews]])
+        # render json: @post.as_json(include: [{ user: { only: %w[id image name] } }, %i[like_users join_users reviews], methods: :avg_rate)
         # render json: @post.as_json(only: [:id, :name,:image],include: {like_users: {only: ['id']}})
       end
 
@@ -31,6 +32,11 @@ module Api
 
       def show
         @post = Post.includes(
+          # ========== add ========== 
+          {
+            user: %i[name image]
+          },
+          # ========== end of add ========== 
           :like_users,
           :join_users,
           {
@@ -39,6 +45,11 @@ module Api
         ).find(params[:id])
         render json: @post.as_json(
           include: [
+            # ========== add ========== 
+            {
+              user: { only: %w[id name image] }
+            },
+            # ========== end of add ========== 
             :like_users,
             :join_users,
             {
@@ -53,7 +64,8 @@ module Api
                 }
               ] }
             }
-          ], methods: :avg_rate
+          ]
+          # ], methods: :avg_rate
         )
       end
 
@@ -94,7 +106,7 @@ module Api
       private
 
       def post_params
-        params.permit(:name, :details, :start_time, :finish_time, :member, :place, :category, :image, :release, :price, :photoshot, :catchcopy, :quickword)
+        params.permit(:user_id, :name, :details, :start_time, :finish_time, :member, :place, :category, :image, :release, :price, :photoshot, :catchcopy, :quickword)
       end
     end
   end

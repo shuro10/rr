@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   mount_uploader :photoshot, PhotoshotUploader
   mount_uploader :image, ImageUploader
 
+  validates :user, presence: true
   validates :name, presence: true
   # validates :name, presence: true, uniqueness: { case_sensitive: true }
   validates :details, presence: false
@@ -14,6 +15,8 @@ class Post < ApplicationRecord
   validates :place, presence: false
   validates :price, presence: false
   validates :category, presence: false
+
+  belongs_to :user
 
   has_many :post_likes, dependent: :destroy
   has_many :like_users, through: :post_likes, source: :user

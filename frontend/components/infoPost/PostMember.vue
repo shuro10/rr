@@ -12,6 +12,31 @@
       <v-chip>
         {{ title }} [ {{ users.length }} / {{ post.member }} ] 人
 </v-chip>
+      <v-row no-gutters>
+        <v-col> </v-col>
+        <v-col cols="sm" class="text-center align-self-center">
+          <v-sheet elevation="4" class="rounded-pill">
+
+            <template>
+              <v-chip
+                label
+                color="transparent"
+                x-large
+                outlined
+                text-color="purple"
+              >
+                <v-icon class="ml-2 mr-2">mdi-account-circle</v-icon>
+                メンバー
+              </v-chip>
+
+
+            </template>
+          </v-sheet>
+        </v-col>
+        <v-col>
+          <button-close @close-dialog="closeDialog" />
+        </v-col>
+      </v-row>
 
       <v-card
         class="d-flex flex-row mb-6 rounded-card"
@@ -21,6 +46,7 @@
         <v-sheet
           v-for="user in users"
           :key="`first-${user}`"
+          class="text-center align-self-center"
           
         >
       <nuxt-link :to="{ path: `/users/${user.id}` }">
@@ -29,6 +55,7 @@
         :user="user"
         class="list-avatar mx-3" />
       </nuxt-link>
+      {{ user.name }}
 
         </v-sheet>
       </v-card>

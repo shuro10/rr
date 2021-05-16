@@ -40,21 +40,22 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name"
     t.text "details"
     t.text "quickword"
     t.text "catchcopy"
-    t.time "start_time"
-    t.time "finish_time"
     t.integer "member"
     t.string "place"
     t.string "category"
-    t.string "image"
-    t.string "photoshot"
-    t.date "release"
     t.integer "price"
+    t.time "start_time"
+    t.time "finish_time"
+    t.date "release"
+    t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
   add_foreign_key "post_joins", "users"
   add_foreign_key "post_likes", "posts"
   add_foreign_key "post_likes", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "relationships", "users"
   add_foreign_key "relationships", "users", column: "follow_id"
   add_foreign_key "review_likes", "reviews"

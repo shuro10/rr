@@ -26,7 +26,6 @@ gem 'dotenv-rails'
 gem 'faker'
 gem 'fastimage'
 gem 'fog-aws'
-gem 'jbuilder'
 gem 'jquery-rails'
 gem 'mini_magick'
 

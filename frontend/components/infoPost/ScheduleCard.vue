@@ -57,7 +57,7 @@
                           {{ p.name }} {{ p.id }}
                         </div>
                         <div class="caption text-center mt-4 shadow-text text-truncate">
-                          キャッチコピー / {{ likeCount }}
+                          キャッチコピー
                         </div>
 
                         <p
@@ -183,12 +183,12 @@ export default {
     }
   },
   computed: {
-    likeCount() {
-      return this.post.like_users.length
-    },
-    joinCount() {
-      return this.post.join_users.length
-    },
+    // likeCount() {
+    //   return this.post.like_users.length
+    // },
+    // joinCount() {
+    //   return this.post.join_users.length
+    // },
     reversePosts() {
       return this.posts.slice().reverse()
     },

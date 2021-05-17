@@ -34,7 +34,7 @@ module Api
         @post = Post.includes(
           # ========== add ========== 
           {
-            user: %i[name image]
+            user: %i[id name image]
           },
           # ========== end of add ========== 
           :like_users,

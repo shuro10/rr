@@ -42,68 +42,52 @@
           </v-sheet>
         </v-col>
         <v-col>
-<template>
-  <v-card-title class="transparent white--text">
-    <span class="headline"></span>
 
-    <v-spacer></v-spacer>
+                    </v-col>
+                </v-row>
 
-    <v-menu bottom left>
-      <template v-slot:activator="{ attrs }">
-        <v-btn
-          color="#BDBDBD88"
-          fab
-          dark
-          x-large
-          v-bind="attrs"
-          @click="closeDialog"
-        >
-          <v-icon color="white"> mdi-close-circle-outline</v-icon>
-        </v-btn>
-      </template>
-    </v-menu>
-  </v-card-title>
+                    <v-sheet
+                  width="500px"
+                  color="transparent"
+                  class=" mx-auto pb-3 mb-10 rounded-card"
+                >
+
+
+                <v-list rounded color="white">
+                  <v-subheader class="black--text"
+                    >{{ title }}（{{ users.length }}）</v-subheader
+                  >
+                  <v-list-item-group>
+                    <v-list-item
+                      v-for="user in users"
+                      :key="user.id"
+                      :ripple="false"
+                      class="list"
+                    >
+
+
+
+
+                      <v-list-item-content>
+                        <v-list-item-title
+                          class="black--text list-item"
+                          @click="pagelink(user.id)"
+                        >
+                          {{ user.name }}
+                        </v-list-item-title>
+                      </v-list-item-content>
+                      <user-follow :user="user" />
+                    </v-list-item>
+                  </v-list-item-group>
+                </v-list>
+              </v-sheet>
+            </v-dialog>
+          </template>
+
+
+
 </template>
 
-        </v-col>
-      </v-row>
-
-          <v-sheet
-        width="500px"
-        color="transparent"
-        class=" mx-auto pb-3 mb-10 rounded-card"
-      >
-
-
-      <v-list rounded color="white">
-        <v-subheader class="black--text"
-          >{{ title }}（{{ users.length }}）</v-subheader
-        >
-        <v-list-item-group>
-          <v-list-item
-            v-for="user in users"
-            :key="user.id"
-            :ripple="false"
-            class="list"
-          >
-            <nuxt-link :to="{ path: `/users/${user.id}` }">
-              <user-avatar :size="45" :user="user" class="list-avatar mx-3" />
-            </nuxt-link>
-            <v-list-item-content>
-              <v-list-item-title
-                class="black--text list-item"
-                @click="pagelink(user.id)"
-              >
-                {{ user.name }}
-              </v-list-item-title>
-            </v-list-item-content>
-            <user-follow :user="user" />
-          </v-list-item>
-        </v-list-item-group>
-      </v-list>
-    </v-sheet>
-  </v-dialog>
-</template>
 
 <script>
 import { mapGetters } from 'vuex'
@@ -127,12 +111,6 @@ export default {
       default: () => ({}),
       required: true,
     },
-    ppp: {
-      type: Object,
-      default: () => ({}),
-      required: false,
-    },
-
     title: {
       type: String,
       required: true,
@@ -144,21 +122,22 @@ export default {
   },
   data() {
     return {
+      dialogComponent: false,
       dialog: false,
       likeList: [],
     }
   },
   computed: {
+    ...mapGetters({
+      user: 'user/user',
+      loginUser: 'auth/loginUser',
+    }),
     postUpdate() {
       return this.$store.state.post.post
     },
     /*      likeCount() {
       return this.post.like_users.length
     }, */
-    ...mapGetters({
-      user: 'user/user',
-      loginUser: 'auth/loginUser',
-    }),
     /*
     // userUpdate() {
     //   return this.$store.state.auth.loginUser

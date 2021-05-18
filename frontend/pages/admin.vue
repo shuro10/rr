@@ -14,7 +14,7 @@
               <all-post :posts="posts" />
             </v-tab-item>
             <v-tab-item>
-              <all-review :reviews="reviews" />
+              <all-review :messages="messages" />
             </v-tab-item>
             <v-tab-item>
               <all-user :users="users" />
@@ -58,7 +58,7 @@ export default {
       ],
       users: [],
       posts: [],
-      reviews: [],
+      messages: [],
     }
   },
   computed: {
@@ -78,7 +78,7 @@ export default {
     })
     this.$axios.get('api/v1/reviews').then((res) => {
       console.log(res.data)
-      this.reviews = res.data
+      this.messages = res.data
     })
   },
   methods: {},

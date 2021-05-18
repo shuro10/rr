@@ -41,6 +41,7 @@
                     </span>
                   </v-img>
                   <v-img v-else contain :src="defaultImage">
+                    
                     <span class="my-span">
                       <v-chip
                         class="mr-4 mt-4"

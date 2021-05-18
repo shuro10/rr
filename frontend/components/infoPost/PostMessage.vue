@@ -1,54 +1,46 @@
 <template>
-<div>
-  <v-card class="mx-auto green lighten-3 mt-8" dark max-width="400">
-    <v-row>
-      <v-col cols="8">
-        <v-card-title>
+  <div>
+    <v-card class="mx-auto green lighten-3 mt-8" dark max-width="400">
+      <v-row>
+        <v-col cols="8">
+          <v-card-title>
+            <span class="headline font-weight-bold">{{ message.title }}</span>
 
-          <span class="headline font-weight-bold">{{ message.title }}</span>
-
-          <v-spacer />
-          
-
-        </v-card-title>
-        <v-card-text class="title font-weight-light">
-          {{ message.content }}
-        </v-card-text>
-</v-col>
-<v-col cols="4">
-                <template v-if="message.image.url">
-        <v-menu transition="scroll-x-transition">
-          <template v-slot:activator="{ on, attrs }">
-
+            <v-spacer />
+          </v-card-title>
+          <v-card-text class="title font-weight-light">
+            {{ message.content }}
+          </v-card-text>
+        </v-col>
+        <v-col cols="4">
+          <template v-if="message.image.url">
+            <v-menu transition="scroll-x-transition">
+              <template v-slot:activator="{ on, attrs }">
                 <v-img
                   v-if="message.image.url"
                   :src="message.image.url"
                   alt="avatar"
                   :aspect-ratio="1 / 1"
                   class="rounded-card mr-4 mt-4"
-              v-bind="attrs"
-              v-on="on"
-              >
-              <v-icon>mdi-magnify</v-icon>
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  <v-icon>mdi-magnify</v-icon>
                 </v-img>
-                 <v-img v-else :src="defaultImage" contain />
-              
+                <v-img v-else :src="defaultImage" contain />
+              </template>
+              <v-avatar size="500" class="radius-image2">
+                <v-img
+                  v-if="message.image.url"
+                  :src="message.image.url"
+                  alt="avatar"
+                />
+              </v-avatar>
+            </v-menu>
           </template>
-          <v-avatar size="500" class="radius-image2">
-            <v-img
-              v-if="message.image.url"
-              :src="message.image.url"
-              alt="avatar"
-            />
-            
-          </v-avatar>
-        </v-menu>
-
-
-            </template>
-      </v-col>
-    </v-row>
-      <v-card-actions>        
+        </v-col>
+      </v-row>
+      <v-card-actions>
         <v-list-item class="grow">
           <v-list-item-avatar color="grey darken-3">
             <nuxt-link :to="{ path: `/users/${message.user_id}` }">
@@ -80,10 +72,8 @@
       </v-card-actions>
       <template v-if="message.user_id === $store.state.auth.loginUser.id">
       </template>
-    
-  </v-card>
-
-</div>
+    </v-card>
+  </div>
 </template>
 
 <script>

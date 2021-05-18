@@ -6,7 +6,7 @@
         v-bind="attrs"
         v-on="on"
       >
-      <v-icon>mdi-message-text-outline</v-icon>
+        <v-icon>mdi-message-text-outline</v-icon>
         メッセージする
       </v-btn>
     </template>

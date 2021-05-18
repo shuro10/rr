@@ -1,18 +1,11 @@
 <template>
   <div style="background-color: white" class="mb-14">
-    <!--     <v-carousel hide-delimiters height="auto">
-      <v-carousel-item>
-      </v-carousel-item>
-    </v-carousel> -->
     <v-row>
-      <!-- 
       <v-col
-        v-for="p in reversePosts"
+        v-for="p in posts"
         :key="p.id"
-        class="d-flex child-flex flex-wrap"
+        class="d-flex align-stretch flex-wrap"
       >
- -->
-      <v-col v-for="p in posts" :key="p.id" class="d-flex align-stretch flex-wrap">
         <v-card
           :elevation="15"
           dark
@@ -22,7 +15,7 @@
         >
           <v-responsive :aspect-ratio="12 / 16" style="background-color: white">
             <v-hover>
-              <template v-slot:default="{ hover }" >
+              <template v-slot:default="{ hover }">
                 <v-sheet dark flat color="white">
                   <v-img
                     v-if="p.image.url"
@@ -30,7 +23,7 @@
                     :aspect-ratio="1 / 1"
                     class="white--text align-top"
                   >
-                    <span class="my-span">
+                    <span class="atmark-right">
                       <v-chip
                         class="mr-4 mt-4"
                         color="indigo"
@@ -41,8 +34,7 @@
                     </span>
                   </v-img>
                   <v-img v-else contain :src="defaultImage">
-                    
-                    <span class="my-span">
+                    <span class="atmark-right">
                       <v-chip
                         class="mr-4 mt-4"
                         color="indigo"
@@ -53,7 +45,7 @@
                     </span>
                   </v-img>
 
-                  <div  style="position: relative;" >
+                  <div style="position: relative;">
                     <v-card-text style="position: relative;">
                       <dialog-component
                         :is-schedule-card-info="true"
@@ -67,9 +59,11 @@
                       />
                       <div class="grey--text title">
                         <div class="font-weight-regular mt-4 text-truncate">
-                          {{ p.name }} {{ p.id }}  {{ p.user_id }}
+                          {{ p.name }} {{ p.id }} {{ p.user_id }}
                         </div>
-                        <div class="caption text-center mt-4 shadow-text text-truncate">
+                        <div
+                          class="caption text-center mt-4 shadow-text text-truncate"
+                        >
                           キャッチコピー
                         </div>
 
@@ -90,19 +84,13 @@
                         class="d-flex transition-fast-in-fast-out orange darken-2 v-card--reveal display-3 white--text"
                         style="height: 100%;"
                       >
-                              <nuxt-link :to="{ path: `/users/${p.user.id}` }">
-        <user-avatar 
-        :size="50" 
-        :user="p.user"
-        class="list-avatar mx-3" />
-      </nuxt-link>
-
-                          
-                          <!-- <img
-                            alt="user"
-                            :src="require(`@/assets/images/default-user.png`)"
-                          /> -->
-                        
+                        <nuxt-link :to="{ path: `/users/${p.user.id}` }">
+                          <user-avatar
+                            :size="50"
+                            :user="p.user"
+                            class="list-avatar mx-3"
+                          />
+                        </nuxt-link>
                         <div class="caption text-center mr-3 ml-1">
                           {{ p.quickword }}
                         </div>
@@ -116,28 +104,12 @@
             <v-card-text class="orange">
               <div class="d-flex font-weight-thin subtitle-1 justify-center ">
                 <span>
-                  
                   <like-counter
                     :users="p.join_users"
                     :post="p"
                     :icon="false"
-                    :title="title2"
+                    :title="title"
                   />
-                  <!--                   <counter-list
-                    :users="p.like_users"
-                    :post="p"
-                    :ppp="p.like_users"
-                    :icon="true"
-                    :title="title1"
-                  /> </span
-                >&nbsp;&nbsp;&nbsp;&nbsp;
-                <span>
-                  <counter-list
-                    :users="p.join_users"
-                    :post="p"
-                    :icon="false"
-                    :title="title2"
-                  /> -->
                 </span>
               </div>
             </v-card-text>
@@ -146,7 +118,6 @@
       </v-col>
     </v-row>
   </div>
-
 </template>
 
 <script>
@@ -158,7 +129,6 @@ import userAvatar from '~/components/infoUser/UserAvatar.vue'
 
 export default {
   components: {
-    // userPostList,
     buttonLike,
     likeCounter,
     dialogComponent,
@@ -172,8 +142,7 @@ export default {
   // },
   data() {
     return {
-      title1: 'いいねした人',
-      title2: '参加する人',
+      title: '参加メンバー',
       loading: false,
       like: false,
       join: false,
@@ -184,12 +153,6 @@ export default {
     }
   },
   computed: {
-    // likeCount() {
-    //   return this.post.like_users.length
-    // },
-    // joinCount() {
-    //   return this.post.join_users.length
-    // },
     reversePosts() {
       return this.posts.slice().reverse()
     },
@@ -198,7 +161,6 @@ export default {
       user: 'auth/loginUser',
       loginUser: 'auth/loginUser',
       login: 'auth/isLoggedIn',
-      /* currentPosts: 'favOrNotCheck/posts', */
     }),
     postUpdate() {
       return this.$store.state.post.post
@@ -261,7 +223,7 @@ export default {
   text-shadow: 2px 5px 10px;
   border-bottom: double;
 }
-.my-span {
+.atmark-right {
   color: white;
   font-weight: bold;
   float: right;

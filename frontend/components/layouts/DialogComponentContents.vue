@@ -35,7 +35,6 @@
               </v-chip>
             </template>
             <template v-else>
-
               <v-chip
                 label
                 color="transparent"
@@ -46,8 +45,6 @@
                 <v-icon class="ml-2 mr-2">mdi-account-circle</v-icon>
                 アカウント
               </v-chip>
-
-
             </template>
           </v-sheet>
         </v-col>

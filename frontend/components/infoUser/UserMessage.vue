@@ -91,8 +91,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  components: {
-  },
+  components: {},
   props: {
     message: {
       type: Object,

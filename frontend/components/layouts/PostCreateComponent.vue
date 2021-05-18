@@ -136,7 +136,7 @@
           label="キャッチコピー"
         />
 
-<!--         <v-select
+        <!--         <v-select
           v-model="category"
           :items="categoryList"
           label="カテゴリー"

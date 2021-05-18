@@ -64,7 +64,10 @@
           <v-card-text>
             <v-form ref="form">
               <v-container>
-                <v-text-field v-model="messageEdit.title" label="タイトル記入" />
+                <v-text-field
+                  v-model="messageEdit.title"
+                  label="タイトル記入"
+                />
                 <v-textarea
                   v-model="messageEdit.content"
                   label="メッセージ記入"

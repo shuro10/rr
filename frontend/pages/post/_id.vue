@@ -1,76 +1,70 @@
 <template>
   <div>
-      <template v-if="loading">
-    <v-app-bar color="#B0DFC1">
-      <nuxt-link to="/" class="link">
-        <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
-      </nuxt-link>
-      <v-spacer />
-      <template v-if="user.id == post.user_id">
-    <the-modal-post-edit :post="post" />
-    <the-modal-post-delete :post="post" />
-      </template>
-      <template v-if="login">
-    
-        <dialog-component :is-account-page="true" class="mt-5" />
+    <template v-if="loading">
+      <v-app-bar color="#B0DFC1">
+        <nuxt-link to="/" class="link">
+          <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
+        </nuxt-link>
+        <v-spacer />
+        <template v-if="user.id == post.user_id">
+          <the-modal-post-edit :post="post" />
+          <the-modal-post-delete :post="post" />
+        </template>
+        <template v-if="login">
+          <dialog-component :is-account-page="true" class="mt-5" />
+        </template>
+      </v-app-bar>
 
-      </template>
-    </v-app-bar>
+      <button-like :user="user" :post="post" :is-rounded-like="true" />
 
-    <button-like :user="user" :post="post" :is-rounded-like="true" />
-    
-    <v-row no-gutters class="mt-10 mb-10">
-      <v-col> </v-col>
-      <v-col cols="sm" class="text-center align-self-center">
-        <v-sheet elevation="4" class="rounded-pill">
-          <template>
-            <v-chip label color="white" large outlined text-color="red">
-              <v-icon>mdi-run</v-icon> {{ post.name }}
-            </v-chip>
+      <v-row no-gutters class="mt-10 mb-10">
+        <v-col> </v-col>
+        <v-col cols="sm" class="text-center align-self-center">
+          <v-sheet elevation="4" class="rounded-pill">
+            <template>
+              <v-chip label color="white" large outlined text-color="red">
+                <v-icon>mdi-run</v-icon> {{ post.name }}
+              </v-chip>
+            </template>
+          </v-sheet>
+          <div>
+            <button-like
+              :is-rounded-join="true"
+              :post="post"
+              :user="user"
+              class="mt-5"
+            />
+          </div>
+        </v-col>
+        <v-col> </v-col>
+      </v-row>
+
+      <div>
+        <v-card>
+        <post-member :users="post.join_users" :title="title" :post="post" />
+        </v-card>
+      </div>
+      <v-row>
+        <v-col class="text-center">
+          <template v-if="post.reviews.length === 0">
+            <h4 class="ma-3">メッセージがありません</h4>
+            <the-modal-message-create v-if="login" :post="post" />
           </template>
-        </v-sheet>
-        <div>
-          <button-like
-            :is-rounded-join="true"
-            :post="post"
-            :user="user"
-            class="mt-5"
-          />
-        </div>
-      </v-col>
-      <v-col> </v-col>
-    </v-row>
+          <template v-else>
+            <the-modal-message-create v-if="message" :post="post" />
+            <post-message-list :messages="post.reviews" />
+          </template>
+        </v-col>
+      </v-row>
 
-    <div>
-      <post-member :users="post.join_users" :title="title" :post="post" />
-    </div>
-    <v-row>
-      <v-col class="text-center">
-        <template v-if="post.reviews.length === 0">
-          <h4 class="ma-3">メッセージがありません</h4>
-          <the-modal-message-create v-if="login" :post="post" />
-        </template>
-        <template v-else>
-          <the-modal-message-create v-if="message" :post="post" />
-          <post-message-list :messages="post.reviews" />
-        </template>
-      </v-col>
-    </v-row>
-
-        <div class="text-center align-self-center mt-4">
-          <v-btn
-            color="purple white--text"
-            outlined
-            nuxt
-            to="/" class="link"
-          >
-            <v-icon dark>mdi-email-variant </v-icon>TOPに戻る
-          </v-btn>
-        </div>
-  </template>  
+      <div class="text-center align-self-center mt-4">
+        <v-btn color="purple white--text" outlined nuxt to="/" class="link">
+          <v-icon dark>mdi-email-variant </v-icon>TOPに戻る
+        </v-btn>
+      </div>
+      
+    </template>
   </div>
-  
-  
 </template>
 
 <script>
@@ -115,7 +109,7 @@ export default {
     ...mapGetters({
       post: 'post/post',
       user: 'auth/loginUser',
-      login: "auth/isLoggedIn",
+      login: 'auth/isLoggedIn',
     }),
     loginUserReview() {
       return this.$store.state.post.post

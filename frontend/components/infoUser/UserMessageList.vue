@@ -1,12 +1,7 @@
 <template>
   <v-card flat style="background-color: white">
     <v-list>
-      <v-card 
-       v-for="message in messages" 
-       :key="message.id" 
-       flat 
-       class="pb-2"
-      >
+      <v-card v-for="message in messages" :key="message.id" flat class="pb-2">
         <user-message :message="message" />
       </v-card>
     </v-list>

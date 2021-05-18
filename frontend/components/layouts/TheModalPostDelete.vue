@@ -2,11 +2,7 @@
   <v-dialog v-model="dialog" max-width="400">
     <template v-if="$store.state.auth.isLoggedIn" #activator="{ on, attrs }">
       <!-- v-if="review.user_id === $store.state.auth.loginUser.id" -->
-      <v-btn
-        v-bind="attrs"
-        icon
-        v-on="on"
-      >
+      <v-btn v-bind="attrs" icon v-on="on">
         <v-icon> mdi-delete </v-icon>
       </v-btn>
     </template>

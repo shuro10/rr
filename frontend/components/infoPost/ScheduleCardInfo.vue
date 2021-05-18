@@ -3,20 +3,15 @@
     <v-sheet class="rounded-card" elevation="5">
       <v-card color="transparent" class="rounded-card " elevation="5">
         <v-img
-                    v-if="post.image.url"
+          v-if="post.image.url"
           :src="post.image.url"
           class="rounded-card align-center text-center"
         >
         </v-img>
-                  <v-img v-else contain :src="defaultImage">
-                  </v-img>
-                            <v-sheet style="position: relative;">
-                      <button-like
-                        :user="loginUser"
-                        :post="post"
-                        :is-rounded-like="true"
-                      />
-                    </v-sheet>
+        <v-img v-else contain :src="defaultImage"> </v-img>
+        <v-sheet style="position: relative;">
+          <button-like :user="loginUser" :post="post" :is-rounded-like="true" />
+        </v-sheet>
       </v-card>
       <v-card-text class="text-center align-self-center">
         <div class="orangecolor">
@@ -106,13 +101,13 @@
 
         <v-timeline-item fill-dot class="white--text mb-9" color="orange" large>
           <template v-slot:icon>
-      <nuxt-link :to="{ path: `/users/${post.user.id}` }">
-      <user-avatar 
-        :size="50" 
-        :user="post.user"
-        class="list-avatar mx-3" />
-      </nuxt-link>
-
+            <nuxt-link :to="{ path: `/users/${post.user.id}` }">
+              <user-avatar
+                :size="50"
+                :user="post.user"
+                class="list-avatar mx-3"
+              />
+            </nuxt-link>
           </template>
 
           <v-card class="elevation-2 mr-8" rounded-card>
@@ -138,7 +133,7 @@
         </div>
 
         <div>
-                    <button-like
+          <button-like
             :user="loginUser"
             :post="post"
             :is-rounded-join="true"
@@ -180,6 +175,12 @@ export default {
       dialog: false,
     }
   },
+  computed: {
+    ...mapGetters({
+      posts: 'post/posts',
+      loginUser: 'auth/loginUser',
+    }),
+  },
   created() {
     this.$axios
       .get(`api/v1/posts/${this.$route.params.id}`)
@@ -195,12 +196,6 @@ export default {
           })
         }
       })
-  },
-  computed: {
-    ...mapGetters({
-      posts: 'post/posts',
-      loginUser: 'auth/loginUser',
-    }),
   },
   methods: {
     closeDialog() {

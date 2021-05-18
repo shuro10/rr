@@ -127,6 +127,12 @@ export default {
       likeList: [],
     }
   },
+  methods: {
+    closeDialog() {
+      this.dialog = false
+    },
+  },
+
   computed: {
     ...mapGetters({
       user: 'user/user',
@@ -188,11 +194,6 @@ methods: {
          pagelink(link) {
       this.$router.push({ path: `/users/${link}` })
     }, */
-  methods: {
-    closeDialog() {
-      this.dialog = false
-    },
-  },
   },
 }
 </script>

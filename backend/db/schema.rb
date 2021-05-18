@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "avatar"
     t.string "name"
     t.text "details"
     t.text "quickword"

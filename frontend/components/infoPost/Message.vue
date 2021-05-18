@@ -90,14 +90,6 @@
                   {{ message.user.name }}
                 </v-btn> -->
 
-      <!--         <template
-                  v-if="message.user_id === $store.state.auth.loginUser.id"
-                > -->
-
-      <!-- <the-modal-message-edit :review="message" /> -->
-      <!-- <post-review-delete :review="message" /> -->
-      <!-- </template> -->
-
       <!--                     <template v-if="login">
                   </template> -->
       <!-- ========Message's Image======= -->

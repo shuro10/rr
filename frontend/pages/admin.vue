@@ -14,7 +14,7 @@
               <all-post :posts="posts" />
             </v-tab-item>
             <v-tab-item>
-              <all-review :messages="messages" />
+              <all-message :messages="messages" />
             </v-tab-item>
             <v-tab-item>
               <all-user :users="users" />
@@ -37,14 +37,14 @@
 import { mapGetters } from 'vuex'
 import allPost from '~/components/admin/AllPost.vue'
 import allUser from '~/components/admin/AllUser.vue'
-import allReview from '~/components/admin/AllReview.vue'
+import allMessage from '~/components/admin/AllMessage.vue'
 import StoreStateCheck from '~/components/admin/StoreStateCheck.vue'
 
 export default {
   components: {
     allPost,
     allUser,
-    allReview,
+    allMessage,
     StoreStateCheck,
   },
   data() {
@@ -52,7 +52,7 @@ export default {
       tab: null,
       items: [
         { title: 'Post' },
-        { title: 'Review' },
+        { title: 'Message' },
         { title: 'User' },
         { title: 'Store' },
       ],

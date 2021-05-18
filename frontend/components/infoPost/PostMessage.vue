@@ -64,7 +64,7 @@
             {{ message.user.name }}
           </v-list-item-content>
           <the-modal-message-edit :review="message" />
-          <the-modal-message-delete :review="message" />
+          <the-modal-message-delete :message="message" />
 
           <v-row align="center" justify="end">
             <v-icon class="mr-1">

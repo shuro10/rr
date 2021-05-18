@@ -40,6 +40,18 @@
                       </v-chip>
                     </span>
                   </v-img>
+                  <v-img v-else contain :src="defaultImage">
+                    <span class="my-span">
+                      <v-chip
+                        class="mr-4 mt-4"
+                        color="indigo"
+                        text-color="white"
+                      >
+                        @{{ p.place }}
+                      </v-chip>
+                    </span>
+                  </v-img>
+
                   <div  style="position: relative;" >
                     <v-card-text style="position: relative;">
                       <dialog-component
@@ -134,26 +146,6 @@
     </v-row>
   </div>
 
-  <!--        
-                                               </v-img>
-                      <v-img v-else contain :src="defaultImage">
-                        -->
-  <!-- 
-    <v-list style="background-color: white">
-      <v-card
-        v-for="review in p.reviews"
-        :key="review.id"
-        flat
-        class="mb-2 black--text"
-        style="background-color: white"
-      >
-      <post-review2 :review="review" />
-      </v-card>
-    </v-list> -->
-  <!--                                       <p class="black--text"> index:{{ i + 1 }} </p>
-            <p class="black--text"> like:{{ p.like_users.length }} </p>   
-            <p class="black--text"> id:{{ p.id }} </p>
-             -->
 </template>
 
 <script>

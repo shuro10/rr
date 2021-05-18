@@ -1,5 +1,6 @@
 <template>
   <div>
+      <template v-if="loading">
     <v-app-bar color="#B0DFC1">
       <nuxt-link to="/" class="link">
         <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
@@ -9,7 +10,7 @@
     <the-modal-post-edit :post="post" />
     <the-modal-post-delete :post="post" />
       </template>
-      <template v-if="loggedIn">
+      <template v-if="login">
     
         <dialog-component :is-account-page="true" class="mt-5" />
 
@@ -46,15 +47,12 @@
     <v-row>
       <v-col>
         <template v-if="post.reviews.length === 0">
-          <h4 class="ma-3 text-decoration-underline">
-            メッセージがありません。
-          </h4>
-              <the-modal-message-create :post="post" />
-
+          <h4 class="ma-3 text-decoration-underline">メッセージがありません。</h4>
+          <the-modal-message-create v-if="login" :post="post" />
         </template>
         <template v-else>
-          <post-review-list :reviews="post.reviews" />
-          <!-- <list-component :is-message-list-in-id="true" :lists="post.reviews" /> -->
+          <the-modal-message-create v-if="message" :post="post" />
+          <post-message-list :messages="post.reviews" />
         </template>
       </v-col>
     </v-row>
@@ -69,13 +67,15 @@
             <v-icon dark>mdi-email-variant </v-icon>TOPに戻る
           </v-btn>
         </div>
-
+  </template>  
   </div>
+  
+  
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import postReviewList from '~/components/infoPost/PostReviewList.vue'
+import postMessageList from '~/components/infoPost/PostMessageList.vue'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
 import postMember from '~/components/infoPost/PostMember.vue'
 /* import listComponent from '~/components/layouts/ListComponent.vue' */
@@ -87,7 +87,7 @@ import theModalPostEdit from '~/components/layouts/TheModalPostEdit.vue'
 
 export default {
   components: {
-    postReviewList,
+    postMessageList,
     buttonLike,
     postMember,
     theModalMessageCreate,
@@ -103,7 +103,7 @@ export default {
       loading: false,
       like: false,
       join: false,
-      review: true,
+      message: true,
       createDate: '',
       releaseDate: '',
       start_time: '',
@@ -115,28 +115,20 @@ export default {
     ...mapGetters({
       post: 'post/post',
       user: 'auth/loginUser',
-      loggedIn: 'auth/isLoggedIn',
-      currentPosts: 'favOrNotCheck/posts',
+      login: "auth/isLoggedIn",
     }),
     loginUserReview() {
       return this.$store.state.post.post
     },
   },
   watch: {
-    postUpdate() {
-      this.$axios.get(`api/v1/posts/${this.$route.params.id}`).then((res) => {
-        this.$store.commit('post/setPost', res.data, { root: true })
-        console.log(res.data)
-      })
-    },
-
     loginUserReview() {
       // ユーザーがすでにレビューを投稿してたら非表示にする
       if (this.login) {
-        this.review = true
+        this.message = true
         this.post.reviews.forEach((f) => {
           if (f.user_id === this.user.id) {
-            this.review = false
+            this.message = false
           }
         })
       }
@@ -149,21 +141,13 @@ export default {
         this.$store.commit('post/setPost', res.data, { root: true })
       })
       .then(() => {
+        // ユーザーがログインしてたらlikeしているか確認
         if (this.login) {
           this.post.like_users.forEach((f) => {
             if (f.id === this.user.id) {
               this.like = true
             }
           })
-        }
-      })
-    this.$axios
-      .get(`api/v1/posts/${this.$route.params.id}`)
-      .then((res) => {
-        this.$store.commit('post/setPost', res.data, { root: true })
-      })
-      .then(() => {
-        if (this.login) {
           this.post.join_users.forEach((f) => {
             if (f.id === this.user.id) {
               this.join = true

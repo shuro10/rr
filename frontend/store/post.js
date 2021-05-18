@@ -247,7 +247,7 @@ export const actions = {
     }
     console.log(authData.image)
     await this.$axios
-      .$put(`/api/v1/reviews/${authData.reviewId}`, form, {
+      .$put(`/api/v1/reviews/${authData.messageId}`, form, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

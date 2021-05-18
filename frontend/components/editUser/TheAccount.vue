@@ -4,9 +4,17 @@
       <v-card-title class="text-center justify-center py-6">
         <h1 class="font-weight-bold display-3 basil--text">
           <template>
-            <div>
+            <v-row>
+              <v-col cols=1>
+              </v-col>
+              <v-col cols=10>
               <user-avatar :size="140" :user="currentUser" />
-            </div>
+</v-col>
+              <v-col cols=1>
+                          <the-account-setting-dialog />
+</v-col>
+            </v-row>
+
             <div class="mx-auto text-center">
               <h3>{{ currentUser.name }}</h3>
               <p class="caption mt-1">
@@ -18,8 +26,18 @@
                 {{ currentUser.profile }}
               </p>
             </div>
+        
+        
+      <v-btn 
+      nuxt :to="`/users/${loginUser.id}`"
+      color="green" 
+      outlined 
+      @click.stop="dialogComponent = true">
+        <v-icon>mdi-emoticon</v-icon>
+        マイページ
+      </v-btn>
+                        
 
-            <the-account-setting-dialog class="mt-6" />
           </template>
         </h1>
       </v-card-title>
@@ -270,5 +288,10 @@ export default {
 }
 .rounded-card {
   border-radius: 20px;
+}
+.atmark-right {
+  color: white;
+  font-weight: bold;
+  float: right;
 }
 </style>

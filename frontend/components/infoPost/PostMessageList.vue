@@ -1,16 +1,11 @@
 <template>
   <div>
-      <v-list style="background-color: white">
-        <v-card
-          v-for="message in messages"
-          :key="message.id"
-          flat
-          class="mb-2"
-        >
-          <post-message :message="message" />
-        </v-card>
-      </v-list>
-    </div>
+    <v-list style="background-color: white">
+      <v-card v-for="message in messages" :key="message.id" flat class="mb-2">
+        <post-message :message="message" />
+      </v-card>
+    </v-list>
+  </div>
 </template>
 
 <script>

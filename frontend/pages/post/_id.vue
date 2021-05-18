@@ -41,7 +41,7 @@
 
       <div>
         <v-card>
-        <post-member :users="post.join_users" :title="title" :post="post" />
+          <post-member :users="post.join_users" :title="title" :post="post" />
         </v-card>
       </div>
       <v-row>
@@ -62,7 +62,6 @@
           <v-icon dark>mdi-email-variant </v-icon>TOPに戻る
         </v-btn>
       </div>
-      
     </template>
   </div>
 </template>

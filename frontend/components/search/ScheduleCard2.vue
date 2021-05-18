@@ -1,8 +1,8 @@
 <template>
   <!-- <user-post-list :posts="posts" /> -->
   <div style="background-color: white" class="mb-14">
-        <v-row>
-       <v-col
+    <v-row>
+      <v-col
         v-for="p in posts"
         :key="p.id"
         class="d-flex align-stretch flex-wrap"
@@ -24,16 +24,16 @@
                     :aspect-ratio="1 / 1"
                     class="white--text align-top"
                   >
-                                      <v-fade-transition>
-                          <v-overlay v-if="hover" absolute color="#036358">
-                            <v-btn
-                              large
-                              :to="{ path: `/post/${post.id}` }"
-                              @click="pagelink(post.id)"
-                              >参加ページ</v-btn
-                            >
-                          </v-overlay>
-                        </v-fade-transition>
+                    <v-fade-transition>
+                      <v-overlay v-if="hover" absolute color="#036358">
+                        <v-btn
+                          large
+                          :to="{ path: `/post/${post.id}` }"
+                          @click="pagelink(post.id)"
+                          >参加ページ</v-btn
+                        >
+                      </v-overlay>
+                    </v-fade-transition>
 
                     <span class="atmark-right">
                       <v-chip
@@ -57,10 +57,9 @@
                     </span>
                   </v-img>
 
-
                   <div style="position: relative;">
                     <v-card-text style="position: relative;">
-<!--                       <dialog-component
+                      <!--                       <dialog-component
                         :is-schedule-card-info="true"
                         :post="p"
                       /> -->
@@ -90,7 +89,7 @@
                         </p>
                       </div>
                     </v-card-text>
-<!-- 
+                    <!-- 
                     <v-expand-transition>
                       <div
                         v-if="hover"
@@ -112,11 +111,11 @@
                       </div>
                     </v-expand-transition> -->
                   </div>
-                    </v-sheet>
-                  </template>
-                </v-hover>
+                </v-sheet>
+              </template>
+            </v-hover>
 
-<!--             <v-card-text class="orange">
+            <!--             <v-card-text class="orange">
               <div class="d-flex font-weight-thin subtitle-1 justify-center ">
                 <span>
                   <like-counter
@@ -135,21 +134,19 @@
   </div>
 </template>
 
-
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
-import likeCounter from '~/components/infoPost/LikeCounter.vue'
-import dialogComponent from '~/components/layouts/DialogComponent.vue'
-import userAvatar from '~/components/infoUser/UserAvatar.vue'
-
+// import likeCounter from '~/components/infoPost/LikeCounter.vue'
+// import dialogComponent from '~/components/layouts/DialogComponent.vue'
+// import userAvatar from '~/components/infoUser/UserAvatar.vue'
 
 export default {
   components: {
     buttonLike,
-    likeCounter,
-    dialogComponent,
-    userAvatar,
+    // likeCounter,
+    // dialogComponent,
+    // userAvatar,
   },
   props: {
     posts: {
@@ -166,7 +163,6 @@ export default {
       like: false,
       join: false,
       dialog: false,
-      show: false,
       defaultImage: require(`@/assets/images/default.png`),
     }
   },

@@ -1,5 +1,4 @@
 <template>
-  <v-card flat>
     <v-list>
       <v-row>
         <v-list-item
@@ -14,20 +13,19 @@
               <v-img v-else contain :src="defaultImage" />
             </v-avatar>
           </v-list-item-avatar>
+        <v-list-item-content>
+          <v-list-item-title class="list-item title" @click="pagelink(user.id)">
+            {{ post.name }}
+          </v-list-item-title>
+        </v-list-item-content>
 
-          <v-row>
-            <v-col>
-              {{ post.name }}
-            </v-col>
-            <v-col align-self="end">
+            <div align-self="center">
               <button-like
                 :user="loginUser"
                 :post="post"
                 :is-rounded-join="true"
-                class="mb-10"
               />
-            </v-col>
-          </v-row>
+            </div>
 
           <!--           <v-list-item-title class="list-item" @click="pagelink(post.id)">
             {{ post.name }}
@@ -36,7 +34,7 @@
         </v-list-item>
       </v-row>
     </v-list>
-  </v-card>
+  
 </template>
 
 <script>

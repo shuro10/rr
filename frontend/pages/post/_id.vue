@@ -5,10 +5,12 @@
         <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
       </nuxt-link>
       <v-spacer />
-      <template v-if="loggedIn">
-            <the-modal-post-edit :post="post" />
+      <template v-if="user.id == post.user_id">
+    <the-modal-post-edit :post="post" />
     <the-modal-post-delete :post="post" />
-
+      </template>
+      <template v-if="loggedIn">
+    
         <dialog-component :is-account-page="true" class="mt-5" />
 
       </template>

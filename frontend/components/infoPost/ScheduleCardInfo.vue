@@ -11,9 +11,12 @@
         <v-img v-else contain :src="defaultImage"> </v-img>
         <v-sheet style="position: relative;">
           <button-like :user="loginUser" :post="post" :is-rounded-like="true" />
+          <!-- <button-like :user="loginUser" :post="post" :is-rounded-join="true" /> -->
         </v-sheet>
       </v-card>
       <v-card-text class="text-center align-self-center">
+
+
         <div class="orangecolor">
           <div
             class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text"
@@ -66,13 +69,7 @@
             </v-col>
 
             <v-col cols="7">
-              <v-chip color="orange" text-color="white">
-                <v-icon left>
-                  mdi-star
-                </v-icon>
 
-                場所: {{ post.place }}
-              </v-chip>
             </v-col>
           </v-row>
         </v-timeline-item>
@@ -88,13 +85,13 @@
               >
             </v-col>
             <v-col cols="7">
-              <v-chip color="primary" text-color="white">
+ <!--              <v-chip color="primary" text-color="white">
                 <v-icon left>
                   mdi-wallet-travel
                 </v-icon>
 
                 予算: {{ post.price }}円/人
-              </v-chip>
+              </v-chip> -->
             </v-col>
           </v-row>
         </v-timeline-item>
@@ -119,29 +116,81 @@
             </v-card-text>
           </v-card>
         </v-timeline-item>
-      </v-timeline>
-      <v-sheet class="d-flex transparent align-center flex-column">
-        <div class="mb-4">
+        <v-timeline-item dense hide-dot class="mt-n3 mb-n4" color="orange" large>
+          
+            <v-chip  color="white" text-color="purple">
+              <v-icon class="ml-n2 mr-2">mdi-account-circle</v-icon>
+              [ {{ post.join_users.length }} / {{ post.member }} ] 人
+            </v-chip>
+        </v-timeline-item>        
+
+ 
+        <v-timeline-item hide-dot class="white--text" color="orange" large>
+          
+                    <template v-slot:icon>
+            <strong><span>参加</span></strong>
+          </template>
+
+            <v-card class="d-flex flex-row mb-6 rounded-card" flat tile>
+        <v-sheet
+          v-for="user in post.join_users"
+          :key="user.id"
+          class="text-center align-self-center"
+          color="white"
+        > 
+                  <nuxt-link :to="{ path: `/users/${user.id}` }">
+          <user-avatar :size="50" :user="user" class="list-avatar mx-3" />
+                    </nuxt-link>
+        </v-sheet>
+      </v-card>
+        </v-timeline-item>
+
+        <v-timeline-item hide-dot class="mt-n8">
+<!--                   <v-chip color="primary" outlined text-color="orange">
+                <v-icon left>
+                  mdi-wallet-travel
+                </v-icon>
+
+                予算: {{ post.price }}円/人
+              </v-chip> 
+              <v-chip color="orange" text-color="white">
+                <v-icon left>
+                  mdi-star
+                </v-icon>
+
+                場所: {{ post.place }}
+              </v-chip> -->
+        </v-timeline-item>    
+
+
+        <div class="mb-5">
           <v-btn
-            color="purple white--text"
-            outlined
+            color="orange"
             nuxt
+            x-large
             :to="{ path: `/post/${post.id}` }"
+            class="ml-3 white--text"
           >
-            <v-icon dark>mdi-email-variant </v-icon>メッセージボックス
+            <v-icon color="white">mdi-email-variant </v-icon>&nbsp;参加したい気持ちをメッセージで伝えましょう！&nbsp;&nbsp;
           </v-btn>
         </div>
+      </v-timeline>
+
+      <v-sheet class="d-flex transparent align-center flex-column">
 
         <div>
+<!-- 
           <button-like
             :user="loginUser"
             :post="post"
             :is-rounded-join="true"
             class="mb-10"
-          />
+          /> -->
         </div>
       </v-sheet>
     </v-sheet>
+
+    
   </div>
 </template>
 
@@ -149,11 +198,15 @@
 import { mapGetters } from 'vuex'
 import buttonLike from '~/components/layouts/ButtonLike.vue'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import dialogComponent from '~/components/layouts/dialogComponent.vue'
+import postMessage from '~/components/infoPost/PostMessage.vue'
 
 export default {
   components: {
     buttonLike,
     userAvatar,
+    dialogComponent,
+    postMessage,
   },
   props: {
     post: {

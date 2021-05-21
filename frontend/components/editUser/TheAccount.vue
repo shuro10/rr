@@ -8,7 +8,7 @@
               <v-col cols=1>
               </v-col>
               <v-col cols=10>
-              <user-avatar :size="140" :user="currentUser" />
+              <user-avatar :size="140" :user="loginUser" />
 </v-col>
               <v-col cols=1>
                           <the-account-setting-dialog />
@@ -16,21 +16,21 @@
             </v-row>
 
             <div class="mx-auto text-center">
-              <h3>{{ currentUser.name }}</h3>
+              <h3>{{ loginUser.name }}</h3>
               <p class="caption mt-1">
-                <!--  {{ currentUser.email }} -->
+                <!--  {{ loginUser.email }} -->
               </p>
             </div>
             <div>
               <p class="caption">
-                {{ currentUser.profile }}
+                {{ loginUser.profile }}
               </p>
             </div>
         
         
       <v-btn 
       nuxt :to="`/users/${loginUser.id}`"
-      color="purple" 
+      color="green" 
       outlined 
       @click.stop="dialogComponent = true">
         <!-- <v-icon>mdi-emoticon</v-icon> -->

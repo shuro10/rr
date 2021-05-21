@@ -15,8 +15,8 @@
         </template>
       </v-app-bar>
 
-<!--       <button-like :user="user" :post="post" :is-rounded-like="true" />
- -->
+      <button-like :user="user" :post="post" :is-rounded-like="true" />
+
 
 
 
@@ -159,6 +159,8 @@ export default {
               this.like = true
             }
           })
+        }
+        if (this.login) {
           this.post.join_users.forEach((f) => {
             if (f.id === this.user.id) {
               this.join = true

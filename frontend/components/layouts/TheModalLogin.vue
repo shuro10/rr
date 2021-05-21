@@ -72,8 +72,8 @@ export default {
         password: '',
       },
       guest: {
-        email: process.env.RAILS_GUEST_ADDRESS,
-        password: process.env.RAILS_GUEST_KEY,
+        email: 'tester9520@gmail.com',
+        password: 'KRVU3KcLVW7VDZD7iQZUVeDB9',
       },
       emailRules: [(v) => !!v || '', (v) => /.+@.+\..+/.test(v) || ''],
     }

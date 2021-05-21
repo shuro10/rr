@@ -14,7 +14,7 @@
         削除
       </v-btn>
       <v-btn v-else color="grey" class="white--text px-10 mt-8">
-        ゲストユーザーの為削除できません
+        ゲストユーザーのため削除できません
       </v-btn>
     </v-card-actions>
   </v-form>
@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       email: this.$store.getters['auth/currentUser'].uid,
-      guest: process.env.RAILS_GUEST_ADDRESS,
+      guest: 'tester9520@gmail.com',
     }
   },
   methods: {

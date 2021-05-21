@@ -2,24 +2,9 @@
   <!-- <template v-if="loginUser && loginUser.id == user.id"> -->
   <v-card width="400px" class="mx-auto rounded-card">
     <v-card-text>
-      <v-form ref="form" lazy-validation class="pt-10">
-        <v-file-input
-          accept="image/png, image/jpeg, image/bmp"
-          outlined
-          label="トップ画像"
-          @change="setImage"
-        />
-        <v-text-field
-          v-model="name"
-          placeholder="例: みんな集まれ憩いの川"
-          label="タイトル"
-        />
-        <v-textarea
-          v-model="details"
-          placeholder="例: これから川遊びにいきましょう。"
-          label="詳細"
-        />
 
+
+      
         <v-menu
           ref="menu"
           v-model="menu"
@@ -29,8 +14,12 @@
           offset-y
           min-width="auto"
         >
-          <v-text-field v-model="release" label="開催日" readonly />
-
+        <template #activator="{ on, attrs }">
+          <v-text-field v-model="release" label="開催日" readonly 
+           v-bind="attrs"
+                  v-on="on"
+                  />
+        </template>
           <v-date-picker v-model="release" scrollable elevation="15">
             <v-spacer></v-spacer>
             <v-flex justify-center>
@@ -43,6 +32,8 @@
             </v-flex>
           </v-date-picker>
         </v-menu>
+
+        
         <v-menu
           ref="starttimepicker"
           v-model="starttimepicker"
@@ -52,8 +43,12 @@
           offset-y
           min-width="auto"
         >
-          <v-text-field v-model="start_time" label="開始時刻" readonly />
-
+        <template #activator="{ on, attrs }">
+          <v-text-field v-model="start_time" label="開始時刻" readonly 
+                     v-bind="attrs"
+                  v-on="on"
+          />
+          </template>
           <v-time-picker
             v-model="start_time"
             elevation="15"
@@ -75,6 +70,9 @@
             </v-flex>
           </v-time-picker>
         </v-menu>
+
+
+        
         <v-menu
           ref="finishtimepicker"
           v-model="finishtimepicker"
@@ -84,8 +82,13 @@
           offset-y
           min-width="auto"
         >
-          <v-text-field v-model="finish_time" label="終了時刻" readonly />
-
+        <template #activator="{ on, attrs }">
+          <v-text-field v-model="finish_time" label="終了時刻" readonly 
+          v-bind="attrs"
+                  v-on="on"
+/>
+           
+            </template>
           <v-time-picker
             v-model="finish_time"
             elevation="15"
@@ -107,6 +110,27 @@
             </v-flex>
           </v-time-picker>
         </v-menu>
+
+
+      <v-form ref="form" lazy-validation class="pt-10">
+        <v-file-input
+          accept="image/png, image/jpeg, image/bmp"
+          outlined
+          label="トップ画像"
+          @change="setImage"
+        />
+        <v-text-field
+          v-model="name"
+          placeholder="例: みんな集まれ憩いの川"
+          label="タイトル"
+        />
+        <v-textarea
+          v-model="details"
+          placeholder="例: これから川遊びにいきましょう。"
+          label="詳細"
+        />
+
+
 
         <v-text-field
           v-model.number="member"
@@ -171,7 +195,7 @@ export default {
       name: '',
       image: '',
       details: '',
-      start_time: '12:00',
+      start_time: '09:00',
       finish_time: '18:00',
       member: '5',
       place: '',

@@ -22,7 +22,7 @@
         <v-btn
           small
           color="red darken-3 white--text"
-          @click="deleteReview(message.id)"
+          @click="deleteMessage(message.id)"
         >
           削除
         </v-btn>
@@ -43,9 +43,9 @@ export default {
     return {}
   },
   methods: {
-    deleteReview(id) {
+    deleteMessage(id) {
       this.$axios
-        .delete(`api/v1/reviews/${id}`)
+        .delete(`api/v1/messages/${id}`)
         .then((res) => {
           console.log(res.data)
           console.log('Successfully deleted')

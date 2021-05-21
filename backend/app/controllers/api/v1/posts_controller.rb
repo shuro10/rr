@@ -32,11 +32,11 @@ module Api
 
       def show
         @post = Post.includes(
-          # ========== add ========== 
+          # ========== add ==========
           # {
           #   user: %i[id name image]
           # },
-          # ========== end of add ========== 
+          # ========== end of add ==========
           :like_users,
           :join_users,
           {
@@ -45,11 +45,11 @@ module Api
         ).find(params[:id])
         render json: @post.as_json(
           include: [
-            # ========== add ========== 
+            # ========== add ==========
             # {
             #   user: { only: %w[id name image] }
             # },
-            # ========== end of add ========== 
+            # ========== end of add ==========
             :like_users,
             :join_users,
             {
@@ -106,7 +106,8 @@ module Api
       private
 
       def post_params
-        params.permit(:avatar, :user_id, :name, :details, :start_time, :finish_time, :member, :place, :category, :image, :release, :price, :catchcopy, :quickword)
+        params.permit(:avatar, :user_id, :name, :details, :start_time, :finish_time, :member, :place, :category, :image, :release, :price, :catchcopy,
+                      :quickword)
       end
     end
   end

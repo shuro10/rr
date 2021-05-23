@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2021_04_09_051345) do
     t.bigint "post_id", null: false
     t.string "title"
     t.text "content"
-    t.float "rate"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

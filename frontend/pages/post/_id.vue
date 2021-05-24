@@ -15,36 +15,32 @@
         </template>
       </v-app-bar>
 
-      <button-like :user="user" :post="post" :is-rounded-like="true" />
-
-
-
-
-
       <v-card color="transparent" class="rounded-card " elevation="5">
         <v-img
           v-if="post.image.url"
           :src="post.image.url"
           class="rounded-card align-center text-center"
         >
-      <v-row no-gutters class="mt-n14 mb-10">
-        <v-col> </v-col>
-        <v-col cols="sm" class="text-center align-self-center">
-          <v-sheet elevation="4" class="rounded-pill">
-            <template>
-              <v-chip label color="white" large outlined text-color="red">
-                <v-icon>mdi-run</v-icon> {{ post.name }}
-              </v-chip>
-            </template>
-          </v-sheet>
-        </v-col>
-        <v-col> </v-col>
-      </v-row>
+          <v-row no-gutters class="mt-n14 mb-10">
+            <v-col> </v-col>
+            <v-col cols="sm" class="text-center align-self-center">
+              <v-sheet elevation="4" class="rounded-pill">
+                <template>
+                  <v-chip label color="white" large outlined text-color="red">
+                    <v-icon>mdi-run</v-icon> {{ post.name }}
+                  </v-chip>
+                </template>
+              </v-sheet>
+            </v-col>
+            <v-col> </v-col>
+          </v-row>
         </v-img>
         <v-img v-else contain :src="defaultImage"> </v-img>
       </v-card>
-      
-
+      <post-member :users="post.join_users" :title="title" :post="post" />
+      <v-sheet style="position: relative;">
+        <button-like :user="loginUser" :post="post" :is-rounded-like="true" />
+      </v-sheet>
       <v-row>
         <v-col class="text-center">
           <template v-if="post.messages.length === 0">
@@ -60,7 +56,6 @@
 
       <div>
         <v-card>
-          <post-member :users="post.join_users" :title="title" :post="post" />
           <div>
             <button-like
               :is-rounded-join="true"
@@ -71,7 +66,6 @@
           </div>
         </v-card>
       </div>
-
 
       <div class="text-center align-self-center mt-4">
         <v-btn color="purple white--text" outlined nuxt to="/" class="link">
@@ -93,7 +87,6 @@ import theModalMessageCreate from '~/components/layouts/TheModalMessageCreate.vu
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
 import theModalPostDelete from '~/components/layouts/TheModalPostDelete.vue'
 import theModalPostEdit from '~/components/layouts/TheModalPostEdit.vue'
-import postMessage from '~/components/infoPost/PostMessage.vue'
 
 export default {
   components: {
@@ -106,7 +99,6 @@ export default {
     dialogComponent,
     theModalPostDelete,
     theModalPostEdit,
-    postMessage,
   },
   data() {
     return {

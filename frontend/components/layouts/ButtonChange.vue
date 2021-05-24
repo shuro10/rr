@@ -1,6 +1,6 @@
 <template>
   <v-btn
-  v-if="originEmail != guest"
+    v-if="originEmail != guest"
     rounded
     color="#48A1EB"
     class="font-weight-bold white--text"
@@ -9,19 +9,18 @@
   >
     変更
   </v-btn>
-    <v-btn v-else block color="grey" class="white--text">
-      ゲストユーザーのため変更できません
-    </v-btn>
-
+  <v-btn v-else block color="grey" class="white--text">
+    ゲストユーザーのため変更できません
+  </v-btn>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      email: this.$store.getters["auth/currentUser"].email,
-      originEmail: this.$store.getters["auth/currentUser"].uid,
-      guest: "tester9520@gmail.com",
+      email: this.$store.getters['auth/currentUser'].email,
+      originEmail: this.$store.getters['auth/currentUser'].uid,
+      guest: 'tester9520@gmail.com',
     }
   },
   methods: {

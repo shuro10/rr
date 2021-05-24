@@ -57,17 +57,17 @@
           {{ post.name }}
         </v-card-title>
         <v-card-text>
-              <v-row justify="center" class="pt-6">
-      <v-avatar size="100">
-        <template v-if="post.image.url !== null">
-          <v-img v-if="input_image !== null" :src="input_image" />
-          <v-img v-else :src="post.image.url" />
-        </template>
-        <template v-else>
-          <v-img v-if="input_image" :src="input_image" />
-        </template>
-      </v-avatar>
-    </v-row>
+          <v-row justify="center" class="pt-6">
+            <v-avatar size="100">
+              <template v-if="post.image.url !== null">
+                <v-img v-if="input_image !== null" :src="input_image" />
+                <v-img v-else :src="post.image.url" />
+              </template>
+              <template v-else>
+                <v-img v-if="input_image" :src="input_image" />
+              </template>
+            </v-avatar>
+          </v-row>
 
           <v-form ref="form">
             <template v-if="post.image.url">
@@ -324,43 +324,43 @@ export default {
         .then((res) => {
           console.log(res)
           console.log('投稿を更新しました')
-          this.$store.commit("auth/setCurrentUser", res.data.data)
+          this.$store.commit('auth/setCurrentUser', res.data.data)
           this.$store.dispatch(
             'snackbarMessage/showMessage',
             {
-              message: "ページを更新しました。",
-              type: "success",
+              message: 'ページを更新しました。',
+              type: 'success',
               status: true,
             },
             { root: true }
           )
-          this.$store.commit("flashMessage/setType", "success", { root: true })
-          this.$store.commit("flashMessage/setStatus", true, { root: true })
+          this.$store.commit('flashMessage/setType', 'success', { root: true })
+          this.$store.commit('flashMessage/setStatus', true, { root: true })
           setTimeout(() => {
-            this.$store.commit("flashMessage/setStatus", false, { root: true })
+            this.$store.commit('flashMessage/setStatus', false, { root: true })
           }, 1000)
           this.editDialog = false
         })
+        /* eslint-disable */
         .catch((err) => {
           this.$store.dispatch(
             'snackbarMessage/showMessage',
             {
-              message: "ページの更新に失敗しました。",
-              type: "error",
+              message: 'ページの更新に失敗しました。',
+              type: 'error',
               status: true,
             },
             { root: true }
-              
           )
-                    setTimeout(() => {
-            this.$store.commit("flashMessage/setStatus", false, { root: true })
+          setTimeout(() => {
+            this.$store.commit('flashMessage/setStatus', false, { root: true })
           }, 1000)
-/* 
+          /* 
           console.log(err)
           console.log('投稿失敗') */
         })
     },
-
+/* eslint-disable */
     setImage(file) {
       this.image = file
       if (file !== undefined && file !== null) {

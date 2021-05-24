@@ -1,17 +1,17 @@
 <template>
   <div>
-      <v-row class="mb-n4">
-        <v-col> </v-col>
-        <v-col cols="sm" class="text-center align-self-center">
-          <v-sheet elevation="4" class="rounded-pill mt-3 mb-n2">
-            <v-chip label color="transparent" x-large text-color="purple">
-              <v-icon class="ml-2 mr-2">mdi-account-circle</v-icon>
-              メッセージ
-            </v-chip>
-          </v-sheet>
-        </v-col>
-        <v-col> </v-col>
-      </v-row>
+    <v-row class="mb-n4">
+      <v-col> </v-col>
+      <v-col cols="sm" class="text-center align-self-center">
+        <v-sheet elevation="4" class="rounded-pill mt-3 mb-n2">
+          <v-chip label color="transparent" x-large text-color="purple">
+            <v-icon class="ml-2 mr-2">mdi-account-circle</v-icon>
+            メッセージ
+          </v-chip>
+        </v-sheet>
+      </v-col>
+      <v-col> </v-col>
+    </v-row>
     <v-list>
       <v-card v-for="message in messages" :key="message.id" flat class="mb-2">
         <post-message :message="message" />
@@ -30,6 +30,7 @@ export default {
   props: {
     messages: {
       type: Array,
+      default: () => ({}),
       required: true,
     },
   },

@@ -1,4 +1,3 @@
-/* No Edit. It's OK */
 import createPersistedState from 'vuex-persistedstate'
 
 export default ({ store }) => {

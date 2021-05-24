@@ -5,14 +5,13 @@
         <h1 class="font-weight-bold display-3 basil--text">
           <template>
             <v-row>
-              <v-col cols=1>
+              <v-col cols="1"> </v-col>
+              <v-col cols="10">
+                <user-avatar :size="140" :user="loginUser" />
               </v-col>
-              <v-col cols=10>
-              <user-avatar :size="140" :user="loginUser" />
-</v-col>
-              <v-col cols=1>
-                          <the-account-setting-dialog />
-</v-col>
+              <v-col cols="1">
+                <the-account-setting-dialog />
+              </v-col>
             </v-row>
 
             <div class="mx-auto text-center">
@@ -26,18 +25,17 @@
                 {{ loginUser.profile }}
               </p>
             </div>
-        
-        
-      <v-btn 
-      nuxt :to="`/users/${loginUser.id}`"
-      color="green" 
-      outlined 
-      @click.stop="dialogComponent = true">
-        <!-- <v-icon>mdi-emoticon</v-icon> -->
-        マイページ
-      </v-btn>
-                        
 
+            <v-btn
+              nuxt
+              :to="`/users/${loginUser.id}`"
+              color="green"
+              outlined
+              @click.stop="dialogComponent = true"
+            >
+              <!-- <v-icon>mdi-emoticon</v-icon> -->
+              マイページ
+            </v-btn>
           </template>
         </h1>
       </v-card-title>

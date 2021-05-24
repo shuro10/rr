@@ -4,7 +4,7 @@ default: &default
   charset: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: db
 
 development:
@@ -20,6 +20,7 @@ production:
   <<: *default
   host: terraform-20210427110221563100000006.cbch251i7aoz.ap-northeast-1.rds.amazonaws.com
   database: production
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   # database: app_production
   # url: <%= ENV['RR_DATABASE_URL'] %>
   # password: <%= ENV['DATABASE_PASSWORD'] %>

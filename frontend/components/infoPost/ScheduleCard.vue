@@ -140,11 +140,23 @@
                           :post="p"
                         />
                         <!-- <schedule-card-info :post="p" /> -->
+                        <template v-if =!login>
+      <v-btn
+        color="red white--text font-weight-bold"
+        absolute
+        fab
+        right
+        top
+      >        <v-icon>mdi-heart</v-icon>
+      </v-btn>
+                        </template>
+                        <template v-else>
                         <button-like
                           :user="user"
                           :post="p"
                           :is-rounded-like="true"
                         />
+                        </template>
                         <div class="grey--text title">
                           <div class="font-weight-regular mt-4 text-truncate">
                             {{ p.name }}

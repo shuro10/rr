@@ -4,7 +4,7 @@ default: &default
   charset: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: db
 
 development:
@@ -14,7 +14,6 @@ development:
 test:
   <<: *default
   database: app_test
-  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: 127.0.0.1
 
 production:

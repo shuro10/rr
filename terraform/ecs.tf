@@ -10,7 +10,7 @@ resource "aws_ecs_task_definition" "meetwithkids-frontend-task" {
   memory                   = "1024"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  container_definitions    = file("./tasks/cs_frontend_definition.json")
+  container_definitions    = file("./tasks/meetwithkids_frontend_definition.json")
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 /* Backend: TaskDefinition */
@@ -20,7 +20,7 @@ resource "aws_ecs_task_definition" "meetwithkids-backend-task" {
   memory                   = "512"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
-  container_definitions    = file("./tasks/cs_backend_definition.json")
+  container_definitions    = file("./tasks/meetwithkids_backend_definition.json")
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
@@ -88,7 +88,7 @@ resource "aws_ecs_service" "meetwithkids-frontend-ecs-service" {
 /* Tasks for Migration */
 resource "aws_ecs_task_definition" "db-migrate" {
   family                   = "meetwithkids-db-migrate"
-  container_definitions    = file("./tasks/cs_db_migrate_definition.json")
+  container_definitions    = file("./tasks/meetwithkids_db_migrate_definition.json")
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = "256"

@@ -1,7 +1,7 @@
 [
   {
     "name": "frontend-container",
-    "image": "700347967260.dkr.ecr.ap-northeast-1.amazonaws.com/cs-frontend",
+    "image": "700347967260.dkr.ecr.ap-northeast-1.amazonaws.com/meetwithkids-frontend",
     "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",

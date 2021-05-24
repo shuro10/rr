@@ -129,9 +129,9 @@ jobs:
 #            requires:
 #              - build_and_push_image_frontend
 #              - build_and_push_image_backend
-#            family: cs-backend-task
-#            service-name: cs-backend-ecs-service
-#            cluster-name: cs-ecs-cluster
+#            family: meetwithkids-backend-task
+#            service-name: meetwithkids-backend-ecs-service
+#            cluster-name: meetwithkids-ecs-cluster
 #            container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
 #            filters:
 #              branches:
@@ -180,7 +180,7 @@ workflows:
             branches:
               only: master
       - aws-ecs/update-task-definition:
-          family: cs-db-migrate
+          family: meetwithkids-db-migrate
 #          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
           container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
           aws-region: AWS_REGION
@@ -192,9 +192,9 @@ workflows:
             branches:
               only: master
       - aws-ecs/run-task:
-          cluster: cs-ecs-cluster
+          cluster: meetwithkids-ecs-cluster
 #          cluster: ${CLUSTER_NAME}
-          task-definition: cs-db-migrate
+          task-definition: meetwithkids-db-migrate
 #          task-definition: ${TASK_MIGRATE}
           subnet-ids: subnet-0ede0988253f44394, subnet-0dde9bcf9ec98092c
 #          subnet-ids: '$SUBNET_ONE, $SUBNET_TWO'
@@ -211,9 +211,9 @@ workflows:
 ###=================================================
       - aws-ecs/deploy-service-update:
       # Cannot find a definition for job named aws-ecs/deploy-service-update-frontend
-            family: cs-frontend-task
-            service-name: cs-frontend-ecs-service
-            cluster-name: cs-ecs-cluster
+            family: meetwithkids-frontend-task
+            service-name: meetwithkids-frontend-ecs-service
+            cluster-name: meetwithkids-ecs-cluster
             container-image-name-updates: 'container=frontend-container,tag=${CIRCLE_SHA1}'
             requires:
               - build_and_push_image_frontend
@@ -224,9 +224,9 @@ workflows:
             requires:
               - build_and_push_image_frontend
               - build_and_push_image_backend
-            family: cs-backend-task
-            service-name: cs-backend-ecs-service
-            cluster-name: cs-ecs-cluster
+            family: meetwithkids-backend-task
+            service-name: meetwithkids-backend-ecs-service
+            cluster-name: meetwithkids-ecs-cluster
             container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
             filters:
               branches:

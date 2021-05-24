@@ -14,8 +14,8 @@ development:
 test:
   <<: *default
   database: app_test
-  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-  # host: 127.0.0.1
+  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+  host: 127.0.0.1
 
 production:
   <<: *default

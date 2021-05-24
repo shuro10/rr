@@ -118,7 +118,7 @@ jobs:
       - checkout
       - aws-ecr/build-and-push-image:
           account-url: AWS_ACCOUNT_URL
-          repo: "cs-backend"
+          repo: "meetwithkids-backend"
           region: AWS_REGION
           tag: "${CIRCLE_SHA1}"
           path: './backend'
@@ -145,7 +145,7 @@ jobs:
       - checkout
       - aws-ecr/build-and-push-image:
             account-url: AWS_ACCOUNT_URL
-            repo: "cs-frontend"
+            repo: "meetwithkids-frontend"
             region: AWS_REGION
             tag: "${CIRCLE_SHA1}"
             path: './frontend/'

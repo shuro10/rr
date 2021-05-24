@@ -47,7 +47,7 @@ jobs:
           working_directory: ~/repo/backend
       - run:
           name: Database setup
-          command: bin/rails db:create; bin/rake db:setup; bin/rake db:seed --trace
+          command: bundle exec rails db:seed --trace
           working_directory: ~/repo/backend
       - run:
           name: create directory to store test results

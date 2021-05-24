@@ -47,18 +47,6 @@
         <dialog-component :is-account-page="true" class="mt-5" />
       </template>
     </v-app-bar>
-
-    <!-- <dialog-component /> -->
-    <v-row>
-      <v-col sm="3" cols="12">
-        <template v-if="search == '投稿'">
-          <!-- <checkbox @category="catchCategory" /> -->
-        </template>
-      </v-col>
-      <v-col sm="3" cols="12">
-        <!--           <v-select v-model="search" :items="items" label="検索項目" /> -->
-      </v-col>
-    </v-row>
     <template v-if="search === '投稿' && resPosts.length">
       <schedule-card2 :posts="resPosts" />
     </template>
@@ -75,8 +63,6 @@ import _debounce from 'lodash.debounce'
 import theModalSignUp from '~/components/layouts/TheModalSignUp.vue'
 import theModalLogin from '~/components/layouts/TheModalLogin.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
-
-/* TheHeader */
 
 /* import searchPost from '~/components/search/SearchPost.vue' */
 import ScheduleCard2 from '~/components/search/ScheduleCard2.vue'

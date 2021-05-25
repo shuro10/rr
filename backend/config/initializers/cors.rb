@@ -8,7 +8,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     origins 'http://meetwithkids.org' || ''
     # origins ENV['API_DOMAIN'] || ''
 
-    
     resource '*',
              headers: :any,
              expose: %w[access-token uid client token-type expiry],

@@ -5,7 +5,7 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
 
     # development 環境で通る
     # origins ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
-    origins 'http://meetwithkids.org' || ''
+    origins 'https://meetwithkids.org' || ''
     # origins ENV['API_DOMAIN'] || ''
 
     resource '*',

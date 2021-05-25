@@ -4,7 +4,8 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
     # origins 'http://meetwithkids.org' || ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
 
     # development 環境で通る
-    origins ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
+    # origins ENV['API_DOMAIN'] || 'http://localhost:3000' || ''
+    origins ENV['API_DOMAIN'] || ''
 
     resource '*',
              headers: :any,

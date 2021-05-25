@@ -79,8 +79,8 @@ export default {
   //   // }
   // },
   axios: {
-    // baseURL: "https://meetwithkids.org",
-    baseURL: process.env.BASE_URL,
+    baseURL: "https://meetwithkids.org",
+    // baseURL: process.env.BASE_URL,
   },
   auth: {
     redirect: {

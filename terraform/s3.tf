@@ -8,7 +8,7 @@ resource "aws_s3_bucket" "meetwithkids-s3-bucket" {
 }
 
 resource "aws_s3_bucket" "meetwithkids-alb-log" {
-  bucket = "artifact-terraform-for-cs"
+  bucket = "artifact-terraform-for-meetwithkids"
 
   lifecycle_rule {
     enabled = true

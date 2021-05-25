@@ -8,8 +8,8 @@
 
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
-    Hello World!
-    <!-- <search /> -->
+    Hello World!!!
+    <search />
   </div>
 </template>
 

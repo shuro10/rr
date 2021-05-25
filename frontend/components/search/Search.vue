@@ -6,7 +6,7 @@
       </nuxt-link>
 
       <v-spacer />
-      <v-text-field
+      <!-- <v-text-field
         v-model="searchForm"
         class="mt-6 mr-9 white--text"
         dense
@@ -18,7 +18,7 @@
         flat
         label="検索ワード"
         prepend-inner-icon="mdi-magnify"
-      />
+      /> -->
 
       <template v-if="!isLogin">
         <v-btn

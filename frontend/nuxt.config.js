@@ -21,7 +21,7 @@ export default {
     BASE_URL,
   },
   head: {
-    title: "MeetWithKids",
+    title: 'MeetWithKids',
     // titleTemplate: '%s - ' + process.env.npm_package_name,
     // title: process.env.npm_package_name || '',
     meta: [
@@ -79,7 +79,10 @@ export default {
   //   // }
   // },
   axios: {
-    baseURL: process.env.NODE_ENV === "production" ? "https://rinrei720.com" : "http://localhost:5000"
+    baseURL:
+      process.env.NODE_ENV === 'production'
+        ? 'https://rinrei720.com'
+        : 'http://localhost:5000',
     // baseURL: process.env.NODE_ENV === "production" ? "https://meetwithkids.org" : "http://localhost:5000"
     // baseURL: "https://meetwithkids.org",
     // baseURL: process.env.BASE_URL,

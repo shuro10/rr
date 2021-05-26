@@ -8,7 +8,13 @@
 
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
-    Hello World!!!
+      <!-- <button @click="getSomething">
+        タスク取得
+      </button> -->
+      <!-- <ul v-for=" user in users" :key="user.id">
+        <li style="text-align: left;">{{ user.name }}</li>
+      </ul> -->
+    Hello World
     <search />
   </div>
 </template>
@@ -19,6 +25,11 @@ import Search from '~/components/search/Search.vue'
 // import searchForm from '~/components/search/SearchForm.vue'
 
 export default {
+  data() {
+    return {
+      tasks: []
+    }
+  },
   components: {
     Search,
     // searchForm,
@@ -40,6 +51,11 @@ export default {
       /* user: 'user/user', */
       /* initData: 'tab/initData', */
     }),
+    async getSomething() {
+      // タスク一覧を取得するための API を叩く
+      const response = await this.$axios.$get('api/v1/users')
+      this.users = JSON.parse(response.users)
+    }
   },
   /* 
     async asyncData({ $axios }) {

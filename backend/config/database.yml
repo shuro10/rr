@@ -4,8 +4,9 @@ default: &default
   charset: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: db
+ # bin/rails db:seed RAILS_ENV=development でパスワードが必要.
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] || '' %>
 
 development:
   <<: *default
@@ -14,7 +15,10 @@ development:
 test:
   <<: *default
   database: app_test
+  # ↓↓CircleCI で 127.0.0.1 を使用。ローカル（development）で localhost を使用。
   host: 127.0.0.1
+  # ↓↓development 環境であってもなくてもログイン可
+  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
 production:
   <<: *default

@@ -11,7 +11,7 @@ Rails.application.configure do
   config.lograge.keep_original_rails_log = true
 
   # logrageのlogを別ファイルに保存
-  config.lograge.logger = ActiveSupport::Logger.new Rails.root.join("/log/lograge_#{Rails.env}.log")
+  config.lograge.logger = ActiveSupport::Logger.new Rails.root.join("log/lograge_#{Rails.env}.log")
 
   # 独自パラメータを取得 (controllerが落ちてくる)
   config.lograge.custom_payload do |controller|

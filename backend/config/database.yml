@@ -5,8 +5,8 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   host: db
- #  ↓↓bin/rails db:seed RAILS_ENV=development で必要 / CiecleCI で不要.
- # password: <%= ENV['MYSQL_ROOT_PASSWORD'] || '' %>
+  # ↓↓CiecleCI を通すときにコメントアウト
+  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] || '' %>
 
 development:
   <<: *default
@@ -15,10 +15,8 @@ development:
 test:
   <<: *default
   database: app_test
-  # ↓↓CircleCI で 127.0.0.1 を使用。ローカル（development）で localhost を使用。
+  # ↓↓CiecleCI を通すときにコメントイン
   host: 127.0.0.1
-  # ↓↓development 環境であってもなくてもログイン可
-  # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
 
 production:
   <<: *default
@@ -26,8 +24,4 @@ production:
   # host: terraform-20210427110221563100000006.cbch251i7aoz.ap-northeast-1.rds.amazonaws.com
   database: production
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-  # database: app_production
-  # url: <%= ENV['RR_DATABASE_URL'] %>
-  # password: <%= ENV['DATABASE_PASSWORD'] %>
-
   

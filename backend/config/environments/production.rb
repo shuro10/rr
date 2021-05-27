@@ -84,11 +84,11 @@ Rails.application.configure do
   config.lograge.custom_payload do |controller|
     {
       host: controller.request.host,
-      remote_ip: controller.request.remote_ip,
+      remote_ip: controller.request.remote_ip
     }
   end
   config.lograge.custom_options = lambda do |event|
-    exceptions = %w(controller action format id)
+    exceptions = %w[controller action format id]
     {
       time: event.time,
       host: event.payload[:host],
@@ -96,10 +96,10 @@ Rails.application.configure do
       params: event.payload[:params].except(*exceptions),
       exception_object: event.payload[:exception_object],
       exception: event.payload[:exception],
-      backtrace: event.payload[:exception_object].try(:backtrace),
+      backtrace: event.payload[:exception_object].try(:backtrace)
     }
   end
-  
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 

@@ -73,32 +73,32 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV['RAILS_LOG_TO_STDOUT'].present?
-    logger           = ActiveSupport::Logger.new($stdout)
-    logger.formatter = config.log_formatter
-    config.logger    = ActiveSupport::TaggedLogging.new(logger)
-  end
+  # if ENV['RAILS_LOG_TO_STDOUT'].present?
+  #   logger           = ActiveSupport::Logger.new($stdout)
+  #   logger.formatter = config.log_formatter
+  #   config.logger    = ActiveSupport::TaggedLogging.new(logger)
+  # end
 
-  # config.lograge.enabled = true
-  # config.lograge.formatter = Lograge::Formatters::Json.new
-  # config.lograge.custom_payload do |controller|
-  #   {
-  #     host: controller.request.host,
-  #     remote_ip: controller.request.remote_ip
-  #   }
-  # end
-  # config.lograge.custom_options = lambda do |event|
-  #   exceptions = %w[controller action format id]
-  #   {
-  #     time: event.time,
-  #     host: event.payload[:host],
-  #     remote_ip: event.payload[:remote_ip],
-  #     params: event.payload[:params].except(*exceptions),
-  #     exception_object: event.payload[:exception_object],
-  #     exception: event.payload[:exception],
-  #     backtrace: event.payload[:exception_object].try(:backtrace)
-  #   }
-  # end
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Json.new
+  config.lograge.custom_payload do |controller|
+    {
+      host: controller.request.host,
+      remote_ip: controller.request.remote_ip
+    }
+  end
+  config.lograge.custom_options = lambda do |event|
+    exceptions = %w[controller action format id]
+    {
+      time: event.time,
+      host: event.payload[:host],
+      remote_ip: event.payload[:remote_ip],
+      params: event.payload[:params].except(*exceptions),
+      exception_object: event.payload[:exception_object],
+      exception: event.payload[:exception],
+      backtrace: event.payload[:exception_object].try(:backtrace)
+    }
+  end
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false

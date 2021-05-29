@@ -51,30 +51,26 @@ resource "aws_lb_listener" "meetwithkids-http-listener" {
   protocol              = "HTTP"
 
   default_action {
+    type = "redirect"
+
+    redirect {
+      port              = "443"
+      protocol        = "HTTPS"
+      status_code   = "HTTP_301"
+    }
+  }
+}
+resource "aws_lb_listener" "meetwithkids-https-listener" {
+  load_balancer_arn = aws_lb.meetwithkids-frontend-alb.arn
+  port                  = "443"
+  protocol            = "HTTPS"
+  certificate_arn   = aws_acm_certificate.meetwithkids-frontend-acm.arn
+
+  default_action {
     target_group_arn = aws_lb_target_group.meetwithkids-frontend-alb-tg.arn
     type             = "forward"
   }
-  # default_action {
-  #   type = "redirect"
-
-  #   redirect {
-  #     port              = "443"
-  #     protocol        = "HTTPS"
-  #     status_code   = "HTTP_301"
-  #   }
-  # }
 }
-# resource "aws_lb_listener" "meetwithkids-https-listener" {
-#   load_balancer_arn = aws_lb.meetwithkids-frontend-alb.arn
-#   port                  = "443"
-#   protocol            = "HTTPS"
-#   certificate_arn   = aws_acm_certificate.meetwithkids-frontend-acm.arn
-
-#   default_action {
-#     target_group_arn = aws_lb_target_group.meetwithkids-frontend-alb-tg.arn
-#     type             = "forward"
-#   }
-# }
 
 /* Backend: Listener */
 resource "aws_lb_listener" "meetwithkids-backend-http-listener" {
@@ -83,32 +79,27 @@ resource "aws_lb_listener" "meetwithkids-backend-http-listener" {
   protocol          = "HTTP"
 
   default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+
+resource "aws_lb_listener" "meetwithkids-backend-https-listener" {
+  load_balancer_arn = aws_lb.meetwithkids-backend-alb.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  certificate_arn   = aws_acm_certificate.meetwithkids-backend-acm.arn
+
+  default_action {
     target_group_arn = aws_lb_target_group.meetwithkids-backend-alb-tg.arn
     type             = "forward"
   }
-
-  # default_action {
-  #   type = "redirect"
-
-  #   redirect {
-  #     port        = "443"
-  #     protocol    = "HTTPS"
-  #     status_code = "HTTP_301"
-  #   }
-  # }
 }
-
-# resource "aws_lb_listener" "meetwithkids-backend-https-listener" {
-#   load_balancer_arn = aws_lb.meetwithkids-backend-alb.arn
-#   port              = "443"
-#   protocol          = "HTTPS"
-#   certificate_arn   = aws_acm_certificate.meetwithkids-backend-acm.arn
-
-#   default_action {
-#     target_group_arn = aws_lb_target_group.meetwithkids-backend-alb-tg.arn
-#     type             = "forward"
-#   }
-# }
 
 
 /* TargetGroup */

@@ -2,17 +2,11 @@ FROM ruby:2.7.1-alpine3.10
 
 ARG WORKDIR
 ARG CONTAINER_PORT
-#    "environment": [
-#      {
-#        "name": "CONTAINER_PORT",
 #        "value": "3000"
-#      },
 ARG API_DOMAIN
-#        "name": "API_DOMAIN",
-#        "value": "https://cs-kent.ga"
+#        "value": "https://meetwithkids.org"
 ARG DATABASE_URL
-#       "name": "DATABASE_URL",
-#       "valueFrom": "RR_RAILS_MASTER_KEY"
+#        "valueFrom": "DATABASE_URL"
 
 ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata mysql-dev mysql-client yarn" \
     DEV_PACKAGES="build-base curl-dev" \

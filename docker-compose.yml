@@ -64,11 +64,10 @@ services:
       - ./frontend:/$WORKDIR:cached
       - node_modules_volume:/$WORKDIR/node_modules 
 # node_modulesはホストと共有しないでvolumeマウント
-   
-#    - ./frontend:/app
+
     ports:
       - "$FRONT_PORT:$CONTAINER_PORT"
-#    - 3000:3000
+#    - 3000:80
 #    networks:
 #      app_net:
 #        ipv4_address: '172.21.0.4'

@@ -5,8 +5,7 @@ ARG CONTAINER_PORT
 ARG API_URL
 # docker-compose.yml
 # API_URL: "http://localhost:$API_PORT"
-# .env   
-# API_PORT=5000
+# API_PORT=5000 (/.env より)
 
 ENV HOME=/${WORKDIR} \
     LANG=C.UTF-8 \
@@ -22,7 +21,7 @@ COPY . .
 RUN apk update && \
     apk upgrade && \
     npm install -g n && \
-#npm install -g create-nuxt-app && \
+#  npm install -g create-nuxt-app && \
     rm -rf /var/cache/apk/*
 
 RUN yarn install

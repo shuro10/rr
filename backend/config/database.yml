@@ -25,4 +25,3 @@ production:
   # host: terraform-20210427**********aoz.ap-northeast-1.rds.amazonaws.com
   database: production
   # password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
-  

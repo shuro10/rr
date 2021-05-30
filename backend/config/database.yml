@@ -20,8 +20,8 @@ test:
 
 production:
   <<: *default
-  # url: <%= ENV['RR_DATABASE_URL'] %>
-  host: <%= ENV['RR_HOST'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # host: <%= ENV['RR_HOST'] %>
   # host: terraform-20210427**********aoz.ap-northeast-1.rds.amazonaws.com
   database: production
   password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>

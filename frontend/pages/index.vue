@@ -8,13 +8,7 @@
 
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
-    <!-- <button @click="getSomething">
-        タスク取得
-      </button> -->
-    <!-- <ul v-for=" user in users" :key="user.id">
-        <li style="text-align: left;">{{ user.name }}</li>
-      </ul> -->
-    Hello World
+    Hello World!!
     <search />
   </div>
 </template>

@@ -5,11 +5,11 @@ require 'carrierwave/storage/fog'
 CarrierWave.configure do |config|
   if Rails.env.production?
     config.cache_storage = :fog
-    # === add === 
+    # === add ===
     config.fog_provider = 'fog/aws'
     config.asset_host = 'https://meetwithkids-s3-bucket-for-images.s3.amazonaws.com'
     # config.fog_public = false
-    # === add === 
+    # === add ===
     config.fog_directory = 'meetwithkids-s3-bucket-for-images'
     config.fog_credentials = {
       provider: 'AWS',

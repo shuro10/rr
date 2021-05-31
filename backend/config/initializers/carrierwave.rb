@@ -8,8 +8,8 @@ CarrierWave.configure do |config|
     config.fog_directory = 'meetwithkids-s3-bucket-for-images'
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: ENV['RR_AWS_ACCESS_KEY_ID'],
-      aws_secret_access_key: ENV['RR_SECRET_ACCESS_KEY'],
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       region: 'ap-northeast-1'
     }
   else

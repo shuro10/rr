@@ -168,7 +168,7 @@ workflows:
           filters:
             branches:
               only: master
-      - aws-ecs/run-task-for-migrate:
+      - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
 #          cluster: ${CLUSTER_NAME}
           task-definition: meetwithkids-db-migrate
@@ -186,14 +186,14 @@ workflows:
               only: master
 ###https://circleci.com/developer/ja/orbs/orb/circleci/aws-ecs
 
-      - aws-ecs/run-task-for-seed:
+      - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
           task-definition: meetwithkids-db-seed
           subnet-ids: subnet-0af26e2687dbe76e7, subnet-0dbed1299a1bd70d3
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
           requires:
-            - aws-ecs/run-task-for-migrate
+            - aws-ecs/update-task-definition
           filters:
             branches:
               only: master

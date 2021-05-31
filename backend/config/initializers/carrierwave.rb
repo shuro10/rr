@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
     # === add ===
     config.fog_provider = 'fog/aws'
     config.asset_host = 'https://meetwithkids-s3-bucket-for-images.s3.amazonaws.com'
-    # config.fog_public = false
+    config.fog_public = false
     # === add ===
     config.fog_directory = 'meetwithkids-s3-bucket-for-images'
     config.fog_credentials = {

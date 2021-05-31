@@ -24,7 +24,6 @@ resource "aws_ecs_task_definition" "meetwithkids-backend-task" {
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
-
 /* Backend: ServiceDefenition */
 resource "aws_ecs_service" "meetwithkids-backend-ecs-service" {
   name                              = "meetwithkids-backend-ecs-service"
@@ -84,7 +83,6 @@ resource "aws_ecs_service" "meetwithkids-frontend-ecs-service" {
   }
 }
 
-
 /* Tasks for Migration */
 resource "aws_ecs_task_definition" "db-migrate" {
   family                   = "meetwithkids-db-migrate"
@@ -96,6 +94,16 @@ resource "aws_ecs_task_definition" "db-migrate" {
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
+/* Seeds: TaskDefinition */
+resource "aws_ecs_task_definition" "db-seed" {
+    family                   = "meetwithkids-db-seed"
+    cpu                      = "256"
+    memory                   = "512"
+    network_mode             = "awsvpc"
+    requires_compatibilities = ["FARGATE"]
+    container_definitions    = file("./tasks/meetwithkids_db_seed.json")
+    execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
+  }
 
 /* data */
 data "aws_ecs_task_definition" "meetwithkids-frontend-task" {

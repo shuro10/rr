@@ -8,6 +8,7 @@
 
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
+    <v-btn depressed rounded text @click="logout"> ログアウト </v-btn>
     Hello World!!
     <search />
   </div>
@@ -44,6 +45,7 @@ export default {
     ...mapActions({
       /* user: 'user/user', */
       /* initData: 'tab/initData', */
+      logout: 'auth/logout',
     }),
     async getSomething() {
       // タスク一覧を取得するための API を叩く

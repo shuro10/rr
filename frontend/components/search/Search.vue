@@ -47,7 +47,7 @@
         <dialog-component :is-account-page="true" class="mt-5" />
       </template>
     </v-app-bar>
-        <template v-if="search === '投稿' && resPosts.length">
+    <template v-if="search === '投稿' && resPosts.length">
       <schedule-card2 :posts="resPosts" />
     </template>
     <template v-else>

@@ -15,5 +15,5 @@ module.exports = {
     '<rootDir>/components/**/*.vue',
     '<rootDir>/pages/**/*.vue',
   ],
-  setupFiles: ["./test/unit/setup.js"],
+  setupFiles: ['./test/unit/setup.js'],
 }

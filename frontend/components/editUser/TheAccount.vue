@@ -46,18 +46,23 @@
         </v-tab>
       </v-tabs>
  -->
-      <v-tabs v-model="tab" background-color="transparent" color="basil" grow>
+      <v-tabs v-model="tab" background-color="transparent" color="pink" grow>
         <v-tab>
-          likes
+          <v-icon color="pink">mdi-heart</v-icon>
         </v-tab>
+        <v-tab>
+          <v-icon color="pink">mdi-run</v-icon>
+        </v-tab>
+
+        <!-- 
         <v-tab>
           follow
         </v-tab>
         <v-tab>
           follower
-        </v-tab>
+        </v-tab> -->
         <v-tab>
-          Message
+          <v-icon color="pink">mdi-email-variant</v-icon>
         </v-tab>
       </v-tabs>
 
@@ -73,6 +78,15 @@
         <v-tab-item>
           <v-card>
             <v-card-text>
+              <user-post-list :posts="loginUser.postjoin" />
+            </v-card-text>
+          </v-card>
+        </v-tab-item>
+
+        <!-- 
+        <v-tab-item>
+          <v-card>
+            <v-card-text>
               <list-component :is-follow="true" :lists="loginUser.followings" />
             </v-card-text>
           </v-card>
@@ -80,11 +94,11 @@
         <v-tab-item>
           <v-card>
             <v-card-text>
-              <!-- <list-component :lists="`loginUser.${listitem}`" /> -->
               <list-component :is-follow="true" :lists="loginUser.followers" />
             </v-card-text>
           </v-card>
         </v-tab-item>
+ -->
         <v-tab-item>
           <v-card>
             <v-card-text>

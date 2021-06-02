@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "meetwithkids-s3-bucket" {
   bucket = "meetwithkids-s3-bucket-for-images"
-  acl    = "public-read"
+  acl    = "public-read-write"
 
   tags = {
     Name = "meetwithkids-s3-bucket-for-images"

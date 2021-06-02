@@ -94,14 +94,14 @@ resource "aws_ecs_task_definition" "db-migrate" {
   execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
 }
 
-/* Seeds: TaskDefinition */
+/* Task for Seeds */
 resource "aws_ecs_task_definition" "db-seed" {
     family                   = "meetwithkids-db-seed"
+    container_definitions    = file("./tasks/meetwithkids_db_seed_definition.json")
+    requires_compatibilities = ["FARGATE"]
+    network_mode             = "awsvpc"
     cpu                      = "256"
     memory                   = "512"
-    network_mode             = "awsvpc"
-    requires_compatibilities = ["FARGATE"]
-    container_definitions    = file("./tasks/meetwithkids_db_seed.json")
     execution_role_arn       = module.ecs_task_execution_role.iam_role_arn
   }
 

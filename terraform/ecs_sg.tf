@@ -1,6 +1,6 @@
 /* SecurityGroup for ECS */
 resource "aws_security_group" "meetwithkids-ecs-sg" {
-  description = "ECS security group for cs"
+  description = "ECS security group for meetwithkids"
   name        = "meetwithkids-ecs-sg"
   vpc_id      = aws_vpc.meetwithkids-vpc.id
 }

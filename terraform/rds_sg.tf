@@ -1,6 +1,6 @@
 /* security group for RDS */
 resource "aws_security_group" "meetwithkids-rds-sg" {
-  description = "RDS security group for cs"
+  description = "RDS security group for meetwithkids"
   name        = "meetwithkids-rds-sg"
   vpc_id      = aws_vpc.meetwithkids-vpc.id
 }

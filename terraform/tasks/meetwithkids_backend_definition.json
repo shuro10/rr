@@ -43,11 +43,11 @@
       },
       {
         "name": "AWS_SECRET_ACCESS_KEY",
-        "valueFrom": "RR_AWS_SECRET_ACCESS_KEY"
+        "valueFrom": "RR_SECRET_ACCESS_KEY"
       },
       {
         "name": "DATABASE_URL",
-        "valueFrom": "DATABASE_URL"
+        "valueFrom": "RR_DATABASE_URL"
       },
       {
         "name": "RAILS_MASTER_KEY",

@@ -68,6 +68,6 @@ resource "aws_db_instance" "meetwithkids-db" {
 /* Subnet */
 resource "aws_db_subnet_group" "meetwithkids-rds-subnet-group" {
   name        = "meetwithkids-rds-subnet-group"
-  description = "RDS subnet for cs"
+  description = "RDS subnet for meetwithkids"
   subnet_ids  = [aws_subnet.meetwithkids-back-1a.id, aws_subnet.meetwithkids-back-1c.id]
 }

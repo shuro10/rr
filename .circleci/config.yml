@@ -169,7 +169,8 @@ workflows:
             branches:
               only: master
 
-      - aws-ecs/run-task-1:
+      - aws-ecs/run-task:
+          name: aws-ecs/run-task-1
           cluster: meetwithkids-ecs-cluster
           task-definition: meetwithkids-db-create
           subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f
@@ -182,7 +183,8 @@ workflows:
             branches:
               only: master
 
-      - aws-ecs/run-task-2:
+      - aws-ecs/run-task-1:
+          name: aws-ecs/run-task-2
           cluster: meetwithkids-ecs-cluster
 #          cluster: ${CLUSTER_NAME}
           task-definition: meetwithkids-db-migrate
@@ -200,7 +202,8 @@ workflows:
               only: master
 ###https://circleci.com/developer/ja/orbs/orb/circleci/aws-ecs
 
-      - aws-ecs/run-task-2:
+      - aws-ecs/run-task:
+          name: aws-ecs/run-task-2
           cluster: meetwithkids-ecs-cluster
           task-definition: meetwithkids-db-seed
           subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f
@@ -208,7 +211,7 @@ workflows:
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
           requires:
             # - aws-ecs/update-task-definition
-            - aws-ecs/run-task-1
+            - aws-ecs/run-task-2
           filters:
             branches:
               only: master

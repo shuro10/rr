@@ -3,18 +3,18 @@
     "name": "frontend-container",
     "image": "700347967260.dkr.ecr.ap-northeast-1.amazonaws.com/meetwithkids-frontend",
     "essential": true,
-    "firelensConfiguration": {
-      "type": "fluentbit",
-      "options":{
-         "enable-ecs-log-metadata": "true"
-      }
-    },
+      "firelensConfiguration": {
+        "type": "fluentbit",
+        "options":{
+           "enable-ecs-log-metadata": "true"
+        }
+      },
     "logConfiguration": {
       "logDriver": "awsfirelens",
       "options": {
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "frontend",
-        "awslogs-group": "/ecs/frontend"
+        "awslogs-group": "/ecs/awsfirelens/frontend"
       }
     },
     "portMappings": [

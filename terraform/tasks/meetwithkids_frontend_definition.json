@@ -14,7 +14,7 @@
       "options": {
         "awslogs-region": "ap-northeast-1",
         "awslogs-stream-prefix": "frontend",
-        "awslogs-group": "/ecs/awsfirelens/frontend"
+        "awslogs-group": "/ecs/firelens/frontend"
       }
     },
     "portMappings": [

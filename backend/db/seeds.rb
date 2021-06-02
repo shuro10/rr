@@ -533,7 +533,7 @@ Post.create(
   But, It\’s going to be out of my way.
   Unfortunately, University\’s dormitory became closed.
   And now, I have to take care of sisters. I can\'t leave them to my grandmother. Also, to my working parents.
-  I liked to take care of kids... I could\'nt concentrate. So, please give messages to me.',
+  I liked to take care of kids... I couldn\'t concentrate. So, please give messages to me.',
   member: 99,
   place: 'Yotsuya',
   category: '',

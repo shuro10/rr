@@ -7,8 +7,8 @@
       "logDriver": "awslogs",
       "options": {
         "awslogs-region": "ap-northeast-1",
-        "awslogs-stream-prefix": "db-seed",
-        "awslogs-group": "/ecs/db-seed"
+        "awslogs-stream-prefix": "db-create",
+        "awslogs-group": "/ecs/db-create"
       }
     },
     "portMappings": [
@@ -18,8 +18,8 @@
         "hostPort": 3000
       }
     ],
-    "entryPoint": ["bundle", "exec", "rails", "db:seed", "a=b"],
-
+    "command": ["bundle", "exec", "rails", "db:create"],
+    
     "environment": [
       {
         "name": "API_DOMAIN",
@@ -45,7 +45,7 @@
       },
       {
         "name": "AWS_SECRET_ACCESS_KEY",
-        "valueFrom": "RR_SECRET_ACCESS_KEY"
+        "valueFrom": "RR_AWS_SECRET_ACCESS_KEY"
       },
       {
         "name": "DATABASE_URL",
@@ -56,6 +56,5 @@
         "valueFrom": "RR_RAILS_MASTER_KEY"
       }
     ]
-
-    }
-  ]
+  }
+]

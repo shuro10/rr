@@ -168,6 +168,20 @@ workflows:
           filters:
             branches:
               only: master
+
+      - aws-ecs/run-task:
+          cluster: meetwithkids-ecs-cluster
+          task-definition: meetwithkids-db-create
+          subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f
+          assign-public-ip: ENABLED
+          security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
+          requires:
+            # - aws-ecs/update-task-definition
+            - aws-ecs/run-task
+          filters:
+            branches:
+              only: master
+
       - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
 #          cluster: ${CLUSTER_NAME}

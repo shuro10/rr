@@ -45,7 +45,7 @@
       },
       {
         "name": "AWS_SECRET_ACCESS_KEY",
-        "valueFrom": "RR_SECRET_ACCESS_KEY"
+        "valueFrom": "RR_AWS_SECRET_ACCESS_KEY"
       },
       {
         "name": "DATABASE_URL",

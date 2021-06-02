@@ -9,7 +9,7 @@
     <!-- <v-btn depressed rounded text @click="initData"> initData </v-btn> -->
     <!-- <search-form /> -->
     <v-btn depressed rounded text @click="logout"> ログアウト </v-btn>
-    Hello World!!
+    Hello World!?
     <search />
 
     <v-footer

@@ -183,7 +183,7 @@ workflows:
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
           requires:
-            - aws-ecs/run-task-1
+            - aws-ecs/update-task-definition
           filters:
             branches:
               only: master

@@ -5,3 +5,5 @@ User.create!(
   password_confirmation: ENV['RAILS_ADMIN_KEY'],
   admin: true
 )
+
+

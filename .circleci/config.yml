@@ -172,8 +172,8 @@ workflows:
       - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
 #          cluster: ${CLUSTER_NAME}
-          # task-definition: meetwithkids-db-create
-          task-definition: meetwithkids-db-migrate
+          task-definition: meetwithkids-db-create
+          # task-definition: meetwithkids-db-migrate
           # task-definition: meetwithkids-db-seed
 #          task-definition: ${TASK_MIGRATE}
           subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f

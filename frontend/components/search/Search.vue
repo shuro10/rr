@@ -51,6 +51,8 @@
         </v-dialog>
       </template>
       <template v-else>
+
+        <v-btn depressed rounded @click="logout" icon><v-icon color="#E5F2E8">mdi-logout</v-icon></v-btn>
         <dialog-component :is-account-page="true" class="mt-5" />
       </template>
     </v-app-bar>
@@ -143,6 +145,7 @@ export default {
   methods: {
     /* TheHeader */
     ...mapActions({
+      logout: 'auth/logout',
       login: 'auth/login',
       loginDialog: 'modal/loginUser',
       signUpDialog: 'modal/signUpUser',

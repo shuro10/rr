@@ -6,7 +6,7 @@
       </nuxt-link>
 
       <v-spacer />
-      <!-- <v-text-field
+      <v-text-field
         v-model="searchForm"
         class="mt-6 mr-9 white--text"
         dense
@@ -16,9 +16,9 @@
         rounded
         outlined
         flat
-        label="検索ワード"
+        label="タイトル検索"
         prepend-inner-icon="mdi-magnify"
-      /> -->
+      />
 
       <template v-if="!isLogin">
         <v-btn
@@ -38,6 +38,13 @@
           @click.stop="signUpDialog(true)"
         >
           新規登録
+        </v-btn>
+        <v-btn
+          class="ml-4 mr-2 yellow--text font-weight-bold"
+          color="orange"
+          @click="guestLogin"
+        >
+          ゲストログイン
         </v-btn>
         <v-dialog v-model="signUpModal" max-width="600px" persistent>
           <the-modal-sign-up />
@@ -62,6 +69,7 @@ import { mapGetters, mapActions } from 'vuex'
 import _debounce from 'lodash.debounce'
 import theModalSignUp from '~/components/layouts/TheModalSignUp.vue'
 import theModalLogin from '~/components/layouts/TheModalLogin.vue'
+import buttonGuestLogin from '~/components/layouts/ButtonGuestLogin.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
 
 /* import searchPost from '~/components/search/SearchPost.vue' */
@@ -75,6 +83,7 @@ export default {
     theModalSignUp,
     theModalLogin,
     dialogComponent,
+    buttonGuestLogin,
     /* TheHeader */
 
     /* searchPost, */
@@ -92,6 +101,10 @@ export default {
       searchForm: '',
       resPosts: [],
       resUsers: [],
+      guest: {
+        email: 'tester9520@gmail.com',
+        password: 'KRVU3KcLVW7VDZD7iQZUVeDB9',
+      },
     }
   },
   computed: {
@@ -130,11 +143,15 @@ export default {
   methods: {
     /* TheHeader */
     ...mapActions({
+      login: 'auth/login',
       loginDialog: 'modal/loginUser',
       signUpDialog: 'modal/signUpUser',
     }),
     link(link) {
       this.$router.push({ path: `/${link}` })
+    },
+    guestLogin() {
+      this.login(this.guest)
     },
     /* TheHeader */
 

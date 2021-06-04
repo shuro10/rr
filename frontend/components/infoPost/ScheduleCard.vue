@@ -55,11 +55,13 @@
                       /> -->
                     <div class="grey--text title">
                       <div class="font-weight-regular mt-4 text-truncate">
+                        <div class="orange--text title">
                         {{ p.name }}
                         <!-- <template v-if="loginUser.admin"> -->
-                        {{ p.id
-                        }}<!-- {{ p.user_id }} -->
+                        <!-- {{ p.id}} -->
+                        <!-- {{ p.user_id }} -->
                         <!-- </template> -->
+                        </div>
                       </div>
                       <div
                         class="caption text-center mt-4 shadow-text text-truncate"
@@ -162,8 +164,8 @@
                           <div class="font-weight-regular mt-4 text-truncate">
                             {{ p.name }}
                             <!-- <template v-if="loginUser.admin"> -->
-                            {{ p.id
-                            }}<!-- {{ p.user_id }} -->
+                            <!-- {{ p.id}} -->
+                            <!-- {{ p.user_id }} -->
                             <!-- </template> -->
                           </div>
                           <div

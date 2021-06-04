@@ -20,22 +20,19 @@
         こんにちは！<br />
         このサイトはママパパのコミュニティを広げることを目指しています。<br />
         <br />
-        昨今のコロナによって、家庭の孤立化が深まり、<br />
+        昨今のコロナによって、ご家庭が繋がり合う機会を失い、<br />
         多くの親御さんと子どもたちが精神的にダメージを受けました。<br /><br />
         「一生に一度しかない学校行事が中止になった」<br />
         「せっかくの大型連休で家族と出かけられる予定がなくなった」<br />
-        「お友達と遊ばせてあげたいのに遊びにいかせることができない」<br />
-        <br />
-        しかし、ようやく回復の兆しが見えてきました。
+        「お友達と遊ばせてあげたいのに遊びに行かせることができない」<br />
         <br /><br />
-        このサイトはバラバラになったコミュニティを再興するために、<br />
+        そこで、当サイトは繋がりの機会を増やすために、<br />
         以下の方々を対象にしています。<br />
         <br />
         ・コロナ禍のストレスを抱えたご家族のみなさま<br />
         ・子育ての悩みごとを打ち明けられないママパパ<br />
         ・子どもに体験を届けたいのに届けられない方々<br /><br />
-        そうした方々のために、<br />
-        このサイトが少しでも貢献できることを願っております。
+        そうした方々のために、貢献したいと思っております。
       </v-card-text>
     </v-card>
     <v-card-text class="text-center align-self-center mt-10">
@@ -55,23 +52,32 @@
     </v-card-text>
     <v-card class="ml-2 mr-2" tile rounded-card>
       <v-card-text>
-        学生時代に保育園で０〜１２歳の子どもの世話を1年間しました。<br />
+        私は大学生のとき渋谷の保育園で<br />
+        ０〜１２歳の子どものお世話を1年間していました。<br />
         その場所で感じたことは、<br /><br />
 
-        「親御さんは我が子の成長を望んでいるのに、<br />
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        子育ての時間がとれないで悩んでいる」<br /><br />
+<div class="text-center">
+        親御さんは我が子の成長を望んでいるのに、<br />
+        子育ての時間がとれないで悩んでいる。<br /><br />
+</div>
+というのも、渋谷で子どもを預ける親御さんは基本的に共働きです。<br />
+家事と仕事に追われて、子育ての時間がなかなか取れません。<br />
+<br />
+それでも、その保育園にお子さんを預けられる親御さん方は、<br />
+幼い頃から幅広い年齢層の子と関わり合いを持てるように、<br />
+預けてくださる方々が多かったです。<br />
+<br />
+素敵でした。<br />
+<br />
+子にスマホを持たせてほったらかしにはせず、<br />
+人と関わり合うことで育つことができるということを<br />
+大切にされていました。<br />
+<br />
+素敵でしたが、
+その裏返しに、感じることがもう一つありました。<br /><br />
 
-        渋谷で子どもを預ける親御さんは基本的に共働きです。<br />
-
-        それでも我が子のことを思って、
-        幼い頃から幅広い年齢層の子と関わり合いを持てるようにと、
-        預けてくださる方々がいました。<br /><br />
-
-        一方で、そのような機会が得られない子どもが<br />
-        どこかにいることも感じていました。<br />
+もしかして、<br />
+そのような機会が与えられない子どもがいるのではないか？<br />
       </v-card-text>
     </v-card>
 
@@ -83,14 +89,26 @@
 
     <v-card class="ml-2 mr-2" tile rounded-card>
       <v-card-text>
-        私はプライベートでも、共働きの親御さんに代わって、<br />
-        普段行けない場所に連れていくことがありました。<br />
+        もう一つ、お話をさせてください。<br />
+        <br />
+        私はプライベートで子育てをすることがありました。<br />
         コロナが流行する前の頃です。<br /><br />
-        そうした中で、もっとこんなふうに、子どもが体験できる機会が増えてほしいと思うようになりました<br />
-        しかし、子どもにはその機会を手に入れる力がない。
-        親御さんも子どもが成長できる機会を望んでいる。
-        しかし、とにかく親御さんは時間がない。<br /><br />
-        この問題を解決するために、以下のような機能にしました。
+        親御さんが忙しくて普段は行けない場所に連れていき、<br />
+        色んなことを喋り合いました。<br /><br />
+
+        子どもたちは表情豊かに楽しんでくれます。<br />
+        多感な時期ですから尚更です。<br />
+
+        そうした経験も何度もして、私は子どもの体験機会がもっと増えてほしいと思うようになりました。<br /><br />
+        しかし、親御さんは仕事と家事に忙しくて、<br />
+        子どもの体験機会にエネルギーを割く余裕はほとんどない。<br />
+        <br />
+        もちろん、親は子が育つ機会を望んでいる。<br />
+        しかしその時間を割けない。<br />
+        <br />
+        そこで、この問題を解決するために、<br />
+        「忙しい合間でも、体験機会を見つけられること」を重視しました。<br />        
+
       </v-card-text>
     </v-card>
 
@@ -99,12 +117,12 @@
         <div
           class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
         >
-          参加までの簡単４クリック！
+          参加までの４クリック！
         </div>
       </div>
       <div class="orangecolor">
         <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
-          ストレスフリーな参加手順
+          ページ遷移がないスムーズな参加手続
         </div>
       </div>
     </v-card-text>
@@ -117,7 +135,7 @@
       <div class="mb-5">
         ①気になる募集があったら、<v-icon color="pink">mdi-heart-outline</v-icon
         >を押していきましょう。<br />
-        たくさん押しても大丈夫。すぐに見返すことができます。
+        たくさん押しても大丈夫。あとで見返すことができます。
       </div>
 
       <v-img
@@ -134,8 +152,9 @@
         class="mr-10 ml-10"
       ></v-img>
       <div class="mb-10">
-        ③<v-icon color="orange">mdi-walk</v-icon
-        >を押して詳細を開いてみましょう。
+        ③このストックはいつでも見返せます。<br/>
+        次に、<v-icon color="orange">mdi-walk</v-icon
+        >を押して詳細を見てみましょう。
       </div>
 
       <v-img
@@ -143,33 +162,40 @@
         class="mr-10 ml-10"
         :src="require('@/assets/images/intro/intro_post_dialog.png')"
       ></v-img>
-      ④<v-icon>mdi-dots-run</v-icon> を押して完了です。
+      ④詳細ページです。<v-icon color="red">mdi-run</v-icon> を押して参加完了です。
 
       <br /><br />
       <div class="caption">
-        ※<v-icon>mdi-email-outline</v-icon>
-        を押すとメッセージページに飛びます。<br />
-        時間がある時にメッセージを送ってみましょう。
+        時間がある時には、 <v-icon color="orange">mdi-email-variant</v-icon>
+        を押してメッセージを送りにいきましょう。<br />
       </div>
     </v-card-text>
 
     <v-card class="ml-2 mr-2" tile rounded-card>
       <v-card-text>
-        このようにして、親御さんのような忙しい方々がストレスにならないように、
-        サービスを提供しております。実現リソースは以下の通りです。<br /><br />
+        このようにして、親御さんのような忙しい方々でも<br />
+        体験機会を探し、それを好きなだけストックし、<br />
+        あとでゆっくり見返すことができます。<br />
       </v-card-text>
     </v-card>
 
+      <div class="mt-6 text-center">
+        以上のことを実現させるための<br />
+        技術的リソースは下記の通りです。
+      </div>
+
+        
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
-          class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
+          class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-3"
         >
           インフラ構成図
         </div>
         <div class="orangecolor">
           <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
-            〜 早く迅速に、悩み事を抱え込んでしまわないように 〜
+            〜 ストレスフリーな迅速さを目指して 〜
+            <!-- 〜 早く迅速に、悩み事を抱え込んでしまわないように 〜 -->
           </div>
         </div>
       </div>
@@ -180,9 +206,9 @@
     <v-card class="ml-2 mr-2" tile rounded-card>
       <v-card-text>
         <div class="text-center align-self-center"></div>
-        ・Nuxt.js で SPA化 を実現して高速なウェブサイトを実現しました。<br />
-        ・CircleCI でユーザの声をスムーズに実装できるようにしました。<br />
-        ・Terraform を用いてインフラ対応も迅速にできるようにしています。<br /><br />
+        ・Nuxt.jsによるSPA化で、高速なウェブサイトを実現しました。<br />
+        ・CircleCI と Fargate を連動させることで、ユーザの声に迅速に対応できるデプロイを可能にしています。<br />
+        ・TerraformによるAWSコード化により、柔軟なスケールにも対応できます。<br /><br />
 
         その他、機能等の詳細については、
         <br />以下の <v-icon color="purple">mdi-github</v-icon>を押して、README
@@ -199,7 +225,7 @@
         <v-btn
           class="ma-2"
           color="white"
-          href="https://qiita.com/Kent7"
+          href="https://github.com/kent7k/rr"
           target="_blank"
         >
           <v-icon color="purple">mdi-github</v-icon>
@@ -233,9 +259,9 @@
         <v-btn
           class="ma-2"
           color="white"
-          href="https://www.wantedly.com/id/kento_kikuchi720"
           target="_blank"
         >
+        <!-- href="https://www.wantedly.com/id/kento_kikuchi720" -->
           <v-icon color="purple"></v-icon>
           wantedly
         </v-btn>
@@ -305,24 +331,7 @@ export default {
   data() {
     return {
       defaultImage: require(`@/assets/images/default.png`),
-      reverse: true,
-      years: [
-        {
-          color: 'primary',
-          year: '1960',
-        },
-      ],
-      tags: [
-        'Work',
-        'Home Improvement',
-        'Vacation',
-        'Food',
-        'Drawers',
-        'Shopping',
-        'Art',
-        'Tech',
-        'Creative Writing',
-      ],
+      /* reverse: true, */
       dialog: false,
     }
   },

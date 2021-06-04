@@ -2,7 +2,7 @@
   <div>
     <v-app-bar :clipped-left="clipped" app color="#B0DFC1">
       <nuxt-link to="/" class="link">
-        <v-toolbar-title class="headertitle">Hello</v-toolbar-title>
+        <v-toolbar-title class="headertitle">MeetWithKids</v-toolbar-title>
       </nuxt-link>
 
       <v-spacer />

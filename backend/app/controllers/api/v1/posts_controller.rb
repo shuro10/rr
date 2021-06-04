@@ -99,7 +99,7 @@ module Api
       def search
         if params[:search]
           @post = Post.search(params[:search]).includes(:like_users, :messages).order(release: :desc)
-          render json: @post.as_json(include: %i[like_users messages], methods: :avg_rate)
+          render json: @post.as_json(include: %i[like_users messages])
         end
       end
 

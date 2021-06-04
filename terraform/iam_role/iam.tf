@@ -38,3 +38,23 @@ output "iam_role_arn" {
 output "iam_role_name" {
   value = aws_iam_role.default.name
 }
+
+
+
+
+
+
+data "aws_iam_policy_document" "ecs_task_role_policy_document" {
+  statement {
+    effect = "Allow"
+
+    actions = [
+      "logs:DescribeLogStreams",
+      "logs:CreateLogGroup",
+      "logs:CreateLogStream",
+      "logs:PutLogEvents"
+    ]
+
+    resources = ["*"]
+  }
+}

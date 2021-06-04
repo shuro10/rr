@@ -19,7 +19,7 @@
       }
     ],
     "entryPoint": ["bundle", "exec", "rails", "db:seed", "a=b"],
-
+    "workingDirectory": "/app",
     "environment": [
       {
         "name": "API_DOMAIN",
@@ -54,6 +54,34 @@
       {
         "name": "RAILS_MASTER_KEY",
         "valueFrom": "RR_RAILS_MASTER_KEY"
+      },
+      {
+        "name": "RAILS_ADMIN_USER",
+        "valueFrom": "RAILS_ADMIN_USER"
+      },
+      {
+        "name": "RAILS_ADMIN_ADDRESS",
+        "valueFrom": "RAILS_ADMIN_ADDRESS"
+      },
+      {
+        "name": "RAILS_ADMIN_KEY",
+        "valueFrom": "RAILS_ADMIN_KEY"
+      },
+      {
+        "name": "RAILS_GUEST_USER",
+        "valueFrom": "RAILS_GUEST_USER"
+      },
+      {
+        "name": "RAILS_GUEST_ADDRESS",
+        "valueFrom": "RAILS_GUEST_ADDRESS"
+      },
+      {
+        "name": "RAILS_GUEST_KEY",
+        "valueFrom": "RAILS_GUEST_KEY"
+      },
+      {
+        "name": "RAILS_FOLLOWUSER_KEY",
+        "valueFrom": "RAILS_FOLLOWUSER_KEY"
       }
     ]
 

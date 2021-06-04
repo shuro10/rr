@@ -18,6 +18,9 @@ resource "aws_cloudwatch_log_group" "meetwithkids-ecs-db-seed" {
   name              = "/ecs/db-seed"
   retention_in_days = 180
 }
+resource "aws_cloudwatch_log_group" "fluentbit" {
+  name = "/fargate/containers/fluentbit"
+}
 # resource "aws_cloudwatch_log_group" "meetwithkids-ecs-firelens-back" {
 #   name              = "/ecs/firelens/backend"
 #   retention_in_days = 180

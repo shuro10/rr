@@ -43,11 +43,11 @@
 
 ## ER図
 <br>
-![ER](/frontend/assets/images/ER4.png)
+![ER](https://github.com/kent7k/rr/tree/master/frontend/assets/images/ER4.png)
 
 ## AWS構成図
 <br>
-![AWS](/frontend/assets/images/infrastructure3.png)
+![AWS](https://github.com/kent7k/rr/tree/master/frontend/assets/images/infrastructure3.png)
 
 
 <br>

@@ -158,10 +158,8 @@ workflows:
           filters:
             branches:
               only: master
-      - aws-ecs/update-task-definition:
+      - aws-ecs/update-task-definition-db-migrate:
           family: meetwithkids-db-migrate
-          # family: meetwithkids-db-seed
-#          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
           container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
           aws-region: AWS_REGION
           requires:
@@ -172,24 +170,17 @@ workflows:
 
       - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
-#          cluster: ${CLUSTER_NAME}
           task-definition: meetwithkids-db-migrate
-          # task-definition: meetwithkids-db-seed
-#          task-definition: ${TASK_MIGRATE}
           subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f
-#          subnet-ids: '$SUBNET_ONE, $SUBNET_TWO'
-#          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
-#          https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1#subnets:
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
           requires:
-            - aws-ecs/update-task-definition
+            - aws-ecs/update-task-definition-db-migrate
           filters:
             branches:
               only: master
 
-      - aws-ecs/update-task-definition:
-          # family: meetwithkids-db-migrate
+      - aws-ecs/update-task-definition-db-seed:
           family: meetwithkids-db-seed
 #          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
           container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
@@ -203,7 +194,6 @@ workflows:
       - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
 #          cluster: ${CLUSTER_NAME}
-          # task-definition: meetwithkids-db-migrate
           task-definition: meetwithkids-db-seed
 #          task-definition: ${TASK_MIGRATE}
           subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f
@@ -213,7 +203,7 @@ workflows:
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
           requires:
-            - aws-ecs/update-task-definition
+            - aws-ecs/update-task-definition-db-seed
           filters:
             branches:
               only: master

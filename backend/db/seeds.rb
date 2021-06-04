@@ -179,7 +179,7 @@ Post.create(
   And I have helped a lot of family group for the elementary school entrance.
   ',
   member: 8,
-  place: '代々木公園',
+  place: '四谷三丁目',
   category: '',
   price: '3000',
   start_time: '2000-01-01T02:00:00.000Z',

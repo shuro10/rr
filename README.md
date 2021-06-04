@@ -43,11 +43,11 @@
 
 ## ER図
 <br>
-![ER](frontend/assets/images/IR3.png "ER図")
+![ER](frontend/assets/images/IR4.png)
 
 ## AWS構成図
 <br>
-![AWS](frontend/assets/images/infrastructure.png "インフラ構成図")
+![AWS](frontend/assets/images/infrastructure.png)
 
 
 <br>

@@ -23,8 +23,8 @@ RSpec.describe Post, type: :request do
     end
 
     # it 'creates a new post' do
-    #   post_params = { 
-    #     name: 'posttest', 
+    #   post_params = {
+    #     name: 'posttest',
     #     user_id: '1',
     #     quickword: '早速、右下のボタンで募集ページをつくりましょう！',
     #     catchcopy: 'ご閲覧ありがとうございます',

@@ -118,6 +118,7 @@
                           class="mr-4 mt-4"
                           color="indigo"
                           text-color="white"
+                          tile
                         >
                           @{{ p.place }}
                         </v-chip>
@@ -149,9 +150,11 @@
                             fab
                             right
                             top
+                            disabled
                           >
                             <v-icon>mdi-heart</v-icon>
                           </v-btn>
+
                         </template>
                         <template v-else>
                           <button-like
@@ -210,7 +213,7 @@
                 </template>
               </v-hover>
               <v-card-text class="orange">
-                <div class="d-flex font-weight-thin subtitle-1 justify-center ">
+                <div class="d-flex font-weight-thin subtitle-1 justify-center mt-n1 mb-n4">
                   <span>
                     <like-counter
                       :users="p.join_users"
@@ -235,6 +238,7 @@ import buttonLike from '~/components/layouts/ButtonLike.vue'
 import likeCounter from '~/components/infoPost/LikeCounter.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
 import userAvatar from '~/components/infoUser/UserAvatar.vue'
+import theModalLogin from '~/components/layouts/TheModalLogin.vue'
 
 export default {
   components: {
@@ -242,6 +246,7 @@ export default {
     likeCounter,
     dialogComponent,
     userAvatar,
+    theModalLogin,
   },
   // props: {
   //   posts: {
@@ -268,6 +273,7 @@ export default {
     ...mapGetters({
       post: 'post/post',
       user: 'auth/loginUser',
+      loginModal: 'modal/loginModal',
       loginUser: 'auth/loginUser',
       login: 'auth/isLoggedIn',
     }),
@@ -314,6 +320,7 @@ export default {
     ...mapActions({
       getPosts: 'post/getPosts',
       logout: 'auth/logout',
+      loginDialog: 'modal/loginUser',
     }),
   },
 }

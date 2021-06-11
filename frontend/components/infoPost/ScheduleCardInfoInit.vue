@@ -277,7 +277,7 @@
               <v-img
                 contain
                 class="rounded-card "
-                :src="require('@/assets/images/iam4.jpg')"
+                :src="require('@/assets/images/iam5.jpg')"
               >
               </v-img>
             </v-avatar>

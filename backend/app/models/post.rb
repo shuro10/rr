@@ -1,9 +1,9 @@
 class Post < ApplicationRecord
-  # before_save :write_width_height
   # mount_uploader :photoshot, PhotoshotUploader
   mount_uploader :image, ImageUploader
 
   validates :user, presence: true
+  validates :user_id, presence: true
   validates :name, presence: true
   # validates :name, presence: true, uniqueness: { case_sensitive: true }
   validates :details, presence: false

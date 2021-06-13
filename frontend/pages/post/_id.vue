@@ -44,7 +44,7 @@
             <v-img v-else contain :src="defaultImage"> </v-img>
             <v-sheet style="position: relative;">
               <button-like
-                :user="loginUser"
+                :user="user"
                 :post="post"
                 :is-rounded-like="true"
               />

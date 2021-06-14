@@ -23,24 +23,8 @@
 | :--- | :---: | ---: |
 | HTML/CSS/JavaScript | Ruby 2.7.1 | Docker |
 | Nuxt.js + Vuetify | Rails 6.0.3 | CircleCI |
-| Jest/ESLint/Prettier | RSpec/Rubocop | Terraform |
+| Jest/ESLint/Prettier | RSpec/Rubocop | AWS/Terraform |
 
-
-* フロントエンド  
-- HTML/CSS/JavaScript
-- Nuxt.js + Vuetify
-- Jest/ESLint/Prettier
-
-* バックエンド 
-- Ruby 2.7.1  
-- Rails 6.0.3
-- RSpec/Rubocop
-
-* インフラ・開発環境  
-- Docker
-- CircleCI
-- Terraform
-- AWS
 
 ## AWS構成図
 <br>

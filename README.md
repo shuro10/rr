@@ -1,7 +1,7 @@
 # Meetwithkids
 
 
-## トップページ
+## トップページ ( https://--- )
 <br>
 
 ![TOP](/frontend/assets/images/readme/top1.png "TOP")
@@ -19,6 +19,13 @@
 
 
 ## 使用した技術
+| フロントエンド  | バックエンド  | インフラ |
+| :--- | :---: | ---: |
+| HTML/CSS/JavaScript | Ruby 2.7.1 | Docker |
+| Nuxt.js + Vuetify | Rails 6.0.3 | CircleCI |
+| Jest/ESLint/Prettier | RSpec/Rubocop | Terraform |
+
+
 * フロントエンド  
 - HTML/CSS/JavaScript
 - Nuxt.js + Vuetify
@@ -33,7 +40,7 @@
 - Docker
 - CircleCI
 - Terraform
-- AWS (以下の構成図を参照)
+- AWS
 
 ## AWS構成図
 <br>

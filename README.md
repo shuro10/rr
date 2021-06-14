@@ -4,7 +4,7 @@
 ## トップページ
 <br>
 
-![TOP](/frontend/assets/images/readme/top1.jpg "TOP")
+![TOP](/frontend/assets/images/readme/top1.png "TOP")
 <br>
 
 

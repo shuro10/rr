@@ -7,7 +7,7 @@
         @result="response"
       />
       <v-btn
-        color="#BADEC3"
+        color="indigo darken-2"
         dark
         x-large
         fixed
@@ -17,7 +17,7 @@
         class="ma-10"
         @click.stop="dialogComponent = true"
       >
-        <v-icon color="white">mdi-pencil</v-icon>
+        <v-icon color="yellow">mdi-pencil</v-icon>
       </v-btn>
     </template>
     <template v-else-if="isAccountPage">

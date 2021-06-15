@@ -38,6 +38,7 @@
 | HTML / CSS / JavaScript | Ruby 2.7.1 | Docker |
 | Nuxt.js + Vuetify | Rails 6.0.3 | CircleCI |
 | Jest / ESLint / Prettier | RSpec / Rubocop | AWS / Terraform |
+
 ※ Rails は APIモード。Nuxt は SPAモード。
 
 

@@ -1,10 +1,11 @@
 # Meetwithkids
 
 
-## トップページ ( https://--- )
+## TOP ( https://meetwithkids )
+
 <br>
 
-![TOP](/frontend/assets/images/readme/top1.png "TOP")
+![TOP](frontend/assets/images/readme/top1.png "TOP")
 <br>
 
 
@@ -13,23 +14,23 @@
 ## AWS構成図
 <br>
 
-![AWS](/frontend/assets/images/infrastructure3.png "AWS")
+![AWS](frontend/assets/images/infrastructure3.png "AWS")
 <br>
 
 
 
 ## 使用した技術
 | フロントエンド  | バックエンド  | インフラ |
-| :--- | :---: | ---: |
-| HTML/CSS/JavaScript | Ruby 2.7.1 | Docker |
+| :--- | :--- | :--- |
+| HTML / CSS / JavaScript | Ruby 2.7.1 | Docker |
 | Nuxt.js + Vuetify | Rails 6.0.3 | CircleCI |
-| Jest/ESLint/Prettier | RSpec/Rubocop | AWS/Terraform |
-
+| Jest / ESLint / Prettier | RSpec / Rubocop | AWS / Terraform |
+※ Rails は APIモード。Nuxt は SPAモード。
 
 ## AWS構成図
 <br>
 
-![AWS](/frontend/assets/images/infrastructure3.png "AWS")
+![AWS](frontend/assets/images/infrastructure3.png "AWS")
 <br>
 
 
@@ -60,30 +61,41 @@
 
 
 ## 【機能一覧】
-■ 基本機能
- ・新規会員登録・ログイン機能
- ・フォロー機能
- ・ユーザーマイページ表示（参加済・いいね・メッセージ・フォロー・フォロワー表示）
- ・ユーザー登録情報変更（アバター、ユーザーネーム、パスワード、メールアドレス）
- ・ユーザー削除
-■ 投稿に関する機能
- ・ 新規投稿機能
- ・ 画像添付機能
- ・ 投稿の「お気に入り」機能
- ・ 投稿の「参加」機能
- ・ 投稿の「編集/削除」機能
- ・ 投稿の「検索」機能
- ・参加者表示機能
-■ メッセージに関する機能
- ・メッセージ機能
- ・画像添付機能／プレビュー機能 
- ・メッセージの「編集/削除」機能
-■ 管理者権限に関する機能
- ・投稿の「削除/編集」機能
- ・メッセージの「削除」機能
- ・ユーザーの「削除」機能
+| 基本機能 |
+| :--- |
 
+* ユーザ登録
+* ユーザ削除
+* ユーザ情報変更<br>
+( アバター、ユーザネーム、パスワード、メールアドレス )
+* ユーザーマイページ表示<br>
+( お気に入り・参加・メッセージ・フォロー・フォロワー )
 
+* ログイン（ゲストログインを含む）
+* フォロー
+<br><br>
+
+| ■ 投稿に関する機能 |
+| :--- |
+* CRUD (生成/読取/更新/削除) 
+* ❤️ (お気に入り) 
+ * 🏃‍♀️ (参加) 
+ * 検索 
+ * 参加者一覧 
+<br><br>
+
+|メッセージに関する機能|
+| :--- |
+* CRUD (生成/読取/更新/削除) 
+* 画像添付
+* 画像プレビュー 
+<br><br>
+
+| 管理者機能 |
+| :--- |
+* 全てのユーザーそれぞれに対する「削除」<br>
+* 全ての投稿それぞれに対する「削除 / 編集」<br>
+* 全てのメッセージそれぞれに対する「削除」<br>
 
 
 

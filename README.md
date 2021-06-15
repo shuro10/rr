@@ -1,31 +1,22 @@
-# Meetwithkids
+# Meetwithkids ( https://meetwithkids )
 
 
-## TOP ( https://meetwithkids )
+## 概要
+ママパパのコミュニティを広げるためのマッチングアプリ。<br>
+子連れの体験機会を探したり、逆に告知したりすることができる。<br>
+コロナで失われてしまった機会をご家庭に取り戻すことを目指している。<br>
 
 <br>
 
 ![TOP](frontend/assets/images/readme/top1.png "TOP")
 <br>
 
+## 制作背景
+以前勤務した保育園では、異年齢保育（０〜１２歳）が実践されていた。<br><br>
+利用者の親御さん曰く、幼い頃から幅広い年齢層と関わり合いを持てるようにとの事。好感を持つと同時に、そのような機会が与えられない子どもがいるのではないか？と想像する。<br><br>
+一方、プライベートでも子育てする機会に恵まれ、子どもの笑顔をそばで見続けた。そうした経験から子どもの体験機会が増えることを望んだ。
 
 
-
-## AWS構成図
-<br>
-
-![AWS](frontend/assets/images/infrastructure3.png "AWS")
-<br>
-
-
-
-## 使用した技術
-| フロントエンド  | バックエンド  | インフラ |
-| :--- | :--- | :--- |
-| HTML / CSS / JavaScript | Ruby 2.7.1 | Docker |
-| Nuxt.js + Vuetify | Rails 6.0.3 | CircleCI |
-| Jest / ESLint / Prettier | RSpec / Rubocop | AWS / Terraform |
-※ Rails は APIモード。Nuxt は SPAモード。
 
 ## AWS構成図
 <br>
@@ -41,24 +32,37 @@
 <br>
 
 
-## 特にご覧になってほしい点、および技術の選定理由
+## 使用した技術
+| フロントエンド  | バックエンド  | インフラ |
+| :--- | :--- | :--- |
+| HTML / CSS / JavaScript | Ruby 2.7.1 | Docker |
+| Nuxt.js + Vuetify | Rails 6.0.3 | CircleCI |
+| Jest / ESLint / Prettier | RSpec / Rubocop | AWS / Terraform |
+※ Rails は APIモード。Nuxt は SPAモード。
+
+
+
+
+
+<br>
+
+## 特にご覧になってほしい点
 * Dockerコンテナのデプロイを ECS (Fargate) 上で実現させている点。<br>
   * 目的：サーバレスの本番環境によるセキュリティ向上のため
 
 * テストツールとコード解析ツールのチェックをパスしている点。<br>
-  * フロントエンド側　……   JEST/ESLint/Prettier
-  * バックエンド 側　……  　Rubocop/RSpec
   * 目的：可読性向上と早期エラー発見により開発速度を向上するため
 
-* CircleCIで以上２点のパイプラインを構築して自動化させている点。
+* 以上２点のパイプラインを CircleCI で構築して、自動化させている点。
   * 目的：開発サイドの手間を減らし、ユーザビリティ向上の実現リソースを増やすため）
 
-* Nuxt.js (SPAモード) と Rails (APIモード) により、ビューを高速化している点。<br>
+* Nuxt.js と Rails により、ビューを高速化させている点。<br>
   * 目的：普段忙しい親御さんのユーザビリティを向上させるため
 
 * AWS を Terraform で完全コード化して、インフラを管理している点。<br>
   * 目的：サービス利用者にとって望ましいスケールに柔軟に対応するため
 
+<br>
 
 ## 【機能一覧】
 | 基本機能 |
@@ -96,6 +100,4 @@
 * 全てのユーザーそれぞれに対する「削除」<br>
 * 全ての投稿それぞれに対する「削除 / 編集」<br>
 * 全てのメッセージそれぞれに対する「削除」<br>
-
-
 

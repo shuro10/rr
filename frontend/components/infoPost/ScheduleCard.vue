@@ -116,7 +116,7 @@
                       <span class="atmark-right">
                         <v-chip
                           class="mr-4 mt-4"
-                          color="indigo"
+                          color="pink darken-3"
                           text-color="white"
                           tile
                         >

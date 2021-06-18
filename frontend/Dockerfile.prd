@@ -3,9 +3,6 @@ FROM node:12.5.0-alpine
 ARG WORKDIR
 ARG CONTAINER_PORT
 ARG API_URL
-# docker-compose.yml
-# API_URL: "http://localhost:$API_PORT"
-# API_PORT=5000 (/.env より)
 
 ENV HOME=/${WORKDIR} \
     LANG=C.UTF-8 \
@@ -21,7 +18,6 @@ COPY . .
 RUN apk update && \
     apk upgrade && \
     npm install -g n && \
-#  npm install -g create-nuxt-app && \
     rm -rf /var/cache/apk/*
 
 RUN yarn install
@@ -30,4 +26,3 @@ RUN yarn run build
 EXPOSE ${CONTAINER_PORT}
 
 CMD ["npm", "run", "start"]
-# CMD ["yarn", "prod"]

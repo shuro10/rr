@@ -2,11 +2,8 @@ FROM ruby:2.7.1-alpine3.10
 
 ARG WORKDIR
 ARG CONTAINER_PORT
-#        "value": "3000"
 ARG API_DOMAIN
-#        "value": "https://meetwithkids.org"
 ARG DATABASE_URL
-#        "valueFrom": "DATABASE_URL"
 
 ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata mysql-dev mysql-client yarn" \
     DEV_PACKAGES="build-base curl-dev" \
@@ -16,7 +13,6 @@ ENV RUNTIME_PACKAGES="linux-headers libxml2-dev make gcc libc-dev nodejs tzdata 
     API_DOMAIN=${API_DOMAIN} \
     DATABASE_URL=${DATABASE_URL} 
 
-#RUN mkdir /app
 WORKDIR ${HOME}
 
 ADD Gemfile ${HOME}/Gemfile

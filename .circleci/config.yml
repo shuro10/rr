@@ -159,8 +159,8 @@ workflows:
             branches:
               only: master
       - aws-ecs/update-task-definition:
-          # family: meetwithkids-db-migrate
-          family: meetwithkids-db-seed
+          family: meetwithkids-db-migrate
+          # family: meetwithkids-db-seed
 #          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
           container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
           aws-region: AWS_REGION

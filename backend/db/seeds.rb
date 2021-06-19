@@ -6,20 +6,20 @@ User.create!(
   admin: true
 )
 
-Post.create(
-  user_id: 1,
-  name: 'はじめまして',
-  quickword: '早速、右下のボタンで募集ページをつくりましょう！',
-  catchcopy: 'ご閲覧ありがとうございます',
-  member: 3,
-  place: '集合場所',
-  category: '',
-  price: '1000',
-  start_time: '2000-01-01T09:00:00.000Z',
-  finish_time: '2000-01-01T03:00:00.000Z',
-  release: '2021-5-10',
-  image: Rails.root.join('app/assets/images/1_begin/image.jpg').open
-)
+# Post.create(
+#   user_id: 1,
+#   name: 'はじめまして',
+#   quickword: '早速、右下のボタンで募集ページをつくりましょう！',
+#   catchcopy: 'ご閲覧ありがとうございます',
+#   member: 3,
+#   place: '集合場所',
+#   category: '',
+#   price: '1000',
+#   start_time: '2000-01-01T09:00:00.000Z',
+#   finish_time: '2000-01-01T03:00:00.000Z',
+#   release: '2021-5-10',
+#   image: Rails.root.join('app/assets/images/1_begin/image.jpg').open
+# )
 
 # User.all.each do |user|
 #     user.posts.create!(
@@ -151,7 +151,7 @@ Post.create(
   start_time: '2000-01-01T01:00:00.000Z',
   finish_time: '2000-01-01T07:00:00.000Z',
   release: '2021-5-10',
-  image: Rails.root.join('app/assets/images/15_mamaparty/image.jpg').open
+  image: Rails.root.join('app/assets/images/15_mamaparty/image2.jpg').open
 )
 
 User.create!(
@@ -385,7 +385,7 @@ Post.create(
   start_time: '2000-01-01T01:00:00.000Z',
   finish_time: '2000-01-01T03:00:00.000Z',
   release: '2021-5-10',
-  image: Rails.root.join('app/assets/images/11_baseball/image.jpg').open
+  image: Rails.root.join('app/assets/images/11_baseball/image2.jpg').open
 )
 
 User.create!(
@@ -444,7 +444,7 @@ Post.create(
   start_time: '2000-01-01T04:00:00.000Z',
   finish_time: '2000-01-01T07:30:00.000Z',
   release: '2021-6-15',
-  image: Rails.root.join('app/assets/images/13_753/image.jpg').open
+  image: Rails.root.join('app/assets/images/13_753/image2.jpg').open
 )
 
 User.create!(
@@ -475,7 +475,7 @@ Post.create(
   start_time: '2000-01-01T07:30:00.000Z',
   finish_time: '2000-01-01T09:30:00.000Z',
   release: '2021-6-10',
-  image: Rails.root.join('app/assets/images/14_takeyou/image.jpg').open
+  image: Rails.root.join('app/assets/images/14_takeyou/image2.jpg').open
 )
 
 User.create!(
@@ -511,7 +511,7 @@ Post.create(
   start_time: '2000-01-01T00:00:00.000Z',
   finish_time: '2000-01-01T08:00:00.000Z',
   release: '2021-8-10',
-  image: Rails.root.join('app/assets/images/5_festival/image.jpg').open
+  image: Rails.root.join('app/assets/images/5_festival/image2.jpg').open
 )
 
 User.create!(
@@ -530,8 +530,8 @@ Post.create(
   catchcopy: 'Unfortunately, the exam...',
   details:
   'This is Judy. I\'m back home and planning for my next examination.
-  But, It\’s going to be out of my way.
-  Unfortunately, University\’s dormitory became closed.
+  But, It\'s going to be out of my way.
+  Unfortunately, University\'s dormitory became closed.
   And now, I have to take care of sisters. I can\'t leave them to my grandmother. Also, to my working parents.
   I liked to take care of kids... I couldn\'t concentrate. So, please give messages to me.',
   member: 99,
@@ -541,7 +541,7 @@ Post.create(
   start_time: '2000-01-01T03:00:00.000Z',
   finish_time: '2000-01-01T02:59:00.000Z',
   release: '2021-6-10',
-  image: Rails.root.join('app/assets/images/16_confused/image.jpg').open
+  image: Rails.root.join('app/assets/images/16_confused/image2.jpg').open
 )
 
 User.create!(
@@ -643,7 +643,7 @@ Post.create(
   start_time: '2000-01-01T01:00:00.000Z',
   finish_time: '2000-01-01T04:00:00.000Z',
   release: '2021-6-27',
-  image: Rails.root.join('app/assets/images/19_chat/image.jpg').open
+  image: Rails.root.join('app/assets/images/19_chat/image2.jpg').open
 )
 
 User.create!(
@@ -934,7 +934,6 @@ User.create!(
   password: ENV['RAILS_FOLLOWUSER_KEY'],
   password_confirmation: ENV['RAILS_FOLLOWUSER_KEY'],
   admin: false,
-
   image: Rails.root.join('app/assets/images/guestusers/51.jpg').open
 )
 
@@ -968,8 +967,8 @@ User.create!(
   image: Rails.root.join('app/assets/images/guestusers/54.jpg').open
 )
 
-join2 = Post.find(2)
-join2.post_joins.create(
+join1 = Post.find(1)
+join1.post_joins.create(
   [
     { user_id: 26 },
     { user_id: 29 },
@@ -978,16 +977,18 @@ join2.post_joins.create(
   ]
 )
 
-join2.messages.create(
+join1.messages.create(
   [
     { user_id: 26,
       title: 'ご出産おめでとうございます！',
+      image: Rails.root.join('app/assets/images/3_born/mes1.jpg').open,
       content: '
       私も息子が生まれましたが、ようやく首が座り始めた頃です。
       初めてのことで苦労も多いですので、一緒に頑張りあえたらと思います！
       ' },
     { user_id: 29,
       title: '幸せそうな写真ですね',
+      image: Rails.root.join('app/assets/images/3_born/mes2.jpg').open,
       content: 'おめでとうございます。
       いろいろな苦労がお互いあるかと思いますが、
       その分だけたくさんのしあわせがあると思います。
@@ -995,6 +996,7 @@ join2.messages.create(
       ' },
     { user_id: 30,
       title: 'ご出産おめでとうございます！',
+      image: Rails.root.join('app/assets/images/3_born/mes3.jpg').open,
       content: '
       私も辛かった時期があります。
       いまは乗り越えられたんですね。とてもしあわせそうです！
@@ -1002,6 +1004,7 @@ join2.messages.create(
       ' },
     { user_id: 48,
       title: 'ご相談させてください。',
+      image: Rails.root.join('app/assets/images/3_born/mes4.jpg').open,
       content: '
       私も息子が生まれましたが、初めてのことばかりでいっぱいいっぱいです。
       先輩ママがいると心強いので、お話しさせてください。
@@ -1009,8 +1012,8 @@ join2.messages.create(
   ]
 )
 
-join3 = Post.find(3)
-join3.post_joins.create(
+join2 = Post.find(2)
+join2.post_joins.create(
   [
     { user_id: 37 },
     { user_id: 47 },
@@ -1018,10 +1021,11 @@ join3.post_joins.create(
   ]
 )
 
-join3.messages.create(
+join2.messages.create(
   [
     { user_id: 37,
       title: '初めまして！',
+      image: Rails.root.join('app/assets/images/4_cook/mes1.jpg').open,
       content: '
       最近、在宅勤務が増えて自炊をするようになったのですがうまくいかず…。
       クックパッド見させていただきました！
@@ -1029,12 +1033,14 @@ join3.messages.create(
       ' },
     { user_id: 47,
       title: 'いつも応援しています。',
+      image: Rails.root.join('app/assets/images/4_cook/mes2.jpg').open,
       content: '
         肉じゃがレシピが大好きでよく作っています。
         もっと料理を勉強したいと思い、メッセージさせてもらいました。
         ' },
     { user_id: 25,
       title: '料理初心者です！',
+      image: Rails.root.join('app/assets/images/4_cook/mes3.jpg').open,
       content: '
           夫にいつも料理を任せていたのですが、私も頑張りたいなと思いまして。
           がんばりますので教えてください！娘と一緒に参加します！
@@ -1042,8 +1048,8 @@ join3.messages.create(
   ]
 )
 
-join4 = Post.find(4)
-join4.post_joins.create(
+join3 = Post.find(3)
+join3.post_joins.create(
   [
     { user_id: 21 },
     { user_id: 36 },
@@ -1061,82 +1067,95 @@ join4.post_joins.create(
   ]
 )
 
-join4.messages.create(
+join3.messages.create(
   [
     { user_id: 21,
       title: '久しぶりに会いたいです！',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes1.jpg').open,
       content: '
       マカロン持っていきます！
       ' },
     { user_id: 36,
       title: 'Hello',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes2.jpg').open,
       content: '
         またあいましょう！
         ' },
     { user_id: 41,
       title: '以前からこのサイトを見て気になってました。',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes3.jpg').open,
       content: '
           初めての参加になるのですが、私も一緒にグループに入りたいです。
           よろしくお願いします。
           ' },
     { user_id: 47,
       title: '最近料理を覚えました',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes4.jpg').open,
       content: '
             パンケーキを作って来ますね。
             ' },
     { user_id: 49,
       title: 'シンガポールから戻ってきました',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes5.jpg').open,
       content: '
               お会いできるのが今から楽しみです。お土産持っていきますね。
               ' },
     { user_id: 50,
       title: '行きます！',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes6.jpg').open,
       content: '
                 行きまーーす！！
                   ' },
     { user_id: 54,
       title: '常連メンバーいきます',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes7.jpg').open,
       content: '
                   今回は新しい参加者もいらっしゃるようで、お会いできるのを心待ちにしていますよ。
                   ' },
     { user_id: 34,
       title: '参加希望です',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes8.jpg').open,
       content: '
                     娘が友達いっぱいつくりたいと言っています。
                     私の方はこうした場に慣れおらず緊張していますが、よろしくお願いします。
                       ' },
     { user_id: 33,
       title: 'よろしくお願いします！',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes9.jpg').open,
       content: '
                       東京に転勤して半年が経ちました。
                       不慣れなところもありますが参加させて頂きたいと思います。
                       ' },
     { user_id: 31,
       title: '賑わってきましたね',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes10.jpg').open,
       content: '
                         少なかったあの頃が懐かしいです。今では大所帯になって…。これからも応援してますよ！
                         ' },
     { user_id: 23,
       title: 'こんにちは！',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes11.jpg').open,
       content: '
                           日が長くなり暖かくなってきましたね。いつも通り顔を出させてもらいますね！
                           ' },
     { user_id: 22,
       title: '今回は何しましょうか〜♪',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes12.jpg').open,
       content: '
                             ボールやバドミントンを持っていきますね。
                             遊びたい子もいらっしゃいますでしょうし。特に息子笑
                             ' },
     { user_id: 24,
       title: '2回目の参加です',
+      image: Rails.root.join('app/assets/images/15_mamaparty/mes13.jpg').open,
       content: '
                               先日はありがとうございました。桜がとても綺麗でしたね。またみなさんに会えることを楽しみにしています。
                               ' }
   ]
 )
 
-join5 = Post.find(5)
-join5.post_joins.create(
+join4 = Post.find(4)
+join4.post_joins.create(
   [
     { user_id: 27 },
     { user_id: 36 },
@@ -1146,10 +1165,11 @@ join5.post_joins.create(
   ]
 )
 
-join5.messages.create(
+join4.messages.create(
   [
     { user_id: 27,
       title: 'I\'d like to join',
+      image: Rails.root.join('app/assets/images/6_read/mes1.jpg').open,
       content: '
       I want to join for the session with my daughter.
       She likes reading. I often read when we go to bed.
@@ -1157,12 +1177,14 @@ join5.messages.create(
       ' },
     { user_id: 36,
       title: 'Awesome!',
+      image: Rails.root.join('app/assets/images/6_read/mes2.jpg').open,
       content: '
         Children looks interested in reading with you.
         How do you read? We\'re interested in!
         ' },
     { user_id: 32,
       title: 'Great',
+      image: Rails.root.join('app/assets/images/6_read/mes3.jpg').open,
       content: '
           I think learning to read is a magical process that
           will change your child\'s life.
@@ -1170,6 +1192,7 @@ join5.messages.create(
         ' },
     { user_id: 43,
       title: 'Hi!',
+      image: Rails.root.join('app/assets/images/6_read/mes4.jpg').open,
       content: '
               I\'ve read over 100 books for kids.
               All recommended by parents.
@@ -1178,6 +1201,7 @@ join5.messages.create(
                 ' },
     { user_id: 44,
       title: 'It\'s about to sound a happy voice!',
+      image: Rails.root.join('app/assets/images/6_read/mes5.jpg').open,
       content: '
                   Teacher, and children around you look happy.
                   May my daughter be filled with love, laughter, and blessings with you.
@@ -1185,17 +1209,18 @@ join5.messages.create(
   ]
 )
 
-join6 = Post.find(6)
-join6.post_joins.create(
+join5 = Post.find(5)
+join5.post_joins.create(
   [
     { user_id: 37 }
   ]
 )
 
-join6.messages.create(
+join5.messages.create(
   [
     { user_id: 37,
       title: 'こんにちは',
+      image: Rails.root.join('app/assets/images/6_bicycle/mes1.jpg').open,
       content: '
       このページを見せたら息子が一緒に遊びたい！と言ってくれました。
       どうやら弟がほしいみたいで。事故のないように面倒を見ますので、一度近場の公園にでもピクニックに行かせてみませんか？
@@ -1203,8 +1228,8 @@ join6.messages.create(
   ]
 )
 
-join7 = Post.find(7)
-join7.post_joins.create(
+join6 = Post.find(6)
+join6.post_joins.create(
   [
     { user_id: 21 },
     { user_id: 29 },
@@ -1212,10 +1237,11 @@ join7.post_joins.create(
   ]
 )
 
-join7.messages.create(
+join6.messages.create(
   [
     { user_id: 21,
       title: '写真すごくかわいいです！',
+      image: Rails.root.join('app/assets/images/7_summerfestival/mes1.jpg').open,
       content: '
       気がついたら娘は５歳。時間が経つのはあっという間で、どんどん成長していきます。
       そんな中、素敵な写真が目に入りました。
@@ -1223,12 +1249,14 @@ join7.messages.create(
       ' },
     { user_id: 29,
       title: '浴衣の着付けで変わりますかね',
+      image: Rails.root.join('app/assets/images/7_summerfestival/mes2.jpg').open,
       content: '
           娘がいるんですけど、写真が嫌いでどうしても一緒に写ってくれなくて。
           浴衣を着たらまた変わるのかなと思い、今回チャレンジで参加させてください。
           ' },
     { user_id: 30,
       title: '素敵すぎます〜！',
+      image: Rails.root.join('app/assets/images/7_summerfestival/mes3.jpg').open,
       content: '
       　　娘と一緒に着付けをして、思い出にしたいです。
       このページを見た瞬間に参加を決意しました！
@@ -1237,8 +1265,8 @@ join7.messages.create(
   ]
 )
 
-join8 = Post.find(8)
-join8.post_joins.create(
+join7 = Post.find(7)
+join7.post_joins.create(
   [
     { user_id: 23 },
     { user_id: 30 },
@@ -1247,10 +1275,11 @@ join8.post_joins.create(
   ]
 )
 
-join8.messages.create(
+join7.messages.create(
   [
     { user_id: 23,
       title: 'こんにちは',
+      image: Rails.root.join('app/assets/images/8_mama/mes1.jpg').open,
       content: '
       イヤイヤ期に突入しました。思った以上に大変です。
       いつもそばで見守ってあげてはいるのですが、このままでいいのかと思いまして。
@@ -1259,6 +1288,7 @@ join8.messages.create(
       ' },
     { user_id: 30,
       title: 'まだ早いかもしれませんが、、',
+      image: Rails.root.join('app/assets/images/8_mama/mes2.jpg').open,
       content: '
       進路について心配です。もう小学校に慣れて日々勉強を楽しんでいるのですが、
       周りでは中学受験を本気で考えているお子さんがチラチラ出てきました。
@@ -1266,6 +1296,7 @@ join8.messages.create(
         ' },
     { user_id: 34,
       title: '',
+      image: Rails.root.join('app/assets/images/8_mama/mes3.jpg').open,
       content: '
       プライベートの時間が多く取れるようになってからは娘と一緒に遊んでいます。
       好きなようにさせているのですが、私のせいもあってか、少しわがままになってしまっています。
@@ -1273,6 +1304,7 @@ join8.messages.create(
           ' },
     { user_id: 45,
       title: 'ご飯についての相談です',
+      image: Rails.root.join('app/assets/images/8_mama/mes4.jpg').open,
       content: '
       少しずつ固形のものをためしている時期です。りんごが大好きなのですが、りんごばかりせがんでいて、
       どうしても栄養に偏りが出てきてしまいます。野菜も煎じているのですけれどうまくいかず。
@@ -1281,17 +1313,18 @@ join8.messages.create(
   ]
 )
 
-join9 = Post.find(9)
-join9.post_joins.create(
+join8 = Post.find(8)
+join8.post_joins.create(
   [
     { user_id: 42 }
   ]
 )
 
-join9.messages.create(
+join8.messages.create(
   [
     { user_id: 42,
       title: '始めが肝心ですよね。',
+      image: Rails.root.join('app/assets/images/9_ballet/mes1.jpg').open,
       content: '
       いま娘にスケートを習わせているのですが、バレエも習わせたいと思っています。
       音楽を習わせたこともあるのですが、はじめた時にうまく行かなかった経験があり、
@@ -1301,8 +1334,8 @@ join9.messages.create(
   ]
 )
 
-join10 = Post.find(10)
-join10.post_joins.create(
+join9 = Post.find(9)
+join9.post_joins.create(
   [
     { user_id: 36 },
     { user_id: 41 },
@@ -1310,10 +1343,11 @@ join10.post_joins.create(
   ]
 )
 
-join10.messages.create(
+join9.messages.create(
   [
     { user_id: 36,
       title: 'Could you put us in?',
+      image: Rails.root.join('app/assets/images/10_football/mes1.jpg').open,
       content: '
           日本に来てから1年経ちました。ようやく落ち着いてきました。
           ジェシーとサッカーをよく見ます。実際にサッカーをしてみたいと思いました。
@@ -1321,6 +1355,7 @@ join10.messages.create(
           ' },
     { user_id: 41,
       title: 'サッカーいいですね！',
+      image: Rails.root.join('app/assets/images/10_football/mes2.jpg').open,
       content: '
       私も日本応援してます！スポーツは見る派なのですが、
       体育が大好きな娘は夫とよくボールで遊んでいます。
@@ -1328,6 +1363,7 @@ join10.messages.create(
             ' },
     { user_id: 54,
       title: 'はじめまして',
+      image: Rails.root.join('app/assets/images/10_football/mes3.jpg').open,
       content: '
       同じ悩みを抱えていました。どうしても男の子のグループに混ざると、力で負けてしまいよく泣いてしまいます。
       張り合う声は誰よりも大きいのですが笑。同性の友達がいると私も安心するので、お声かけさせてもらいました。
@@ -1335,24 +1371,26 @@ join10.messages.create(
   ]
 )
 
-join11 = Post.find(11)
-join11.post_joins.create(
+join10 = Post.find(10)
+join10.post_joins.create(
   [
     { user_id: 38 },
-    { user_id: 49 }
+    { user_id: 51 }
   ]
 )
 
-join11.messages.create(
+join10.messages.create(
   [
     { user_id: 38,
       title: 'こんにちは',
+      image: Rails.root.join('app/assets/images/11_baseball/mes1.jpg').open,
       content: '
       最寄りに住んでいます。息子が遊び盛りなので一緒にスポーツをしてくれる友達を探していました。
       実はこのサイト使うのは初めてです。わからないことも多いですが、よろしくお願いします。
       ' },
-    { user_id: 49,
+    { user_id: 51,
       title: 'こんにちは！',
+      image: Rails.root.join('app/assets/images/11_baseball/mes2.jpg').open,
       content: '
         男の子ってエネルギーありますよね。仕事がある時はいっぱいいっぱいになっちゃいます。
         お外で発散してくれるとすぐに寝ついてくれるので私も息子も助かります。
@@ -1362,8 +1400,8 @@ join11.messages.create(
   ]
 )
 
-join12 = Post.find(12)
-join12.post_joins.create(
+join11 = Post.find(11)
+join11.post_joins.create(
   [
     { user_id: 21 },
     { user_id: 51 },
@@ -1371,10 +1409,11 @@ join12.post_joins.create(
   ]
 )
 
-join12.messages.create(
+join11.messages.create(
   [
     { user_id: 12,
       title: 'はじめまして、こんにちは',
+      image: Rails.root.join('app/assets/images/12_study/mes1.jpg').open,
       content: '
       私もお受験を考えています。
       娘の好きなようにさせてあげたいと思いますが、まさか勉強が好きになるとは…。
@@ -1384,6 +1423,7 @@ join12.messages.create(
       ' },
     { user_id: 51,
       title: '小学校受験やっぱり大切ですかね…？',
+      image: Rails.root.join('app/assets/images/12_study/mes2.jpg').open,
       content: '
          勉強は大切なことなので習慣として息子に教えていたのですが。
          自力で参考書を読み進めていけるようになりました。
@@ -1394,6 +1434,7 @@ join12.messages.create(
         ' },
     { user_id: 52,
       title: '受験、やる気はありました…！',
+      image: Rails.root.join('app/assets/images/12_study/mes3.jpg').open,
       content: '
       少し伸び悩んでいる時期です。
       やる気もちょっとなくなりかけていて。
@@ -1404,17 +1445,18 @@ join12.messages.create(
   ]
 )
 
-join13 = Post.find(13)
-join13.post_joins.create(
+join12 = Post.find(12)
+join12.post_joins.create(
   [
     { user_id: 31 }
   ]
 )
 
-join13.messages.create(
+join12.messages.create(
   [
     { user_id: 31,
       title: '義晴さん、お久しぶりです。',
+      image: Rails.root.join('app/assets/images/13_753/mes1.jpg').open,
       content: '
       まさかこんなところでお目にかかるとは。まさか義晴さん？だなんて驚きましたよ。
       どうでしょうか？次回の行事に私も休みをとって参加するつもりです。
@@ -1424,8 +1466,8 @@ join13.messages.create(
   ]
 )
 
-join14 = Post.find(14)
-join14.post_joins.create(
+join13 = Post.find(13)
+join13.post_joins.create(
   [
     { user_id: 25 },
     { user_id: 30 },
@@ -1433,10 +1475,11 @@ join14.post_joins.create(
   ]
 )
 
-join14.messages.create(
+join13.messages.create(
   [
     { user_id: 37,
       title: 'ちょっとご相談させてください',
+      image: Rails.root.join('app/assets/images/14_takeyou/mes1.jpg').open,
       content: '
       旦那さんの話、伺ってます。すごいです！
       実は私の夫ももしかすると…、という事がありまして、現在進行中で毎晩家族会議です。
@@ -1445,6 +1488,7 @@ join14.messages.create(
       ' },
     { user_id: 30,
       title: 'へるぷみーです。。',
+      image: Rails.root.join('app/assets/images/14_takeyou/mes2.jpg').open,
       content: '
       もしお迎えして頂けるのであれば本当に助かります。1-A のミカといいます。
       少し時間に余裕がほしいと思いながら、いつも時間に追われているようで。
@@ -1453,6 +1497,7 @@ join14.messages.create(
         ' },
     { user_id: 47,
       title: 'よろしくお願いします！',
+      image: Rails.root.join('app/assets/images/14_takeyou/mes3.jpg').open,
       content: '
          コロナで在宅での働き方も考えており、ご相談に乗って頂きたいと思います。
          現在、事務仕事を続けていますが、比較的プライベートでも時間が取れるようになりました。
@@ -1461,8 +1506,8 @@ join14.messages.create(
   ]
 )
 
-join15 = Post.find(15)
-join15.post_joins.create(
+join14 = Post.find(14)
+join14.post_joins.create(
   [
     { user_id: 38 },
     { user_id: 28 },
@@ -1470,10 +1515,11 @@ join15.post_joins.create(
   ]
 )
 
-join15.messages.create(
+join14.messages.create(
   [
     { user_id: 38,
       title: '去年はお世話になりました！',
+      image: Rails.root.join('app/assets/images/5_festival/mes1.jpg').open,
       content: '
       今年も参加するんですね！僕は今年は運営にはいませんが、妻と一緒に回る予定です。
       けいくんがいると、りょうたも嬉しがるのでぜひぜひ面倒を見させてください！
@@ -1481,6 +1527,7 @@ join15.messages.create(
       ' },
     { user_id: 28,
       title: 'こんにちは〜♪',
+      image: Rails.root.join('app/assets/images/5_festival/mes2.jpg').open,
       content: '
       運営サイドのかおりです。今年は例年と比べて暑くなりそうです。ご体調には何卒お気をつけください。
       託児所も管理してますので、よろしければお立ち寄りください。
@@ -1488,6 +1535,7 @@ join15.messages.create(
         ' },
     { user_id: 39,
       title: 'こんにちは',
+      image: Rails.root.join('app/assets/images/5_festival/mes3.jpg').open,
       content: '
           東京に息子と単身赴任中なのですが、あの有名なお祭りがあると聞いて参加予定です。
           ご経験ある方がいらっしゃると心強いので、ご一緒に参加させて頂きたいと思います。
@@ -1496,17 +1544,18 @@ join15.messages.create(
   ]
 )
 
-join16 = Post.find(16)
-join16.post_joins.create(
+join15 = Post.find(15)
+join15.post_joins.create(
   [
     { user_id: 27 }
   ]
 )
 
-join16.messages.create(
+join15.messages.create(
   [
     { user_id: 27,
-      title: 'こんにちは',
+      title: 'What\'s up?',
+      image: Rails.root.join('app/assets/images/16_confused/mes1.jpg').open,
       content: '
       Hi, Judy. You\'re being busy. Could I take care of them?
       I know you. Do you remember? We saw at the entrance ceremony with your mother before.
@@ -1515,48 +1564,3 @@ join16.messages.create(
       ' }
   ]
 )
-
-# join17 = Post.find(17)
-# join17.post_joins.create(
-#   [
-#     { user_id: 49 },
-#     { user_id: 53 }
-
-#   ]
-# )
-
-# join17.messages.create(
-#   [
-#     { user_id: 49,
-#       title: 'こんにちは',
-#       content: '
-#       このページを見たら息子が一緒に遊びたい！と言ってくれました。
-#       どうやら弟がほしいみたいで。事故のないように面倒を見ますので、一度近場の公園にでもピクニックに行かせてみませんか？
-#       ' },
-#     { user_id: 53,
-#       title: 'こんにちは',
-#       content: '
-#         このページを見たら息子が一緒に遊びたい！と言ってくれました。
-#         どうやら弟がほしいみたいで。事故のないように面倒を見ますので、一度近場の公園にでもピクニックに行かせてみませんか？
-#         ' }
-#   ]
-# )
-
-# join17 = Post.find(17)
-# join17.post_joins.create(
-#   [
-#     { user_id: 51}
-
-#   ]
-# )
-
-# join17.messages.create(
-#   [
-#     { user_id: 51,
-#       title: 'こんにちは',
-#       content: '
-#       このページを見たら息子が一緒に遊びたい！と言ってくれました。
-#       どうやら弟がほしいみたいで。事故のないように面倒を見ますので、一度近場の公園にでもピクニックに行かせてみませんか？
-#       ' }
-#   ]
-# )

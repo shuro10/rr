@@ -12,7 +12,7 @@
     <v-card color="transparent" class="rounded-card " elevation="5">
       <v-img
         contain
-        :src="require('@/assets/images/intro/ex1.jpg')"
+        :src="require('@/assets/images/Iam.jpeg')"
       ></v-img> </v-card
     ><br />
     <v-card class="ml-2 mr-2" tile rounded-card>
@@ -324,11 +324,11 @@ export default {
     // postMessage,
   },
   props: {
-    post: {
-      type: Object,
-      default: () => ({}),
-      required: true,
-    },
+    // post: {
+    //   type: Object,
+    //   default: () => ({}),
+    //   required: true,
+    // },
   },
   data() {
     return {

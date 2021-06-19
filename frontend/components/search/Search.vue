@@ -20,7 +20,7 @@
         prepend-inner-icon="mdi-magnify"
       />
 
-<v-row justify="space-around">
+
       <v-col cols="auto">
         <v-dialog
           transition="dialog-bottom-transition"
@@ -52,7 +52,7 @@
           </template>
         </v-dialog>
       </v-col>
-    </v-row>
+    
 
       <template v-if="!isLogin">
         <v-btn

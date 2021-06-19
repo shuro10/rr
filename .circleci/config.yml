@@ -161,7 +161,6 @@ workflows:
       - aws-ecs/update-task-definition:
           family: meetwithkids-db-migrate
           # family: meetwithkids-db-seed
-#          family: ${FAMILY_NAME_MIGRATE} # rails db:migrate用タスク定義名
           container-image-name-updates: 'container=backend-container,tag=${CIRCLE_SHA1}'
           aws-region: AWS_REGION
           requires:
@@ -172,14 +171,9 @@ workflows:
 
       - aws-ecs/run-task:
           cluster: meetwithkids-ecs-cluster
-#          cluster: ${CLUSTER_NAME}
           task-definition: meetwithkids-db-migrate
           # task-definition: meetwithkids-db-seed
-#          task-definition: ${TASK_MIGRATE}
           subnet-ids: subnet-06a4f27e9e1d65861, subnet-02f0bf9e2014d444f
-#          subnet-ids: '$SUBNET_ONE, $SUBNET_TWO'
-#          subnet-ids: '${SUBNET_PUBLIC_1A},${SUBNET_PUBLIC_1C}'
-#          https://ap-northeast-1.console.aws.amazon.com/vpc/home?region=ap-northeast-1#subnets:
           assign-public-ip: ENABLED
           security-group-ids: '${MIGRATION_SECURITY_GROUP_ID}'
           requires:
@@ -187,11 +181,8 @@ workflows:
           filters:
             branches:
               only: master
-###https://circleci.com/developer/ja/orbs/orb/circleci/aws-ecs
 
-###=================================================
       - aws-ecs/deploy-service-update:
-      # Cannot find a definition for job named aws-ecs/deploy-service-update-frontend
             family: meetwithkids-frontend-task
             service-name: meetwithkids-frontend-ecs-service
             cluster-name: meetwithkids-ecs-cluster

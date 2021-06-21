@@ -7,7 +7,7 @@
         @result="response"
       />
       <v-btn
-        color="yellow lighten-3"
+        color="white"
         dark
         x-large
         fixed
@@ -15,6 +15,7 @@
         bottom
         right
         class="ma-10"
+        
         @click.stop="dialogComponent = true"
       >
         <v-icon color="red lighten-2">mdi-pencil</v-icon>

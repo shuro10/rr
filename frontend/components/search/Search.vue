@@ -38,9 +38,7 @@
           <template v-slot:default="dialog">
             <v-card>
               <v-card-text>
-                <div class="text-h2 pa-12">
                   <schedule-card-info-init />
-                  </div>
               </v-card-text>
               <v-card-actions class="justify-end">
                 <v-btn

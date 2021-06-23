@@ -1,5 +1,6 @@
 <template>
-  <v-sheet class="rounded-card" elevation="5">
+  <!-- <v-sheet class="rounded-card" elevation="5"> -->
+  <v-sheet>
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
@@ -27,7 +28,6 @@
         ・子どもに体験を届けたいのに届けられない方々<br />
       </v-card-text>
     </v-card>
-
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
@@ -45,13 +45,10 @@
         contain
         :src="require('@/assets/images/help/help1.gif')"
       ></v-img>
-            ページ右上の「ゲストログイン」をクリック
+            ページ右上の「ゲストログイン」を<br>
+            クリックしてください。
 
     </v-card-text>
-
-
-
-
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
@@ -109,18 +106,32 @@
         を押してメッセージを送りにいきましょう。<br />
       </div>
     </v-card-text>
-
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
           class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
         >
+          メッセージページからでも参加可
+        </div>
+      </div>
+      <div class="orangecolor">
+        <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
+        </div>
+      </div>
+
+      <v-img
+        contain
+        :src="require('@/assets/images/help/help5.gif')"
+      ></v-img>
+    </v-card-text>
+    <v-card-text class="text-center align-self-center">
+      <div class="orangecolor">
+        <div class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10">
           参加者リスト
         </div>
       </div>
       <div class="orangecolor">
         <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
-      
         </div>
       </div>
     </v-card-text>
@@ -128,11 +139,9 @@
         contain
         :src="require('@/assets/images/help/help_follow.gif')"
       ></v-img>
-<v-card-text class="text-center align-self-center">
-  カード下部の <v-icon>mdi-run</v-icon> をクリック。フォローもできます。
-</v-card-text>
-
-
+    <v-card-text class="text-center align-self-center">
+      カード下部の <v-icon>mdi-run</v-icon> をクリック。フォローもできます。
+    </v-card-text>
   </v-sheet>
 </template>
 

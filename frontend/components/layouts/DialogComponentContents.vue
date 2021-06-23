@@ -2,7 +2,6 @@
   <v-row justify="center">
     <v-dialog
       v-model="dialogComponent"
-      hide-overlay
       transition="dialog-bottom-transition"
       max-width="600"
       persistent
@@ -24,7 +23,7 @@
               </v-chip>
             </template>
             <template v-else-if="isScheduleCardInfo">
-              <v-chip
+<!--               <v-chip
                 label
                 color="transparent"
                 x-large
@@ -32,10 +31,10 @@
                 text-color="green"
               >
                 <v-icon class="ml-2 mr-2">mdi-book-open-page-variant</v-icon>
-              </v-chip>
+              </v-chip> -->
             </template>
             <template v-else>
-              <v-chip
+<!--               <v-chip
                 label
                 color="transparent"
                 x-large
@@ -44,7 +43,7 @@
               >
                 <v-icon class="ml-2 mr-2">mdi-account-circle</v-icon>
                 アカウント
-              </v-chip>
+              </v-chip> -->
             </template>
           </v-sheet>
         </v-col>

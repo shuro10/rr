@@ -28,6 +28,29 @@
       </v-card-text>
     </v-card>
 
+    <v-card-text class="text-center align-self-center">
+      <div class="orangecolor">
+        <div
+          class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
+        >
+          最初の手順          
+        </div>
+      </div>
+      <div class="orangecolor">
+        <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
+        </div>
+      </div>
+
+      <v-img
+        contain
+        :src="require('@/assets/images/help/help1.gif')"
+      ></v-img>
+            ページ右上の「ゲストログイン」をクリック
+
+    </v-card-text>
+
+
+
 
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
@@ -54,7 +77,6 @@
         >を押していきましょう。<br />
         たくさん押しても大丈夫。あとで見返すことができます。
       </div>
-
       <v-img
         contain
         :src="require('@/assets/images/intro/intro_search.png')"
@@ -88,13 +110,29 @@
       </div>
     </v-card-text>
 
-    <v-card class="ml-2 mr-2" tile rounded-card>
-      <v-card-text>
-        このようにして、親御さんのような忙しい方々でも<br />
-        体験機会を探し、それを好きなだけストックし、<br />
-        あとでゆっくり見返すことができます。<br />
-      </v-card-text>
-    </v-card>
+    <v-card-text class="text-center align-self-center">
+      <div class="orangecolor">
+        <div
+          class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
+        >
+          参加者リスト
+        </div>
+      </div>
+      <div class="orangecolor">
+        <div class="shadow-text2 pink--text font-weight-bold no-wrap-text">
+      
+        </div>
+      </div>
+    </v-card-text>
+      <v-img
+        contain
+        :src="require('@/assets/images/help/help_follow.gif')"
+      ></v-img>
+<v-card-text class="text-center align-self-center">
+  カード下部の <v-icon>mdi-run</v-icon> をクリック。フォローもできます。
+</v-card-text>
+
+
   </v-sheet>
 </template>
 

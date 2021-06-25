@@ -4,12 +4,12 @@
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
-          class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text"
+          class="display-2 shadow-text1 pink--text font-weight-bold no-wrap-text"
         >
           ヘルプ
         </div>
       </div>
-    </v-card-text>
+    </v-card-text><!-- 
     <v-card class="ml-2 mr-2" tile rounded-card>
       <v-card-text>
         このサイトはママパパのコミュニティを広げることを目指しています。<br />
@@ -27,7 +27,7 @@
         ・子育ての悩みごとを打ち明けられないママパパ<br />
         ・子どもに体験を届けたいのに届けられない方々<br />
       </v-card-text>
-    </v-card>
+    </v-card> -->
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div
@@ -54,7 +54,7 @@
         <div
           class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
         >
-          参加までの４クリック！
+          参加までの４クリック
         </div>
       </div>
       <div class="orangecolor">
@@ -115,7 +115,6 @@
       <v-img
         contain
         :src="require('@/assets/images/intro/hl2.png')"
-        class="mr-5 ml-5"
       ></v-img>
                   <div class="caption">
       [ 図 ]<br><br><br>
@@ -130,7 +129,7 @@
             </div>
 
       <div class="mb-10">
-        ②右上の <v-icon>mdi-dots-vertical</v-icon> で見返してみましょう。<br>
+        右上の <v-icon>mdi-dots-vertical</v-icon> で見返してみましょう。<br>
         このストックはいつでも見返すことができます。<br><br><br>
       </div>
 
@@ -196,7 +195,7 @@
       [ gif解説 ]<br><br>
             </div>
 
-      ④詳細ページです。<v-icon color="red">mdi-run</v-icon> を押して参加完了です。<br><br><br>
+      詳細ページです。<v-icon color="red">mdi-run</v-icon> を押して参加完了です。<br><br><br>
 
       <br /><br />
 
@@ -212,10 +211,6 @@
         </div>
       </div>
 
-      <div class="caption">
-        時間がある時には、 <v-icon color="orange">mdi-email-variant</v-icon>
-        を押してメッセージを送りにいきましょう。<br />
-      </div>
        <v-img
         contain
         :src="require('@/assets/images/intro/hl5.png')"
@@ -232,7 +227,11 @@
                   <div class="caption">
       [ gif解説 ]<br><br>
             </div>
-      <br><br><br>
+      <div class="caption">
+        時間がある時には、 <v-icon color="orange">mdi-email-variant</v-icon>
+        を押してメッセージを送りにいきましょう。<br><br>
+      </div>
+
     </v-card-text>
 
     <v-card-text class="text-center align-self-center">
@@ -245,14 +244,14 @@
       [ gif解説（補足）]<br><br>
             </div>
       <div class="caption">
-        メッセージを送るページからでも参加可能です<br />
+        「参加」は、メッセージを送るページからでも可能です<br><br>
       </div>
 
     </v-card-text>
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
         <div class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10">
-          参加者リスト
+          メンバーリスト
         </div>
       </div>
       <div class="orangecolor">

@@ -16,9 +16,9 @@
       color="#BADEC3"
       absolute
     >
-      <div>
+      <div class="white--text">
         &copy; {{ new Date().getFullYear()
-        }}<span class="white--text ml-2">MeetWithKids</span>
+        }}<span class="ml-2">MeetWithKids</span>
       </div>
     </v-footer>
   </div>

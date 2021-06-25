@@ -8,7 +8,9 @@
 
 <br>
 
-![TOP](frontend/assets/images/readme/top1.png "TOP")
+![TOP](frontend/assets/images/readme/top2.png "TOP")
+![TOP](frontend/assets/images/readme/top3.png "TOP")
+
 <br>
 
 ## 制作背景

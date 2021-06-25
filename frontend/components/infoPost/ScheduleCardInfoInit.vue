@@ -64,54 +64,147 @@
       </div>
     </v-card-text>
     <v-card-text class="text-center align-self-center">
-      <v-img
+<!--       <v-img
         contain
         :src="require('@/assets/images/intro/intro_heart.png')"
         class="mr-5 ml-5"
       ></v-img>
-      <div class="mb-5">
-        ①気になる募集があったら、<v-icon color="pink">mdi-heart-outline</v-icon
-        >を押していきましょう。<br />
-        たくさん押しても大丈夫。あとで見返すことができます。
-      </div>
-      <v-img
-        contain
-        :src="require('@/assets/images/intro/intro_search.png')"
-      ></v-img>
-      <div class="mb-10">
-        ②<v-icon>mdi-dots-vertical</v-icon> で見返してみましょう。
+ -->
+      <div class="orangecolor">
+        <div class="pink--text font-weight-bold no-wrap-text">
+          ①１クリック目（<v-icon color="pink">mdi-heart-outline</v-icon>ボタン）
+        </div>
       </div>
 
       <v-img
+        contain
+        :src="require('@/assets/images/intro/hl1.png')"
+        class="mr-5 ml-5"
+      ></v-img>
+            <div class="caption">
+      [ 図 ]<br><br><br>
+            </div>
+      <v-img
+        contain
+        :src="require('@/assets/images/intro/hl1.gif')"
+        class="mr-5 ml-5"
+      ></v-img>
+
+                  <div class="caption">
+      [ gif解説 ]<br><br>
+            </div>
+
+      <div class="mb-5">
+        気になる募集があったら、<v-icon color="pink">mdi-heart-outline</v-icon
+        >を押していきましょう。<br />
+        たくさん押しても大丈夫。あとで見返すことができます。<br><br><br>
+      </div>
+<!--       <v-img
+        contain
+        :src="require('@/assets/images/intro/intro_search.png')"
+      ></v-img>
+ --> 
+
+ 
+      <div class="orangecolor">
+        <div class="pink--text font-weight-bold no-wrap-text">
+          ②２クリック目（<v-icon color="green">mdi-dots-vertical</v-icon>ボタン）
+        </div>
+      </div>
+
+      <v-img
+        contain
+        :src="require('@/assets/images/intro/hl2.png')"
+        class="mr-5 ml-5"
+      ></v-img>
+                  <div class="caption">
+      [ 図 ]<br><br><br>
+            </div>
+
+      <v-img
+        contain
+        :src="require('@/assets/images/intro/hl3.gif')"
+      ></v-img>
+                        <div class="caption">
+      [ gif解説 ]<br><br>
+            </div>
+
+      <div class="mb-10">
+        ②右上の <v-icon>mdi-dots-vertical</v-icon> で見返してみましょう。<br>
+        このストックはいつでも見返すことができます。<br><br><br>
+      </div>
+
+      <div class="orangecolor">
+        <div class="pink--text font-weight-bold no-wrap-text">
+          ③３クリック目（<v-icon color="green">mdi-walk</v-icon>ボタン）
+        </div>
+      </div>
+<!--       <v-img
         contain
         :src="require('@/assets/images/intro/intro_like.png')"
         class="mr-10 ml-10"
       ></v-img>
-      <div class="mb-10">
-        ③このストックはいつでも見返せます。<br/>
-        次に、<v-icon color="orange">mdi-walk</v-icon
-        >を押して詳細を見てみましょう。
-      </div>
+ -->
+ 
+       <v-img
+        contain
+        :src="require('@/assets/images/intro/hl3.png')"
+        class="mr-5 ml-5"
+      ></v-img>
+                  <div class="caption">
+      [ 図 ]<br><br><br>
+            </div>
 
       <v-img
+        contain
+        :src="require('@/assets/images/intro/hl5.gif')"
+      ></v-img>
+                        <div class="caption">
+      [ gif解説 ]<br><br>
+            </div>
+
+      <div class="mb-10">
+        次に、<v-icon color="orange">mdi-walk</v-icon
+        >を押して詳細を見てみましょう。<br><br><br>
+      </div>
+
+      <div class="orangecolor">
+        <div class="pink--text font-weight-bold no-wrap-text">
+          ④４クリック目（<v-icon color="red">mdi-run</v-icon>ボタン）
+        </div>
+      </div>
+
+<!--       <v-img
         contain
         class="mr-10 ml-10"
         :src="require('@/assets/images/intro/intro_post_dialog.png')"
       ></v-img>
-      ④詳細ページです。<v-icon color="red">mdi-run</v-icon> を押して参加完了です。
+ --> 
+       <v-img
+        contain
+        :src="require('@/assets/images/intro/hl4.png')"
+      ></v-img>
+            <div class="caption">
+      [ 図 ]<br><br><br>
+            </div>
+
+      <v-img
+        contain
+        :src="require('@/assets/images/intro/hl6.gif')"
+      ></v-img>
+                  <div class="caption">
+      [ gif解説 ]<br><br>
+            </div>
+
+      ④詳細ページです。<v-icon color="red">mdi-run</v-icon> を押して参加完了です。<br><br><br>
 
       <br /><br />
-      <div class="caption">
-        時間がある時には、 <v-icon color="orange">mdi-email-variant</v-icon>
-        を押してメッセージを送りにいきましょう。<br />
-      </div>
-    </v-card-text>
-    <v-card-text class="text-center align-self-center">
+
       <div class="orangecolor">
         <div
           class="display-1 shadow-text1 pink--text font-weight-bold no-wrap-text mt-10"
         >
-          メッセージページからでも参加可
+          メッセージページ       
         </div>
       </div>
       <div class="orangecolor">
@@ -119,10 +212,42 @@
         </div>
       </div>
 
+      <div class="caption">
+        時間がある時には、 <v-icon color="orange">mdi-email-variant</v-icon>
+        を押してメッセージを送りにいきましょう。<br />
+      </div>
+       <v-img
+        contain
+        :src="require('@/assets/images/intro/hl5.png')"
+      ></v-img>
+            <div class="caption">
+      [ 図 ]<br><br><br>
+            </div>
+
+
+      <v-img
+        contain
+        :src="require('@/assets/images/intro/hl8.gif')"
+      ></v-img>
+                  <div class="caption">
+      [ gif解説 ]<br><br>
+            </div>
+      <br><br><br>
+    </v-card-text>
+
+    <v-card-text class="text-center align-self-center">
+
       <v-img
         contain
         :src="require('@/assets/images/help/help5.gif')"
       ></v-img>
+                  <div class="caption">
+      [ gif解説（補足）]<br><br>
+            </div>
+      <div class="caption">
+        メッセージを送るページからでも参加可能です<br />
+      </div>
+
     </v-card-text>
     <v-card-text class="text-center align-self-center">
       <div class="orangecolor">
@@ -214,13 +339,6 @@ export default {
 }
 .shadow-text3 {
   text-shadow: 2px 5px 50px;
-}
-
-text {
-  fill: #333;
-  stroke: #fff;
-  stroke-width: 0.3;
-  stroke-linejoin: round;
 }
 
 .orangecolor {

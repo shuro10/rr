@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog" max-width="600">
+  <v-dialog v-model="dialog" max-width="500">
     <template #activator="{ on, attrs }">
       <v-btn
         color="green lighten-2 white--text font-weight-bold"
@@ -13,10 +13,9 @@
 
     <v-sheet
       width="500px"
-      color="transparent"
-      class=" mx-auto pb-3 mb-10 rounded-card"
+      class="rounded-card"
     >
-      <v-card width="400px" class="mx-auto rounded-card">
+      <v-card width="500px" class="mx-auto rounded-card">
         <v-system-bar lights-out>
           <v-spacer></v-spacer>
           <v-btn icon class="mt-5" @click="dialog = false">

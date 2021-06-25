@@ -18,7 +18,7 @@
     >
       <div>
         &copy; {{ new Date().getFullYear()
-        }}<span class="ml-2">MeetWithKids</span>
+        }}<span class="white--text ml-2">MeetWithKids</span>
       </div>
     </v-footer>
   </div>

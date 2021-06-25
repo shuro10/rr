@@ -54,6 +54,10 @@
 ・参加までの導線を引いて、忙しい親御さんが隙間時間で気軽に利用できるようにしたこと<br>
 　（以下、開発途中のGif参照）
 
+・参加までの導線を引いて、忙しい親御さんが隙間時間で気軽に利用できるようにしたこと（以下参照）。
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">Rails × Nuxt.js × AWS 85日目<br><br>✏️✏️ UI ブラッシュアップ <br><br>SPA化による一連のフローが完成。<br><br>♡（いいね）ボタンでリストインさせ、リストから非同期でページビューさせる。<br><br>モダンな Webアプリ😊<a href="https://twitter.com/hashtag/%E4%BB%8A%E6%97%A5%E3%81%AE%E7%A9%8D%E3%81%BF%E4%B8%8A%E3%81%92?src=hash&amp;ref_src=twsrc%5Etfw">#今日の積み上げ</a> <a href="https://twitter.com/hashtag/%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0?src=hash&amp;ref_src=twsrc%5Etfw">#プログラミング</a><a href="https://twitter.com/hashtag/%E9%A7%86%E3%81%91%E5%87%BA%E3%81%97%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%A8%E7%B9%8B%E3%81%8C%E3%82%8A%E3%81%9F%E3%81%84?src=hash&amp;ref_src=twsrc%5Etfw">#駆け出しエンジニアと繋がりたい</a> <a href="https://t.co/MzcMXo54Xg">pic.twitter.com/MzcMXo54Xg</a></p>&mdash; Kent@Nuxt×AWSで転活中 (@kent_0n) <a href="https://twitter.com/kent_0n/status/1392081284067778563?ref_src=twsrc%5Etfw">May 11, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
 * <b>サーバーサイドで工夫したこと</b><br>
 ・Rails（APIモード）と　Nuxt.js (SPAモード) を掛け合わせて、高速なWEBサイドを実現させたこと<br>
 ・コンポーネント志向に則って、ボタンコンポーネントを分離させて、props で条件分岐させたこと（https://github.com/kent7k/rr/blob/master/frontend/components/layouts/ButtonLike.vue)

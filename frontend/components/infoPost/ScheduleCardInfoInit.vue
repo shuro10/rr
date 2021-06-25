@@ -135,7 +135,7 @@
 
       <div class="orangecolor">
         <div class="pink--text font-weight-bold no-wrap-text">
-          ③３クリック目（<v-icon color="green">mdi-walk</v-icon>ボタン）
+          ③３クリック目（<v-icon color="orange">mdi-walk</v-icon>ボタン）
         </div>
       </div>
 <!--       <v-img

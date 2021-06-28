@@ -69,7 +69,6 @@
                           >
                             <v-icon>mdi-heart</v-icon>
                           </v-btn>
-
                         </template>
                         <template v-else>
                           <button-like
@@ -128,7 +127,9 @@
                 </template>
               </v-hover>
               <v-card-text class="orange">
-                <div class="d-flex font-weight-thin subtitle-1 justify-center mt-n1 mb-n4">
+                <div
+                  class="d-flex font-weight-thin subtitle-1 justify-center mt-n1 mb-n4"
+                >
                   <span>
                     <like-counter
                       :users="p.join_users"

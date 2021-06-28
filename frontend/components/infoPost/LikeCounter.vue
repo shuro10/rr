@@ -5,7 +5,7 @@
     max-width="500"
   >
     <template #activator="{ on, attrs }">
-      <span v-bind="attrs" v-on="on" class="font-weight-medium">
+      <span v-bind="attrs" class="font-weight-medium" v-on="on">
         <p class="blue--text d-flex">
           <!-- 
           <template v-if="icon">
@@ -19,7 +19,7 @@
         </p>
       </span>
     </template>
-<!-- 
+    <!-- 
     <v-row no-gutters>
       <v-col> </v-col>
       <v-col cols="sm" class="text-center align-self-center">
@@ -44,7 +44,9 @@
     <v-card width="500px" class="rounded-card">
       <v-list color="white">
         <v-subheader class="black--text"
-          >【&nbsp;{{ post.name }}&nbsp;】{{ title }}&nbsp;&nbsp;{{ users.length }}&nbsp;/&nbsp;{{ post.member }}&nbsp;人</v-subheader
+          >【&nbsp;{{ post.name }}&nbsp;】{{ title }}&nbsp;&nbsp;{{
+            users.length
+          }}&nbsp;/&nbsp;{{ post.member }}&nbsp;人</v-subheader
         >
         <v-list-item-group>
           <v-list-item

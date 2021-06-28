@@ -12,7 +12,7 @@
           <v-img v-else contain :src="defaultImage"> </v-img>
           <v-sheet style="position: relative;">
             <template v-if="!login">
-<!--               
+              <!--               
               <v-btn
                 color="åwhite--text font-weight-bold"
                 absolute
@@ -197,18 +197,18 @@
               </v-chip> -->
           </v-timeline-item>
           <template v-if="!login">
-            <v-btn 
-            color="pink white--text"
-            class="font-weight-bold ml-4 mb-10"
-            @click.stop="loginDialog(true)"
-            disabled
+            <v-btn
+              color="pink white--text"
+              class="font-weight-bold ml-4 mb-10"
+              disabled
+              @click.stop="loginDialog(true)"
             >
               <v-icon large>mdi-run</v-icon>
               参加する
             </v-btn>
-                          <v-dialog v-model="loginModal" max-width="600px" persistent>
-                            <the-modal-login />
-                          </v-dialog>
+            <v-dialog v-model="loginModal" max-width="600px" persistent>
+              <the-modal-login />
+            </v-dialog>
           </template>
           <template v-else>
             <button-like
@@ -219,7 +219,7 @@
             />
           </template>
           <template v-if="!login">
-<!--             <div class="mb-5">
+            <!--             <div class="mb-5">
               <v-btn color="orange" nuxt x-large 
               class="ml-3 white--text"
               @click.stop="loginDialog(true)"
@@ -229,8 +229,8 @@
                 >&nbsp;参加したい気持ちをメッセージで伝えましょう！&nbsp;&nbsp;
               </v-btn>
             </div>
- -->         
-  </template>
+ -->
+          </template>
           <template v-else>
             <div class="mb-5">
               <v-btn
@@ -316,7 +316,6 @@ export default {
       logout: 'auth/logout',
       login: 'auth/login',
       loginDialog: 'modal/loginUser',
-
     }),
   },
 }

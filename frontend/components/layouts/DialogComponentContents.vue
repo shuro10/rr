@@ -23,7 +23,7 @@
               </v-chip>
             </template>
             <template v-else-if="isScheduleCardInfo">
-<!--               <v-chip
+              <!--               <v-chip
                 label
                 color="transparent"
                 x-large
@@ -34,7 +34,7 @@
               </v-chip> -->
             </template>
             <template v-else>
-<!--               <v-chip
+              <!--               <v-chip
                 label
                 color="transparent"
                 x-large

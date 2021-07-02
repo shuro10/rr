@@ -12,12 +12,12 @@
           #activator="{ on: tooltip }"
         >
           <!-- v-if="message.user_id === $store.state.auth.loginUser.id" -->
-        <v-btn
-          class="ml-4 mr-2 yellow--text font-weight-bold"
-          color="orange"
-          v-bind="attrs"
-          v-on="{ ...dialog, ...tooltip }"
-        >
+          <v-btn
+            class="ml-4 mr-2 white--text font-weight-bold"
+            color="orange"
+            v-bind="attrs"
+            v-on="{ ...dialog, ...tooltip }"
+          >
             <v-icon> mdi-comment-edit </v-icon>
           </v-btn>
         </template>
@@ -29,7 +29,7 @@
       <v-col> </v-col>
       <v-col cols="sm" class="text-center align-self-center">
         <v-sheet elevation="4" class="rounded-pill">
-<!--           <template>
+          <!--           <template>
             <v-chip
               label
               color="transparent"
@@ -43,12 +43,10 @@
           </template> -->
         </v-sheet>
       </v-col>
-            <v-col>
-            </v-col>
-            <v-col>
-            </v-col>
+      <v-col> </v-col>
+      <v-col> </v-col>
       <v-col>
-        <v-spacer class="mt-3 ml-14" ></v-spacer>
+        <v-spacer class="mt-3 ml-14"></v-spacer>
         <v-btn color="#BDBDBD88" fab dark x-large @click="editDialog = false">
           <v-icon color="white"> mdi-close-circle-outline</v-icon>
         </v-btn>
@@ -67,15 +65,17 @@
         </v-card-title>
         <v-card-text>
           <v-row justify="center" class="mt-3 mb-10">
-              <template v-if="post.image.url !== null">
-                <v-img v-if="input_image !== null" 
+            <template v-if="post.image.url !== null">
+              <v-img
+                v-if="input_image !== null"
                 max-width="400"
-                :src="input_image" />
-                <v-img v-else :src="post.image.url" />
-              </template>
-              <template v-else>
-                <v-img v-if="input_image" :src="input_image" />
-              </template>
+                :src="input_image"
+              />
+              <v-img v-else :src="post.image.url" />
+            </template>
+            <template v-else>
+              <v-img v-if="input_image" :src="input_image" />
+            </template>
           </v-row>
 
           <v-form ref="form">

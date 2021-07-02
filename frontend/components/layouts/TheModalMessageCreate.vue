@@ -11,10 +11,7 @@
       </v-btn>
     </template>
 
-    <v-sheet
-      width="500px"
-      class="rounded-card"
-    >
+    <v-sheet width="500px" class="rounded-card">
       <v-card width="500px" class="mx-auto rounded-card">
         <v-system-bar lights-out>
           <v-spacer></v-spacer>

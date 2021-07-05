@@ -20,37 +20,30 @@
         prepend-inner-icon="mdi-magnify"
       />
 
-
       <v-col cols="auto">
-        <v-dialog
-          transition="dialog-bottom-transition"
-          max-width="600"
-        >
+        <v-dialog transition="dialog-bottom-transition" max-width="600">
           <template v-slot:activator="{ on, attrs }">
             <v-btn
               text
               v-bind="attrs"
-              v-on="on"
               class="ml-4 mr-2 font-weight-bold"
               color="white"
-            >ヘルプ</v-btn>
+              v-on="on"
+              >ヘルプ</v-btn
+            >
           </template>
           <template v-slot:default="dialog">
             <v-card>
               <v-card-text>
-                  <schedule-card-info-init />
+                <schedule-card-info-init />
               </v-card-text>
               <v-card-actions class="justify-end">
-                <v-btn
-                  text
-                  @click="dialog.value = false"
-                >Close</v-btn>
+                <v-btn text @click="dialog.value = false">Close</v-btn>
               </v-card-actions>
             </v-card>
           </template>
         </v-dialog>
       </v-col>
-    
 
       <template v-if="!isLogin">
         <v-btn
@@ -83,8 +76,9 @@
         </v-dialog>
       </template>
       <template v-else>
-
-        <v-btn depressed rounded @click="logout" icon><v-icon color="#E5F2E8">mdi-logout</v-icon></v-btn>
+        <v-btn depressed rounded icon @click="logout"
+          ><v-icon color="#E5F2E8">mdi-logout</v-icon></v-btn
+        >
         <dialog-component :is-account-page="true" class="mt-5" />
       </template>
     </v-app-bar>
@@ -106,8 +100,6 @@ import theModalLogin from '~/components/layouts/TheModalLogin.vue'
 import buttonGuestLogin from '~/components/layouts/ButtonGuestLogin.vue'
 import dialogComponent from '~/components/layouts/DialogComponent.vue'
 import scheduleCardInfoInit from '~/components/infoPost/ScheduleCardInfoInit.vue'
-
-
 
 /* import searchPost from '~/components/search/SearchPost.vue' */
 import ScheduleCard2 from '~/components/search/ScheduleCard2.vue'

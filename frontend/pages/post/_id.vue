@@ -43,11 +43,7 @@
             </v-img>
             <v-img v-else contain :src="defaultImage"> </v-img>
             <v-sheet style="position: relative;">
-              <button-like
-                :user="user"
-                :post="post"
-                :is-rounded-like="true"
-              />
+              <button-like :user="user" :post="post" :is-rounded-like="true" />
             </v-sheet>
           </v-col>
           <v-col> </v-col>

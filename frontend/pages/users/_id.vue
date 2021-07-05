@@ -92,12 +92,13 @@
         </v-row>
         <v-divider />
 
-        <v-tabs 
-        v-model="tab" 
-        background-color="transparent" 
-        color="basil" 
-        grow
-        icons-and-text>
+        <v-tabs
+          v-model="tab"
+          background-color="transparent"
+          color="basil"
+          grow
+          icons-and-text
+        >
           <v-tab v-for="item in items" :key="item.title">
             {{ item.title }}
             <v-icon color="pink">{{ item.icon }}</v-icon>
@@ -172,7 +173,7 @@ export default {
       message: 'Following',
       color: 'green lighten-2 white--text',
       items: [
-        { title: 'LIKE ',icon: 'mdi-heart'},
+        { title: 'LIKE ', icon: 'mdi-heart' },
         { title: 'JOIN', icon: 'mdi-run' },
         { title: 'Message', icon: 'mdi-email-variant' },
         { title: 'Follow', icon: 'mdi-account' },
